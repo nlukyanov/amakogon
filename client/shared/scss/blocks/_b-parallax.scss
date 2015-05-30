@@ -22,8 +22,13 @@
 		position: relative;
 		height: 100vh;
 		overflow: hidden;
-		.px-slide-bg-holder {
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+		* {
+			-webkit-transform: translateZ(0);
 			transform: translateZ(0);
+		}
+		.px-slide-bg-holder {
 			position: absolute;
 			left: 0;
 			top: 0;
