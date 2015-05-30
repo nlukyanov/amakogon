@@ -22,6 +22,9 @@
 		position: relative;
 		height: 100vh;
 		overflow: hidden;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-color: #fff;
 		-webkit-transform: translateZ(0);
 		transform: translateZ(0);
 		* {
