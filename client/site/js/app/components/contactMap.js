@@ -150,9 +150,6 @@
 						infowindow.setContent(infoContent);
 						infowindow.open(map, marker);
 						this.center_map(map, $marker);
-						$(window).on('resize', function() {
-							self.center_map(map, $marker);
-						});
 					}
 				},
 
