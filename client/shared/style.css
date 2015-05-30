@@ -318,15 +318,17 @@ a:hover {
   }
   /* line 73, scss/blocks/_b-siteNav.scss */
   .site-nav.active .toggleNav .toggleNav-line:first-child {
+    -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     margin-top: 5px;
   }
-  /* line 77, scss/blocks/_b-siteNav.scss */
+  /* line 78, scss/blocks/_b-siteNav.scss */
   .site-nav.active .toggleNav .toggleNav-line:nth-child(2) {
     opacity: 0;
   }
-  /* line 80, scss/blocks/_b-siteNav.scss */
+  /* line 81, scss/blocks/_b-siteNav.scss */
   .site-nav.active .toggleNav .toggleNav-line:last-child {
+    -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
     margin-top: -10px;
   }
@@ -379,11 +381,8 @@ a:hover {
   bottom: 0;
   background-size: cover;
   background-position: 50% 0;
-  -webkit-filter: grayscale(100%) blur(3px);
-  filter: grayscale(100%) blur(3px);
-  transform: scale(-1.015) rotate(180deg);
 }
-/* line 47, scss/blocks/_b-parallax.scss */
+/* line 40, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-bg-holder .px-slide-bg:after {
   content: '';
   position: absolute;
@@ -394,7 +393,7 @@ a:hover {
   background: #202020;
   opacity: .5;
 }
-/* line 59, scss/blocks/_b-parallax.scss */
+/* line 52, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content {
   position: absolute;
   left: 0;
@@ -407,7 +406,7 @@ a:hover {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 68, scss/blocks/_b-parallax.scss */
+/* line 61, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon {
   position: fixed;
   top: 120px;
@@ -417,13 +416,13 @@ a:hover {
   -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
   filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
 }
-/* line 76, scss/blocks/_b-parallax.scss */
+/* line 69, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon svg {
   width: 40px;
   height: 40px;
   fill: #fff;
 }
-/* line 81, scss/blocks/_b-parallax.scss */
+/* line 74, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down {
   top: auto;
   bottom: 40px;
@@ -438,28 +437,28 @@ a:hover {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 92, scss/blocks/_b-parallax.scss */
+/* line 85, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down.visible {
   opacity: 1;
 }
-/* line 95, scss/blocks/_b-parallax.scss */
+/* line 88, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down svg {
   width: 15px;
   height: 100%;
 }
-/* line 100, scss/blocks/_b-parallax.scss */
+/* line 93, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-photos {
   margin-top: 10px;
 }
-/* line 103, scss/blocks/_b-parallax.scss */
+/* line 96, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-blog {
   margin-top: 5px;
 }
-/* line 106, scss/blocks/_b-parallax.scss */
+/* line 99, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-user {
   margin-top: 6px;
 }
-/* line 110, scss/blocks/_b-parallax.scss */
+/* line 103, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text-wrapper {
   position: fixed;
   left: 0;
@@ -467,20 +466,20 @@ a:hover {
   right: 0;
   bottom: 0;
 }
-/* line 117, scss/blocks/_b-parallax.scss */
+/* line 110, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text-holder {
   display: table;
   width: 100%;
   height: 100%;
 }
-/* line 122, scss/blocks/_b-parallax.scss */
+/* line 115, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text-box {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   padding-top: 80px;
 }
-/* line 128, scss/blocks/_b-parallax.scss */
+/* line 121, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text {
   text-align: left;
   display: inline-block;
@@ -491,7 +490,7 @@ a:hover {
   padding: 0 20px;
   box-sizing: border-box;
 }
-/* line 137, scss/blocks/_b-parallax.scss */
+/* line 130, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal01, .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal02 {
   position: absolute;
   height: 1px;
@@ -505,19 +504,19 @@ a:hover {
   transition-property: width;
   transition-timing-function: ease-in-out;
 }
-/* line 147, scss/blocks/_b-parallax.scss */
+/* line 140, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .visible.line-horisontal01, .parallax .px-slide .px-slide-content .px-slide-text .visible.line-horisontal02 {
   width: 100%;
 }
-/* line 151, scss/blocks/_b-parallax.scss */
+/* line 144, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal01 {
   top: -40px;
 }
-/* line 155, scss/blocks/_b-parallax.scss */
+/* line 148, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal02 {
   bottom: -40px;
 }
-/* line 159, scss/blocks/_b-parallax.scss */
+/* line 152, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-vertical01, .parallax .px-slide .px-slide-content .px-slide-text .line-vertical02 {
   position: absolute;
   background: #fff;
@@ -531,23 +530,23 @@ a:hover {
   transition-property: height;
   transition-timing-function: ease-in-out;
 }
-/* line 169, scss/blocks/_b-parallax.scss */
+/* line 162, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .visible.line-vertical01, .parallax .px-slide .px-slide-content .px-slide-text .visible.line-vertical02 {
   opacity: 1;
 }
-/* line 173, scss/blocks/_b-parallax.scss */
+/* line 166, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-vertical01 {
   top: 0;
   height: 0;
   margin-top: -40px;
 }
-/* line 179, scss/blocks/_b-parallax.scss */
+/* line 172, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-vertical02 {
   top: 100%;
   height: 0;
   margin-top: 40px;
 }
-/* line 185, scss/blocks/_b-parallax.scss */
+/* line 178, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text p {
   margin-bottom: 10px;
   opacity: 0;
@@ -556,11 +555,11 @@ a:hover {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 190, scss/blocks/_b-parallax.scss */
+/* line 183, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text p.visible {
   opacity: 1;
 }
-/* line 194, scss/blocks/_b-parallax.scss */
+/* line 187, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text a {
   text-decoration: underline;
   color: #ffd6d6;
@@ -572,15 +571,15 @@ a:hover {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 200, scss/blocks/_b-parallax.scss */
+/* line 193, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text a:hover {
   text-decoration: none;
 }
-/* line 205, scss/blocks/_b-parallax.scss */
+/* line 198, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text a.visible {
   opacity: 1;
 }
-/* line 209, scss/blocks/_b-parallax.scss */
+/* line 202, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text.hero-text {
   text-align: center;
   font-size: 36px;
@@ -588,13 +587,13 @@ a:hover {
   max-width: 405px;
 }
 @media only screen and (max-width: 1920px) {
-  /* line 209, scss/blocks/_b-parallax.scss */
+  /* line 202, scss/blocks/_b-parallax.scss */
   .parallax .px-slide .px-slide-content .px-slide-text.hero-text {
     font-size: 24px;
     line-height: 30px;
   }
 }
-/* line 221, scss/blocks/_b-parallax.scss */
+/* line 214, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active {
   z-index: 1;
   position: fixed;
@@ -603,26 +602,26 @@ a:hover {
   right: 0;
   bottom: 0;
 }
-/* line 228, scss/blocks/_b-parallax.scss */
+/* line 221, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active .px-slide-bg {
   background-position: 50% 0 !important;
 }
-/* line 231, scss/blocks/_b-parallax.scss */
+/* line 224, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active .px-slide-content {
   opacity: 1;
 }
-/* line 234, scss/blocks/_b-parallax.scss */
+/* line 227, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active:last-child {
   position: relative;
   z-index: 2;
 }
-/* line 238, scss/blocks/_b-parallax.scss */
+/* line 231, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active + .px-slide {
   margin-top: 100vh;
   z-index: 2;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 245, scss/blocks/_b-parallax.scss */
+  /* line 238, scss/blocks/_b-parallax.scss */
   .parallax .px-slide {
     position: relative !important;
     margin-top: 0 !important;
@@ -630,62 +629,62 @@ a:hover {
     min-height: 100vh;
     z-index: 1 !important;
   }
-  /* line 251, scss/blocks/_b-parallax.scss */
+  /* line 244, scss/blocks/_b-parallax.scss */
   .parallax .px-slide:first-child {
     margin-top: -85px !important;
   }
-  /* line 254, scss/blocks/_b-parallax.scss */
+  /* line 247, scss/blocks/_b-parallax.scss */
   .parallax .px-slide .px-slide-bg {
     background-position: 50% 0 !important;
   }
-  /* line 257, scss/blocks/_b-parallax.scss */
+  /* line 250, scss/blocks/_b-parallax.scss */
   .parallax .px-slide .px-slide-content {
     opacity: 1 !important;
     position: relative;
   }
-  /* line 262, scss/blocks/_b-parallax.scss */
+  /* line 255, scss/blocks/_b-parallax.scss */
   .parallax .px-slide-text-wrapper {
     position: relative !important;
   }
-  /* line 264, scss/blocks/_b-parallax.scss */
+  /* line 257, scss/blocks/_b-parallax.scss */
   .parallax .px-slide-text-wrapper .px-slide-text-holder {
     min-height: 100vh;
   }
-  /* line 266, scss/blocks/_b-parallax.scss */
+  /* line 259, scss/blocks/_b-parallax.scss */
   .parallax .px-slide-text-wrapper .px-slide-text-holder .px-slide-text-box {
     padding: 80px 0 !important;
   }
-  /* line 271, scss/blocks/_b-parallax.scss */
+  /* line 264, scss/blocks/_b-parallax.scss */
   .parallax .icon {
     opacity: 1 !important;
     position: absolute !important;
   }
-  /* line 274, scss/blocks/_b-parallax.scss */
+  /* line 267, scss/blocks/_b-parallax.scss */
   .parallax .icon:not(.icon-up) {
     display: none;
   }
-  /* line 281, scss/blocks/_b-parallax.scss */
+  /* line 274, scss/blocks/_b-parallax.scss */
   .parallax .line-horisontal01,
   .parallax .line-horisontal02,
   .parallax .line-vertical01,
   .parallax .line-vertical02 {
     display: none;
   }
-  /* line 284, scss/blocks/_b-parallax.scss */
+  /* line 277, scss/blocks/_b-parallax.scss */
   .parallax p {
     opacity: 1 !important;
   }
-  /* line 287, scss/blocks/_b-parallax.scss */
+  /* line 280, scss/blocks/_b-parallax.scss */
   .parallax a {
     opacity: 1 !important;
   }
-  /* line 290, scss/blocks/_b-parallax.scss */
+  /* line 283, scss/blocks/_b-parallax.scss */
   .parallax + .social-media {
     position: absolute;
     top: 30px;
     right: 20px;
   }
-  /* line 298, scss/blocks/_b-parallax.scss */
+  /* line 291, scss/blocks/_b-parallax.scss */
   .parallax h2.slide-title {
     font-size: 30px;
     line-height: 40px;
@@ -698,7 +697,7 @@ a:hover {
   }
 }
 @media only screen and (max-width: 1024px) and (max-width: 750px) {
-  /* line 290, scss/blocks/_b-parallax.scss */
+  /* line 283, scss/blocks/_b-parallax.scss */
   .parallax + .social-media {
     display: none;
   }

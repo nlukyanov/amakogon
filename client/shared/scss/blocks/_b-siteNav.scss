@@ -71,6 +71,7 @@
 			.toggleNav {
 				.toggleNav-line {
 					&:first-child {
+						-webkit-transform: rotate(45deg);
 						transform: rotate(45deg);
 						margin-top: 5px;
 					}
@@ -78,6 +79,7 @@
 						opacity: 0;
 					}
 					&:last-child {
+						-webkit-transform: rotate(-45deg);
 						transform: rotate(-45deg);
 						margin-top: -10px;
 					}
