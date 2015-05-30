@@ -148,8 +148,8 @@
 											'</dl>';
 
 						infowindow.setContent(infoContent);
-						infowindow.open(map, marker);
 						this.center_map(map, $marker);
+						infowindow.open(map, marker);
 					}
 				},
 
@@ -160,6 +160,7 @@
 					bounds.extend(latlng);
 				    map.setZoom(this.args.zoom);
 					map.setCenter(bounds.getCenter());
+					map.panBy(200, -100);
 				}
 			}
 
