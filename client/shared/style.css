@@ -237,6 +237,9 @@ a:hover {
 /* line 1, scss/blocks/_b-siteNav.scss */
 .site-nav {
   text-transform: uppercase;
+}
+/* line 3, scss/blocks/_b-siteNav.scss */
+.site-nav #nav {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
