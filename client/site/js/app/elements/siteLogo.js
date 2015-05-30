@@ -17,7 +17,7 @@
 				var logoTop = logo.position().top;
 
 				$(window).on('scroll', function() {
-					if ( $(window).width() > 1024 ) {
+					//if ( $(window).width() > 1024 ) {
 						var scrollTop = $(window).scrollTop();
 
 						logo.css({top: logoTop - scrollTop / 2});
@@ -25,7 +25,7 @@
 						if ( logo.position().top <= 20 + logo.height() / 2 ) {
 							logo.css({top: 20 + logo.height() / 2});
 						}
-					}
+					//}
 				});
 			}
 		};

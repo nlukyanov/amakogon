@@ -17,6 +17,9 @@
 				}
 			}
 		}
+		@include respond-to(tablet) {
+			top: 20px;
+		}
 	}
 	.px-slide {
 		position: relative;
@@ -239,7 +242,7 @@
 			}
 		}
 	}
-	@include respond-to(tablet) {
+	/*@include respond-to(tablet) {
 		.px-slide {
 			position: relative !important;
 			margin-top: 0 !important;
@@ -303,5 +306,5 @@
 			border: 1px solid #fff;
 			border-width: 0 0 1px;
 		}
-	}
+	}*/
 }

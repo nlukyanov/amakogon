@@ -13,7 +13,7 @@
 			if ( $location.$$path == '/' ) {
 				element.find('nav').addClass('home-nav');
 				$(window).on('scroll', function() {
-					if ( $(window).width() > 1024 ) {
+					//if ( $(window).width() > 1024 ) {
 						scope.index = Math.floor($(window).scrollTop() / $(window).height() + .05) + 1;
 						element.closest('.page-wrapper').find('#px-slide' + scope.index).addClass('active').siblings().removeClass('active');
 						scope.resetSlide(element.closest('.page-wrapper').find('#px-slide' + scope.index).siblings());
@@ -25,7 +25,7 @@
 						if ( element.closest('.page-wrapper').find('.px-slide.active .line-vertical01').length && !element.closest('.page-wrapper').find('.px-slide.active .line-vertical01.visible').length  ) {
 							scope.animateSlide();
 						}
-					}
+					//}
 				});
 			}
 			scope.scrollTo = function(e, index) {

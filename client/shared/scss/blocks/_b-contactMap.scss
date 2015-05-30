@@ -105,10 +105,10 @@
 			width: 15px;
 			height: 100%;
 		}
-		@include respond-to(tablet) {
+		/*@include respond-to(tablet) {
 			bottom: 40px;
 			margin-bottom: 0;
-		}
+		}*/
 	}
 	.back-to-top-line {
 		position: fixed;
