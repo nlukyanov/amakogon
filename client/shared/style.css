@@ -159,17 +159,15 @@ a:hover {
 }
 /* line 3, scss/patterns/_p-social-media.scss */
 .social-media li {
-  float: left;
-  margin-left: 15px;
-}
-/* line 6, scss/patterns/_p-social-media.scss */
-.social-media li a {
-  display: block;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 11px;
 }
 /* line 8, scss/patterns/_p-social-media.scss */
 .social-media li a svg {
   width: auto;
   height: 20px;
+  max-width: 30px;
 }
 
 /* Blocks */

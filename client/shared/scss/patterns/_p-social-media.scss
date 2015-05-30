@@ -1,13 +1,14 @@
 .social-media {
 	overflow: hidden;
 	li {
-		float: left;
-		margin-left: 15px;
+		display: inline-block;
+		vertical-align: top;
+		margin-left: 11px;
 		a {
-			display: block;
 			svg {
 				width: auto;
 				height: 20px;
+				max-width: 30px;
 			}
 		}
 	}
