@@ -1,0 +1,28 @@
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	background: #fff;
+	font-size: 18px;
+	line-height: 24px;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+	color: #202020;
+	overflow: hidden;
+	letter-spacing: 1px;
+	@include respond-to(desktopMD) {
+		font-size: 16px;
+		line-height: 20px;
+		overflow: auto;
+	}
+	&.pageLoaded {
+		overflow: auto;
+	}
+}
+.desktop-hidden {
+	display: none;
+	@include respond-to(tablet) {
+		display: block;
+	}
+}

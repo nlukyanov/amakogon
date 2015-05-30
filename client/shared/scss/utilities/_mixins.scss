@@ -1,0 +1,111 @@
+/* Mixins */
+
+/* Window width */
+$mobileSM: 320px;
+$mobileMD: 640px;
+$mobileLG: 750px;
+$tablet: 1024px;
+$desktopSM: 1366px;
+$desktopMD: 1920px;
+$desktopLG: 2560px;
+
+@mixin respond-to($media) {
+	@if $media == mobileSM {
+		@media only screen and (max-width: $mobileSM) {
+			@content;
+		}
+	}
+	@else if $media == mobileMD {
+		@media only screen and (max-width: $mobileSM) {
+			@content;
+		}
+	}
+	@else if $media == mobileLG {
+		@media only screen and (max-width: $mobileLG) {
+			@content;
+		}
+	}
+	@else if $media == tablet {
+		@media only screen and (max-width: $tablet) {
+			@content;
+		}
+	}
+	@else if $media == desktopSM {
+		@media only screen and (max-width: $desktopSM) {
+			@content;
+		}
+	}
+	@else if $media == desktopMD {
+		@media only screen and (max-width: $desktopMD) {
+			@content;
+		}
+	}
+	@else if $media == desktopLG {
+		@media only screen and (max-width: $desktopLG) {
+			@content;
+		}
+	}
+}
+
+/* Clearfix */
+@mixin clearfix {
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+/* Hide text */
+@mixin hide-text {
+	text-indent: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+/* Transitions */
+@mixin transition ($property, $duration) {
+	transition: {
+		duration: $duration;
+		property: $property;
+		timing-function: ease-in-out;
+	} 
+}
+
+/* Transforms */
+@mixin transform-rotate ($i) {
+	-moz-transform: rotate($i);
+	-o-transform: rotate($i);
+	-ms-transform: rotate($i);
+	-webkit-transform: rotate($i);
+	transform: rotate($i);
+}
+@mixin transform-translateY ($i) {
+	-webkit-transform: translateY($i);
+	transform: translateY($i);
+}
+@mixin transform-translateX ($i) {
+	-webkit-transform: translateX($i);
+	transform: translateX($i);
+}
+@mixin transform-none {
+	-moz-transform: none;
+	-o-transform: none;
+	-ms-transform: none;
+	-webkit-transform: none;
+	transform: none;
+}
+
+/* Center align vertically */
+@mixin center-vertical($height) {
+	position: absolute;
+	top: 50%;
+	margin-top: -$height / 2;
+}
+
+/* Center align horisontally */
+@mixin center-horisontal($width) {
+	position: absolute;
+	left: 50%;
+	margin-left: -$width / 2;
+}

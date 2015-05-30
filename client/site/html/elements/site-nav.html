@@ -1,0 +1,24 @@
+<nav class="site-nav">
+	<ul id="nav">
+		<li class="nav-item">
+			<a ng-href="#" class="nav-link" ng-class="{active: index == 1}" ng-click="scrollTo($event, 1)">Главная</a>
+		</li>
+		<li class="nav-item">
+			<a ng-href="#" class="nav-link" ng-class="{active: index == 2}" ng-click="scrollTo($event, 2)">Фотографии</a>
+		</li>
+		<li class="nav-item">
+			<a ng-href="#" class="nav-link" ng-class="{active: index == 3}" ng-click="scrollTo($event, 3)">Блог</a>
+		</li>
+		<li class="nav-item">
+			<a ng-href="#" class="nav-link" ng-class="{active: index == 4}" ng-click="scrollTo($event, 4)">Обо мне</a>
+		</li>
+		<li class="nav-item">
+			<a ng-href="#" class="nav-link" ng-class="{active: index == 5}" ng-click="scrollTo($event, 5)">Контакты</a>
+		</li>
+	</ul>
+	<a ng-href="#" class="toggleNav" ng-click="toggleNav($event)">
+		<span class="toggleNav-line"></span>
+		<span class="toggleNav-line"></span>
+		<span class="toggleNav-line"></span>
+	</a>
+</nav>

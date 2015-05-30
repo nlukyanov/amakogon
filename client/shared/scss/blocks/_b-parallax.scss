@@ -1,0 +1,309 @@
+.parallax {
+	+ .social-media {
+		position: fixed;
+		right: 40px;
+		top: 40px;
+		z-index: 9999;
+		svg {
+			fill: #fff;
+			@include transition($property: fill, $duration: .25s);
+		}
+		a {
+			-webkit-filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+			filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+			&:hover {
+				svg {
+					fill: #ffd6d6;
+				}
+			}
+		}
+	}
+	.px-slide {
+		position: relative;
+		height: 100vh;
+		overflow: hidden;
+		.px-slide-bg-holder {
+			transform: translateZ(0);
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			.px-slide-bg {
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				background-size: cover;
+				background-position: 50% 0;
+				-webkit-filter: 
+					grayscale(100%)
+					blur(3px);
+				filter: 
+					grayscale(100%)
+					blur(3px);
+				transform: scale(-1.015) rotate(180deg);
+				&:after {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					background: #202020;
+					opacity: .5;
+				}
+			}
+		}
+		.px-slide-content {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			color: #fff;
+			opacity: 0;
+			@include transition($property: opacity, $duration: .25s);
+			.icon {
+				position: fixed;
+				top: 120px;
+				left: 0;
+				right: 0;
+				text-align: center;
+				-webkit-filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+				filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+				svg {
+					width: 40px;
+					height: 40px;
+					fill: #fff;
+				}
+				&.icon-down {
+					top: auto;
+					bottom: 40px;
+					border: 1px solid #fff;
+					border-radius: 100%;
+					width: 35px;
+					height: 35px;
+					left: 50%;
+					margin-left: -18.5px;
+					opacity: 0;
+					@include transition($property: opacity, $duration: .25s);
+					&.visible {
+						opacity: 1;
+					}
+					svg {
+						width: 15px;
+						height: 100%;
+					}
+				}
+				&.icon-photos {
+					margin-top: 10px;
+				}
+				&.icon-blog {
+					margin-top: 5px;
+				}
+				&.icon-user {
+					margin-top: 6px;
+				}
+			}
+			.px-slide-text-wrapper {
+				position: fixed;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+			}
+			.px-slide-text-holder {
+				display: table;
+				width: 100%;
+				height: 100%;
+			}
+			.px-slide-text-box {
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+				padding-top: 80px;
+			}
+			.px-slide-text {
+				text-align: left;
+				display: inline-block;
+				vertical-align: top;
+				position: relative;
+				width: 60%;
+				min-width: 320px;
+				padding: 0 20px;
+				box-sizing: border-box;
+				%s-line-horisontal {
+					position: absolute;
+					height: 1px;
+					background: #fff;
+					width: 0;
+					left: 50%;
+					transform: translateX(-50%);
+					-webkit-filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+					filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+					@include transition($property: width, $duration: .25s);
+					&.visible {
+						width: 100%;
+					}
+				}
+				.line-horisontal01 {
+					top: -40px;
+					@extend %s-line-horisontal;
+				}
+				.line-horisontal02 {
+					bottom: -40px;
+					@extend %s-line-horisontal;
+				}
+				%s-line-vertical {
+					position: absolute;
+					background: #fff;
+					width: 1px;
+					left: 50%;
+					margin-left: -.5px;
+					opacity: 0;
+					-webkit-filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+					filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+					@include transition($property: height, $duration: .25s);
+					&.visible {
+						opacity: 1;
+					}
+				}
+				.line-vertical01 {
+					top: 0;
+					height: 0;
+					margin-top: -40px;
+					@extend %s-line-vertical;
+				}
+				.line-vertical02 {
+					top: 100%;
+					height: 0;
+					margin-top: 40px;
+					@extend %s-line-vertical;
+				}
+				p {
+					margin-bottom: 10px;
+					opacity: 0;
+					text-shadow: 0 0 3px rgba(0,0,0,.75);
+					@include transition($property: opacity, $duration: .25s);
+					&.visible {
+						opacity: 1;
+					}
+				}
+				a {
+					text-decoration: underline;
+					color: #ffd6d6;
+					font-size: 18px;
+					text-transform: uppercase;
+					text-shadow: 0 0 3px rgba(0,0,0,.75);
+					&:hover {
+						text-decoration: none;
+					}
+					opacity: 0;
+					@include transition($property: opacity, $duration: .25s);
+					&.visible {
+						opacity: 1;
+					}
+				}
+				&.hero-text {
+					text-align: center;
+					font-size: 36px;
+					line-height: 43px;
+					max-width: 405px;
+					@include respond-to(desktopMD) {
+						font-size: 24px;
+						line-height: 30px;
+					}
+				}
+			}
+		}
+		&.active {
+			z-index: 1;
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			.px-slide-bg {
+				background-position: 50% 0 !important;
+			}
+			.px-slide-content {
+				opacity: 1;
+			}
+			&:last-child {
+				position: relative;
+				z-index: 2;
+			}
+			+ .px-slide {
+				margin-top: 100vh;
+				z-index: 2;
+			}
+		}
+	}
+	@include respond-to(tablet) {
+		.px-slide {
+			position: relative !important;
+			margin-top: 0 !important;
+			height: auto;
+			min-height: 100vh;
+			z-index: 1 !important;
+			&:first-child {
+				margin-top: -85px !important;
+			}
+			.px-slide-bg {
+				background-position: 50% 0 !important;
+			}
+			.px-slide-content {
+				opacity: 1 !important;
+				position: relative;
+			}
+		}
+		.px-slide-text-wrapper {
+			position: relative !important;
+			.px-slide-text-holder {
+				min-height: 100vh;
+				.px-slide-text-box {
+					padding: 80px 0 !important;
+				}
+			}
+		}
+		.icon {
+			opacity: 1 !important;
+			position: absolute !important;
+			&:not(.icon-up) {
+				display: none;
+			}
+		}
+		.line-horisontal01,
+		.line-horisontal02,
+		.line-vertical01,
+		.line-vertical02 {
+			display: none;
+		}
+		p {
+			opacity: 1 !important;
+		}
+		a {
+			opacity: 1 !important;
+		}
+		+ .social-media {
+			position: absolute;
+			top: 30px;
+			right: 20px;
+			@include respond-to(mobileLG) {
+				display: none;
+			}
+		}
+		h2.slide-title {
+			font-size: 30px;
+			line-height: 40px;
+			text-align: center;
+			text-transform: uppercase;
+			margin-bottom: 20px;
+			padding: 10px;
+			border: 1px solid #fff;
+			border-width: 0 0 1px;
+		}
+	}
+}

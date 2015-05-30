@@ -1,0 +1,14 @@
+.social-media {
+	overflow: hidden;
+	li {
+		float: left;
+		margin-left: 15px;
+		a {
+			display: block;
+			svg {
+				width: auto;
+				height: 20px;
+			}
+		}
+	}
+}
