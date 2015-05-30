@@ -31,11 +31,10 @@
 			}
 		}
 		@include respond-to(tablet) {
-			//position: static;
-			//margin: 0 auto;
+			position: static;
+			margin: 0 auto;
 			width: 315px;
 			height: 45px;
-			margin-left: -157.5px;
 		}
 		@include respond-to(mobileLG) {
 			width: 80px;
