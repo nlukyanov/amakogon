@@ -10,16 +10,66 @@
 		};
 		function link(scope, element, attrs) {
 			if ( $location.$$path.match(/\//ig).length == 1 ) {
-				scope.breadcrumbs = [
-					{
-						title: 'Главная',
-						url: '/'
-					},
-					{
-						title: 'Фотографии',
-						url: '/photos'
-					}
-				];
+				if ( $location.$$path == '/photos' ) {
+					scope.breadcrumbs = [
+						{
+							title: 'Главная',
+							url: '/'
+						},
+						{
+							title: 'Фотографии',
+							url: '/photos'
+						}
+					];
+				}
+				else if ( $location.$$path == '/tags' ) {
+					scope.breadcrumbs = [
+						{
+							title: 'Главная',
+							url: '/'
+						},
+						{
+							title: '#Тег',
+							url: '/tags/#tag'
+						}
+					];
+				}
+				else if ( $location.$$path == '/blog' ) {
+					scope.breadcrumbs = [
+						{
+							title: 'Главная',
+							url: '/'
+						},
+						{
+							title: 'Блог',
+							url: '/blog'
+						}
+					];
+				}
+				else if ( $location.$$path == '/cv' ) {
+					scope.breadcrumbs = [
+						{
+							title: 'Главная',
+							url: '/'
+						},
+						{
+							title: 'Обо мне',
+							url: '/cv'
+						}
+					];
+				}
+				else if ( $location.$$path == '/contact' ) {
+					scope.breadcrumbs = [
+						{
+							title: 'Главная',
+							url: '/'
+						},
+						{
+							title: 'Контакты',
+							url: '/contat'
+						}
+					];
+				}
 			}
 			else if ( $location.$$path.match(/\//ig).length == 2 ) {
 				if ( $location.$$hash == '' ) {
