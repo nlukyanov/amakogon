@@ -96,27 +96,19 @@
 }
 .contact-slide {
 	.back-to-top {
-		width: 35px;
-		height: 35px;
-		position: fixed;
-		right: 40px;
-		bottom: 50%;
-		margin-bottom: -20px;
-		border: 1px solid #fff;
-		text-align: center;
-		border-radius: 100%;
 		opacity: 0;
 		-webkit-filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
 		filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+		bottom: 50%;
+		margin-bottom: -20px;
+		border: 1px solid #fff;
 		@include transition($property: opacity, $duration: .25s);
-		svg {
-			fill: #fff;
-			width: 15px;
-			height: 100%;
-		}
 		@include respond-to(tablet) {
 			bottom: 40px;
 			margin-bottom: 0;
+		}
+		svg {
+			fill: #fff;
 		}
 	}
 	.back-to-top-line {

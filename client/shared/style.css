@@ -131,11 +131,16 @@ body.pageLoaded {
 }
 
 /* line 23, scss/base/_html-body.scss */
+.page-wrapper {
+  overflow: hidden;
+}
+
+/* line 26, scss/base/_html-body.scss */
 .desktop-hidden {
   display: none;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 23, scss/base/_html-body.scss */
+  /* line 26, scss/base/_html-body.scss */
   .desktop-hidden {
     display: block;
   }
@@ -144,9 +149,11 @@ body.pageLoaded {
 /* line 1, scss/base/_a.scss */
 a {
   text-decoration: none;
+  letter-spacing: 0;
+  color: #202020;
 }
 
-/* line 5, scss/base/_a.scss */
+/* line 6, scss/base/_a.scss */
 a:hover {
   text-decoration: underline;
 }
@@ -176,25 +183,27 @@ a:hover {
 .logo {
   width: 420px;
   height: 60px;
-  margin: 0 auto;
+  margin: 20px auto 80px;
+  position: relative;
+  z-index: 99999;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 8, scss/blocks/_b-logo.scss */
+/* line 10, scss/blocks/_b-logo.scss */
 .logo .logo-link svg {
-  fill: #202020;
+  fill: #fff;
   width: 100%;
   height: 100%;
 }
-/* line 12, scss/blocks/_b-logo.scss */
+/* line 14, scss/blocks/_b-logo.scss */
 .logo .logo-link svg.logo-desktop {
   display: block;
 }
-/* line 15, scss/blocks/_b-logo.scss */
+/* line 17, scss/blocks/_b-logo.scss */
 .logo .logo-link svg.logo-mobile {
   display: none;
 }
-/* line 20, scss/blocks/_b-logo.scss */
+/* line 22, scss/blocks/_b-logo.scss */
 .logo.home-logo {
   position: fixed;
   left: 50%;
@@ -202,50 +211,71 @@ a:hover {
   margin: -30px 0 0 -210px;
   z-index: 99999;
 }
-/* line 27, scss/blocks/_b-logo.scss */
+@media only screen and (max-width: 1024px) {
+  /* line 22, scss/blocks/_b-logo.scss */
+  .logo.home-logo {
+    margin: 0 auto !important;
+  }
+}
+/* line 32, scss/blocks/_b-logo.scss */
 .logo.home-logo .logo-link svg {
-  fill: #fff;
+  fill: #fff !important;
   -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
   filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
 }
 @media only screen and (max-width: 1024px) {
-  /* line 20, scss/blocks/_b-logo.scss */
-  .logo.home-logo {
-    position: static;
-    margin: 0 auto;
+  /* line 1, scss/blocks/_b-logo.scss */
+  .logo {
+    position: static !important;
+    margin: 20px auto 80px !important;
     width: 315px;
     height: 45px;
   }
+  /* line 45, scss/blocks/_b-logo.scss */
+  .logo .logo-link svg {
+    fill: #202020;
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
 }
 @media only screen and (max-width: 750px) {
-  /* line 20, scss/blocks/_b-logo.scss */
-  .logo.home-logo {
+  /* line 1, scss/blocks/_b-logo.scss */
+  .logo {
     width: 80px;
   }
-  /* line 41, scss/blocks/_b-logo.scss */
-  .logo.home-logo .logo-desktop {
+  /* line 54, scss/blocks/_b-logo.scss */
+  .logo .logo-desktop {
     display: none !important;
   }
-  /* line 44, scss/blocks/_b-logo.scss */
-  .logo.home-logo .logo-mobile {
+  /* line 57, scss/blocks/_b-logo.scss */
+  .logo .logo-mobile {
     display: block !important;
   }
 }
 
+/* line 65, scss/blocks/_b-logo.scss */
+.pageLoaded .logo .logo-link svg {
+  fill: #202020;
+}
+
 /* line 1, scss/blocks/_b-siteNav.scss */
 .site-nav {
+  position: fixed;
+  z-index: 9999;
   text-transform: uppercase;
+  left: 0;
+  top: 0;
 }
-/* line 3, scss/blocks/_b-siteNav.scss */
+/* line 7, scss/blocks/_b-siteNav.scss */
 .site-nav #nav {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 6, scss/blocks/_b-siteNav.scss */
+/* line 10, scss/blocks/_b-siteNav.scss */
 .site-nav #nav .nav-item {
   padding: 9px 0;
 }
-/* line 8, scss/blocks/_b-siteNav.scss */
+/* line 12, scss/blocks/_b-siteNav.scss */
 .site-nav #nav .nav-item .nav-link {
   color: #fff;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
@@ -253,25 +283,36 @@ a:hover {
   transition-property: color;
   transition-timing-function: ease-in-out;
 }
-/* line 13, scss/blocks/_b-siteNav.scss */
-.site-nav #nav .nav-item .nav-link:hover, .site-nav #nav .nav-item .nav-link.active {
+/* line 18, scss/blocks/_b-siteNav.scss */
+.site-nav #nav .nav-item .nav-link:hover, .site-nav #nav .nav-item .nav-link.active, .site-nav #nav .nav-item .nav-link.current {
   text-decoration: none;
   color: #ffd6d6;
 }
-/* line 20, scss/blocks/_b-siteNav.scss */
-.site-nav.home-nav {
+/* line 26, scss/blocks/_b-siteNav.scss */
+.site-nav:not(.home-nav) #nav {
   position: fixed;
-  z-index: 9999;
+  left: -200px;
+  top: 0;
+  bottom: 0;
+  padding: 105px 20px 20px;
+  background: rgba(32, 32, 32, 0.9);
+  z-index: 99;
+  transition-duration: 0.25s;
+  transition-property: left;
+  transition-timing-function: ease-in-out;
+}
+/* line 37, scss/blocks/_b-siteNav.scss */
+.site-nav.home-nav {
   height: 210px;
   top: 50%;
   margin-top: -105px;
   left: 40px;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 28, scss/blocks/_b-siteNav.scss */
+  /* line 43, scss/blocks/_b-siteNav.scss */
   .site-nav.home-nav #nav {
     position: fixed;
-    left: -150px;
+    left: -200px;
     top: 0;
     bottom: 0;
     padding: 105px 20px 20px;
@@ -282,55 +323,107 @@ a:hover {
     transition-timing-function: ease-in-out;
   }
 }
-/* line 40, scss/blocks/_b-siteNav.scss */
+/* line 55, scss/blocks/_b-siteNav.scss */
 .site-nav .toggleNav {
   display: none;
-}
-@media only screen and (max-width: 1024px) {
-  /* line 40, scss/blocks/_b-siteNav.scss */
-  .site-nav .toggleNav {
-    display: block;
-    position: fixed;
-    top: 32px;
-    left: 20px;
-    width: 20px;
-    height: 12px;
-    z-index: 99;
-  }
-  /* line 50, scss/blocks/_b-siteNav.scss */
-  .site-nav .toggleNav .toggleNav-line {
-    display: block;
-    height: 2px;
-    background: #202020;
-    margin-bottom: 3px;
-    transform: rotate(0);
-    opacity: 1;
-    transition-duration: 0.25s;
-    transition-property: transform, opacity, margin;
-    transition-timing-function: ease-in-out;
-  }
+  position: fixed;
+  top: 32px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 99;
 }
 /* line 63, scss/blocks/_b-siteNav.scss */
+.site-nav .toggleNav .toggleNav-line {
+  display: block;
+  height: 2px;
+  background: #202020;
+  margin-bottom: 3px;
+  transform: rotate(0);
+  opacity: 1;
+  transition-duration: 0.25s;
+  transition-property: transform, opacity, margin, background;
+  transition-timing-function: ease-in-out;
+}
+@media only screen and (max-width: 1024px) {
+  /* line 55, scss/blocks/_b-siteNav.scss */
+  .site-nav .toggleNav {
+    display: block;
+  }
+}
+/* line 77, scss/blocks/_b-siteNav.scss */
+.site-nav:not(.home-nav) .toggleNav {
+  display: block;
+}
+/* line 79, scss/blocks/_b-siteNav.scss */
+.site-nav:not(.home-nav) .toggleNav:before {
+  content: '';
+  background: #fff;
+  border-radius: 100%;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: -10px;
+  top: -13.5px;
+  z-index: -1;
+  opacity: 1;
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+/* line 96, scss/blocks/_b-siteNav.scss */
 .site-nav.home-nav .toggleNav .toggleNav-line {
   background: #fff;
 }
+/* line 103, scss/blocks/_b-siteNav.scss */
+.site-nav.active .toggleNav:before {
+  opacity: 0;
+}
+/* line 108, scss/blocks/_b-siteNav.scss */
+.site-nav.active:not(.home-nav) #nav {
+  left: 0;
+}
+/* line 112, scss/blocks/_b-siteNav.scss */
+.site-nav.active:not(.home-nav) .toggleNav .toggleNav-line {
+  background: #fff;
+}
+/* line 114, scss/blocks/_b-siteNav.scss */
+.site-nav.active:not(.home-nav) .toggleNav .toggleNav-line:first-child {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-top: 5px;
+}
+/* line 119, scss/blocks/_b-siteNav.scss */
+.site-nav.active:not(.home-nav) .toggleNav .toggleNav-line:nth-child(2) {
+  opacity: 0;
+}
+/* line 122, scss/blocks/_b-siteNav.scss */
+.site-nav.active:not(.home-nav) .toggleNav .toggleNav-line:last-child {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  margin-top: -10px;
+}
 @media only screen and (max-width: 1024px) {
-  /* line 70, scss/blocks/_b-siteNav.scss */
-  .site-nav.active #nav {
+  /* line 132, scss/blocks/_b-siteNav.scss */
+  .site-nav.active.home-nav #nav {
     left: 0;
   }
-  /* line 75, scss/blocks/_b-siteNav.scss */
-  .site-nav.active .toggleNav .toggleNav-line:first-child {
+  /* line 136, scss/blocks/_b-siteNav.scss */
+  .site-nav.active.home-nav .toggleNav .toggleNav-line {
+    background: #fff;
+  }
+  /* line 138, scss/blocks/_b-siteNav.scss */
+  .site-nav.active.home-nav .toggleNav .toggleNav-line:first-child {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     margin-top: 5px;
   }
-  /* line 80, scss/blocks/_b-siteNav.scss */
-  .site-nav.active .toggleNav .toggleNav-line:nth-child(2) {
+  /* line 143, scss/blocks/_b-siteNav.scss */
+  .site-nav.active.home-nav .toggleNav .toggleNav-line:nth-child(2) {
     opacity: 0;
   }
-  /* line 83, scss/blocks/_b-siteNav.scss */
-  .site-nav.active .toggleNav .toggleNav-line:last-child {
+  /* line 146, scss/blocks/_b-siteNav.scss */
+  .site-nav.active.home-nav .toggleNav .toggleNav-line:last-child {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
     margin-top: -10px;
@@ -860,27 +953,15 @@ a:hover {
 
 /* line 98, scss/blocks/_b-contactMap.scss */
 .contact-slide .back-to-top {
-  width: 35px;
-  height: 35px;
-  position: fixed;
-  right: 40px;
-  bottom: 50%;
-  margin-bottom: -20px;
-  border: 1px solid #fff;
-  text-align: center;
-  border-radius: 100%;
   opacity: 0;
   -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
   filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
+  bottom: 50%;
+  margin-bottom: -20px;
+  border: 1px solid #fff;
   transition-duration: 0.25s;
   transition-property: opacity;
   transition-timing-function: ease-in-out;
-}
-/* line 112, scss/blocks/_b-contactMap.scss */
-.contact-slide .back-to-top svg {
-  fill: #fff;
-  width: 15px;
-  height: 100%;
 }
 @media only screen and (max-width: 1024px) {
   /* line 98, scss/blocks/_b-contactMap.scss */
@@ -889,7 +970,11 @@ a:hover {
     margin-bottom: 0;
   }
 }
-/* line 122, scss/blocks/_b-contactMap.scss */
+/* line 110, scss/blocks/_b-contactMap.scss */
+.contact-slide .back-to-top svg {
+  fill: #fff;
+}
+/* line 114, scss/blocks/_b-contactMap.scss */
 .contact-slide .back-to-top-line {
   position: fixed;
   right: 58px;
@@ -904,11 +989,11 @@ a:hover {
   transition-property: height;
   transition-timing-function: ease-in-out;
 }
-/* line 135, scss/blocks/_b-contactMap.scss */
+/* line 127, scss/blocks/_b-contactMap.scss */
 .contact-slide.active .back-to-top {
   opacity: 1;
 }
-/* line 138, scss/blocks/_b-contactMap.scss */
+/* line 130, scss/blocks/_b-contactMap.scss */
 .contact-slide.active .back-to-top-line {
   height: 50%;
 }
@@ -931,8 +1016,8 @@ a:hover {
 }
 
 @media only screen and (max-width: 1024px) {
-  /* line 1, scss/blocks/_b-siteHeader.scss */
-  header {
+  /* line 2, scss/blocks/_b-siteHeader.scss */
+  header.home-header {
     height: 85px;
     background: #202020;
     box-sizing: border-box;
@@ -940,4 +1025,330 @@ a:hover {
     position: relative;
     z-index: 20;
   }
+}
+
+/* line 1, scss/blocks/_b-breadcrumbs.scss */
+.breadcrumbs {
+  position: fixed;
+  left: 10px;
+  top: 80px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0;
+  overflow: hidden;
+}
+/* line 9, scss/blocks/_b-breadcrumbs.scss */
+.breadcrumbs li {
+  margin-bottom: 5px;
+}
+/* line 12, scss/blocks/_b-breadcrumbs.scss */
+.breadcrumbs li a,
+.breadcrumbs li span {
+  color: #cacaca;
+  position: relative;
+  padding-left: 10px;
+  transition-duration: 0.25s;
+  transition-property: color;
+  transition-timing-function: ease-in-out;
+}
+/* line 17, scss/blocks/_b-breadcrumbs.scss */
+.breadcrumbs li a:hover,
+.breadcrumbs li span:hover {
+  text-decoration: none;
+  color: #202020;
+}
+/* line 21, scss/blocks/_b-breadcrumbs.scss */
+.breadcrumbs li a.active,
+.breadcrumbs li span.active {
+  color: #202020;
+}
+/* line 23, scss/blocks/_b-breadcrumbs.scss */
+.breadcrumbs li a.active:before,
+.breadcrumbs li span.active:before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 1, scss/blocks/_b-breadcrumbs.scss */
+  .breadcrumbs {
+    position: static;
+    margin: -40px 0 40px;
+    padding: 20px 40px;
+    background: #202020;
+  }
+  /* line 37, scss/blocks/_b-breadcrumbs.scss */
+  .breadcrumbs li {
+    float: left;
+    margin-bottom: 0;
+    margin-left: 6px;
+  }
+  /* line 41, scss/blocks/_b-breadcrumbs.scss */
+  .breadcrumbs li:first-child {
+    margin-left: 0;
+  }
+  /* line 44, scss/blocks/_b-breadcrumbs.scss */
+  .breadcrumbs li span.active {
+    color: #fff;
+  }
+}
+
+/* line 1, scss/blocks/_b-photos.scss */
+.photos-container {
+  padding: 0 150px 80px;
+  position: relative;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 1, scss/blocks/_b-photos.scss */
+  .photos-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/* line 8, scss/blocks/_b-photos.scss */
+.photos-container .icon-photos {
+  display: block;
+  width: 40px;
+  background: #fff;
+  position: fixed;
+  left: 50%;
+  top: 125px;
+  margin-left: -20px;
+  z-index: 1;
+  height: 40px;
+}
+/* line 18, scss/blocks/_b-photos.scss */
+.photos-container .icon-photos svg {
+  width: 40px;
+  height: 40px;
+  fill: #cacaca;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 8, scss/blocks/_b-photos.scss */
+  .photos-container .icon-photos {
+    position: absolute;
+    top: 0;
+  }
+}
+/* line 28, scss/blocks/_b-photos.scss */
+.photos-container .photos {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 20px;
+  position: relative;
+}
+/* line 33, scss/blocks/_b-photos.scss */
+.photos-container .photos:after {
+  content: '';
+  width: 1px;
+  position: absolute;
+  top: 0;
+  bottom: -24px;
+  left: 50%;
+  margin-left: -.5px;
+  background: #cacaca;
+  z-index: -1;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 45, scss/blocks/_b-photos.scss */
+  .photos-container .photos:after {
+    display: none;
+  }
+}
+/* line 49, scss/blocks/_b-photos.scss */
+.photos-container .photos li {
+  overflow: hidden;
+  padding: 80px 0;
+  opacity: 0;
+  transition-duration: 0.5s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 49, scss/blocks/_b-photos.scss */
+  .photos-container .photos li {
+    opacity: 1;
+  }
+  /* line 56, scss/blocks/_b-photos.scss */
+  .photos-container .photos li:nth-child(2n) {
+    background: #f2f2f2;
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/* line 63, scss/blocks/_b-photos.scss */
+.photos-container .photos li.visible {
+  opacity: 1;
+}
+/* line 66, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-holder {
+  float: left;
+  width: 50%;
+  padding-right: 80px;
+  box-sizing: border-box;
+  position: relative;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 66, scss/blocks/_b-photos.scss */
+  .photos-container .photos li .photo-holder {
+    float: none !important;
+    width: 100%;
+    padding: 0 !important;
+  }
+}
+/* line 77, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-holder:after {
+  content: '';
+  background: #cacaca;
+  height: 1px;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  margin-top: -.5px;
+  right: 0;
+  z-index: -1;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 89, scss/blocks/_b-photos.scss */
+  .photos-container .photos li .photo-holder:after {
+    display: none;
+  }
+}
+/* line 93, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-holder .photo {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+/* line 97, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-holder .photo .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background: #202020;
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+/* line 106, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-holder .photo .overlay:hover {
+  opacity: .5;
+}
+/* line 109, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-holder .photo .overlay svg {
+  width: 100px;
+  height: 100px;
+  fill: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -50px 0 0 -50px;
+}
+/* line 121, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-info-holder {
+  float: right;
+  width: 50%;
+  padding-left: 80px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 121, scss/blocks/_b-photos.scss */
+  .photos-container .photos li .photo-info-holder {
+    float: none !important;
+    width: 100%;
+    padding: 40px 0 0 !important;
+    margin: 0 !important;
+  }
+}
+/* line 133, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-info-holder .photo-info .photo-date {
+  color: #cacaca;
+  display: block;
+  margin-bottom: 19px;
+}
+/* line 138, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-info-holder .photo-info .photo-title {
+  font-size: 36px;
+  line-height: 43px;
+  margin-bottom: 23px;
+}
+/* line 143, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-info-holder .photo-info .photo-descr {
+  margin-bottom: 29px;
+}
+/* line 146, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-info-holder .photo-info .photo-link {
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: #202020;
+}
+/* line 150, scss/blocks/_b-photos.scss */
+.photos-container .photos li .photo-info-holder .photo-info .photo-link:hover {
+  text-decoration: none;
+}
+/* line 157, scss/blocks/_b-photos.scss */
+.photos-container .photos li:nth-child(2n) .photo-holder {
+  float: right;
+  padding-right: 0;
+  padding-left: 80px;
+}
+/* line 161, scss/blocks/_b-photos.scss */
+.photos-container .photos li:nth-child(2n) .photo-holder:after {
+  right: auto;
+  left: 0;
+}
+/* line 166, scss/blocks/_b-photos.scss */
+.photos-container .photos li:nth-child(2n) .photo-info-holder {
+  float: left;
+  padding-left: 0;
+  padding-right: 80px;
+}
+/* line 174, scss/blocks/_b-photos.scss */
+.photos-container .back-to-top {
+  position: absolute;
+  left: 50%;
+  margin-left: -18.5px;
+  border-color: #cacaca;
+  bottom: 20px;
+  transition-duration: 0.25s;
+  transition-property: border-color;
+  transition-timing-function: ease-in-out;
+}
+/* line 181, scss/blocks/_b-photos.scss */
+.photos-container .back-to-top svg {
+  fill: #cacaca;
+  transition-duration: 0.25s;
+  transition-property: fill;
+  transition-timing-function: ease-in-out;
+}
+/* line 185, scss/blocks/_b-photos.scss */
+.photos-container .back-to-top:hover {
+  border-color: #202020;
+}
+/* line 187, scss/blocks/_b-photos.scss */
+.photos-container .back-to-top:hover svg {
+  fill: #202020;
+}
+
+/* line 1, scss/blocks/_b-backToTop.scss */
+.back-to-top {
+  width: 35px;
+  height: 35px;
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid #202020;
+  text-align: center;
+  border-radius: 100%;
+}
+/* line 10, scss/blocks/_b-backToTop.scss */
+.back-to-top svg {
+  fill: #202020;
+  width: 15px;
+  height: 100%;
 }

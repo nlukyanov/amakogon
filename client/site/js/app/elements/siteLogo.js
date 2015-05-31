@@ -12,7 +12,7 @@
 			var logo = element.find('.logo');
 
 			if ( $location.$$path == '/' ) {
-				logo.addClass('home-logo');
+				logo.addClass('home-logo').closest('header').addClass('home-header');
 
 				var logoTop = logo.position().top;
 
@@ -28,6 +28,10 @@
 					}
 				});
 			}
+
+			scope.$on('$routeChangeStart', function(next, current) {
+				$('html, body').scrollTop(0);
+			});
 		};
 	});
 

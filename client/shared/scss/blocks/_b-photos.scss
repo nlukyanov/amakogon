@@ -1,0 +1,192 @@
+.photos-container {
+	padding: 0 150px 80px;
+	position: relative;
+	@include respond-to(desktopSM) {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.icon-photos {
+		display: block;
+		width: 40px;
+		background: #fff;
+		position: fixed;
+		left: 50%;
+		top: 125px;
+		margin-left: -20px;
+		z-index: 1;
+		height: 40px;
+		svg {
+			width: 40px;
+			height: 40px;
+			fill: #cacaca;
+		}
+		@include respond-to(desktopSM) {
+			position: absolute;
+			top: 0;
+		}
+	}
+	.photos {
+		max-width: 1400px;
+		margin: 0 auto;
+		padding-top: 20px;
+		position: relative;
+		&:after {
+			content: '';
+			width: 1px;
+			position: absolute;
+			top: 0;
+			bottom: -24px;
+			left: 50%;
+			margin-left: -.5px;
+			background: #cacaca;
+			z-index: -1;
+		}
+		@include respond-to(desktopSM) {
+			&:after {
+				display: none;
+			}
+		}
+		li {
+			overflow: hidden;
+			padding: 80px 0;
+			opacity: 0;
+			@include transition($property: opacity, $duration: .5s);
+			@include respond-to(desktopSM) {
+				opacity: 1;
+				&:nth-child(2n) {
+					background: #f2f2f2;
+					margin: 0 -20px;
+					padding-left: 20px;
+					padding-right: 20px;
+				}
+			}
+			&.visible {
+				opacity: 1;
+			}
+			.photo-holder {
+				float: left;
+				width: 50%;
+				padding-right: 80px;
+				box-sizing: border-box;
+				position: relative;
+				@include respond-to(desktopSM) {
+					float: none !important;
+					width: 100%;
+					padding: 0 !important;
+				}
+				&:after {
+					content: '';
+					background: #cacaca;
+					height: 1px;
+					width: 50%;
+					position: absolute;
+					top: 50%;
+					margin-top: -.5px;
+					right: 0;
+					z-index: -1;
+				}
+				@include respond-to(desktopSM) {
+					&:after {
+						display: none;
+					}
+				}
+				.photo {
+					background-position: 50% 50%;
+					background-repeat: no-repeat;
+					position: relative;
+					.overlay {
+						position: absolute;
+						left: 0;
+						top: 0;
+						right: 0;
+						bottom: 0;
+						opacity: 0;
+						background: #202020;
+						@include transition($property: opacity, $duration: .25s);
+						&:hover {
+							opacity: .5;
+						}
+						svg {
+							width: 100px;
+							height: 100px;
+							fill: #fff;
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							margin: -50px 0 0 -50px;
+						}
+					}
+				}
+			}
+			.photo-info-holder {
+				float: right;
+				width: 50%;
+				padding-left: 80px;
+				box-sizing: border-box;
+				@include respond-to(desktopSM) {
+					float: none !important;
+					width: 100%;
+					padding: 40px 0 0 !important;
+					margin: 0 !important
+				}
+				.photo-info {
+					.photo-date {
+						color: #cacaca;
+						display: block;
+						margin-bottom: 19px;
+					}
+					.photo-title {
+						font-size: 36px;
+						line-height: 43px;
+						margin-bottom: 23px;
+					}
+					.photo-descr {
+						margin-bottom: 29px;
+					}
+					.photo-link {
+						text-decoration: underline;
+						text-transform: uppercase;
+						color: #202020;
+						&:hover {
+							text-decoration: none;
+						}
+					}
+				}
+			}
+			&:nth-child(2n) {
+				.photo-holder {
+					float: right;
+					padding-right: 0;
+					padding-left: 80px;
+					&:after {
+						right: auto;
+						left: 0;
+					}
+				}
+				.photo-info-holder {
+					float: left;
+					padding-left: 0;
+					padding-right: 80px;
+				}
+			}
+		}
+	}
+	.back-to-top {
+		position: absolute;
+		left: 50%;
+		margin-left: -18.5px;
+		border-color: #cacaca;
+		bottom: 20px;
+		@include transition($property: border-color, $duration: .25s);
+		svg {
+			fill: #cacaca;
+			@include transition($property: fill, $duration: .25s);
+		}
+		&:hover {
+			border-color: #202020;
+			svg {
+				fill: #202020;
+			}
+		}
+	}
+}

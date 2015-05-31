@@ -1,0 +1,15 @@
+.back-to-top {
+	width: 35px;
+	height: 35px;
+	position: fixed;
+	right: 40px;
+	bottom: 40px;
+	border: 1px solid #202020;
+	text-align: center;
+	border-radius: 100%;
+	svg {
+		fill: #202020;
+		width: 15px;
+		height: 100%;
+	}
+}

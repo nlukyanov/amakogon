@@ -1,0 +1,6 @@
+<ul class="breadcrumbs">
+	<li ng-repeat="item in breadcrumbs">
+		<a ng-href="{{ item.url }}" ng-if="!$last">{{ item.title }}</a>
+		<span ng-if="$last" class="active">{{ item.title }}</span>
+	</li>
+</ul>

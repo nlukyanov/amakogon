@@ -1,0 +1,49 @@
+.breadcrumbs {
+	position: fixed;
+	left: 10px;
+	top: 80px;
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: 0;
+	overflow: hidden;
+	li {
+		margin-bottom: 5px;
+		a,
+		span {
+			color: #cacaca;
+			position: relative;
+			padding-left: 10px;
+			@include transition($property: color, $duration: .25s);
+			&:hover {
+				text-decoration: none;
+				color: #202020;
+			}
+			&.active {
+				color: #202020;
+				&:before {
+					content: '>';
+					position: absolute;
+					left: 0;
+					top: 0;
+				}
+			}
+		}
+	}
+	@include respond-to(desktopSM) {
+		position: static;
+		margin: -40px 0 40px;
+		padding: 20px 40px;
+		background: #202020;
+		li {
+			float: left;
+			margin-bottom: 0;
+			margin-left: 6px;
+			&:first-child {
+				margin-left: 0;
+			}
+			span.active {
+				color: #fff;
+			}
+		}
+	}
+}

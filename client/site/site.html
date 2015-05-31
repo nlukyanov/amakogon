@@ -15,15 +15,18 @@
 	<script type="text/javascript" src="../client/site/site.js"></script>
 	<script type="text/javascript" src="../client/site/js/app/router.js"></script>
 	
-	<!-- COMPONENTS start -->
-	<script type="text/javascript" src="../client/site/js/app/components/parallax.js"></script>
-	<script type="text/javascript" src="../client/site/js/app/components/contactMap.js"></script>
-	<!-- COMPONENTS end -->
-
 	<!-- ELEMENTS start -->
 	<script type="text/javascript" src="../client/site/js/app/elements/siteLogo.js"></script>
 	<script type="text/javascript" src="../client/site/js/app/elements/siteNav.js"></script>
+	<script type="text/javascript" src="../client/site/js/app/elements/siteBreadcrumbs.js"></script>
+	<script type="text/javascript" src="../client/site/js/app/elements/backToTop.js"></script>
 	<!-- ELEMENTS end -->
+
+	<!-- COMPONENTS start -->
+	<script type="text/javascript" src="../client/site/js/app/components/parallax.js"></script>
+	<script type="text/javascript" src="../client/site/js/app/components/contactMap.js"></script>
+	<script type="text/javascript" src="../client/site/js/app/components/sitePhotos.js"></script>
+	<!-- COMPONENTS end -->
 
 	<script>
 		var config = {
@@ -33,10 +36,6 @@
 </head>
 <body>
 	<div class="page-wrapper">
-		<header>
-			<site-logo></site-logo>
-			<site-nav></site-nav>
-		</header>
 		<ng-view></ng-view>
 	</div>
 	<div class="loader"></div>
