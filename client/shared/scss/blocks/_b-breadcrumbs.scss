@@ -30,7 +30,7 @@
 			}
 		}
 	}
-	@include respond-to(desktopSM) {
+	@include respond-to(tablet) {
 		position: static;
 		margin: -40px 0 40px;
 		padding: 20px;

@@ -1,7 +1,7 @@
 .photos-container {
 	padding: 0 150px 80px;
 	position: relative;
-	@include respond-to(desktopSM) {
+	@include respond-to(tablet) {
 		padding-left: 20px;
 		padding-right: 20px;
 		&:before {
@@ -30,7 +30,7 @@
 			height: 40px;
 			fill: #cacaca;
 		}
-		@include respond-to(desktopSM) {
+		@include respond-to(tablet) {
 			position: absolute;
 			top: 0;
 		}
@@ -57,7 +57,7 @@
 			background: #cacaca;
 			z-index: -1;
 		}
-		@include respond-to(desktopSM) {
+		@include respond-to(tablet) {
 			&:after {
 				display: none;
 			}
@@ -67,7 +67,7 @@
 			padding: 80px 0;
 			opacity: 0;
 			@include transition($property: opacity, $duration: .5s);
-			@include respond-to(desktopSM) {
+			@include respond-to(tablet) {
 				opacity: 1;
 				&:nth-child(2n) {
 					background: #f2f2f2;
@@ -82,7 +82,7 @@
 				padding-right: 80px;
 				box-sizing: border-box;
 				position: relative;
-				@include respond-to(desktopSM) {
+				@include respond-to(tablet) {
 					float: none !important;
 					width: 100%;
 					padding: 0 !important;
@@ -99,7 +99,7 @@
 					z-index: -1;
 					@include transition($property: width, $duration: 1s);
 				}
-				@include respond-to(desktopSM) {
+				@include respond-to(tablet) {
 					&:after {
 						display: none;
 					}
@@ -137,7 +137,7 @@
 				width: 50%;
 				padding-left: 80px;
 				box-sizing: border-box;
-				@include respond-to(desktopSM) {
+				@include respond-to(tablet) {
 					float: none !important;
 					width: 100%;
 					padding: 40px 0 0 !important;

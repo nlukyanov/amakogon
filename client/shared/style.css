@@ -1071,7 +1071,7 @@ a:hover {
   left: 0;
   top: 0;
 }
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1024px) {
   /* line 1, scss/blocks/_b-breadcrumbs.scss */
   .breadcrumbs {
     position: static;
@@ -1100,7 +1100,7 @@ a:hover {
   padding: 0 150px 80px;
   position: relative;
 }
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1024px) {
   /* line 1, scss/blocks/_b-photos.scss */
   .photos-container {
     padding-left: 20px;
@@ -1136,7 +1136,7 @@ a:hover {
   height: 40px;
   fill: #cacaca;
 }
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1024px) {
   /* line 17, scss/blocks/_b-photos.scss */
   .photos-container .icon-photos {
     position: absolute;
@@ -1169,7 +1169,7 @@ a:hover {
   background: #cacaca;
   z-index: -1;
 }
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1024px) {
   /* line 61, scss/blocks/_b-photos.scss */
   .photos-container .photos:after {
     display: none;
@@ -1184,7 +1184,7 @@ a:hover {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1024px) {
   /* line 65, scss/blocks/_b-photos.scss */
   .photos-container .photos li {
     opacity: 1;
@@ -1205,7 +1205,7 @@ a:hover {
   box-sizing: border-box;
   position: relative;
 }
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1024px) {
   /* line 79, scss/blocks/_b-photos.scss */
   .photos-container .photos li .photo-holder {
     float: none !important;
@@ -1228,7 +1228,7 @@ a:hover {
   transition-property: width;
   transition-timing-function: ease-in-out;
 }
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1024px) {
   /* line 103, scss/blocks/_b-photos.scss */
   .photos-container .photos li .photo-holder:after {
     display: none;
@@ -1274,7 +1274,7 @@ a:hover {
   padding-left: 80px;
   box-sizing: border-box;
 }
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1024px) {
   /* line 135, scss/blocks/_b-photos.scss */
   .photos-container .photos li .photo-info-holder {
     float: none !important;

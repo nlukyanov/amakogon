@@ -42,18 +42,18 @@
 				});
 			};
 
-			if ( $(window).width() > 1366 ) {
+			if ( $(window).width() > 1024 ) {
 				textHeight();
 				showPhoto();
 			}
 			$(window).on('load resize', function() {
-				if ( $(window).width() > 1366 ) {
+				if ( $(window).width() > 1024 ) {
 					textHeight();
 					showPhoto();
 				}
 			});
 			$(window).on('scroll', function() {
-				if ( $(window).width() > 1366 ) {
+				if ( $(window).width() > 1024 ) {
 					showPhoto();
 				}
 			});
