@@ -3,14 +3,17 @@
 	height: 60px;
 	margin: 20px auto 80px;
 	position: relative;
-	z-index: 999999;
+	z-index: 99999;
+	opacity: 0;
 	-webkit-transform: translateZ(0);
 	 		transform: translateZ(0);
+	@include transition($property: opacity, $duration: .25s);
 	.logo-link {
 		svg {
-			fill: #fff;
+			fill: #202020;
 			width: 100%;
 			height: 100%;
+			@include transition($property: fill, $duration: .25s);
 			&.logo-desktop {
 				display: block;
 			}
@@ -71,11 +74,6 @@
 }
 .pageLoaded {
 	.logo {
-		.logo-link {
-			svg {
-				fill: #202020;
-				@include transition($property: fill, $duration: .25s);
-			}
-		}
+		opacity: 1;
 	}
 }

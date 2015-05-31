@@ -189,29 +189,36 @@ a:hover {
   height: 60px;
   margin: 20px auto 80px;
   position: relative;
-  z-index: 999999;
+  z-index: 99999;
+  opacity: 0;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
 }
-/* line 10, scss/blocks/_b-logo.scss */
+/* line 12, scss/blocks/_b-logo.scss */
 .logo .logo-link svg {
-  fill: #fff;
+  fill: #202020;
   width: 100%;
   height: 100%;
+  transition-duration: 0.25s;
+  transition-property: fill;
+  transition-timing-function: ease-in-out;
 }
-/* line 14, scss/blocks/_b-logo.scss */
+/* line 17, scss/blocks/_b-logo.scss */
 .logo .logo-link svg.logo-desktop {
   display: block;
 }
-/* line 17, scss/blocks/_b-logo.scss */
+/* line 20, scss/blocks/_b-logo.scss */
 .logo .logo-link svg.logo-mobile {
   display: none;
 }
-/* line 22, scss/blocks/_b-logo.scss */
+/* line 25, scss/blocks/_b-logo.scss */
 .logo .logo-link:hover svg {
   fill: #ff5e00 !important;
 }
-/* line 27, scss/blocks/_b-logo.scss */
+/* line 30, scss/blocks/_b-logo.scss */
 .logo.home-logo {
   position: fixed;
   left: 50%;
@@ -220,18 +227,18 @@ a:hover {
   z-index: 99999;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 27, scss/blocks/_b-logo.scss */
+  /* line 30, scss/blocks/_b-logo.scss */
   .logo.home-logo {
     margin: 0 auto !important;
   }
 }
-/* line 37, scss/blocks/_b-logo.scss */
+/* line 40, scss/blocks/_b-logo.scss */
 .logo.home-logo .logo-link svg {
   fill: #fff !important;
   -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
   filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
 }
-/* line 43, scss/blocks/_b-logo.scss */
+/* line 46, scss/blocks/_b-logo.scss */
 .logo.home-logo .logo-link:hover svg {
   fill: #ff5e00 !important;
 }
@@ -243,7 +250,7 @@ a:hover {
     width: 315px;
     height: 45px;
   }
-  /* line 55, scss/blocks/_b-logo.scss */
+  /* line 58, scss/blocks/_b-logo.scss */
   .logo .logo-link svg {
     fill: #202020;
     -webkit-filter: none !important;
@@ -255,22 +262,19 @@ a:hover {
   .logo {
     width: 80px;
   }
-  /* line 64, scss/blocks/_b-logo.scss */
+  /* line 67, scss/blocks/_b-logo.scss */
   .logo .logo-desktop {
     display: none !important;
   }
-  /* line 67, scss/blocks/_b-logo.scss */
+  /* line 70, scss/blocks/_b-logo.scss */
   .logo .logo-mobile {
     display: block !important;
   }
 }
 
-/* line 75, scss/blocks/_b-logo.scss */
-.pageLoaded .logo .logo-link svg {
-  fill: #202020;
-  transition-duration: 0.25s;
-  transition-property: fill;
-  transition-timing-function: ease-in-out;
+/* line 76, scss/blocks/_b-logo.scss */
+.pageLoaded .logo {
+  opacity: 1;
 }
 
 /* line 1, scss/blocks/_b-siteNav.scss */
@@ -1025,23 +1029,6 @@ a:hover {
 /* line 137, scss/blocks/_b-contactMap.scss */
 .contact-slide.active .back-to-top-line {
   height: 50%;
-}
-
-/* line 1, scss/blocks/_b-loader.scss */
-.loader {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: #202020;
-  z-index: 9999;
-}
-@media only screen and (max-width: 1024px) {
-  /* line 1, scss/blocks/_b-loader.scss */
-  .loader {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 1024px) {
