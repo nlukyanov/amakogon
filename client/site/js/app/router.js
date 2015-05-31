@@ -20,7 +20,10 @@
 					templateUrl: config.prefix + 'html/templates/photos.html'
 				})
 				.otherwise({redirectTo: '/404'});
-		//$locationProvider.html5Mode(true);
+
+		$locationProvider.html5Mode({
+			enabled: true,
+		});
 	});
 
 })();
