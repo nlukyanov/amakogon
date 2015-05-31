@@ -226,9 +226,6 @@
 			top: 0;
 			right: 0;
 			bottom: 0;
-			.px-slide-bg {
-				background-position: 50% 0 !important;
-			}
 			.px-slide-content {
 				opacity: 1;
 			}
@@ -251,9 +248,6 @@
 			z-index: 1 !important;
 			&:first-child {
 				margin-top: -85px !important;
-			}
-			.px-slide-bg {
-				background-position: 50% 0 !important;
 			}
 			.px-slide-content {
 				opacity: 1 !important;

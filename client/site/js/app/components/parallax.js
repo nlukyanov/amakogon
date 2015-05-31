@@ -73,8 +73,6 @@
 				element.find('#px-slide' + index).addClass('active').siblings().removeClass('active');
 				scope.resetSlide(element.closest('.page-wrapper').find('#px-slide' + scope.index).siblings());
 
-				element.find('#px-slide' + (index + 1) + ' .px-slide-bg').css({backgroundPosition: '50% ' + -($(window).height() - $(window).scrollTop() / scope.index - 1) + 'px'});
-
 				// === Animating slides
 				if ( element.find('.px-slide.active .line-vertical01').length && !element.find('.px-slide.active .line-vertical01.visible').length  ) {
 					scope.animateSlide();
