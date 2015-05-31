@@ -1075,7 +1075,7 @@ a:hover {
   .breadcrumbs {
     position: static;
     margin: -40px 0 40px;
-    padding: 20px 40px;
+    padding: 20px;
     background: #202020;
   }
   /* line 37, scss/blocks/_b-breadcrumbs.scss */
