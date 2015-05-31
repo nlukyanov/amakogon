@@ -1036,12 +1036,13 @@ a:hover {
   line-height: 18px;
   letter-spacing: 0;
   overflow: hidden;
+  z-index: 1;
 }
-/* line 9, scss/blocks/_b-breadcrumbs.scss */
+/* line 10, scss/blocks/_b-breadcrumbs.scss */
 .breadcrumbs li {
   margin-bottom: 5px;
 }
-/* line 12, scss/blocks/_b-breadcrumbs.scss */
+/* line 13, scss/blocks/_b-breadcrumbs.scss */
 .breadcrumbs li a,
 .breadcrumbs li span {
   color: #cacaca;
@@ -1051,18 +1052,18 @@ a:hover {
   transition-property: color;
   transition-timing-function: ease-in-out;
 }
-/* line 17, scss/blocks/_b-breadcrumbs.scss */
+/* line 18, scss/blocks/_b-breadcrumbs.scss */
 .breadcrumbs li a:hover,
 .breadcrumbs li span:hover {
   text-decoration: none;
   color: #202020;
 }
-/* line 21, scss/blocks/_b-breadcrumbs.scss */
+/* line 22, scss/blocks/_b-breadcrumbs.scss */
 .breadcrumbs li a.active,
 .breadcrumbs li span.active {
   color: #202020;
 }
-/* line 23, scss/blocks/_b-breadcrumbs.scss */
+/* line 24, scss/blocks/_b-breadcrumbs.scss */
 .breadcrumbs li a.active:before,
 .breadcrumbs li span.active:before {
   content: '>';
@@ -1078,17 +1079,17 @@ a:hover {
     padding: 20px;
     background: #202020;
   }
-  /* line 37, scss/blocks/_b-breadcrumbs.scss */
+  /* line 38, scss/blocks/_b-breadcrumbs.scss */
   .breadcrumbs li {
     float: left;
     margin-bottom: 0;
     margin-left: 6px;
   }
-  /* line 41, scss/blocks/_b-breadcrumbs.scss */
+  /* line 42, scss/blocks/_b-breadcrumbs.scss */
   .breadcrumbs li:first-child {
     margin-left: 0;
   }
-  /* line 44, scss/blocks/_b-breadcrumbs.scss */
+  /* line 45, scss/blocks/_b-breadcrumbs.scss */
   .breadcrumbs li span.active {
     color: #fff;
   }
@@ -1197,10 +1198,6 @@ a:hover {
   }
 }
 /* line 79, scss/blocks/_b-photos.scss */
-.photos-container .photos li.visible {
-  opacity: 1;
-}
-/* line 82, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-holder {
   float: left;
   width: 50%;
@@ -1209,38 +1206,41 @@ a:hover {
   position: relative;
 }
 @media only screen and (max-width: 1366px) {
-  /* line 82, scss/blocks/_b-photos.scss */
+  /* line 79, scss/blocks/_b-photos.scss */
   .photos-container .photos li .photo-holder {
     float: none !important;
     width: 100%;
     padding: 0 !important;
   }
 }
-/* line 93, scss/blocks/_b-photos.scss */
+/* line 90, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-holder:after {
   content: '';
   background: #cacaca;
   height: 1px;
-  width: 50%;
+  width: 0;
   position: absolute;
   top: 50%;
   margin-top: -.5px;
   right: 0;
   z-index: -1;
+  transition-duration: 2s;
+  transition-property: width;
+  transition-timing-function: ease-in-out;
 }
 @media only screen and (max-width: 1366px) {
-  /* line 105, scss/blocks/_b-photos.scss */
+  /* line 103, scss/blocks/_b-photos.scss */
   .photos-container .photos li .photo-holder:after {
     display: none;
   }
 }
-/* line 109, scss/blocks/_b-photos.scss */
+/* line 107, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-holder .photo {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   position: relative;
 }
-/* line 113, scss/blocks/_b-photos.scss */
+/* line 111, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-holder .photo .overlay {
   position: absolute;
   left: 0;
@@ -1253,11 +1253,11 @@ a:hover {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 122, scss/blocks/_b-photos.scss */
+/* line 120, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-holder .photo .overlay:hover {
   opacity: .5;
 }
-/* line 125, scss/blocks/_b-photos.scss */
+/* line 123, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-holder .photo .overlay svg {
   width: 100px;
   height: 100px;
@@ -1267,7 +1267,7 @@ a:hover {
   top: 50%;
   margin: -50px 0 0 -50px;
 }
-/* line 137, scss/blocks/_b-photos.scss */
+/* line 135, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-info-holder {
   float: right;
   width: 50%;
@@ -1275,7 +1275,7 @@ a:hover {
   box-sizing: border-box;
 }
 @media only screen and (max-width: 1366px) {
-  /* line 137, scss/blocks/_b-photos.scss */
+  /* line 135, scss/blocks/_b-photos.scss */
   .photos-container .photos li .photo-info-holder {
     float: none !important;
     width: 100%;
@@ -1283,50 +1283,58 @@ a:hover {
     margin: 0 !important;
   }
 }
-/* line 149, scss/blocks/_b-photos.scss */
+/* line 147, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-info-holder .photo-info .photo-date {
   color: #cacaca;
   display: block;
   margin-bottom: 19px;
 }
-/* line 154, scss/blocks/_b-photos.scss */
+/* line 152, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-info-holder .photo-info .photo-title {
   font-size: 36px;
   line-height: 43px;
   margin-bottom: 23px;
 }
-/* line 159, scss/blocks/_b-photos.scss */
+/* line 157, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-info-holder .photo-info .photo-descr {
   margin-bottom: 29px;
 }
-/* line 162, scss/blocks/_b-photos.scss */
+/* line 160, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-info-holder .photo-info .photo-link {
   text-decoration: underline;
   text-transform: uppercase;
   color: #202020;
 }
-/* line 166, scss/blocks/_b-photos.scss */
+/* line 164, scss/blocks/_b-photos.scss */
 .photos-container .photos li .photo-info-holder .photo-info .photo-link:hover {
   text-decoration: none;
 }
+/* line 170, scss/blocks/_b-photos.scss */
+.photos-container .photos li.visible {
+  opacity: 1;
+}
 /* line 173, scss/blocks/_b-photos.scss */
+.photos-container .photos li.visible .photo-holder:after {
+  width: 50%;
+}
+/* line 179, scss/blocks/_b-photos.scss */
 .photos-container .photos li:nth-child(2n) .photo-holder {
   float: right;
   padding-right: 0;
   padding-left: 80px;
 }
-/* line 177, scss/blocks/_b-photos.scss */
+/* line 183, scss/blocks/_b-photos.scss */
 .photos-container .photos li:nth-child(2n) .photo-holder:after {
   right: auto;
   left: 0;
 }
-/* line 182, scss/blocks/_b-photos.scss */
+/* line 188, scss/blocks/_b-photos.scss */
 .photos-container .photos li:nth-child(2n) .photo-info-holder {
   float: left;
   padding-left: 0;
   padding-right: 80px;
 }
-/* line 190, scss/blocks/_b-photos.scss */
+/* line 196, scss/blocks/_b-photos.scss */
 .photos-container .back-to-top {
   position: absolute;
   left: 50%;
@@ -1337,18 +1345,18 @@ a:hover {
   transition-property: border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 197, scss/blocks/_b-photos.scss */
+/* line 203, scss/blocks/_b-photos.scss */
 .photos-container .back-to-top svg {
   fill: #cacaca;
   transition-duration: 0.25s;
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 201, scss/blocks/_b-photos.scss */
+/* line 207, scss/blocks/_b-photos.scss */
 .photos-container .back-to-top:hover {
   border-color: #202020;
 }
-/* line 203, scss/blocks/_b-photos.scss */
+/* line 209, scss/blocks/_b-photos.scss */
 .photos-container .back-to-top:hover svg {
   fill: #202020;
 }

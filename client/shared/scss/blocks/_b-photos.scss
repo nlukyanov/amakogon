@@ -76,9 +76,6 @@
 					padding-right: 20px;
 				}
 			}
-			&.visible {
-				opacity: 1;
-			}
 			.photo-holder {
 				float: left;
 				width: 50%;
@@ -94,12 +91,13 @@
 					content: '';
 					background: #cacaca;
 					height: 1px;
-					width: 50%;
+					width: 0;
 					position: absolute;
 					top: 50%;
 					margin-top: -.5px;
 					right: 0;
 					z-index: -1;
+					@include transition($property: width, $duration: 2s);
 				}
 				@include respond-to(desktopSM) {
 					&:after {
@@ -166,6 +164,14 @@
 						&:hover {
 							text-decoration: none;
 						}
+					}
+				}
+			}
+			&.visible {
+				opacity: 1;
+				.photo-holder {
+					&:after {
+						width: 50%;
 					}
 				}
 			}
