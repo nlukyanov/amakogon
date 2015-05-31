@@ -1,0 +1,32 @@
+.site-tags {
+	.tags-list {
+		.tags-list-item {
+			display: inline-block;
+			vertical-align: top;
+			.tags-list-link {
+				color: #888;
+				text-decoration: none;
+				@include transition($property: color, $duration: .25s);
+				&:before {
+					content: '#';
+					font-weight: 700;
+					color: #202020;
+				}
+				&:hover {
+					color: #ff5e00;
+				}
+			}
+			&:after {
+				content: ',';
+				color: #888;
+				margin-left: -4px;
+				margin-right: 2px;
+			}
+			&:last-child {
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+}

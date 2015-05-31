@@ -131,6 +131,11 @@
 						}
 					}
 				}
+				~ .site-tags {
+					width: 50%;
+					box-sizing: border-box;
+					padding-top: 20px;
+				}
 			}
 			.photo-info-holder {
 				float: right;
@@ -161,8 +166,10 @@
 						text-decoration: underline;
 						text-transform: uppercase;
 						color: #202020;
+						text-decoration: none;
+						@include transition($property: color, $duration: .25s);
 						&:hover {
-							text-decoration: none;
+							color: #ff5e00;
 						}
 					}
 				}
@@ -175,6 +182,15 @@
 					}
 				}
 			}
+			&:nth-child(1n) {
+				.photo-holder {
+					~ .site-tags {
+						float: left;
+						clear: left;
+						padding-right: 80px;
+					}
+				}
+			}
 			&:nth-child(2n) {
 				.photo-holder {
 					float: right;
@@ -183,6 +199,11 @@
 					&:after {
 						right: auto;
 						left: 0;
+					}
+					~ .site-tags {
+						float: right;
+						clear: right;
+						padding-left: 80px;
 					}
 				}
 				.photo-info-holder {
@@ -205,9 +226,9 @@
 			@include transition($property: fill, $duration: .25s);
 		}
 		&:hover {
-			border-color: #202020;
+			border-color: #ff5e00;
 			svg {
-				fill: #202020;
+				fill: #ff5e00;
 			}
 		}
 	}

@@ -102,13 +102,20 @@
 		bottom: 50%;
 		margin-bottom: -20px;
 		border: 1px solid #fff;
-		@include transition($property: opacity, $duration: .25s);
+		@include transition($property: (opacity, border-color), $duration: .25s);
 		@include respond-to(tablet) {
 			bottom: 40px;
 			margin-bottom: 0;
 		}
 		svg {
 			fill: #fff;
+			@include transition($property: fill, $duration: .25s);
+		}
+		&:hover {
+			border-color: #ff5e00;
+			svg {
+				fill: #ff5e00;
+			}
 		}
 	}
 	.back-to-top-line {

@@ -1,8 +1,10 @@
 a {
-	text-decoration: none;
+	text-decoration: underline;
 	letter-spacing: 0;
 	color: #202020;
+	@include transition($property: color, $duration: .25s);
 }
 a:hover {
 	text-decoration: underline;
+	color: #ff5e00;
 }

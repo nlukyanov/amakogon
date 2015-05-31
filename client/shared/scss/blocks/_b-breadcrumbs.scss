@@ -14,10 +14,10 @@
 			color: #cacaca;
 			position: relative;
 			padding-left: 10px;
+			text-decoration: none;
 			@include transition($property: color, $duration: .25s);
 			&:hover {
-				text-decoration: none;
-				color: #202020;
+				color: #ff5e00;
 			}
 			&.active {
 				color: #202020;

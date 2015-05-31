@@ -13,48 +13,28 @@
 				scope.breadcrumbs = [
 					{
 						title: 'Главная',
-						url: '/#/'
+						url: '/'
 					},
 					{
 						title: 'Фотографии',
-						url: '/#/photos'
+						url: '/photos'
 					}
 				];
 			}
 			else if ( $location.$$path.match(/\//ig).length == 2 ) {
-				scope.breadcrumbs = [
-					{
-						title: 'Главная',
-						url: '/#/'
-					},
-					{
-						title: 'Фотографии',
-						url: '/#/photos'
-					},
-					{
-						title: 'Название альбома',
-						url: '/#/photos/22'
-					}
-				];
-			}
-			else if ( $location.$$path.match(/\//ig).length == 3 ) {
-				if ( $location.$$hash != 'fullsize' ) {
+				if ( $location.$$hash == '' ) {
 					scope.breadcrumbs = [
 						{
 							title: 'Главная',
-							url: '/#/'
+							url: '/'
 						},
 						{
 							title: 'Фотографии',
-							url: '/#/photos'
+							url: '/photos'
 						},
 						{
 							title: 'Название альбома',
-							url: '/#/photos/22'
-						},
-						{
-							title: 'Название фотографии',
-							url: '/#/photos/22/1'
+							url: '/photos/22'
 						}
 					];
 				}
@@ -62,19 +42,57 @@
 					scope.breadcrumbs = [
 						{
 							title: 'Главная',
-							url: '/#/'
+							url: '/'
 						},
 						{
 							title: 'Фотографии',
-							url: '/#/photos'
+							url: '/photos'
+						},
+						{
+							title: '#Тег',
+							url: '/photos/tags#tag'
+						}
+					];
+				}
+			}
+			else if ( $location.$$path.match(/\//ig).length == 3 ) {
+				if ( $location.$$hash != 'fullsize' ) {
+					scope.breadcrumbs = [
+						{
+							title: 'Главная',
+							url: '/'
+						},
+						{
+							title: 'Фотографии',
+							url: '/photos'
 						},
 						{
 							title: 'Название альбома',
-							url: '/#/photos/22'
+							url: '/photos/22'
+						},
+						{
+							title: 'Название фотографии',
+							url: '/photos/22/1'
+						}
+					];
+				}
+				else {
+					scope.breadcrumbs = [
+						{
+							title: 'Главная',
+							url: '/'
+						},
+						{
+							title: 'Фотографии',
+							url: '/photos'
+						},
+						{
+							title: 'Название альбома',
+							url: '/photos/22'
 						},
 						{
 							title: 'Название фотографии#fullsize',
-							url: '/#/photos/22/1#fullsize'
+							url: '/photos/22/1#fullsize'
 						}
 					];
 				}

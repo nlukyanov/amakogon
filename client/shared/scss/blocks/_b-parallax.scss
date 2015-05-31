@@ -13,7 +13,7 @@
 			filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
 			&:hover {
 				svg {
-					fill: #ffd6d6;
+					fill: #ff5e00;
 				}
 			}
 		}
@@ -89,13 +89,20 @@
 					left: 50%;
 					margin-left: -18.5px;
 					opacity: 0;
-					@include transition($property: opacity, $duration: .25s);
+					@include transition($property: (opacity, border-color), $duration: .25s);
 					&.visible {
 						opacity: 1;
 					}
 					svg {
 						width: 15px;
 						height: 100%;
+						@include transition($property: fill, $duration: .25s);
+					}
+					&:hover {
+						border-color: #ff5e00;
+						svg {
+							fill: #ff5e00;
+						}
 					}
 				}
 				&.icon-photos {
@@ -193,16 +200,16 @@
 					}
 				}
 				a {
-					text-decoration: underline;
-					color: #ffd6d6;
+					text-decoration: none;
+					color: #fff;
 					font-size: 18px;
 					text-transform: uppercase;
 					text-shadow: 0 0 3px rgba(0,0,0,.75);
 					&:hover {
-						text-decoration: none;
+						color: #ff5e00;
 					}
 					opacity: 0;
-					@include transition($property: opacity, $duration: .25s);
+					@include transition($property: (opacity, color), $duration: .25s);
 					&.visible {
 						opacity: 1;
 					}

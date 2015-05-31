@@ -10,6 +10,9 @@
 				.when('/photos', {
 					templateUrl: config.prefix + 'html/templates/photos.html'
 				})
+				.when('/photos/tags#tag', {
+					templateUrl: config.prefix + 'html/templates/photos.html'
+				})
 				.when('/photos/:id', {
 					templateUrl: config.prefix + 'html/templates/photos.html'
 				})
