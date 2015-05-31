@@ -32,6 +32,7 @@
 			scope.$on('$routeChangeStart', function(next, current) {
 				$('html, body').scrollTop(0);
 			});
+			element.trigger('hover');
 		};
 	});
 
