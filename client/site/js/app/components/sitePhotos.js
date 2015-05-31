@@ -13,18 +13,20 @@
 				text = item.find('.photo-info-holder');
 
 			function textHeight() {
-				if ( photo.height() > text.height() ) {
-					photo.css({marginTop: 0});
-					text.css({marginTop: (photo.height() - text.height()) / 2});
-				}
-				else if ( photo.height() < text.height() ) {
-					text.css({marginTop: 0});
-					photo.css({marginTop: (text.height() - photo.height()) / 2});
-				}
-				else {
-					text.css({marginTop: 0});
-					photo.css({marginTop: 0});
-				}
+				setTimeout(function() {
+					if ( photo.height() > text.height() ) {
+						photo.css({marginTop: 0});
+						text.css({marginTop: (photo.height() - text.height()) / 2});
+					}
+					else if ( photo.height() < text.height() ) {
+						text.css({marginTop: 0});
+						photo.css({marginTop: (text.height() - photo.height()) / 2});
+					}
+					else {
+						text.css({marginTop: 0});
+						photo.css({marginTop: 0});
+					}
+				}, 100);
 			};
 
 			function showPhoto() {

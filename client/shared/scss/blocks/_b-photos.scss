@@ -30,6 +30,8 @@
 		margin: 0 auto;
 		padding-top: 20px;
 		position: relative;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
 		&:after {
 			content: '';
 			width: 1px;
