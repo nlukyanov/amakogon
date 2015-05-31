@@ -1224,7 +1224,7 @@ a:hover {
   margin-top: -.5px;
   right: 0;
   z-index: -1;
-  transition-duration: 2s;
+  transition-duration: 1s;
   transition-property: width;
   transition-timing-function: ease-in-out;
 }
@@ -1315,7 +1315,7 @@ a:hover {
 }
 /* line 173, scss/blocks/_b-photos.scss */
 .photos-container .photos li.visible .photo-holder:after {
-  width: 50%;
+  width: 80px;
 }
 /* line 179, scss/blocks/_b-photos.scss */
 .photos-container .photos li:nth-child(2n) .photo-holder {
