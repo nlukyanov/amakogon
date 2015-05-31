@@ -1,0 +1,57 @@
+.errorPage {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-position: 50% 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #202020;
+	@include respond-to(tablet) {
+		background-position: 50% 50% !important;
+	}
+	.errorPage-overlay {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background-position: 50% 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	.errorPage-nav {
+		#nav {
+			left: 0 !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			top: auto !important;
+			background: none !important;
+			text-align: center;
+			.nav-item {
+				display: inline-block;
+				vertical-align: top;
+				margin: 0 20px 0 16px;
+				span {
+					display: none;
+				}
+				.onlyErrorPage {
+					display: block;
+					fill: #202020;
+					width: 40px;
+					height: 40px;
+					@include transition($property: fill, $duration: .25s);
+				}
+				&:hover {
+					.onlyErrorPage {
+						fill: #ff5e00;
+					}
+				}
+			}
+		}
+		.toggleNav{
+			display: none !important;
+		}
+	}
+}

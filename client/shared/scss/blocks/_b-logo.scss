@@ -39,7 +39,9 @@
 		}
 	}
 	@include respond-to(tablet) {
-		position: static !important;
+		position: relative !important;
+		top: 0 !important;
+		left: 0 !important;
 		margin: 20px auto 80px !important;
 		width: 315px;
 		height: 45px;

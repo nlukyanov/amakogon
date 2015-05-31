@@ -22,11 +22,13 @@
 				.when('/photos/:id/:id#fullsize', {
 					templateUrl: config.prefix + 'html/templates/photos.html'
 				})
+				.when('/404', {
+					templateUrl: config.prefix + 'html/templates/404.html'
+				})
 				.otherwise({redirectTo: '/404'});
 
 		$locationProvider.html5Mode({
 			enabled: true,
 		});
 	});
-
 })();
