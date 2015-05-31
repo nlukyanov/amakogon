@@ -20,11 +20,6 @@
 				display: none;
 			}
 		}
-		&:hover {
-			svg {
-				fill: #ff5e00 !important;
-			}
-		}
 	}
 	&.home-logo {
 		position: fixed;
@@ -40,11 +35,6 @@
 				fill: #fff !important;
 				-webkit-filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
 				filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
-			}
-			&:hover {
-				svg {
-					fill: #ff5e00 !important;
-				}
 			}
 		}
 	}

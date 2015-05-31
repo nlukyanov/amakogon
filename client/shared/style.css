@@ -212,10 +212,6 @@ a:hover {
   display: none;
 }
 /* line 24, scss/blocks/_b-logo.scss */
-.logo .logo-link:hover svg {
-  fill: #ff5e00 !important;
-}
-/* line 29, scss/blocks/_b-logo.scss */
 .logo.home-logo {
   position: fixed;
   left: 50%;
@@ -224,20 +220,16 @@ a:hover {
   z-index: 99999;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 29, scss/blocks/_b-logo.scss */
+  /* line 24, scss/blocks/_b-logo.scss */
   .logo.home-logo {
     margin: 0 auto !important;
   }
 }
-/* line 39, scss/blocks/_b-logo.scss */
+/* line 34, scss/blocks/_b-logo.scss */
 .logo.home-logo .logo-link svg {
   fill: #fff !important;
   -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
   filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
-}
-/* line 45, scss/blocks/_b-logo.scss */
-.logo.home-logo .logo-link:hover svg {
-  fill: #ff5e00 !important;
 }
 @media only screen and (max-width: 1024px) {
   /* line 1, scss/blocks/_b-logo.scss */
@@ -247,7 +239,7 @@ a:hover {
     width: 315px;
     height: 45px;
   }
-  /* line 57, scss/blocks/_b-logo.scss */
+  /* line 47, scss/blocks/_b-logo.scss */
   .logo .logo-link svg {
     fill: #202020;
     -webkit-filter: none !important;
@@ -259,17 +251,17 @@ a:hover {
   .logo {
     width: 80px;
   }
-  /* line 66, scss/blocks/_b-logo.scss */
+  /* line 56, scss/blocks/_b-logo.scss */
   .logo .logo-desktop {
     display: none !important;
   }
-  /* line 69, scss/blocks/_b-logo.scss */
+  /* line 59, scss/blocks/_b-logo.scss */
   .logo .logo-mobile {
     display: block !important;
   }
 }
 
-/* line 75, scss/blocks/_b-logo.scss */
+/* line 65, scss/blocks/_b-logo.scss */
 .pageLoaded .logo {
   opacity: 1;
 }
