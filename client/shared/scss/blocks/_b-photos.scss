@@ -4,6 +4,15 @@
 	@include respond-to(desktopSM) {
 		padding-left: 20px;
 		padding-right: 20px;
+		&:before {
+			content: '';
+			height: 1px;
+			position: absolute;
+			left: 20px;
+			right: 20px;
+			top: 20px;
+			background: #cacaca;
+		}
 	}
 	.icon-photos {
 		display: block;
@@ -12,9 +21,10 @@
 		position: fixed;
 		left: 50%;
 		top: 125px;
-		margin-left: -20px;
+		margin-left: -25px;
 		z-index: 1;
 		height: 40px;
+		padding: 0 5px;
 		svg {
 			width: 40px;
 			height: 40px;
