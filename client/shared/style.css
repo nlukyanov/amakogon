@@ -1532,8 +1532,10 @@ site-social + site-search .search-block {
 .tags-search .tags-search-list li a .tags-search-img-holder {
   margin-bottom: 20px;
   position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
-/* line 97, scss/blocks/_b-siteTags.scss */
+/* line 99, scss/blocks/_b-siteTags.scss */
 .tags-search .tags-search-list li a .tags-search-img-holder .overlay {
   position: absolute;
   left: 0;
@@ -1547,22 +1549,22 @@ site-social + site-search .search-block {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 107, scss/blocks/_b-siteTags.scss */
+/* line 109, scss/blocks/_b-siteTags.scss */
 .tags-search .tags-search-list li a .tags-search-img-holder .overlay svg {
   width: 100px;
   height: 100%;
   fill: #fff;
 }
-/* line 114, scss/blocks/_b-siteTags.scss */
+/* line 116, scss/blocks/_b-siteTags.scss */
 .tags-search .tags-search-list li a .tags-searh-item-title {
   font-size: 24px;
   line-height: 30px;
 }
-/* line 119, scss/blocks/_b-siteTags.scss */
+/* line 121, scss/blocks/_b-siteTags.scss */
 .tags-search .tags-search-list li a:hover .overlay {
   opacity: .5;
 }
-/* line 126, scss/blocks/_b-siteTags.scss */
+/* line 128, scss/blocks/_b-siteTags.scss */
 .tags-search + .back-to-top {
   position: static;
   margin: 0 auto 40px;
@@ -1572,18 +1574,18 @@ site-social + site-search .search-block {
   transition-property: border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 132, scss/blocks/_b-siteTags.scss */
+/* line 134, scss/blocks/_b-siteTags.scss */
 .tags-search + .back-to-top svg {
   fill: #cacaca;
   transition-duration: 0.25s;
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 136, scss/blocks/_b-siteTags.scss */
+/* line 138, scss/blocks/_b-siteTags.scss */
 .tags-search + .back-to-top:hover {
   border-color: #ff5e00;
 }
-/* line 138, scss/blocks/_b-siteTags.scss */
+/* line 140, scss/blocks/_b-siteTags.scss */
 .tags-search + .back-to-top:hover svg {
   fill: #ff5e00;
 }
