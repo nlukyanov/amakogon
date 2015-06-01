@@ -1447,6 +1447,148 @@ a:hover {
   display: none;
 }
 
+/* line 33, scss/blocks/_b-siteTags.scss */
+.tagPage-heading {
+  text-align: center;
+  font-size: 36px;
+  line-height: 43px;
+  margin-bottom: 80px;
+}
+/* line 39, scss/blocks/_b-siteTags.scss */
+.tagPage-heading span:before {
+  content: '#';
+  color: #ff5e00;
+  font-weight: 700;
+}
+
+/* line 46, scss/blocks/_b-siteTags.scss */
+.tags-search {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* line 50, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-section-title {
+  text-transform: uppercase;
+  color: #cacaca;
+  text-align: center;
+  position: relative;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 40px;
+}
+/* line 58, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-section-title span {
+  background: #fff;
+  padding: 0 5px;
+}
+/* line 61, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-section-title span:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  right: 0;
+  margin-top: -.5px;
+  height: 1px;
+  background: #cacaca;
+  z-index: -1;
+}
+/* line 74, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-list {
+  margin: 0 -20px 80px;
+}
+/* line 76, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-list li {
+  width: 25%;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: -4px;
+  padding: 0 20px 80px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 1366px) {
+  /* line 76, scss/blocks/_b-siteTags.scss */
+  .tags-search .tags-search-list li {
+    width: 33.33333%;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  /* line 76, scss/blocks/_b-siteTags.scss */
+  .tags-search .tags-search-list li {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 750px) {
+  /* line 76, scss/blocks/_b-siteTags.scss */
+  .tags-search .tags-search-list li {
+    width: 100%;
+  }
+}
+/* line 92, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-list li a {
+  text-decoration: none;
+}
+/* line 94, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-list li a .tags-search-img-holder {
+  margin-bottom: 20px;
+  position: relative;
+}
+/* line 97, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-list li a .tags-search-img-holder .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #202020;
+  text-align: center;
+  opacity: 0;
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+/* line 107, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-list li a .tags-search-img-holder .overlay svg {
+  width: 100px;
+  height: 100%;
+  fill: #fff;
+}
+/* line 114, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-list li a .tags-searh-item-title {
+  font-size: 24px;
+  line-height: 30px;
+}
+/* line 119, scss/blocks/_b-siteTags.scss */
+.tags-search .tags-search-list li a:hover .overlay {
+  opacity: .5;
+}
+/* line 126, scss/blocks/_b-siteTags.scss */
+.tags-search + .back-to-top {
+  position: static;
+  margin: 0 auto 40px;
+  display: block;
+  border-color: #cacaca;
+  transition-duration: 0.25s;
+  transition-property: border-color;
+  transition-timing-function: ease-in-out;
+}
+/* line 132, scss/blocks/_b-siteTags.scss */
+.tags-search + .back-to-top svg {
+  fill: #cacaca;
+  transition-duration: 0.25s;
+  transition-property: fill;
+  transition-timing-function: ease-in-out;
+}
+/* line 136, scss/blocks/_b-siteTags.scss */
+.tags-search + .back-to-top:hover {
+  border-color: #ff5e00;
+}
+/* line 138, scss/blocks/_b-siteTags.scss */
+.tags-search + .back-to-top:hover svg {
+  fill: #ff5e00;
+}
+
 /* line 1, scss/blocks/_b-404.scss */
 .errorPage {
   position: absolute;

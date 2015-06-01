@@ -30,3 +30,114 @@
 		}
 	}
 }
+.tagPage-heading {
+	text-align: center;
+	font-size: 36px;
+	line-height: 43px;
+	margin-bottom: 80px;
+	span {
+		&:before {
+			content: '#';
+			color: #ff5e00;
+			font-weight: 700;
+		}
+	}
+}
+.tags-search {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 20px;
+	.tags-search-section-title {
+		text-transform: uppercase;
+		color: #cacaca;
+		text-align: center;
+		position: relative;
+		font-size: 24px;
+		line-height: 30px;
+		margin-bottom: 40px;
+		span {
+			background: #fff;
+			padding: 0 5px;
+			&:before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 50%;
+				right: 0;
+				margin-top: -.5px;
+				height: 1px;
+				background: #cacaca;
+				z-index: -1;
+			}
+		}
+	}
+	.tags-search-list {
+		margin: 0 -20px 80px;
+		li {
+			width: 25%;
+			display: inline-block;
+			vertical-align: top;
+			margin-right: -4px;
+			padding: 0 20px 80px;
+			box-sizing: border-box;
+			@include respond-to(desktopSM) {
+				width: 33.33333%;
+			}
+			@include respond-to(tablet) {
+				width: 50%;
+			}
+			@include respond-to(mobileLG) {
+				width: 100%;
+			}
+			a {
+				text-decoration: none;
+				.tags-search-img-holder {
+					margin-bottom: 20px;
+					position: relative;
+					.overlay {
+						position: absolute;
+						left: 0;
+						top: 0;
+						right: 0;
+						bottom: 0;
+						background: #202020;
+						text-align: center;
+						opacity: 0;
+						@include transition($property: opacity, $duration: .25s);
+						svg {
+							width: 100px;
+							height: 100%;
+							fill: #fff;
+						}
+					}
+				}
+				.tags-searh-item-title {
+					font-size: 24px;
+					line-height: 30px;
+				}
+				&:hover {
+					.overlay {
+						opacity: .5;
+					}
+				}
+			}
+		}
+	}
+	+ .back-to-top {
+		position: static;
+		margin: 0 auto 40px;
+		display: block;
+		border-color: #cacaca;
+		@include transition($property: border-color, $duration: .25s);
+		svg {
+			fill: #cacaca;
+			@include transition($property: fill, $duration: .25s);
+		}
+		&:hover {
+			border-color: #ff5e00;
+			svg {
+				fill: #ff5e00;
+			}
+		}
+	}
+}
