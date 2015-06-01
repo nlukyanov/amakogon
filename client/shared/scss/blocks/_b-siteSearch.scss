@@ -1,0 +1,92 @@
+.search-block {
+	position: absolute;
+	right: 40px;
+	top: 40px;
+	z-index: 20;
+	.search-form {
+		position: relative;
+		width: 230px;
+		height: 30px;
+		overflow: hidden;
+		.search-input {
+			position: absolute;
+			right: -100%;
+			top: 0;
+			width: 215px;
+			@include transition($property: right, $duration: .25s);
+			&.visible {
+				right: 0;
+				+ .search-form-btn {
+					svg {
+						fill: #ff5e00;
+					}
+				}
+			}
+			label {
+				position: absolute;
+				left: -15px;
+				top: 0;
+				line-height: 30px;
+				color: #202020;
+				font-weight: 700;
+			}
+			input {
+				border: none;
+				border-bottom: 1px solid #cacaca;
+				margin-right: 0;
+				background: none;
+				box-sizing: border-box;
+				padding: 10px 30px 10px 10px;
+				height: 30px;
+				width: 100%;
+				font-size: 14px;
+				line-height: 18px;
+				color: #202020;
+				font-family: 'Roboto Condensed', sans-serif;
+			}
+		}
+		.search-form-btn {
+			position: absolute;
+			right: 0;
+			top: 0;
+			svg {
+				width: 20px;
+				height: 20px;
+				fill: #202020;
+				@include transition($property: fill, $duration: .25s);
+			}
+			&:hover {
+				svg {
+					fill: #ff5e00;
+				}
+			}
+		}
+	}
+	&.home-search {
+		position: fixed;
+		@include respond-to(tablet) {
+			position: absolute;
+		}
+		.search-input {
+			label {
+				color: #fff;
+			}
+			input {
+				color: #fff;
+			}
+		}
+		.search-form-btn {
+			svg {
+				fill: #fff;
+				-webkit-filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+				filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+			}
+		}
+	}
+	@include respond-to(tablet) {
+		top: 30px;
+	}
+	@include respond-to(mobileLG) {
+		display: none;
+	}
+}

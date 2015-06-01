@@ -12,4 +12,39 @@
 			}
 		}
 	}
+	&.home-social {
+		position: fixed;
+		right: 40px;
+		top: 40px;
+		z-index: 9999;
+		svg {
+			fill: #fff;
+			@include transition($property: fill, $duration: .25s);
+		}
+		a {
+			-webkit-filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+			filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
+			&:hover {
+				svg {
+					fill: #ff5e00;
+				}
+			}
+		}
+		@include respond-to(tablet) {
+			position: absolute;
+			top: 30px;
+			right: 20px;
+			z-index: 10;
+		}
+		@include respond-to(mobileLG) {
+			display: none;
+		}
+	}
+}
+site-social {
+	+ site-search {
+		.search-block {
+			top: 120px;
+		}
+	}
 }

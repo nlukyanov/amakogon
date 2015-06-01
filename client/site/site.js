@@ -8,7 +8,7 @@
 
 	//site.widgets = angular.module('site.widgets', ['widgetItem', 'widgetBtnAlign', 'widgetBtnFontWeight', 'widgetBtnFontSize', 'widgetBtnColor', 'widgetBtnViewHeading', 'widgetBtnWidth', 'widgetBtnHeight', 'widgetBtnViewImage', 'widgetBtnVisibility', 'widgetBtnUpload', 'widgetBtnListSettings', 'widgetBtnAddListItem', 'widgetBtnOverflow', 'widgetBtnBannerSettings', 'widgetBtnPosition', 'widgetBtnBannerHeading', 'widgetBtnBannerText', 'widgetBtnBannerLink', 'widgetBtnLinkType', 'widgetBtnUrl', 'widgetBtnPositionVertical', 'widgetBtnPositionHorisontal', 'widgetBtnFeatureSettings', 'addGridItem']);
 
-	siteItems.elements = angular.module('siteItems.elements', ['siteLogo', 'siteNav', 'siteBreadcrumbs', 'backToTop', 'siteTags']);
+	siteItems.elements = angular.module('siteItems.elements', ['siteLogo', 'siteNav', 'siteSocial', 'siteBreadcrumbs', 'backToTop', 'siteTags', 'siteSearch']);
 
 	siteItems.components = angular.module('siteItems.components', ['parallax', 'contactMap', 'sitePhotos', 'errorPage']);
 

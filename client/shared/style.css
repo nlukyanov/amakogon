@@ -180,6 +180,49 @@ a:hover {
   height: 20px;
   max-width: 30px;
 }
+/* line 15, scss/patterns/_p-social-media.scss */
+.social-media.home-social {
+  position: fixed;
+  right: 40px;
+  top: 40px;
+  z-index: 9999;
+}
+/* line 20, scss/patterns/_p-social-media.scss */
+.social-media.home-social svg {
+  fill: #fff;
+  transition-duration: 0.25s;
+  transition-property: fill;
+  transition-timing-function: ease-in-out;
+}
+/* line 24, scss/patterns/_p-social-media.scss */
+.social-media.home-social a {
+  -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
+}
+/* line 28, scss/patterns/_p-social-media.scss */
+.social-media.home-social a:hover svg {
+  fill: #ff5e00;
+}
+@media only screen and (max-width: 1024px) {
+  /* line 15, scss/patterns/_p-social-media.scss */
+  .social-media.home-social {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    z-index: 10;
+  }
+}
+@media only screen and (max-width: 750px) {
+  /* line 15, scss/patterns/_p-social-media.scss */
+  .social-media.home-social {
+    display: none;
+  }
+}
+
+/* line 46, scss/patterns/_p-social-media.scss */
+site-social + site-search .search-block {
+  top: 120px;
+}
 
 /* Blocks */
 /* Blocks */
@@ -190,28 +233,24 @@ a:hover {
   margin: 20px auto 80px;
   position: relative;
   z-index: 99999;
-  opacity: 0;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  transition-duration: 0.25s;
-  transition-property: opacity;
-  transition-timing-function: ease-in-out;
 }
-/* line 12, scss/blocks/_b-logo.scss */
+/* line 10, scss/blocks/_b-logo.scss */
 .logo .logo-link svg {
   fill: #202020;
   width: 100%;
   height: 100%;
 }
-/* line 16, scss/blocks/_b-logo.scss */
+/* line 14, scss/blocks/_b-logo.scss */
 .logo .logo-link svg.logo-desktop {
   display: block;
 }
-/* line 19, scss/blocks/_b-logo.scss */
+/* line 17, scss/blocks/_b-logo.scss */
 .logo .logo-link svg.logo-mobile {
   display: none;
 }
-/* line 24, scss/blocks/_b-logo.scss */
+/* line 22, scss/blocks/_b-logo.scss */
 .logo.home-logo {
   position: fixed;
   left: 50%;
@@ -220,12 +259,12 @@ a:hover {
   z-index: 99999;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 24, scss/blocks/_b-logo.scss */
+  /* line 22, scss/blocks/_b-logo.scss */
   .logo.home-logo {
     margin: 0 auto !important;
   }
 }
-/* line 34, scss/blocks/_b-logo.scss */
+/* line 32, scss/blocks/_b-logo.scss */
 .logo.home-logo .logo-link svg {
   fill: #fff !important;
   -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
@@ -241,7 +280,7 @@ a:hover {
     width: 315px;
     height: 45px;
   }
-  /* line 49, scss/blocks/_b-logo.scss */
+  /* line 47, scss/blocks/_b-logo.scss */
   .logo .logo-link svg {
     fill: #202020;
     -webkit-filter: none !important;
@@ -253,19 +292,14 @@ a:hover {
   .logo {
     width: 80px;
   }
-  /* line 58, scss/blocks/_b-logo.scss */
+  /* line 56, scss/blocks/_b-logo.scss */
   .logo .logo-desktop {
     display: none !important;
   }
-  /* line 61, scss/blocks/_b-logo.scss */
+  /* line 59, scss/blocks/_b-logo.scss */
   .logo .logo-mobile {
     display: block !important;
   }
-}
-
-/* line 67, scss/blocks/_b-logo.scss */
-.pageLoaded .logo {
-  opacity: 1;
 }
 
 /* line 1, scss/blocks/_b-siteNav.scss */
@@ -445,29 +479,6 @@ a:hover {
 }
 
 /* line 2, scss/blocks/_b-parallax.scss */
-.parallax + .social-media {
-  position: fixed;
-  right: 40px;
-  top: 40px;
-  z-index: 9999;
-}
-/* line 7, scss/blocks/_b-parallax.scss */
-.parallax + .social-media svg {
-  fill: #fff;
-  transition-duration: 0.25s;
-  transition-property: fill;
-  transition-timing-function: ease-in-out;
-}
-/* line 11, scss/blocks/_b-parallax.scss */
-.parallax + .social-media a {
-  -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
-  filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
-}
-/* line 15, scss/blocks/_b-parallax.scss */
-.parallax + .social-media a:hover svg {
-  fill: #ff5e00;
-}
-/* line 21, scss/blocks/_b-parallax.scss */
 .parallax .px-slide {
   position: relative;
   height: 100vh;
@@ -478,12 +489,12 @@ a:hover {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 30, scss/blocks/_b-parallax.scss */
+/* line 11, scss/blocks/_b-parallax.scss */
 .parallax .px-slide * {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 34, scss/blocks/_b-parallax.scss */
+/* line 15, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-bg-holder {
   position: absolute;
   left: 0;
@@ -491,7 +502,7 @@ a:hover {
   right: 0;
   bottom: 0;
 }
-/* line 40, scss/blocks/_b-parallax.scss */
+/* line 21, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-bg-holder .px-slide-bg {
   position: absolute;
   left: 0;
@@ -501,7 +512,7 @@ a:hover {
   background-size: cover;
   background-position: 50% 0;
 }
-/* line 48, scss/blocks/_b-parallax.scss */
+/* line 29, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-bg-holder .px-slide-bg:after {
   content: '';
   position: absolute;
@@ -512,7 +523,7 @@ a:hover {
   background: #202020;
   opacity: .5;
 }
-/* line 60, scss/blocks/_b-parallax.scss */
+/* line 41, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content {
   position: absolute;
   left: 0;
@@ -525,7 +536,7 @@ a:hover {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 69, scss/blocks/_b-parallax.scss */
+/* line 50, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon {
   position: fixed;
   top: 120px;
@@ -535,13 +546,13 @@ a:hover {
   -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
   filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
 }
-/* line 77, scss/blocks/_b-parallax.scss */
+/* line 58, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon svg {
   width: 40px;
   height: 40px;
   fill: #fff;
 }
-/* line 82, scss/blocks/_b-parallax.scss */
+/* line 63, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down {
   top: auto;
   bottom: 40px;
@@ -556,11 +567,11 @@ a:hover {
   transition-property: opacity, border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 93, scss/blocks/_b-parallax.scss */
+/* line 74, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down.visible {
   opacity: 1;
 }
-/* line 96, scss/blocks/_b-parallax.scss */
+/* line 77, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down svg {
   width: 15px;
   height: 100%;
@@ -568,27 +579,27 @@ a:hover {
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 101, scss/blocks/_b-parallax.scss */
+/* line 82, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down:hover {
   border-color: #ff5e00;
 }
-/* line 103, scss/blocks/_b-parallax.scss */
+/* line 84, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down:hover svg {
   fill: #ff5e00;
 }
-/* line 108, scss/blocks/_b-parallax.scss */
+/* line 89, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-photos {
   margin-top: 10px;
 }
-/* line 111, scss/blocks/_b-parallax.scss */
+/* line 92, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-blog {
   margin-top: 5px;
 }
-/* line 114, scss/blocks/_b-parallax.scss */
+/* line 95, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-user {
   margin-top: 6px;
 }
-/* line 118, scss/blocks/_b-parallax.scss */
+/* line 99, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text-wrapper {
   position: fixed;
   left: 0;
@@ -596,20 +607,20 @@ a:hover {
   right: 0;
   bottom: 0;
 }
-/* line 125, scss/blocks/_b-parallax.scss */
+/* line 106, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text-holder {
   display: table;
   width: 100%;
   height: 100%;
 }
-/* line 130, scss/blocks/_b-parallax.scss */
+/* line 111, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text-box {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   padding-top: 80px;
 }
-/* line 136, scss/blocks/_b-parallax.scss */
+/* line 117, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text {
   text-align: left;
   display: inline-block;
@@ -620,7 +631,7 @@ a:hover {
   padding: 0 20px;
   box-sizing: border-box;
 }
-/* line 145, scss/blocks/_b-parallax.scss */
+/* line 126, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal01, .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal02 {
   position: absolute;
   height: 1px;
@@ -634,19 +645,19 @@ a:hover {
   transition-property: width;
   transition-timing-function: ease-in-out;
 }
-/* line 155, scss/blocks/_b-parallax.scss */
+/* line 136, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .visible.line-horisontal01, .parallax .px-slide .px-slide-content .px-slide-text .visible.line-horisontal02 {
   width: 100%;
 }
-/* line 159, scss/blocks/_b-parallax.scss */
+/* line 140, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal01 {
   top: -40px;
 }
-/* line 163, scss/blocks/_b-parallax.scss */
+/* line 144, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal02 {
   bottom: -40px;
 }
-/* line 167, scss/blocks/_b-parallax.scss */
+/* line 148, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-vertical01, .parallax .px-slide .px-slide-content .px-slide-text .line-vertical02 {
   position: absolute;
   background: #fff;
@@ -660,23 +671,23 @@ a:hover {
   transition-property: height;
   transition-timing-function: ease-in-out;
 }
-/* line 177, scss/blocks/_b-parallax.scss */
+/* line 158, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .visible.line-vertical01, .parallax .px-slide .px-slide-content .px-slide-text .visible.line-vertical02 {
   opacity: 1;
 }
-/* line 181, scss/blocks/_b-parallax.scss */
+/* line 162, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-vertical01 {
   top: 0;
   height: 0;
   margin-top: -40px;
 }
-/* line 187, scss/blocks/_b-parallax.scss */
+/* line 168, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-vertical02 {
   top: 100%;
   height: 0;
   margin-top: 40px;
 }
-/* line 193, scss/blocks/_b-parallax.scss */
+/* line 174, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text p {
   margin-bottom: 10px;
   opacity: 0;
@@ -685,11 +696,11 @@ a:hover {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 198, scss/blocks/_b-parallax.scss */
+/* line 179, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text p.visible {
   opacity: 1;
 }
-/* line 202, scss/blocks/_b-parallax.scss */
+/* line 183, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text a {
   text-decoration: none;
   color: #fff;
@@ -701,15 +712,15 @@ a:hover {
   transition-property: opacity, color;
   transition-timing-function: ease-in-out;
 }
-/* line 208, scss/blocks/_b-parallax.scss */
+/* line 189, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text a:hover {
   color: #ff5e00;
 }
-/* line 213, scss/blocks/_b-parallax.scss */
+/* line 194, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text a.visible {
   opacity: 1;
 }
-/* line 217, scss/blocks/_b-parallax.scss */
+/* line 198, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text.hero-text {
   text-align: center;
   font-size: 36px;
@@ -717,13 +728,13 @@ a:hover {
   max-width: 405px;
 }
 @media only screen and (max-width: 1920px) {
-  /* line 217, scss/blocks/_b-parallax.scss */
+  /* line 198, scss/blocks/_b-parallax.scss */
   .parallax .px-slide .px-slide-content .px-slide-text.hero-text {
     font-size: 24px;
     line-height: 30px;
   }
 }
-/* line 229, scss/blocks/_b-parallax.scss */
+/* line 210, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active {
   z-index: 1;
   position: fixed;
@@ -732,22 +743,22 @@ a:hover {
   right: 0;
   bottom: 0;
 }
-/* line 236, scss/blocks/_b-parallax.scss */
+/* line 217, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active .px-slide-content {
   opacity: 1;
 }
-/* line 239, scss/blocks/_b-parallax.scss */
+/* line 220, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active:last-child {
   position: relative;
   z-index: 2;
 }
-/* line 243, scss/blocks/_b-parallax.scss */
+/* line 224, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active + .px-slide {
   margin-top: 100vh;
   z-index: 2;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 250, scss/blocks/_b-parallax.scss */
+  /* line 231, scss/blocks/_b-parallax.scss */
   .parallax .px-slide {
     position: relative !important;
     margin-top: 0 !important;
@@ -755,58 +766,52 @@ a:hover {
     min-height: 100vh;
     z-index: 1 !important;
   }
-  /* line 256, scss/blocks/_b-parallax.scss */
+  /* line 237, scss/blocks/_b-parallax.scss */
   .parallax .px-slide:first-child {
     margin-top: -85px !important;
   }
-  /* line 259, scss/blocks/_b-parallax.scss */
+  /* line 240, scss/blocks/_b-parallax.scss */
   .parallax .px-slide .px-slide-content {
     opacity: 1 !important;
     position: relative;
   }
-  /* line 264, scss/blocks/_b-parallax.scss */
+  /* line 245, scss/blocks/_b-parallax.scss */
   .parallax .px-slide-text-wrapper {
     position: relative !important;
   }
-  /* line 266, scss/blocks/_b-parallax.scss */
+  /* line 247, scss/blocks/_b-parallax.scss */
   .parallax .px-slide-text-wrapper .px-slide-text-holder {
     min-height: 100vh;
   }
-  /* line 268, scss/blocks/_b-parallax.scss */
+  /* line 249, scss/blocks/_b-parallax.scss */
   .parallax .px-slide-text-wrapper .px-slide-text-holder .px-slide-text-box {
     padding: 100px 0 !important;
   }
-  /* line 273, scss/blocks/_b-parallax.scss */
+  /* line 254, scss/blocks/_b-parallax.scss */
   .parallax .icon {
     opacity: 1 !important;
     position: absolute !important;
   }
-  /* line 276, scss/blocks/_b-parallax.scss */
+  /* line 257, scss/blocks/_b-parallax.scss */
   .parallax .icon:not(.icon-up) {
     display: none;
   }
-  /* line 283, scss/blocks/_b-parallax.scss */
+  /* line 264, scss/blocks/_b-parallax.scss */
   .parallax .line-horisontal01,
   .parallax .line-horisontal02,
   .parallax .line-vertical01,
   .parallax .line-vertical02 {
     display: none;
   }
-  /* line 286, scss/blocks/_b-parallax.scss */
+  /* line 267, scss/blocks/_b-parallax.scss */
   .parallax p {
     opacity: 1 !important;
   }
-  /* line 289, scss/blocks/_b-parallax.scss */
+  /* line 270, scss/blocks/_b-parallax.scss */
   .parallax a {
     opacity: 1 !important;
   }
-  /* line 292, scss/blocks/_b-parallax.scss */
-  .parallax + .social-media {
-    position: absolute;
-    top: 30px;
-    right: 20px;
-  }
-  /* line 300, scss/blocks/_b-parallax.scss */
+  /* line 273, scss/blocks/_b-parallax.scss */
   .parallax h2.slide-title {
     font-size: 30px;
     line-height: 40px;
@@ -816,7 +821,7 @@ a:hover {
     padding-bottom: 40px;
     position: relative;
   }
-  /* line 312, scss/blocks/_b-parallax.scss */
+  /* line 285, scss/blocks/_b-parallax.scss */
   .parallax h2.slide-title:after {
     content: '';
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAdCAMAAAAn8qH7AAACl1BMVEUAAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAAAAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAAAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9V6A0KAAAA3XRSTlMAAAEBAgIDAwQEBQUGBgcHCAgJCQoKCwsMDA0NDg4PDxAQERESEhMTFBQVFRYWFxcYGBkZGhobGxwcHR0eHh8fICAhISIiIyMkJCUlJiYnJygoKSkqKisrLCwtLS4uLy8wMDExMjIzMzQ0NTU2Njc3ODg5OTo6Ozs8PD09Pj4/P0BAQUFCQkNDRERFRUZGR0dISElJSkpLS0xMTU1OT09QUFFRUlJTU1RUVVVWVldXWFlZXF5fYWJjZWZoaWtsbm9wcnN0dnh6e3x+f4CBgoOFhoiJiouMjY6PkJGSkxtzFmcAAAOiSURBVGje7ZrbkhshDERbbeL9/9/dIj15EBdx8Tj7Ys9mQ1EsDONy+aQlJBEznDbiJzWdb5t9kQ5/Dptlv8DiIyJ8QorfnI4erLR7zYy7n85hyQUMv5PkdPpI4xON+/GzsttKh3VYJ2G5R8RLY5oYBTDaTiZ2dlsYsf2JPW5NWltsWG9nJnBvSVFHhUudTz1uldFuIwICJHyY5xEdt3K8isJOOE2Yehd8mOfhfbtF4TQ0LMvSV4JRazte14E1kWo6WriodpQxIPN37VdXClnHh72T4mijCzBegdVsehHQwmjpDktBWb9cIxtMJJjqvKwZ3pwc3A7Xq52X/EtXVBpNr4IoUPyBBOW2npD5afgxGCAT4aN30ucNFh/Z5nBQ8k2evvt1rUfexuLUYWUoS4Kyd6Gy68ZoH9VDNRF5S5ux7FZmCEqrahqjCr7DAmN8oDgJHqlScjVJ2oxNYrl6MfuopFDsrkgpkbwngnei9YKN7B/ozm5W1lthTcoKdidAuZBSFvTZuqD86bBcaLl/AILso9gUE+loCiYm3kmmlMB0Z2IimVLQGEjgVqgVfYI3wAAz2KYhTNprsAMMaarhgOEoq+MABDtwHDgOoEy8tUls5TX8dlZ+sgnQb3QnlSUpZ0lZWZ9ZyDlL+lRWQeb4VExSkOF/++tm93D8DQZYlcXk3ZVF8k6SQHI3Z01ZLaRwt04DcOCV/xr+bYeqqw8HoATocAeUAUkqBqesrOx9VFbw+kVZ9+6pWc9BLj35cyYSTEBKMfhSdV6TrxehV7ot/77Rq1dXxRhS5QxkocBCATX3IZKAILsjBuudV+ES5cYhtpjC/SnaqrBe7uAjrCHCikF5jAy0ePRKcIi5IMASe/jODqKhqWOMG9wA16TxPF18afi+JjmKUbtbYoseVA++hq8BVQ/iZWnKn2PkGXUEppAtxiC+55UawoW3KWsIIxjyu1347vYYtTbEq0NGbWOOV4MAt8hChAkB1hS47zLqy+SGa/68hvIOqyArYUaVoMbyhI1Vl7nkMEWeJY88L29dCdZJAavke1O8uis8oCtr+MFsIwetxRyQUxFVo2O/GKwOilM5VEPOGHWktqsBtM0eeSmNnpT95iL9hcvKOhXaXCQd66X9wmJ7R8HHlfhZRryMnp5rTLPYHlfftbu9sL2r4enym12K6YuKW5dlbvuf+uj+Zkfku1wd6tkzPSni71K3Jz/+37mS1le3n+e5P+d/Ozy7zccfOuNopb58774AAAAASUVORK5CYII=);
@@ -829,13 +834,7 @@ a:hover {
   }
 }
 @media only screen and (max-width: 1024px) and (max-width: 750px) {
-  /* line 292, scss/blocks/_b-parallax.scss */
-  .parallax + .social-media {
-    display: none;
-  }
-}
-@media only screen and (max-width: 1024px) and (max-width: 750px) {
-  /* line 300, scss/blocks/_b-parallax.scss */
+  /* line 273, scss/blocks/_b-parallax.scss */
   .parallax h2.slide-title {
     font-size: 24px;
     line-height: 30px;
@@ -1654,4 +1653,116 @@ a:hover {
 /* line 53, scss/blocks/_b-404.scss */
 .errorPage .errorPage-nav .toggleNav {
   display: none !important;
+}
+
+/* line 1, scss/blocks/_b-siteSearch.scss */
+.search-block {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  z-index: 20;
+}
+/* line 6, scss/blocks/_b-siteSearch.scss */
+.search-block .search-form {
+  position: relative;
+  width: 230px;
+  height: 30px;
+  overflow: hidden;
+}
+/* line 11, scss/blocks/_b-siteSearch.scss */
+.search-block .search-form .search-input {
+  position: absolute;
+  right: -100%;
+  top: 0;
+  width: 215px;
+  transition-duration: 0.25s;
+  transition-property: right;
+  transition-timing-function: ease-in-out;
+}
+/* line 17, scss/blocks/_b-siteSearch.scss */
+.search-block .search-form .search-input.visible {
+  right: 0;
+}
+/* line 20, scss/blocks/_b-siteSearch.scss */
+.search-block .search-form .search-input.visible + .search-form-btn svg {
+  fill: #ff5e00;
+}
+/* line 25, scss/blocks/_b-siteSearch.scss */
+.search-block .search-form .search-input label {
+  position: absolute;
+  left: -15px;
+  top: 0;
+  line-height: 30px;
+  color: #202020;
+  font-weight: 700;
+}
+/* line 33, scss/blocks/_b-siteSearch.scss */
+.search-block .search-form .search-input input {
+  border: none;
+  border-bottom: 1px solid #cacaca;
+  margin-right: 0;
+  background: none;
+  box-sizing: border-box;
+  padding: 10px 30px 10px 10px;
+  height: 30px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 18px;
+  color: #202020;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+/* line 48, scss/blocks/_b-siteSearch.scss */
+.search-block .search-form .search-form-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* line 52, scss/blocks/_b-siteSearch.scss */
+.search-block .search-form .search-form-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #202020;
+  transition-duration: 0.25s;
+  transition-property: fill;
+  transition-timing-function: ease-in-out;
+}
+/* line 59, scss/blocks/_b-siteSearch.scss */
+.search-block .search-form .search-form-btn:hover svg {
+  fill: #ff5e00;
+}
+/* line 65, scss/blocks/_b-siteSearch.scss */
+.search-block.home-search {
+  position: fixed;
+}
+@media only screen and (max-width: 1024px) {
+  /* line 65, scss/blocks/_b-siteSearch.scss */
+  .search-block.home-search {
+    position: absolute;
+  }
+}
+/* line 71, scss/blocks/_b-siteSearch.scss */
+.search-block.home-search .search-input label {
+  color: #fff;
+}
+/* line 74, scss/blocks/_b-siteSearch.scss */
+.search-block.home-search .search-input input {
+  color: #fff;
+}
+/* line 79, scss/blocks/_b-siteSearch.scss */
+.search-block.home-search .search-form-btn svg {
+  fill: #fff;
+  -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
+}
+@media only screen and (max-width: 1024px) {
+  /* line 1, scss/blocks/_b-siteSearch.scss */
+  .search-block {
+    top: 30px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  /* line 1, scss/blocks/_b-siteSearch.scss */
+  .search-block {
+    display: none;
+  }
 }

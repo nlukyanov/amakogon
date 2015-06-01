@@ -4,10 +4,8 @@
 	margin: 20px auto 80px;
 	position: relative;
 	z-index: 99999;
-	opacity: 0;
 	-webkit-transform: translateZ(0);
 	 		transform: translateZ(0);
-	@include transition($property: opacity, $duration: .25s);
 	.logo-link {
 		svg {
 			fill: #202020;
@@ -61,10 +59,5 @@
 		.logo-mobile {
 			display: block !important;
 		}
-	}
-}
-.pageLoaded {
-	.logo {
-		opacity: 1;
 	}
 }
