@@ -19,6 +19,10 @@
 				slideshow: false,
 				controlNav: false
 			});
+
+			scope.goToImage = function(path) {
+				$location.url(path);
+			}
 		};
 	});
 

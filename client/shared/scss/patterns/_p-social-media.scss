@@ -9,6 +9,12 @@
 				width: auto;
 				height: 20px;
 				max-width: 30px;
+				@include transition($property: fill, $duration: .25s);
+			}
+			&:hover {
+				svg {
+					fill: #ff5e00;
+				}
 			}
 		}
 	}
@@ -19,7 +25,6 @@
 		z-index: 9999;
 		svg {
 			fill: #fff;
-			@include transition($property: fill, $duration: .25s);
 		}
 		a {
 			-webkit-filter: drop-shadow( 0 0 1.5px rgba(0,0,0,.75) );
