@@ -1854,29 +1854,36 @@ site-social + site-search .search-block {
   border: 5px solid #fff;
   box-sizing: border-box;
   cursor: pointer;
+  transition-duration: 0.25s;
+  transition-property: border-color;
+  transition-timing-function: ease-in-out;
 }
-/* line 49, scss/blocks/_b-album.scss */
+/* line 48, scss/blocks/_b-album.scss */
+.site-album .album-slider .slides .album-slider-item .album-slider-item-inner img:hover {
+  border-color: #ff5e00;
+}
+/* line 53, scss/blocks/_b-album.scss */
 .site-album .album-slider .slides .album-slider-item h3 {
   margin-top: 20px;
   text-align: center;
   font-size: 24px;
   line-height: 30px;
 }
-/* line 55, scss/blocks/_b-album.scss */
+/* line 59, scss/blocks/_b-album.scss */
 .site-album .album-slider .slides .album-slider-item p {
   margin-top: 20px;
   text-align: center;
   color: #cacaca;
 }
-/* line 60, scss/blocks/_b-album.scss */
+/* line 64, scss/blocks/_b-album.scss */
 .site-album .album-slider .slides .album-slider-item .site-tags {
   padding-top: 40px;
 }
-/* line 65, scss/blocks/_b-album.scss */
+/* line 69, scss/blocks/_b-album.scss */
 .site-album .album-slider .flex-disabled {
   display: none;
 }
-/* line 69, scss/blocks/_b-album.scss */
+/* line 73, scss/blocks/_b-album.scss */
 .site-album .social-media {
   position: absolute;
   left: 0;
@@ -1884,11 +1891,11 @@ site-social + site-search .search-block {
   bottom: 40px;
   text-align: center;
 }
-/* line 76, scss/blocks/_b-album.scss */
+/* line 80, scss/blocks/_b-album.scss */
 .site-album .site-tags {
   text-align: center;
 }
-/* line 79, scss/blocks/_b-album.scss */
+/* line 83, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav {
   position: absolute;
   padding-top: 62.5%;
@@ -1896,7 +1903,7 @@ site-social + site-search .search-block {
   top: 0;
   right: 20px;
 }
-/* line 85, scss/blocks/_b-album.scss */
+/* line 89, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav:after {
   content: '';
   position: absolute;
@@ -1908,12 +1915,12 @@ site-social + site-search .search-block {
   background: #cacaca;
 }
 @media only screen and (max-width: 750px) {
-  /* line 79, scss/blocks/_b-album.scss */
+  /* line 83, scss/blocks/_b-album.scss */
   .site-album .flex-direction-nav {
     display: none;
   }
 }
-/* line 98, scss/blocks/_b-album.scss */
+/* line 102, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav .flex-prev {
   background-color: #fff;
   border: 2px solid #cacaca;
@@ -1935,11 +1942,11 @@ site-social + site-search .search-block {
   transition-property: border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 114, scss/blocks/_b-album.scss */
+/* line 118, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav .flex-prev:hover {
   border-color: #ff5e00;
 }
-/* line 118, scss/blocks/_b-album.scss */
+/* line 122, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav .flex-next {
   background-color: #fff;
   border: 2px solid #cacaca;
@@ -1961,7 +1968,7 @@ site-social + site-search .search-block {
   transition-property: border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 134, scss/blocks/_b-album.scss */
+/* line 138, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav .flex-next:hover {
   border-color: #ff5e00;
 }
