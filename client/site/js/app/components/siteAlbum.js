@@ -10,6 +10,10 @@
 		function link(scope, element, attrs) {
 			var slider = element.find('.album-slider');
 
+			setTimeout(function() {
+				slider.find('.album-slider-item').addClass('visible');
+			}, 0);
+
 			slider.flexslider({
 				animation: 'slide',
 				slideshow: false,

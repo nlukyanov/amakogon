@@ -478,7 +478,18 @@ site-social + site-search .search-block {
   display: none;
 }
 
-/* line 2, scss/blocks/_b-parallax.scss */
+/* line 1, scss/blocks/_b-parallax.scss */
+.parallax {
+  opacity: 0;
+  transition-duration: 0.5s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+/* line 4, scss/blocks/_b-parallax.scss */
+.parallax.visible {
+  opacity: 1;
+}
+/* line 7, scss/blocks/_b-parallax.scss */
 .parallax .px-slide {
   position: relative;
   height: 100vh;
@@ -489,12 +500,12 @@ site-social + site-search .search-block {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 11, scss/blocks/_b-parallax.scss */
+/* line 16, scss/blocks/_b-parallax.scss */
 .parallax .px-slide * {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 15, scss/blocks/_b-parallax.scss */
+/* line 20, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-bg-holder {
   position: absolute;
   left: 0;
@@ -502,7 +513,7 @@ site-social + site-search .search-block {
   right: 0;
   bottom: 0;
 }
-/* line 21, scss/blocks/_b-parallax.scss */
+/* line 26, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-bg-holder .px-slide-bg {
   position: absolute;
   left: 0;
@@ -512,7 +523,7 @@ site-social + site-search .search-block {
   background-size: cover;
   background-position: 50% 0;
 }
-/* line 29, scss/blocks/_b-parallax.scss */
+/* line 34, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-bg-holder .px-slide-bg:after {
   content: '';
   position: absolute;
@@ -523,7 +534,7 @@ site-social + site-search .search-block {
   background: #202020;
   opacity: .5;
 }
-/* line 41, scss/blocks/_b-parallax.scss */
+/* line 46, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content {
   position: absolute;
   left: 0;
@@ -536,7 +547,7 @@ site-social + site-search .search-block {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 50, scss/blocks/_b-parallax.scss */
+/* line 55, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon {
   position: fixed;
   top: 120px;
@@ -546,13 +557,13 @@ site-social + site-search .search-block {
   -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
   filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
 }
-/* line 58, scss/blocks/_b-parallax.scss */
+/* line 63, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon svg {
   width: 40px;
   height: 40px;
   fill: #fff;
 }
-/* line 63, scss/blocks/_b-parallax.scss */
+/* line 68, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down {
   top: auto;
   bottom: 40px;
@@ -567,11 +578,11 @@ site-social + site-search .search-block {
   transition-property: opacity, border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 74, scss/blocks/_b-parallax.scss */
+/* line 79, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down.visible {
   opacity: 1;
 }
-/* line 77, scss/blocks/_b-parallax.scss */
+/* line 82, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down svg {
   width: 15px;
   height: 100%;
@@ -579,27 +590,27 @@ site-social + site-search .search-block {
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 82, scss/blocks/_b-parallax.scss */
+/* line 87, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down:hover {
   border-color: #ff5e00;
 }
-/* line 84, scss/blocks/_b-parallax.scss */
+/* line 89, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-down:hover svg {
   fill: #ff5e00;
 }
-/* line 89, scss/blocks/_b-parallax.scss */
+/* line 94, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-photos {
   margin-top: 10px;
 }
-/* line 92, scss/blocks/_b-parallax.scss */
+/* line 97, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-blog {
   margin-top: 5px;
 }
-/* line 95, scss/blocks/_b-parallax.scss */
+/* line 100, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .icon.icon-user {
   margin-top: 6px;
 }
-/* line 99, scss/blocks/_b-parallax.scss */
+/* line 104, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text-wrapper {
   position: fixed;
   left: 0;
@@ -607,20 +618,20 @@ site-social + site-search .search-block {
   right: 0;
   bottom: 0;
 }
-/* line 106, scss/blocks/_b-parallax.scss */
+/* line 111, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text-holder {
   display: table;
   width: 100%;
   height: 100%;
 }
-/* line 111, scss/blocks/_b-parallax.scss */
+/* line 116, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text-box {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   padding-top: 80px;
 }
-/* line 117, scss/blocks/_b-parallax.scss */
+/* line 122, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text {
   text-align: left;
   display: inline-block;
@@ -631,7 +642,7 @@ site-social + site-search .search-block {
   padding: 0 20px;
   box-sizing: border-box;
 }
-/* line 126, scss/blocks/_b-parallax.scss */
+/* line 131, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal01, .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal02 {
   position: absolute;
   height: 1px;
@@ -645,19 +656,19 @@ site-social + site-search .search-block {
   transition-property: width;
   transition-timing-function: ease-in-out;
 }
-/* line 136, scss/blocks/_b-parallax.scss */
+/* line 141, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .visible.line-horisontal01, .parallax .px-slide .px-slide-content .px-slide-text .visible.line-horisontal02 {
   width: 100%;
 }
-/* line 140, scss/blocks/_b-parallax.scss */
+/* line 145, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal01 {
   top: -40px;
 }
-/* line 144, scss/blocks/_b-parallax.scss */
+/* line 149, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-horisontal02 {
   bottom: -40px;
 }
-/* line 148, scss/blocks/_b-parallax.scss */
+/* line 153, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-vertical01, .parallax .px-slide .px-slide-content .px-slide-text .line-vertical02 {
   position: absolute;
   background: #fff;
@@ -671,23 +682,23 @@ site-social + site-search .search-block {
   transition-property: height;
   transition-timing-function: ease-in-out;
 }
-/* line 158, scss/blocks/_b-parallax.scss */
+/* line 163, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .visible.line-vertical01, .parallax .px-slide .px-slide-content .px-slide-text .visible.line-vertical02 {
   opacity: 1;
 }
-/* line 162, scss/blocks/_b-parallax.scss */
+/* line 167, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-vertical01 {
   top: 0;
   height: 0;
   margin-top: -40px;
 }
-/* line 168, scss/blocks/_b-parallax.scss */
+/* line 173, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text .line-vertical02 {
   top: 100%;
   height: 0;
   margin-top: 40px;
 }
-/* line 174, scss/blocks/_b-parallax.scss */
+/* line 179, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text p {
   margin-bottom: 10px;
   opacity: 0;
@@ -696,11 +707,11 @@ site-social + site-search .search-block {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 179, scss/blocks/_b-parallax.scss */
+/* line 184, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text p.visible {
   opacity: 1;
 }
-/* line 183, scss/blocks/_b-parallax.scss */
+/* line 188, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text a {
   text-decoration: none;
   color: #fff;
@@ -712,15 +723,15 @@ site-social + site-search .search-block {
   transition-property: opacity, color;
   transition-timing-function: ease-in-out;
 }
-/* line 189, scss/blocks/_b-parallax.scss */
+/* line 194, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text a:hover {
   color: #ff5e00;
 }
-/* line 194, scss/blocks/_b-parallax.scss */
+/* line 199, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text a.visible {
   opacity: 1;
 }
-/* line 198, scss/blocks/_b-parallax.scss */
+/* line 203, scss/blocks/_b-parallax.scss */
 .parallax .px-slide .px-slide-content .px-slide-text.hero-text {
   text-align: center;
   font-size: 36px;
@@ -728,13 +739,13 @@ site-social + site-search .search-block {
   max-width: 405px;
 }
 @media only screen and (max-width: 1920px) {
-  /* line 198, scss/blocks/_b-parallax.scss */
+  /* line 203, scss/blocks/_b-parallax.scss */
   .parallax .px-slide .px-slide-content .px-slide-text.hero-text {
     font-size: 24px;
     line-height: 30px;
   }
 }
-/* line 210, scss/blocks/_b-parallax.scss */
+/* line 215, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active {
   z-index: 1;
   position: fixed;
@@ -743,22 +754,22 @@ site-social + site-search .search-block {
   right: 0;
   bottom: 0;
 }
-/* line 217, scss/blocks/_b-parallax.scss */
+/* line 222, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active .px-slide-content {
   opacity: 1;
 }
-/* line 220, scss/blocks/_b-parallax.scss */
+/* line 225, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active:last-child {
   position: relative;
   z-index: 2;
 }
-/* line 224, scss/blocks/_b-parallax.scss */
+/* line 229, scss/blocks/_b-parallax.scss */
 .parallax .px-slide.active + .px-slide {
   margin-top: 100vh;
   z-index: 2;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 231, scss/blocks/_b-parallax.scss */
+  /* line 236, scss/blocks/_b-parallax.scss */
   .parallax .px-slide {
     position: relative !important;
     margin-top: 0 !important;
@@ -766,52 +777,52 @@ site-social + site-search .search-block {
     min-height: 100vh;
     z-index: 1 !important;
   }
-  /* line 237, scss/blocks/_b-parallax.scss */
+  /* line 242, scss/blocks/_b-parallax.scss */
   .parallax .px-slide:first-child {
     margin-top: -85px !important;
   }
-  /* line 240, scss/blocks/_b-parallax.scss */
+  /* line 245, scss/blocks/_b-parallax.scss */
   .parallax .px-slide .px-slide-content {
     opacity: 1 !important;
     position: relative;
   }
-  /* line 245, scss/blocks/_b-parallax.scss */
+  /* line 250, scss/blocks/_b-parallax.scss */
   .parallax .px-slide-text-wrapper {
     position: relative !important;
   }
-  /* line 247, scss/blocks/_b-parallax.scss */
+  /* line 252, scss/blocks/_b-parallax.scss */
   .parallax .px-slide-text-wrapper .px-slide-text-holder {
     min-height: 100vh;
   }
-  /* line 249, scss/blocks/_b-parallax.scss */
+  /* line 254, scss/blocks/_b-parallax.scss */
   .parallax .px-slide-text-wrapper .px-slide-text-holder .px-slide-text-box {
     padding: 100px 0 !important;
   }
-  /* line 254, scss/blocks/_b-parallax.scss */
+  /* line 259, scss/blocks/_b-parallax.scss */
   .parallax .icon {
     opacity: 1 !important;
     position: absolute !important;
   }
-  /* line 257, scss/blocks/_b-parallax.scss */
+  /* line 262, scss/blocks/_b-parallax.scss */
   .parallax .icon:not(.icon-up) {
     display: none;
   }
-  /* line 264, scss/blocks/_b-parallax.scss */
+  /* line 269, scss/blocks/_b-parallax.scss */
   .parallax .line-horisontal01,
   .parallax .line-horisontal02,
   .parallax .line-vertical01,
   .parallax .line-vertical02 {
     display: none;
   }
-  /* line 267, scss/blocks/_b-parallax.scss */
+  /* line 272, scss/blocks/_b-parallax.scss */
   .parallax p {
     opacity: 1 !important;
   }
-  /* line 270, scss/blocks/_b-parallax.scss */
+  /* line 275, scss/blocks/_b-parallax.scss */
   .parallax a {
     opacity: 1 !important;
   }
-  /* line 273, scss/blocks/_b-parallax.scss */
+  /* line 278, scss/blocks/_b-parallax.scss */
   .parallax h2.slide-title {
     font-size: 30px;
     line-height: 40px;
@@ -821,7 +832,7 @@ site-social + site-search .search-block {
     padding-bottom: 40px;
     position: relative;
   }
-  /* line 285, scss/blocks/_b-parallax.scss */
+  /* line 290, scss/blocks/_b-parallax.scss */
   .parallax h2.slide-title:after {
     content: '';
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAdCAMAAAAn8qH7AAACl1BMVEUAAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAAAAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAD///8AAAAAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9V6A0KAAAA3XRSTlMAAAEBAgIDAwQEBQUGBgcHCAgJCQoKCwsMDA0NDg4PDxAQERESEhMTFBQVFRYWFxcYGBkZGhobGxwcHR0eHh8fICAhISIiIyMkJCUlJiYnJygoKSkqKisrLCwtLS4uLy8wMDExMjIzMzQ0NTU2Njc3ODg5OTo6Ozs8PD09Pj4/P0BAQUFCQkNDRERFRUZGR0dISElJSkpLS0xMTU1OT09QUFFRUlJTU1RUVVVWVldXWFlZXF5fYWJjZWZoaWtsbm9wcnN0dnh6e3x+f4CBgoOFhoiJiouMjY6PkJGSkxtzFmcAAAOiSURBVGje7ZrbkhshDERbbeL9/9/dIj15EBdx8Tj7Ys9mQ1EsDONy+aQlJBEznDbiJzWdb5t9kQ5/Dptlv8DiIyJ8QorfnI4erLR7zYy7n85hyQUMv5PkdPpI4xON+/GzsttKh3VYJ2G5R8RLY5oYBTDaTiZ2dlsYsf2JPW5NWltsWG9nJnBvSVFHhUudTz1uldFuIwICJHyY5xEdt3K8isJOOE2Yehd8mOfhfbtF4TQ0LMvSV4JRazte14E1kWo6WriodpQxIPN37VdXClnHh72T4mijCzBegdVsehHQwmjpDktBWb9cIxtMJJjqvKwZ3pwc3A7Xq52X/EtXVBpNr4IoUPyBBOW2npD5afgxGCAT4aN30ucNFh/Z5nBQ8k2evvt1rUfexuLUYWUoS4Kyd6Gy68ZoH9VDNRF5S5ux7FZmCEqrahqjCr7DAmN8oDgJHqlScjVJ2oxNYrl6MfuopFDsrkgpkbwngnei9YKN7B/ozm5W1lthTcoKdidAuZBSFvTZuqD86bBcaLl/AILso9gUE+loCiYm3kmmlMB0Z2IimVLQGEjgVqgVfYI3wAAz2KYhTNprsAMMaarhgOEoq+MABDtwHDgOoEy8tUls5TX8dlZ+sgnQb3QnlSUpZ0lZWZ9ZyDlL+lRWQeb4VExSkOF/++tm93D8DQZYlcXk3ZVF8k6SQHI3Z01ZLaRwt04DcOCV/xr+bYeqqw8HoATocAeUAUkqBqesrOx9VFbw+kVZ9+6pWc9BLj35cyYSTEBKMfhSdV6TrxehV7ot/77Rq1dXxRhS5QxkocBCATX3IZKAILsjBuudV+ES5cYhtpjC/SnaqrBe7uAjrCHCikF5jAy0ePRKcIi5IMASe/jODqKhqWOMG9wA16TxPF18afi+JjmKUbtbYoseVA++hq8BVQ/iZWnKn2PkGXUEppAtxiC+55UawoW3KWsIIxjyu1347vYYtTbEq0NGbWOOV4MAt8hChAkB1hS47zLqy+SGa/68hvIOqyArYUaVoMbyhI1Vl7nkMEWeJY88L29dCdZJAavke1O8uis8oCtr+MFsIwetxRyQUxFVo2O/GKwOilM5VEPOGHWktqsBtM0eeSmNnpT95iL9hcvKOhXaXCQd66X9wmJ7R8HHlfhZRryMnp5rTLPYHlfftbu9sL2r4enym12K6YuKW5dlbvuf+uj+Zkfku1wd6tkzPSni71K3Jz/+37mS1le3n+e5P+d/Ozy7zccfOuNopb58774AAAAASUVORK5CYII=);
@@ -834,7 +845,7 @@ site-social + site-search .search-block {
   }
 }
 @media only screen and (max-width: 1024px) and (max-width: 750px) {
-  /* line 273, scss/blocks/_b-parallax.scss */
+  /* line 278, scss/blocks/_b-parallax.scss */
   .parallax h2.slide-title {
     font-size: 24px;
     line-height: 30px;
@@ -1597,10 +1608,14 @@ site-social + site-search .search-block {
   top: 0;
   right: 0;
   bottom: 0;
+  opacity: 0;
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #202020;
+  transition-duration: 0.5s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
 }
 @media only screen and (max-width: 1024px) {
   /* line 1, scss/blocks/_b-404.scss */
@@ -1608,7 +1623,11 @@ site-social + site-search .search-block {
     background-position: 50% 50% !important;
   }
 }
-/* line 14, scss/blocks/_b-404.scss */
+/* line 16, scss/blocks/_b-404.scss */
+.errorPage.visible {
+  opacity: 1;
+}
+/* line 19, scss/blocks/_b-404.scss */
 .errorPage .errorPage-overlay {
   position: absolute;
   left: 0;
@@ -1619,7 +1638,7 @@ site-social + site-search .search-block {
   background-size: cover;
   background-repeat: no-repeat;
 }
-/* line 25, scss/blocks/_b-404.scss */
+/* line 30, scss/blocks/_b-404.scss */
 .errorPage .errorPage-nav #nav {
   left: 0 !important;
   right: 0 !important;
@@ -1628,17 +1647,17 @@ site-social + site-search .search-block {
   background: none !important;
   text-align: center;
 }
-/* line 32, scss/blocks/_b-404.scss */
+/* line 37, scss/blocks/_b-404.scss */
 .errorPage .errorPage-nav #nav .nav-item {
   display: inline-block;
   vertical-align: top;
   margin: 0 20px 0 16px;
 }
-/* line 36, scss/blocks/_b-404.scss */
+/* line 41, scss/blocks/_b-404.scss */
 .errorPage .errorPage-nav #nav .nav-item span {
   display: none;
 }
-/* line 39, scss/blocks/_b-404.scss */
+/* line 44, scss/blocks/_b-404.scss */
 .errorPage .errorPage-nav #nav .nav-item .onlyErrorPage {
   display: block;
   fill: #202020;
@@ -1648,11 +1667,11 @@ site-social + site-search .search-block {
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 47, scss/blocks/_b-404.scss */
+/* line 52, scss/blocks/_b-404.scss */
 .errorPage .errorPage-nav #nav .nav-item:hover .onlyErrorPage {
   fill: #ff5e00;
 }
-/* line 53, scss/blocks/_b-404.scss */
+/* line 58, scss/blocks/_b-404.scss */
 .errorPage .errorPage-nav .toggleNav {
   display: none !important;
 }
@@ -1799,12 +1818,23 @@ site-social + site-search .search-block {
 .site-album .album-slider .flex-viewport {
   z-index: 1;
 }
-/* line 24, scss/blocks/_b-album.scss */
+/* line 23, scss/blocks/_b-album.scss */
+.site-album .album-slider .slides .album-slider-item {
+  opacity: 0;
+  transition-duration: 0.5s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+/* line 26, scss/blocks/_b-album.scss */
+.site-album .album-slider .slides .album-slider-item.visible {
+  opacity: 1;
+}
+/* line 29, scss/blocks/_b-album.scss */
 .site-album .album-slider .slides .album-slider-item .album-slider-item-inner {
   position: relative;
   padding-top: 62.5%;
 }
-/* line 27, scss/blocks/_b-album.scss */
+/* line 32, scss/blocks/_b-album.scss */
 .site-album .album-slider .slides .album-slider-item .album-slider-item-inner img {
   max-width: 100%;
   max-height: 100%;
@@ -1819,28 +1849,28 @@ site-social + site-search .search-block {
   border: 5px solid #fff;
   box-sizing: border-box;
 }
-/* line 42, scss/blocks/_b-album.scss */
+/* line 47, scss/blocks/_b-album.scss */
 .site-album .album-slider .slides .album-slider-item h3 {
   margin-top: 20px;
   text-align: center;
   font-size: 24px;
   line-height: 30px;
 }
-/* line 48, scss/blocks/_b-album.scss */
+/* line 53, scss/blocks/_b-album.scss */
 .site-album .album-slider .slides .album-slider-item p {
   margin-top: 20px;
   text-align: center;
   color: #cacaca;
 }
-/* line 53, scss/blocks/_b-album.scss */
+/* line 58, scss/blocks/_b-album.scss */
 .site-album .album-slider .slides .album-slider-item .site-tags {
   padding-top: 40px;
 }
-/* line 58, scss/blocks/_b-album.scss */
+/* line 63, scss/blocks/_b-album.scss */
 .site-album .album-slider .flex-disabled {
   display: none;
 }
-/* line 62, scss/blocks/_b-album.scss */
+/* line 67, scss/blocks/_b-album.scss */
 .site-album .social-media {
   position: absolute;
   left: 0;
@@ -1848,11 +1878,11 @@ site-social + site-search .search-block {
   bottom: 40px;
   text-align: center;
 }
-/* line 69, scss/blocks/_b-album.scss */
+/* line 74, scss/blocks/_b-album.scss */
 .site-album .site-tags {
   text-align: center;
 }
-/* line 72, scss/blocks/_b-album.scss */
+/* line 77, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav {
   position: absolute;
   padding-top: 62.5%;
@@ -1860,7 +1890,7 @@ site-social + site-search .search-block {
   top: 0;
   right: 20px;
 }
-/* line 78, scss/blocks/_b-album.scss */
+/* line 83, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav:after {
   content: '';
   position: absolute;
@@ -1872,12 +1902,12 @@ site-social + site-search .search-block {
   background: #cacaca;
 }
 @media only screen and (max-width: 750px) {
-  /* line 72, scss/blocks/_b-album.scss */
+  /* line 77, scss/blocks/_b-album.scss */
   .site-album .flex-direction-nav {
     display: none;
   }
 }
-/* line 91, scss/blocks/_b-album.scss */
+/* line 96, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav .flex-prev {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500pt" height="561pt" viewBox="0 0 500 561" version="1.1"><g id="#ffffffff"></g><g id="#242424ff"><path fill="#cacaca" opacity="1.00" d=" M 448.22 0.00 L 454.55 0.00 C 465.99 0.65 477.25 5.45 485.12 13.87 C 494.97 24.14 499.38 38.49 500.00 52.46 L 500.00 508.65 C 499.43 522.55 494.65 536.67 484.75 546.72 C 476.60 555.30 465.07 560.19 453.33 561.00 L 447.54 561.00 C 437.77 560.21 428.27 557.08 419.82 552.13 C 295.19 480.11 170.58 408.06 45.95 336.03 C 35.06 329.46 23.11 324.08 14.32 314.59 C 6.28 306.31 0.95 295.37 0.00 283.82 L 0.00 278.37 C 0.75 266.20 6.50 254.72 15.04 246.15 C 20.88 240.03 28.10 235.50 35.44 231.42 C 163.65 157.34 291.85 83.25 420.06 9.18 C 428.64 4.11 438.28 0.89 448.22 0.00 M 440.65 50.64 C 311.40 125.39 182.14 200.11 52.88 274.85 C 50.20 276.38 47.69 278.33 46.02 280.97 C 47.94 283.07 50.08 284.98 52.59 286.37 C 181.20 360.73 309.79 435.11 438.39 509.49 C 442.68 511.94 446.97 514.86 452.05 515.32 C 453.46 512.44 453.93 509.24 453.88 506.07 C 453.89 356.06 453.87 206.04 453.89 56.03 C 453.95 52.60 453.57 49.12 452.14 45.96 C 447.95 46.50 444.20 48.49 440.65 50.64 Z"/></g></svg>');
   background-color: #fff;
@@ -1893,11 +1923,11 @@ site-social + site-search .search-block {
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 103, scss/blocks/_b-album.scss */
+/* line 108, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav .flex-prev:hover {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500pt" height="561pt" viewBox="0 0 500 561" version="1.1"><g id="#ffffffff"></g><g id="#242424ff"><path fill="#ff5e00" opacity="1.00" d=" M 448.22 0.00 L 454.55 0.00 C 465.99 0.65 477.25 5.45 485.12 13.87 C 494.97 24.14 499.38 38.49 500.00 52.46 L 500.00 508.65 C 499.43 522.55 494.65 536.67 484.75 546.72 C 476.60 555.30 465.07 560.19 453.33 561.00 L 447.54 561.00 C 437.77 560.21 428.27 557.08 419.82 552.13 C 295.19 480.11 170.58 408.06 45.95 336.03 C 35.06 329.46 23.11 324.08 14.32 314.59 C 6.28 306.31 0.95 295.37 0.00 283.82 L 0.00 278.37 C 0.75 266.20 6.50 254.72 15.04 246.15 C 20.88 240.03 28.10 235.50 35.44 231.42 C 163.65 157.34 291.85 83.25 420.06 9.18 C 428.64 4.11 438.28 0.89 448.22 0.00 M 440.65 50.64 C 311.40 125.39 182.14 200.11 52.88 274.85 C 50.20 276.38 47.69 278.33 46.02 280.97 C 47.94 283.07 50.08 284.98 52.59 286.37 C 181.20 360.73 309.79 435.11 438.39 509.49 C 442.68 511.94 446.97 514.86 452.05 515.32 C 453.46 512.44 453.93 509.24 453.88 506.07 C 453.89 356.06 453.87 206.04 453.89 56.03 C 453.95 52.60 453.57 49.12 452.14 45.96 C 447.95 46.50 444.20 48.49 440.65 50.64 Z"/></g></svg>');
 }
-/* line 107, scss/blocks/_b-album.scss */
+/* line 112, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav .flex-next {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500pt" height="561pt" viewBox="0 0 500 561" version="1.1"><g id="#ffffffff"></g><g id="#242424ff"><path fill="#cacaca" opacity="1.00" d=" M 45.54 0.00 L 53.46 0.00 C 63.21 0.81 72.60 4.21 80.99 9.17 C 205.79 81.31 330.61 153.43 455.42 225.56 C 463.12 230.20 471.27 234.17 478.45 239.65 C 490.05 248.47 498.89 261.72 500.00 276.52 L 500.00 283.63 C 498.55 303.05 484.21 318.89 467.65 327.73 C 343.65 399.35 219.67 470.99 95.68 542.61 C 84.42 548.81 73.69 556.65 60.90 559.39 C 46.41 562.89 29.97 560.27 18.52 550.32 C 6.13 540.05 0.60 523.67 0.00 507.99 L 0.00 51.77 C 0.75 39.26 4.57 26.57 12.82 16.92 C 20.81 7.09 32.96 1.00 45.54 0.00 M 47.97 45.59 C 46.37 48.81 46.09 52.44 46.12 55.97 C 46.11 205.30 46.12 354.63 46.12 503.96 C 46.14 507.67 46.21 511.58 48.05 514.92 C 51.33 514.29 54.50 513.13 57.35 511.37 C 186.01 437.01 314.67 362.63 443.34 288.26 C 447.26 286.00 451.55 283.88 454.11 279.97 C 450.73 275.77 445.73 273.55 441.22 270.85 C 313.22 196.84 185.21 122.83 57.21 48.82 C 54.36 47.20 51.27 45.88 47.97 45.59 Z"/></g></svg>');
   background-color: #fff;
@@ -1913,7 +1943,7 @@ site-social + site-search .search-block {
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 119, scss/blocks/_b-album.scss */
+/* line 124, scss/blocks/_b-album.scss */
 .site-album .flex-direction-nav .flex-next:hover {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500pt" height="561pt" viewBox="0 0 500 561" version="1.1"><g id="#ffffffff"></g><g id="#242424ff"><path fill="#ff5e00" opacity="1.00" d=" M 45.54 0.00 L 53.46 0.00 C 63.21 0.81 72.60 4.21 80.99 9.17 C 205.79 81.31 330.61 153.43 455.42 225.56 C 463.12 230.20 471.27 234.17 478.45 239.65 C 490.05 248.47 498.89 261.72 500.00 276.52 L 500.00 283.63 C 498.55 303.05 484.21 318.89 467.65 327.73 C 343.65 399.35 219.67 470.99 95.68 542.61 C 84.42 548.81 73.69 556.65 60.90 559.39 C 46.41 562.89 29.97 560.27 18.52 550.32 C 6.13 540.05 0.60 523.67 0.00 507.99 L 0.00 51.77 C 0.75 39.26 4.57 26.57 12.82 16.92 C 20.81 7.09 32.96 1.00 45.54 0.00 M 47.97 45.59 C 46.37 48.81 46.09 52.44 46.12 55.97 C 46.11 205.30 46.12 354.63 46.12 503.96 C 46.14 507.67 46.21 511.58 48.05 514.92 C 51.33 514.29 54.50 513.13 57.35 511.37 C 186.01 437.01 314.67 362.63 443.34 288.26 C 447.26 286.00 451.55 283.88 454.11 279.97 C 450.73 275.77 445.73 273.55 441.22 270.85 C 313.22 196.84 185.21 122.83 57.21 48.82 C 54.36 47.20 51.27 45.88 47.97 45.59 Z"/></g></svg>');
 }

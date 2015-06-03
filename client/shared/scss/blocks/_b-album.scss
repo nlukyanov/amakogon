@@ -21,6 +21,11 @@
 		}
 		.slides {
 			.album-slider-item {
+				opacity: 0;
+				@include transition($property: opacity, $duration: .5s);
+				&.visible {
+					opacity: 1;
+				}
 				.album-slider-item-inner {
 					position: relative;
 					padding-top: 62.5%;

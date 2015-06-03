@@ -1,4 +1,9 @@
 .parallax {
+	opacity: 0;
+	@include transition($property: opacity, $duration: .5s);
+	&.visible {
+		opacity: 1;
+	}
 	.px-slide {
 		position: relative;
 		height: 100vh;

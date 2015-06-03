@@ -8,6 +8,9 @@
 			link: link
 		};
 		function link(scope, element, attrs) {
+			setTimeout(function() {
+				element.addClass('visible');
+			}, 0);
 			scope.nextSlide = function(e) {
 				e.preventDefault();
 

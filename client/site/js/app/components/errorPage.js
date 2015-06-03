@@ -8,6 +8,9 @@
 			link: link
 		};
 		function link(scope, element, attrs) {
+			setTimeout(function() {
+				element.addClass('visible');
+			}, 100);
 			function moveBg(e) {
 				if ( $(window).width() > 1024 ) {
 					var x = e.clientX,
