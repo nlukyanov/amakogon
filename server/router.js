@@ -21,6 +21,13 @@ function router(app) {
 
 		site.renderSite();
 	});
+	app.get('/photos/:id/:id', function(req, resp) {
+		var Site = require('./site/site');
+
+		site = new Site(req, resp);
+
+		site.renderSite();
+	});
 	app.get('/tags', function(req, resp) {
 		var Site = require('./site/site');
 

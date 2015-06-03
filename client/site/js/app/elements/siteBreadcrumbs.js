@@ -72,80 +72,40 @@
 				}
 			}
 			else if ( $location.$$path.match(/\//ig).length == 2 ) {
-				if ( $location.$$hash == '' ) {
-					scope.breadcrumbs = [
-						{
-							title: 'Главная',
-							url: '/'
-						},
-						{
-							title: 'Фотографии',
-							url: '/photos'
-						},
-						{
-							title: 'Название альбома',
-							url: '/photos/22'
-						}
-					];
-				}
-				else {
-					scope.breadcrumbs = [
-						{
-							title: 'Главная',
-							url: '/'
-						},
-						{
-							title: 'Фотографии',
-							url: '/photos'
-						},
-						{
-							title: '#Тег',
-							url: '/photos/tags#tag'
-						}
-					];
-				}
+				scope.breadcrumbs = [
+					{
+						title: 'Главная',
+						url: '/'
+					},
+					{
+						title: 'Фотографии',
+						url: '/photos'
+					},
+					{
+						title: 'Название альбома',
+						url: '/photos/22'
+					}
+				];
 			}
 			else if ( $location.$$path.match(/\//ig).length == 3 ) {
-				if ( $location.$$hash != 'fullsize' ) {
-					scope.breadcrumbs = [
-						{
-							title: 'Главная',
-							url: '/'
-						},
-						{
-							title: 'Фотографии',
-							url: '/photos'
-						},
-						{
-							title: 'Название альбома',
-							url: '/photos/22'
-						},
-						{
-							title: 'Название фотографии',
-							url: '/photos/22/1'
-						}
-					];
-				}
-				else {
-					scope.breadcrumbs = [
-						{
-							title: 'Главная',
-							url: '/'
-						},
-						{
-							title: 'Фотографии',
-							url: '/photos'
-						},
-						{
-							title: 'Название альбома',
-							url: '/photos/22'
-						},
-						{
-							title: 'Название фотографии#fullsize',
-							url: '/photos/22/1#fullsize'
-						}
-					];
-				}
+				scope.breadcrumbs = [
+					{
+						title: 'Главная',
+						url: '/'
+					},
+					{
+						title: 'Фотографии',
+						url: '/photos'
+					},
+					{
+						title: 'Название альбома',
+						url: '/photos/22'
+					},
+					{
+						title: 'Название фотографии',
+						url: '/photos/22'
+					}
+				];
 			}
 		};
 	});

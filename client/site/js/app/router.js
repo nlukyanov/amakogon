@@ -14,13 +14,10 @@
 					templateUrl: config.prefix + 'html/templates/tags.html'
 				})
 				.when('/photos/:id', {
-					templateUrl: config.prefix + 'html/templates/photos.html'
+					templateUrl: config.prefix + 'html/templates/album.html'
 				})
 				.when('/photos/:id/:id', {
-					templateUrl: config.prefix + 'html/templates/photos.html'
-				})
-				.when('/photos/:id/:id#fullsize', {
-					templateUrl: config.prefix + 'html/templates/photos.html'
+					templateUrl: config.prefix + 'html/templates/photo.html'
 				})
 				.when('/404', {
 					templateUrl: config.prefix + 'html/templates/404.html'
