@@ -14,10 +14,8 @@
 					templateUrl: config.prefix + 'html/templates/tags.html'
 				})
 				.when('/photos/:id', {
-					templateUrl: config.prefix + 'html/templates/album.html'
-				})
-				.when('/photos/:id/:id', {
-					templateUrl: config.prefix + 'html/templates/photo.html'
+					templateUrl: config.prefix + 'html/templates/album.html',
+					reloadOnSearch: false
 				})
 				.when('/404', {
 					templateUrl: config.prefix + 'html/templates/404.html'

@@ -33,6 +33,7 @@
 					}, 100);
 					$('.logo, .toggleNav, .breadcrumbs').addClass('fixedAlbum');
 				}
+				$location.hash('02');
 			}
 
 			scope.closeFullsize = function(e) {
