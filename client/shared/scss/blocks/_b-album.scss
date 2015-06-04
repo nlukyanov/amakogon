@@ -171,6 +171,10 @@
 					.album-slider-item-inner {
 						position: static;
 						padding-top: 0;
+						display: -webkit-box;
+						display: -moz-box;
+						display: -ms-flexbox;
+						display: -webkit-flex;
 						display: flex;
 						-webkit-box-orient: horizontal; 
 						-moz-box-orient: horizontal;

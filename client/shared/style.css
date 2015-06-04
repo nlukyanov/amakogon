@@ -2042,6 +2042,10 @@ site-social + site-search .search-block {
 .site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-inner {
   position: static;
   padding-top: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-box-orient: horizontal;
   -moz-box-orient: horizontal;
@@ -2056,7 +2060,7 @@ site-social + site-search .search-block {
   box-align: center;
   align-items: center;
 }
-/* line 189, scss/blocks/_b-album.scss */
+/* line 193, scss/blocks/_b-album.scss */
 .site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-inner img {
   position: static;
   display: block;
@@ -2064,75 +2068,75 @@ site-social + site-search .search-block {
   -webkit-transform: none;
   transform: none;
 }
-/* line 197, scss/blocks/_b-album.scss */
+/* line 201, scss/blocks/_b-album.scss */
 .site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
 }
-/* line 202, scss/blocks/_b-album.scss */
+/* line 206, scss/blocks/_b-album.scss */
 .site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text h3 {
   display: none;
 }
-/* line 205, scss/blocks/_b-album.scss */
+/* line 209, scss/blocks/_b-album.scss */
 .site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text p {
   display: none;
 }
-/* line 208, scss/blocks/_b-album.scss */
+/* line 212, scss/blocks/_b-album.scss */
 .site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text .site-tags {
   display: none;
 }
-/* line 213, scss/blocks/_b-album.scss */
+/* line 217, scss/blocks/_b-album.scss */
 .site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text .social-media a svg {
   fill: #fff;
 }
-/* line 217, scss/blocks/_b-album.scss */
+/* line 221, scss/blocks/_b-album.scss */
 .site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text .social-media a:hover svg {
   fill: #ff5e00;
 }
-/* line 230, scss/blocks/_b-album.scss */
+/* line 234, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-viewport,
 .site-album.fullsize .slides,
 .site-album.fullsize .album-slider-item,
 .site-album.fullsize .album-slider-item-inner {
   height: 100%;
 }
-/* line 233, scss/blocks/_b-album.scss */
+/* line 237, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav {
   padding-top: 0;
   top: 0;
   bottom: 0;
 }
-/* line 237, scss/blocks/_b-album.scss */
+/* line 241, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav:after {
   display: none;
 }
-/* line 240, scss/blocks/_b-album.scss */
+/* line 244, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-prev {
   background: none;
 }
-/* line 242, scss/blocks/_b-album.scss */
+/* line 246, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-prev svg {
   fill: #fff;
 }
-/* line 246, scss/blocks/_b-album.scss */
+/* line 250, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-prev:hover svg {
   fill: #ff5e00;
 }
-/* line 251, scss/blocks/_b-album.scss */
+/* line 255, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-next {
   background: none;
 }
-/* line 253, scss/blocks/_b-album.scss */
+/* line 257, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-next svg {
   fill: #fff;
 }
-/* line 257, scss/blocks/_b-album.scss */
+/* line 261, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-next:hover svg {
   fill: #ff5e00;
 }
-/* line 263, scss/blocks/_b-album.scss */
+/* line 267, scss/blocks/_b-album.scss */
 .site-album.fullsize .btn-fullsize {
   display: block;
   position: fixed;
@@ -2142,14 +2146,14 @@ site-social + site-search .search-block {
   width: 25px;
   height: 25px;
 }
-/* line 271, scss/blocks/_b-album.scss */
+/* line 275, scss/blocks/_b-album.scss */
 .site-album.fullsize .btn-fullsize svg {
   fill: #fff;
   transition-duration: 0.25s;
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 276, scss/blocks/_b-album.scss */
+/* line 280, scss/blocks/_b-album.scss */
 .site-album.fullsize .btn-fullsize:hover svg {
   fill: #ff5e00;
 }
