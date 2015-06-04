@@ -1776,7 +1776,7 @@ site-social + site-search .search-block {
   margin-right: 0;
   background: none;
   box-sizing: border-box;
-  padding: 10px 30px 10px 10px;
+  padding: 5px 30px 5px 10px;
   height: 30px;
   width: 100%;
   font-size: 14px;
