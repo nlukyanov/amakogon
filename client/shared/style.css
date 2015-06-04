@@ -2024,12 +2024,12 @@ site-social + site-search .search-block {
   z-index: 99999;
   background: rgba(32, 32, 32, 0.9);
   max-width: none;
-  padding: 20px 60px;
+  padding: 0 60px;
 }
 @media only screen and (max-width: 750px) {
   /* line 153, scss/blocks/_b-album.scss */
   .site-album.fullsize .album-slider {
-    padding: 20px 0;
+    padding: 0;
   }
 }
 /* line 167, scss/blocks/_b-album.scss */
@@ -2087,56 +2087,52 @@ site-social + site-search .search-block {
 .site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text .site-tags {
   display: none;
 }
-/* line 217, scss/blocks/_b-album.scss */
-.site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text .social-media a svg {
-  fill: #fff;
+/* line 215, scss/blocks/_b-album.scss */
+.site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text .social-media {
+  display: none;
 }
-/* line 221, scss/blocks/_b-album.scss */
-.site-album.fullsize .album-slider .slides .album-slider-item .album-slider-item-text .social-media a:hover svg {
-  fill: #ff5e00;
-}
-/* line 234, scss/blocks/_b-album.scss */
+/* line 225, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-viewport,
 .site-album.fullsize .slides,
 .site-album.fullsize .album-slider-item,
 .site-album.fullsize .album-slider-item-inner {
   height: 100%;
 }
-/* line 237, scss/blocks/_b-album.scss */
+/* line 228, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav {
   padding-top: 0;
   top: 0;
   bottom: 0;
 }
-/* line 241, scss/blocks/_b-album.scss */
+/* line 232, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav:after {
   display: none;
 }
-/* line 244, scss/blocks/_b-album.scss */
+/* line 235, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-prev {
   background: none;
 }
-/* line 246, scss/blocks/_b-album.scss */
+/* line 237, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-prev svg {
   fill: #fff;
 }
-/* line 250, scss/blocks/_b-album.scss */
+/* line 241, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-prev:hover svg {
   fill: #ff5e00;
 }
-/* line 255, scss/blocks/_b-album.scss */
+/* line 246, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-next {
   background: none;
 }
-/* line 257, scss/blocks/_b-album.scss */
+/* line 248, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-next svg {
   fill: #fff;
 }
-/* line 261, scss/blocks/_b-album.scss */
+/* line 252, scss/blocks/_b-album.scss */
 .site-album.fullsize .flex-direction-nav .flex-next:hover svg {
   fill: #ff5e00;
 }
-/* line 267, scss/blocks/_b-album.scss */
+/* line 258, scss/blocks/_b-album.scss */
 .site-album.fullsize .btn-fullsize {
   display: block;
   position: fixed;
@@ -2146,14 +2142,14 @@ site-social + site-search .search-block {
   width: 25px;
   height: 25px;
 }
-/* line 275, scss/blocks/_b-album.scss */
+/* line 266, scss/blocks/_b-album.scss */
 .site-album.fullsize .btn-fullsize svg {
   fill: #fff;
   transition-duration: 0.25s;
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 280, scss/blocks/_b-album.scss */
+/* line 271, scss/blocks/_b-album.scss */
 .site-album.fullsize .btn-fullsize:hover svg {
   fill: #ff5e00;
 }

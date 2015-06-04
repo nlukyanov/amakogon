@@ -159,9 +159,9 @@
 			z-index: 99999;
 			background: rgba(32,32,32,.9);
 			max-width: none;
-			padding: 20px 60px;
+			padding: 0 60px;
 			@include respond-to(mobileLG) {
-				padding: 20px 0;
+				padding: 0;
 			}
 			.slides {
 				.album-slider-item {
@@ -213,16 +213,7 @@
 							display: none;
 						}
 						.social-media {
-							a {
-								svg {
-									fill: #fff;
-								}
-								&:hover {
-									svg {
-										fill: #ff5e00;
-									}
-								}
-							}
+							display: none;
 						}
 					}
 				}
