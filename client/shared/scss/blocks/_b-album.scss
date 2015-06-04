@@ -69,7 +69,7 @@
 					color: #cacaca;
 				}
 				.site-tags {
-					padding-top: 40px;
+					padding-top: 20px;
 				}
 			}
 		}
@@ -78,11 +78,8 @@
 		}
 	}
 	.social-media {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 40px;
 		text-align: center;
+		padding-top: 20px;
 	}
 	.site-tags {
 		text-align: center;
@@ -140,6 +137,139 @@
 				width: 100%;
 				height: 100%;
 				fill: #cacaca;
+				@include transition($property: fill, $duration: .25s);
+			}
+			&:hover {
+				svg {
+					fill: #ff5e00;
+				}
+			}
+		}
+	}
+	.btn-fullsize {
+		display: none;
+	}
+	&.fullsize {
+		.album-slider {
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 99999;
+			background: rgba(32,32,32,.9);
+			max-width: none;
+			padding: 20px 60px;
+			@include respond-to(mobileLG) {
+				padding: 20px 0;
+			}
+			.slides {
+				.album-slider-item {
+					position: relative;
+					padding-bottom: 40px;
+					box-sizing: border-box;
+					.album-slider-item-inner {
+						position: static;
+						padding-top: 0;
+						display: flex;
+						-webkit-box-orient: horizontal; 
+						-moz-box-orient: horizontal;
+						box-orient: horizontal;
+						flex-direction: row;
+
+						-webkit-box-pack: center;
+						-moz-box-pack: center;
+						box-pack: center;
+						justify-content: center;
+
+						-webkit-box-align: center;
+						-moz-box-align: center;
+						box-align: center;  
+						align-items: center;
+  						img {
+							position: static;
+							display: block;
+							border: none;
+							-webkit-transform: none;
+							transform: none;
+						}
+					}
+					.album-slider-item-text {
+						position: absolute;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						h3 {
+							display: none;
+						}
+						p {
+							display: none;
+						}
+						.site-tags {
+							display: none;
+						}
+						.social-media {
+							a {
+								svg {
+									fill: #fff;
+								}
+								&:hover {
+									svg {
+										fill: #ff5e00;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.flex-viewport,
+		.slides,
+		.album-slider-item,
+		.album-slider-item-inner {
+			height: 100%;
+		}
+		.flex-direction-nav {
+			padding-top: 0;
+			top: 0;
+			bottom: 0;
+			&:after {
+				display: none;
+			}
+			.flex-prev {
+				background: none;
+				svg {
+					fill: #fff;
+				}
+				&:hover {
+					svg {
+						fill: #ff5e00;
+					}
+				}
+			}
+			.flex-next {
+				background: none;
+				svg {
+					fill: #fff;
+				}
+				&:hover {
+					svg {
+						fill: #ff5e00;
+					}
+				}
+			}
+		}
+		.btn-fullsize {
+			display: block;
+			position: fixed;
+			top: 40px;
+			right: 40px;
+			z-index: 999999;
+			width: 25px;
+			height: 25px;
+			svg {
+				fill: #fff;
 				@include transition($property: fill, $duration: .25s);
 			}
 			&:hover {

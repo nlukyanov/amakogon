@@ -5,90 +5,122 @@
 <site-breadcrumbs></site-breadcrumbs>
 <site-search></site-search>
 <div class="site-album">
+	<a ng-href="#" class="btn-fullsize" ng-click="closeFullsize($event)">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 815" version="1.1"><g id="#ffffffff"></g><g id="#000000ff"><path opacity="1.00" d=" M 192.55 106.64 C 208.76 90.58 235.60 87.68 255.37 98.64 C 261.44 101.97 266.50 106.79 271.32 111.69 C 324.67 165.05 378.03 218.40 431.38 271.76 C 485.61 217.51 539.86 163.29 594.09 109.04 C 598.63 104.43 603.75 100.32 609.58 97.46 C 628.89 88.03 654.10 91.07 669.69 106.22 C 684.72 120.89 699.42 135.90 714.32 150.70 C 725.87 162.37 737.66 173.79 749.04 185.62 C 765.93 203.34 767.40 233.18 752.94 252.78 C 750.30 256.48 747.01 259.63 743.81 262.82 C 690.25 316.38 636.69 369.93 583.13 423.50 C 636.33 476.73 689.57 529.93 742.78 583.16 C 746.97 587.28 751.14 591.51 754.38 596.45 C 767.37 616.10 765.29 644.60 748.89 661.70 C 724.74 685.95 700.49 710.11 676.30 734.33 C 672.79 737.75 669.51 741.45 665.57 744.40 C 645.89 759.77 615.06 758.41 597.08 740.93 C 541.84 685.72 486.61 630.48 431.39 575.25 C 376.31 630.30 321.27 685.38 266.19 740.43 C 247.15 759.51 213.11 759.96 193.57 741.41 C 181.24 729.75 169.51 717.47 157.42 705.56 C 143.01 690.99 128.28 676.72 114.06 661.96 C 97.23 644.69 95.25 615.54 108.78 595.76 C 111.94 591.02 116.06 587.04 120.09 583.05 C 173.26 529.85 226.47 476.70 279.62 423.49 C 224.44 368.31 169.26 313.14 114.09 257.96 C 104.66 248.20 99.53 234.54 99.98 221.00 C 99.73 207.30 105.41 193.76 115.06 184.09 C 140.88 158.26 166.67 132.40 192.55 106.64 Z"/></g></svg>
+	</a>
 	<h2>Название альбома</h2>
 	<div class="album-slider">
 		<ul class="slides">
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img01" src="../client/site/images/album/img01.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img01" src="../client/site/images/album/img01.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img02" src="../client/site/images/album/img02.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img02" src="../client/site/images/album/img02.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img03" src="../client/site/images/album/img03.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img03" src="../client/site/images/album/img03.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img04" src="../client/site/images/album/img04.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img04" src="../client/site/images/album/img04.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img01" src="../client/site/images/album/img05.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img01" src="../client/site/images/album/img05.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img01" src="../client/site/images/album/img06.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img01" src="../client/site/images/album/img06.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img01" src="../client/site/images/album/img07.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img01" src="../client/site/images/album/img07.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img01" src="../client/site/images/album/img08.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img01" src="../client/site/images/album/img08.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img01" src="../client/site/images/album/img09.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img01" src="../client/site/images/album/img09.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 			<li class="album-slider-item">
 				<div class="album-slider-item-inner">
-					<img id="img01" src="../client/site/images/album/img10.jpg" ng-click="goToImage('/photos/album_name/01')"/>
+					<img id="img01" src="../client/site/images/album/img10.jpg" ng-click="imgFullsize()">
 				</div>
-				<h3>Название фотографии</h3>
-				<p>Описание фотографии</p>
-				<div class="site-tags"></div>
+				<div class="album-slider-item-text">
+					<h3>Название фотографии</h3>
+					<p>Описание фотографии</p>
+					<div class="site-tags"></div>
+					<site-social></site-social>
+				</div>
 			</li>
 		</ul>
 	</div>
-	<site-social></site-social>
 </div>
