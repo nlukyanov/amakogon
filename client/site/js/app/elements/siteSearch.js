@@ -17,7 +17,7 @@
 				e.preventDefault();
 
 				if ( !$('.search-input.visible input').val() ) {
-					$('.search-input').toggleClass('visible');
+					$('.search-input').toggleClass('visible').closest('.search-block').toggleClass('active');
 					setTimeout(function() {
 						$('.search-input.visible input').trigger('focus');
 					}, 250);
