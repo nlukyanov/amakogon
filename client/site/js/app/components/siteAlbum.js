@@ -30,6 +30,7 @@
 					$(window).trigger('resize');
 					element.css({visibility: 'visible'});
 				}, 100);
+				$('.logo, .toggleNav, .breadcrumbs').toggleClass('fixedAlbum');
 			}
 
 			scope.closeFullsize = function(e) {
@@ -40,6 +41,7 @@
 					$(window).trigger('resize');
 					element.css({visibility: 'visible'});
 				}, 100);
+				$('.logo, .toggleNav, .breadcrumbs').removeClass('fixedAlbum');
 			}
 		};
 	});
