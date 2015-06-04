@@ -49,7 +49,6 @@
 	padding: 0 20px;
 	.tags-search-section-title {
 		text-transform: uppercase;
-		color: #cacaca;
 		text-align: center;
 		position: relative;
 		font-size: 24px;
@@ -96,6 +95,9 @@
 					position: relative;
 					background-position: 50% 50%;
 					background-repeat: no-repeat;
+					border: 5px solid #fff;
+					-webkit-box-shadow: 0 0 5px 0 rgba(32,32,32,.75);
+					box-shadow: 0 0 5px 0 rgba(32,32,32,.75);
 					.overlay {
 						position: absolute;
 						left: 0;
@@ -114,8 +116,8 @@
 					}
 				}
 				.tags-searh-item-title {
-					font-size: 24px;
-					line-height: 30px;
+					font-size: 20px;
+					line-height: 24px;
 				}
 				&:hover {
 					.overlay {

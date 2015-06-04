@@ -1,0 +1,99 @@
+.site-blog {
+	opacity: 0;
+	position: relative;
+	padding: 0 20px;
+	@include transition($property: opacity, $duration: .5s);
+	&.visible {
+		opacity: 1;
+	}
+	&:before {
+		content: '';
+		width: 1px;
+		background: #cacaca;
+		position: absolute;
+		left: 50%;
+		margin-left: -.5px;
+		top: 0;
+		bottom: 37px;
+		z-index: -1;
+	}
+	.blog-list {
+		max-width: 960px;
+		margin: 0 auto 80px;
+		.blog-list-item {
+			border-bottom: 1px solid #cacaca;
+			padding: 40px 0;
+			background: #fff;
+			@include clearfix;
+			&:first-child {
+				border-top: 1px solid #cacaca;
+			}
+			.blog-image {
+				float: left;
+				max-width: 350px;
+				width: 100%;
+				margin-right: 40px;
+			}
+			.blog-text {
+				overflow: hidden;
+				h2 {
+					font-size: 36px;
+					line-height: 43px;
+					margin-bottom: 40px;
+				}
+				p {
+					margin-bottom: 40px;
+				}
+				.blog-link {
+					text-decoration: none;
+					float: right;
+					text-transform: uppercase;
+					&:hover {
+						color: #ff5e00;
+					}
+				}
+			}
+			@include respond-to(tablet) {
+				.blog-image {
+					float: none;
+					max-width: 500px;
+					margin: 0 auto;
+					margin-bottom: 40px;
+				}
+				.blog-text {
+					text-align: center;
+				}
+			}
+		}
+	}
+	.icon-blog {
+		background: #fff;
+		display: block;
+		margin: 0 auto 80px;
+		width: 40px;
+		height: 40px;
+		padding: 5px;
+		svg {
+			fill: #cacaca;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.back-to-top {
+		border-color: #cacaca;
+		position: static;
+		margin: 0 auto 40px;
+		display: block;
+		@include transition($property: border-color, $duration: .25s);
+		svg {
+			fill: #cacaca;
+			@include transition($property: fill, $duration: .25s);
+		}
+		&:hover {
+			border-color: #ff5e00;
+			svg {
+				fill: #ff5e00;
+			}
+		}
+	}
+}

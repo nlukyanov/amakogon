@@ -63,10 +63,10 @@
 			}
 		}
 		li {
-			overflow: hidden;
 			padding: 80px 0;
 			opacity: 0;
 			@include transition($property: opacity, $duration: .5s);
+			@include clearfix;
 			@include respond-to(tablet) {
 				opacity: 1;
 				&:nth-child(2n) {
@@ -108,6 +108,9 @@
 					background-position: 50% 50%;
 					background-repeat: no-repeat;
 					position: relative;
+					border: 5px solid #fff;
+					-webkit-box-shadow: 0 0 5px 0 rgba(32,32,32,.75);
+					box-shadow: 0 0 5px 0 rgba(32,32,32,.75);
 					.overlay {
 						position: absolute;
 						left: 0;

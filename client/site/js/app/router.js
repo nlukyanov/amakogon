@@ -17,6 +17,14 @@
 					templateUrl: config.prefix + 'html/templates/album.html',
 					reloadOnSearch: false
 				})
+				.when('/blog', {
+					templateUrl: config.prefix + 'html/templates/blog.html',
+					reloadOnSearch: false
+				})
+				.when('/blog/:id', {
+					templateUrl: config.prefix + 'html/templates/post.html',
+					reloadOnSearch: false
+				})
 				.when('/404', {
 					templateUrl: config.prefix + 'html/templates/404.html'
 				})

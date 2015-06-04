@@ -1,0 +1,39 @@
+.site-post {
+	padding: 0 20px;
+	opacity: 0;
+	@include transition($property: opacity, $duration: .25s);
+	&.visible {
+		opacity: 1;
+	}
+	.post-list-item {
+		max-width: 960px;
+		margin: 0 auto 20px;
+		.post-image {
+			float: left;
+			width: 100%;
+			max-width: 350px;
+			margin-right: 40px;
+		}
+		.post-text {
+			overflow: hidden;
+			h2 {
+				font-size: 36px;
+				line-height: 43px;
+				margin-bottom: 40px;
+			}
+			p {
+				margin-bottom: 20px;
+			}
+		}
+		@include respond-to(tablet) {
+			.post-image {
+				float: none;
+				max-width: 500px;
+				margin: 0 auto 40px;
+			}
+			.post-text {
+				text-align: center;
+			}
+		}
+	}
+}

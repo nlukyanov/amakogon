@@ -38,14 +38,16 @@
 
 			scope.closeFullsize = function(e) {
 				e.preventDefault();
-
-				element.removeClass('fullsize').css({visibility: 'hidden'});
-				setTimeout(function() {
-					$(window).trigger('resize');
-					element.css({visibility: 'visible'});
-				}, 100);
-				$('.logo, .toggleNav, .breadcrumbs').removeClass('fixedAlbum');
+				if ( element.hasClass('fullsize') && e.target.tagName != 'IMG' ) {
+					element.removeClass('fullsize').css({visibility: 'hidden'});
+					setTimeout(function() {
+						$(window).trigger('resize');
+						element.css({visibility: 'visible'});
+					}, 100);
+					$('.logo, .toggleNav, .breadcrumbs').removeClass('fixedAlbum');
+				}
 			}
+
 		};
 	});
 

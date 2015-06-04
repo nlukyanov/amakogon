@@ -28,6 +28,20 @@ function router(app) {
 
 		site.renderSite();
 	});
+	app.get('/blog', function(req, resp) {
+		var Site = require('./site/site');
+
+		site = new Site(req, resp);
+
+		site.renderSite();
+	});
+	app.get('/blog/:id', function(req, resp) {
+		var Site = require('./site/site');
+
+		site = new Site(req, resp);
+
+		site.renderSite();
+	});
 	app.get('/404', function(req, resp) {
 		var Site = require('./site/site');
 
