@@ -1064,7 +1064,7 @@ site-social + site-search .search-block {
   line-height: 18px;
   letter-spacing: 0;
   overflow: hidden;
-  z-index: 1;
+  z-index: 2;
 }
 /* line 10, scss/blocks/_b-breadcrumbs.scss */
 .breadcrumbs li {
