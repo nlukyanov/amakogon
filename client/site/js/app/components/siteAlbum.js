@@ -37,8 +37,10 @@
 			}
 
 			scope.closeFullsize = function(e) {
-				e.preventDefault();
-				if ( element.hasClass('fullsize') && e.target.tagName != 'IMG' && !$(e.target).closest('site-social').length && !$(e.target).closest('site-tags').length ) {
+				if ( $(e.target).closest('.btn-fullsize').length ) {
+					e.preventDefault();
+				}
+				if ( element.hasClass('fullsize') && e.target.tagName != 'IMG' ) {
 					element.removeClass('fullsize').css({visibility: 'hidden'});
 					setTimeout(function() {
 						$(window).trigger('resize');
