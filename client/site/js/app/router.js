@@ -25,6 +25,10 @@
 					templateUrl: config.prefix + 'html/templates/post.html',
 					reloadOnSearch: false
 				})
+				.when('/about', {
+					templateUrl: config.prefix + 'html/templates/about.html',
+					reloadOnSearch: false
+				})
 				.when('/404', {
 					templateUrl: config.prefix + 'html/templates/404.html'
 				})

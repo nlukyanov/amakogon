@@ -46,7 +46,7 @@
 						}
 					];
 				}
-				else if ( $location.$$path == '/cv' ) {
+				else if ( $location.$$path == '/about' ) {
 					scope.breadcrumbs = [
 						{
 							title: 'Главная',
