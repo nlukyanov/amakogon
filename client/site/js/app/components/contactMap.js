@@ -98,7 +98,8 @@
 							rotateControl: false,
 							zoomControl: false,
 							scrollwheel: false,
-							draggable: false
+							draggable: false,
+							disableDoubleClickZoom: true
 						},
 						styles: myStyles
 					};
