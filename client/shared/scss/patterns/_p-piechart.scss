@@ -1,0 +1,127 @@
+.piechart {
+	.piechart-label {
+		color: #202020;
+		text-align: center;
+		display: block;
+	}
+	.piechart-inner {
+		position: relative;
+		.piechart-data-holder {
+			background: #ffe0ce;
+			position: relative;
+			width: 100px;
+			height: 100px;
+			border-radius: 100%;
+			-webkit-transform: translateZ(0);
+			transform: translateZ(0);
+			margin: 10px;
+			* {
+				-webkit-transform: translateZ(0);
+				transform: translateZ(0);
+			}
+			.piechart-data-back {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100px;
+				height: 100px;
+				border-radius: 100px;
+				clip: rect(0 100px 100px 0);
+				.piechart-data-inner {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100px;
+					height: 100px;
+					border-radius: 100px;
+					clip: rect(0 50px 100px 0);
+					background-color: #ff5e00;
+				}
+			}
+			.piechart-data {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100px;
+				height: 100px;
+				border-radius: 100px;
+				clip: rect(0 100px 100px 50px);
+				-webkit-transform: rotate(0);
+				transform: rotate(0);
+				.piechart-data-inner {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100px;
+					height: 100px;
+					border-radius: 100px;
+					clip: rect(0 50px 100px 0);
+					-webkit-transform: rotate(180deg);
+					transform: rotate(180deg);
+					background-color: #ff5e00;
+				}
+			}
+			.piechart-mask {
+				position: absolute;
+				left: 1px;
+				top: 1px;
+				right: 1px;
+				bottom: 1px;
+				background: #fff;
+				border-radius: 100%;
+				&:after {
+					content: '';
+					position: absolute;
+					left: 50%;
+					top: -3px;
+					width: 5px;
+					height: 5px;
+					background: #ff5e00;
+					border-radius: 100%;
+				}
+			}
+		}
+		.piechart-icon {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 50px;
+			height: 50px;
+			margin: -25px 0 0 -25px;
+			background-size: cover;
+			background-position: 50% 50%;
+			border-radius: 100%;
+			overflow: hidden;
+			&:after {
+				content: '';
+				position: absolute;
+				left: -1px;
+				top: -1px;
+				right: -1px;
+				bottom: -1px;
+				border-radius: 100%;
+				background: rgba(255, 255, 255, 0.35);
+				border: 2px solid #fff;
+			}
+		}
+	}
+	&.inverted {
+		.piechart-inner {
+			.piechart-data-holder {
+				background: #ff5e00;
+				-webkit-transform: rotate(180deg);
+				transform: rotate(180deg);
+				.piechart-data-back {
+					.piechart-data-inner {
+						background: #ffe0ce;
+					}
+				}
+				.piechart-data {
+					.piechart-data-inner {
+						background: #ffe0ce;
+					}
+				}
+			}
+		}
+	}
+}

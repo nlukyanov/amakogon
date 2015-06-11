@@ -8,9 +8,9 @@
 
 	//site.widgets = angular.module('site.widgets', ['widgetItem', 'widgetBtnAlign', 'widgetBtnFontWeight', 'widgetBtnFontSize', 'widgetBtnColor', 'widgetBtnViewHeading', 'widgetBtnWidth', 'widgetBtnHeight', 'widgetBtnViewImage', 'widgetBtnVisibility', 'widgetBtnUpload', 'widgetBtnListSettings', 'widgetBtnAddListItem', 'widgetBtnOverflow', 'widgetBtnBannerSettings', 'widgetBtnPosition', 'widgetBtnBannerHeading', 'widgetBtnBannerText', 'widgetBtnBannerLink', 'widgetBtnLinkType', 'widgetBtnUrl', 'widgetBtnPositionVertical', 'widgetBtnPositionHorisontal', 'widgetBtnFeatureSettings', 'addGridItem']);
 
-	siteItems.elements = angular.module('siteItems.elements', ['siteLogo', 'siteNav', 'siteSocial', 'siteBreadcrumbs', 'backToTop', 'siteTags', 'siteSearch']);
+	siteItems.elements = angular.module('siteItems.elements', ['siteLogo', 'siteNav', 'siteSocial', 'siteBreadcrumbs', 'backToTop', 'siteTags', 'siteSearch', 'modal', 'cropSlider', 'percentage', 'timeline', 'piechart']);
 
-	siteItems.components = angular.module('siteItems.components', ['parallax', 'contactMap', 'sitePhotos', 'errorPage', 'siteAlbum', 'siteBlog', 'sitePost']);
+	siteItems.components = angular.module('siteItems.components', ['parallax', 'contactMap', 'sitePhotos', 'errorPage', 'siteAlbum', 'siteBlog', 'sitePost', 'siteAbout']);
 
 	var site = angular.module('site', ['siteItems.main', 'siteItems.components', 'siteItems.elements'/*, 'site.factories', 'site.widgets'*/]);
 	

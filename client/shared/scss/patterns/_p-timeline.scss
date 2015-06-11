@@ -1,0 +1,160 @@
+.timeline {
+	text-align: center;
+	position: relative;
+	padding: 40px 100px;
+	display: block;
+	.timeline-years {
+		position: relative;
+		font-size: 14px;
+		line-height: 18px;
+		height: 28px;
+		margin: 0 -5px;
+		&:after {
+			content: '';
+			position: absolute;
+			left: -100px;
+			right: -100px;
+			top: 50%;
+			margin-top: -.5px;
+			height: 1px;
+			background: #ffe0ce;
+		}
+		.year {
+			background: #fff;
+			padding: 5px;
+			position: absolute;
+			color: #ffe0ce;
+			cursor: default;
+			z-index: 2;
+			@include transition($property: (left, margin-left), $duration: .5s);
+			@include respond-to(mobileLG) {
+				display: none;
+			}
+		}
+	}
+	.timeline-months {
+		position: relative;
+		z-index: 1;
+		height: 28px;
+		.months-holder {
+			.month {
+				background: #fff;
+				padding: 5px;
+				font-size: 14px;
+				line-height: 18px;
+				color: #ff5e00;
+				cursor: default;
+				position: absolute;
+				opacity: 0;
+				@include transition($property: opacity, $duration: .25s);
+				&.visible {
+					opacity: 1;
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					top: -16px;
+					left: 50%;
+					width: 5px;
+					height: 5px;
+					background: #ff5e00;
+					border-radius: 100%;
+					margin-left: -2.5px;
+				}
+			}
+		}
+		@include respond-to(mobileLG) {
+			display: none;
+		}
+	}
+	.timeline-range-holder {
+		position: relative;
+		z-index: 1;
+		.timeline-range {
+			height: 1px;
+			position: absolute;
+			background: #ff5e00;
+			top: -14px;
+			margin-right: -8px;
+		}
+		@include respond-to(mobileLG) {
+			display: none;
+		}
+	}
+	.timeline-labels {
+		.label {
+			color: #202020;
+			text-transform: uppercase;
+			display: none;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			text-align: center;
+			@include transition($property: color, $duration: .25s);
+			&.active {
+				display: block;
+			}
+		}
+	}
+	.timeline-prev {
+		position: absolute;
+		left: 0;
+		top: 40px;
+		width: 25px;
+		height: 25px;
+		border: 1px solid #ffe0ce;
+		border-radius: 100%;
+		background: #fff;
+		z-index: 2;
+		@include transition($property: border-color, $duration: .25s);
+		svg {
+			width: 10px;
+			height: 100%;
+			fill: #ffe0ce;
+			margin-right: 2px;
+			@include transition($property: fill, $duration: .25s);
+		}
+		&:hover {
+			border-color: #ff5e00;
+			svg {
+				fill: #ff5e00;
+			}
+		}
+	}
+	.timeline-next {
+		position: absolute;
+		right: 0;
+		top: 40px;
+		width: 25px;
+		height: 25px;
+		border: 1px solid #ffe0ce;
+		border-radius: 100%;
+		background: #fff;
+		z-index: 2;
+		@include transition($property: border-color, $duration: .25s);
+		svg {
+			width: 10px;
+			height: 100%;
+			fill: #ffe0ce;
+			margin-left: 2px;
+			@include transition($property: fill, $duration: .25s);
+		}
+		&:hover {
+			border-color: #ff5e00;
+			svg {
+				fill: #ff5e00;
+			}
+		}
+	}
+	.timeline-desc {
+		padding-top: 40px;
+		text-align: left;
+		margin: 0 -60px;
+	}
+	.start-point,
+	.end-point,
+	.range-year {
+		color: #ff5e00 !important;
+	}
+}

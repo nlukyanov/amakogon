@@ -1,0 +1,21 @@
+.percentage-wrapper {
+	overflow: hidden;
+	.percentage-holder {
+		background: #ffe0ce;
+		border-radius: 10px;
+		overflow: hidden;
+		margin-bottom: 5px;
+		.percentage {
+			background: #ff5e00;
+			border-radius: 10px;
+			height: 1px;
+		}
+	}
+	.percentage-label {
+		float: right;
+		clear: both;
+		color: #ff5e00;
+		font-size: 14px;
+		line-height: 18px;
+	}
+}
