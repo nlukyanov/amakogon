@@ -3412,3 +3412,28 @@ site-social + site-search .search-block {
 .site-about .back-to-top:hover svg {
   fill: #ff5e00;
 }
+
+/* line 3, scss/blocks/_b-contact.scss */
+.site-contact .logo svg {
+  fill: #fff;
+}
+/* line 8, scss/blocks/_b-contact.scss */
+.site-contact .toggleNav span {
+  background: #fff !important;
+}
+/* line 11, scss/blocks/_b-contact.scss */
+.site-contact .toggleNav:before {
+  display: none;
+}
+/* line 16, scss/blocks/_b-contact.scss */
+.site-contact .breadcrumbs .active {
+  color: #fff;
+}
+/* line 20, scss/blocks/_b-contact.scss */
+.site-contact .gm-style > div:first-child > div:nth-child(3) > div:nth-child(4) > div:first-child {
+  opacity: .9;
+}
+/* line 23, scss/blocks/_b-contact.scss */
+.site-contact .contact-info-title {
+  position: relative;
+}

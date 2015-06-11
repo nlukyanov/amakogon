@@ -10,7 +10,7 @@
 
 	siteItems.elements = angular.module('siteItems.elements', ['siteLogo', 'siteNav', 'siteSocial', 'siteBreadcrumbs', 'backToTop', 'siteTags', 'siteSearch', 'modal', 'cropSlider', 'percentage', 'timeline', 'piechart']);
 
-	siteItems.components = angular.module('siteItems.components', ['parallax', 'contactMap', 'sitePhotos', 'errorPage', 'siteAlbum', 'siteBlog', 'sitePost', 'siteAbout']);
+	siteItems.components = angular.module('siteItems.components', ['parallax', 'contactMap', 'sitePhotos', 'errorPage', 'siteAlbum', 'siteBlog', 'sitePost', 'siteAbout', 'siteContact']);
 
 	var site = angular.module('site', ['siteItems.main', 'siteItems.components', 'siteItems.elements'/*, 'site.factories', 'site.widgets'*/]);
 	

@@ -58,7 +58,7 @@
 						}
 					];
 				}
-				else if ( $location.$$path == '/contact' ) {
+				else if ( $location.$$path == '/contacts' ) {
 					scope.breadcrumbs = [
 						{
 							title: 'Главная',
@@ -66,7 +66,7 @@
 						},
 						{
 							title: 'Контакты',
-							url: '/contat'
+							url: '/contacts'
 						}
 					];
 				}
