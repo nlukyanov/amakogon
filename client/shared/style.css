@@ -3437,3 +3437,16 @@ site-social + site-search .search-block {
 .site-contact .contact-info-title {
   position: relative;
 }
+/* line 28, scss/blocks/_b-contact.scss */
+.site-contact .search-block a svg {
+  fill: #fff !important;
+}
+/* line 32, scss/blocks/_b-contact.scss */
+.site-contact .search-block a:hover svg {
+  fill: #ff5e00 !important;
+}
+/* line 38, scss/blocks/_b-contact.scss */
+.site-contact .search-block input[type="text"],
+.site-contact .search-block label {
+  color: #fff !important;
+}

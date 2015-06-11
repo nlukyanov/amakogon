@@ -23,4 +23,20 @@
 	.contact-info-title {
 		position: relative;
 	}
+	.search-block {
+		a {
+			svg {
+				fill: #fff !important;
+			}
+			&:hover {
+				svg {
+					fill: #ff5e00 !important;
+				}
+			}
+		}
+		input[type="text"],
+		label {
+			color: #fff !important;
+		}
+	}
 }
