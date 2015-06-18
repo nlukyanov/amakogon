@@ -9,7 +9,6 @@
 		"socket.io": "*",
 		"express": "*",
 		"mongoose": "*",
-		"nodemon": "*",
-		"node-sass": "*"
+		"nodemon": "*"
 	}
 }

@@ -1,0 +1,34 @@
+<nav class="admin-nav">
+	<ul id="nav">
+		<li class="nav-item">
+			<a ng-href="/#/" class="nav-link" ng-class="{current: path == 'dashboard'}" ng-click="scrollTo($event, 1)">
+				<span>Главная</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a ng-href="/#/photos" class="nav-link" ng-class="{current: path == 'photos'}" ng-click="scrollTo($event, 2)">
+				<span>Фотографии</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a ng-href="/#/photos" class="nav-link" ng-class="{current: path == 'tags'}" ng-click="scrollTo($event, 2)">
+				<span>Теги</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a ng-href="/#/blog" class="nav-link" ng-class="{current: path == 'blog'}" ng-click="scrollTo($event, 3)">
+				<span>Блог</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a ng-href="/#/about" class="nav-link" ng-class="{current: path == 'about'}" ng-click="scrollTo($event, 4)">
+				<span>Обо мне</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a ng-href="/#/contacts" class="nav-link" ng-class="{current: path == 'contact'}" ng-click="scrollTo($event, 5)">
+				<span>Контакты</span>
+			</a>
+		</li>
+	</ul>
+</nav>

@@ -50,8 +50,8 @@
 			else if ( $location.$$path == '/blog' ) {
 				scope.path = 'blog';
 			}
-			else if ( $location.$$path == '/cv' ) {
-				scope.path = 'cv';
+			else if ( $location.$$path == '/about' ) {
+				scope.path = 'about';
 			}
 			else if ( $location.$$path == '/contact' ) {
 				scope.path = 'contact';

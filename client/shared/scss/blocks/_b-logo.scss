@@ -61,3 +61,28 @@
 		}
 	}
 }
+.admin {
+	header {
+		background: #202020;
+		overflow: hidden;
+		height: 100px;
+		margin: 0 -9999px;
+		padding: 0 9999px;
+		.logo {
+			width: 420px;
+			height: 60px;
+			margin-bottom: 20px;
+			a {
+				svg {
+					fill: #fff;
+				}
+			}
+			.logo-desktop {
+				display: block !important;
+			}
+			.logo-mobile {
+				display: none !important;
+			}
+		}
+	}
+}

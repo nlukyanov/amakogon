@@ -1,0 +1,22 @@
+.admin-nav {
+	text-align: center;
+	text-transform: uppercase;
+	padding: 20px 0;
+	#nav {
+		.nav-item {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: -5px;
+			padding: 0 20px;
+			a {
+				color: #202020;
+				text-decoration: none;
+				@include transition($property: color, $duration: .25s);
+				&:hover,
+				&.current {
+					color: #ff5e00;
+				}
+			}
+		}
+	}
+}
