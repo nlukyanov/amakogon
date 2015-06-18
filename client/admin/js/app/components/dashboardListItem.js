@@ -54,7 +54,6 @@
 							originalDesc = data.desc;
 							originalImg = data.image;
 
-							scope.slide = data;
 							scope.isUpdated = false;
 							scope.$apply();
 						}
