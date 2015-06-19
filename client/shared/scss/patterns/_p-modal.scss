@@ -91,17 +91,22 @@
 				text-align: center;
 				overflow: hidden;
 				color: #cacaca;
-				border: 1px solid #cacaca;
 				border-radius: 100%;
 				font-size: 18px;
 				line-height: 25px;
 				text-decoration: none;
 				-webkit-transform: translateZ(0);
 				transform: translateZ(0);
-				@include transition($property: (color, border-color), $duration: .25s);
+				svg {
+					width: 15px;
+					height: 100%;
+					fill: #cacaca;
+					@include transition($property: fill, $duration: .25s);
+				}
 				&:hover {
-					border-color: #ff5e00;
-					color: #ff5e00;
+					svg {
+						fill: #ff5e00;
+					}
 				}
 			}
 		}

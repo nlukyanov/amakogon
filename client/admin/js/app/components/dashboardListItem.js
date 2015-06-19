@@ -2,7 +2,7 @@
 
 	var dashboardListItem = angular.module('dashboardListItem', []);
 
-	dashboardListItem.directive('dashboardListItem', function($http, $location, $timeout) {
+	dashboardListItem.directive('dashboardListItem', function($http, $location, $timeout, $rootScope) {
 		return {
 			restrict: 'A',
 			link: link,
@@ -49,7 +49,9 @@
 					socket.emit('update dashboard', scope.item, scope.slide.image, scope.slide.title.label, scope.slide.desc);
 					socket.on('dashboard updated', function(data) {
 						if ( data.name === scope.item ) {
-							element.find('.item-overlay').removeClass('saving');
+							$timeout(function() {
+								element.find('.item-overlay').removeClass('saving');
+							}, 500);
 							originalTitle = data.title.label;
 							originalDesc = data.desc;
 							originalImg = data.image;

@@ -22,16 +22,20 @@
 	<script type="text/javascript" src="../client/admin/js/app/elements/adminLogo.js"></script>
 	<script type="text/javascript" src="../client/admin/js/app/elements/adminNav.js"></script>
 	<script type="text/javascript" src="../client/admin/js/app/elements/maxlength.js"></script>
+	<script type="text/javascript" src="../client/admin/js/app/elements/modal.js"></script>
 	<!-- ELEMENTS end -->
 
 	<!-- COMPONENTS start -->
 	<script type="text/javascript" src="../client/admin/js/app/components/dashboardListItem.js"></script>
+	<script type="text/javascript" src="../client/admin/js/app/components/adminPhotos.js"></script>
+	<script type="text/javascript" src="../client/admin/js/app/components/adminAlbum.js"></script>
 	<!-- COMPONENTS end -->
 
 	<script>
 		var config = {
 			prefix: '/client/admin/'
 		}
+		var socket = io.connect();
 	</script>
 </head>
 <body>
