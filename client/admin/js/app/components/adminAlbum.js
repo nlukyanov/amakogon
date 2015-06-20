@@ -12,11 +12,13 @@
 				originalTitle = '',
 				originalImg = '',
 				originalTags = [],
-				originalDesc = '';
+				originalDesc = '',
+				originalPhotos = [];
 
 			scope.newTag = '';
 			scope.showTags = false;
-			scope.newPhotos = [];
+			scope.hasPhotos = false;
+			scope.photosUpdated = false;
 
 			scope.album = '';
 			socket.emit('load album', url);
@@ -33,7 +35,17 @@
 				else {
 					$location.path('/admin/photos/');
 				}
-				scope.$apply();
+				socket.emit('load album photos', data.title);
+				socket.off('album photos loaded').on('album photos loaded', function(data) {
+					scope.photos = data;
+					for ( i in data ) {
+						originalPhotos.push(data[i]);
+					}
+					if ( scope.photos.length ) {
+						scope.hasPhotos = true;
+					}
+					scope.$apply();
+				});
 			});
 
 			scope.canAddTag = false;
@@ -107,6 +119,7 @@
 			scope.updateAlbum = function(e) {
 				e.preventDefault();
 				if ( scope.isUpdated ) {
+					scope.isUpdated = false;
 					$(e.target).closest('.admin-form').find('.item-overlay').addClass('saving');
 					socket.emit('update album', scope.album, originalTitle);
 				}
@@ -156,9 +169,11 @@
 			scope.removeAlbum = function(e, url, title) {
 				e.preventDefault();
 				if ( confirm('Вы уверены, что хотите удалить альбом "' + title + '"') ) {
-					socket.emit('remove album', url);
+					socket.emit('remove album', url, title);
 					$location.path('/admin/photos');
-					scope.$apply();
+					$timeout(function() {
+						scope.$apply();
+					}, 0);
 				}
 			};
 
@@ -172,23 +187,118 @@
 			element.find('#newPhotos').on('change', function(e) {
 				var files = $(e.currentTarget)[0].files;
 
-				for ( var i = 0; i < files.length; i ++ ) {
-					var reader = new FileReader();
+				scope.loadingFile = 0;
+
+				scope.$watch('loadingFile', function() {
+					if ( scope.loadingFile == 0 ) {
+						$('body').addClass('no-events');
+					}
+					if ( scope.loadingFile == files.length - 1 ) {
+						$('body').removeClass('no-events');
+					}
+				});
+
+				scope.addImage(files, files.length);
+				scope.photosUpdated = true;
+			});
+			scope.addImage = function(el, length) {
+				if ( scope.loadingFile <= length ) {
+					var reader = new FileReader(),
+						image = document.createElement('img'),
+						k = 2560,
+						width = 0,
+						height = 0;
 
 					reader.onload = function (e) {
-						var duplicate = false;
-						for ( var x = 0; x < scope.newPhotos.length; x ++ ) {
-							if ( scope.newPhotos[x] == e.target.result ) {
-								duplicate = true;
+
+						image.src = e.target.result;
+
+						$(image).on('load', function() {
+							if ( image.width > image.height ) {
+								width = k;
+								height = k * image.height / image.width;
+							}
+							else if ( image.width < image.height ) {
+								height = k
+								width = k * image.width / image.height;
+							}
+							else {
+								width = height = k;
+							}
+
+							var canvas = document.createElement('canvas');
+
+							canvas.width = width;
+							canvas.height = height;
+
+							var ctx = canvas.getContext('2d');
+							ctx.drawImage(image, 0, 0, width, height);
+							var shrinked = canvas.toDataURL('image/jpeg');
+
+							scope.photos.push({'image': shrinked, 'title': '', 'desc': '', 'parent': scope.album.title});
+							scope.hasPhotos = true;
+							scope.$apply();
+
+							scope.loadingFile ++;
+							scope.addImage(el, length);
+							$(window).scrollTop(9999);
+						});
+					}
+					if ( el[scope.loadingFile] ) {
+						reader.readAsDataURL(el[scope.loadingFile]);
+					}
+				}
+			};
+
+			scope.updatePhotos = function(e, parent, folder) {
+				e.preventDefault();
+
+				if ( scope.photosUpdated ) {
+					scope.photosUpdated = false;
+					socket.emit('update album photos', parent, folder, scope.photos);
+					element.find('.admin-album-list .item-overlay').addClass('saving');
+					socket.off('album photos updated').on('album photos updated', function() {
+						$timeout(function() {
+							element.find('.admin-album-list .item-overlay').removeClass('saving');
+						}, 500);
+					});
+				}
+			};
+
+			scope.removePhoto = function(e, photo, photoArr) {
+				e.preventDefault();
+				var target = $(e.target);
+				if ( confirm('Вы точно хотите удалить эту фотографию?') ) {
+					if ( target.closest('.admin-album').find('li').not('.new-album').length == 1 ) {
+						scope.hasPhotos = false;
+					}
+					target.closest('li').remove();
+					scope.photos.splice(scope.photos.indexOf(photoArr), 1);
+					socket.emit('remove album photo', photo);
+				}
+			};
+
+			scope.removeAllPhotos = function(e, parent, folder) {
+				e.preventDefault();
+				var target = $(e.target);
+				if ( confirm('Вы точно хотите удалить все фотографии в альбоме?') ) {
+					target.closest('.admin-album').find('li').not('.new-album').remove();
+					scope.hasPhotos = false;
+					scope.photos = [];
+					socket.emit('remove album photos', parent, folder);
+					element.find('#newPhotos').replaceWith(element.find('#newPhotos').clone(true));
+				}
+			};
+
+			scope.$watchCollection('photos', function() {
+				if ( scope.photos ) {
+					for ( x in scope.photos ) {
+						for ( y in originalPhotos ) {
+							if ( scope.photos[x].title != originalPhotos[y].title || scope.photos[x].desc != originalPhotos[y].desc ) {
+								scope.photosUpdated = true;
 							}
 						}
-						if ( !duplicate ) {
-							scope.newPhotos.push({'image': e.target.result, 'title': '', 'desc': '', 'parent': scope.album.title});
-							scope.$apply();
-						}
 					}
-
-					reader.readAsDataURL(files[i]);
 				}
 			});
 		};

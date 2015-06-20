@@ -19,6 +19,11 @@ body {
 	&.pageLoaded {
 		overflow: auto;
 	}
+	&.no-events {
+		* {
+			pointer-events: none;
+		}
+	}
 }
 .page-wrapper {
 	overflow: hidden;

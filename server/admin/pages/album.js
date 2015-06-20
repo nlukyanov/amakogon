@@ -10,8 +10,8 @@ var mongoose = require('mongoose'),
 
 var Album = function() {};
 
-Album.getAlbum = function(url, callback) {
-	AlbumModel.findOne({url: url}, function(error, data) {
+Album.getPhotos = function(parent, callback) {
+	AlbumModel.find({'parent': parent}, function(error, data) {
 		if ( error ) {
 			callback(error);
 		}
@@ -20,55 +20,96 @@ Album.getAlbum = function(url, callback) {
 		}
 	});
 }
-Album.addPhotos = function(title, desc, img, callback) {
-	var self = this,
-		url = self.transliterate(title);
+Album.updatePhotos = function(parent, folder, photos, callback) {
+	var self = this;
 
-	var today = new Date(),
-		dd = '' + today.getDate(),
-		mm = '' + today.getMonth(),
-		yyyy = '' + today.getFullYear();
+	folder = folder.split('').reverse().join('');
+	folder = folder.substr(0, folder.indexOf('/'));
+	folder = folder.substr(folder.indexOf('.') + 1, folder.length);
+	folder = folder.split('').reverse().join('');
+	folder = './uploads/albums/' + folder + '/';
 
-	if ( mm.length == 1 ) {
-		mm = '0' + mm;
-	}
-	if ( img ) {
-		var image = img.replace(/^data:image\/(jpg|jpeg);base64,/,'');
+	var index = 0;
 
-		fs.writeFile('./uploads/Album/' + title + '.jpg', image, 'base64', function(error) {
-			if ( error ) {
-				return console.log(error);
-			}
-			else {
-				image = '../uploads/Album/' + title + '.jpg';
+	createImage(photos.length);
 
-				var album = new AlbumModel({title: title, desc: desc, image: image, url: url, date: dd + '.' + mm + '.' + yyyy});
+	function createImage(length) {
+		if ( index < length ) {
+			if ( photos[index].image.indexOf('data:image') == 0 ) {
+				var image = photos[index].image.replace(/^data:image\/(jpg|jpeg);base64,/,'');
+				var today = new Date(),
+					dd = '' + today.getDate(),
+					mm = '' + today.getMonth(),
+					yyyy = '' + today.getFullYear(),
+					h = '' + today.getHours(),
+					m = '' + today.getMinutes(),
+					s = '' + today.getSeconds();
+					ms = '' + today.getMilliseconds();
 
-				album.save(function(error) {
+				if ( mm.length == 1 ) {
+					mm = '0' + mm;
+				}
+
+				var time = dd + '.' + mm + '.' + yyyy + '_' + h + '.' + m + '.' + s + '.' + ms + '_';
+				fs.writeFile(folder + time + index + '.jpg', image, 'base64', function(error) {
 					if ( error ) {
-						callback(error);
+						return console.log(error);
 					}
 					else {
-						callback(null, url);
+						image = folder + time + index + '.jpg';
+
+						var album = new AlbumModel({title: photos[index].title, desc: photos[index].desc, image: image, parent: photos[index].parent});
+
+						album.save(function() {
+							index ++;
+							createImage(length);
+						});
 					}
 				});
 			}
-		});
-	}
-	else {
-		var album = new AlbumModel({title: title, desc: desc, image: image, url: url, date: dd + '.' + mm + '.' + yyyy});
-
-		album.save(function(error) {
-			if ( error ) {
-				callback(error);
-			}
 			else {
-				callback(null, url);
+				AlbumModel.findOne({'image': photos[index].image}, function(error, data) {
+					data.title = photos[index].title;
+					data.desc = photos[index].desc;
+					index ++;
+					createImage(length);
+				});
 			}
-		});
+			if ( index == length - 1 ) {
+				callback();
+			}
+		}
 	}
 }
-Album.removePhoto = function(url, callback) {
-	//AlbumModel.findOne({url: url}).remove().exec()
+Album.removePhoto = function(photo, callback) {
+	if ( photo.indexOf('data:image') == -1 ) {
+		fs.unlinkSync(photo);
+	}
+	AlbumModel.findOne({'image': photo}).remove().exec();
+}
+Album.removePhotos = function(parent, folder, callback) {
+	AlbumModel.find({'parent': parent}, function() {
+		folder = folder.split('').reverse().join('');
+		folder = folder.substr(0, folder.indexOf('/'));
+		folder = folder.substr(folder.indexOf('.') + 1, folder.length);
+		folder = folder.split('').reverse().join('');
+		folder = './uploads/albums/' + folder;
+
+		var files = fs.readdirSync(folder);
+		for ( file in files ) {
+			fs.unlinkSync(folder + '/' + files[file]);
+		}
+	});
+	setTimeout(function() {
+		AlbumModel.find({'parent': parent}).remove().exec();
+	}, 0);
+}
+Album.updateParent = function(origParent, parent) {
+	AlbumModel.find({'parent': origParent}, function(error, data) {
+		for ( i in data ) {
+			data[i].parent = parent;
+			data[i].save();
+		}
+	});
 }
 module.exports = Album;

@@ -132,31 +132,35 @@ body {
 body.pageLoaded {
   overflow: auto;
 }
-
 /* line 23, scss/base/_html-body.scss */
+body.no-events * {
+  pointer-events: none;
+}
+
+/* line 28, scss/base/_html-body.scss */
 .page-wrapper {
   overflow: hidden;
   background: #fff;
 }
 
-/* line 27, scss/base/_html-body.scss */
+/* line 32, scss/base/_html-body.scss */
 .desktop-hidden {
   display: none;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 27, scss/base/_html-body.scss */
+  /* line 32, scss/base/_html-body.scss */
   .desktop-hidden {
     display: block;
   }
 }
 
-/* line 33, scss/base/_html-body.scss */
+/* line 38, scss/base/_html-body.scss */
 .admin {
   min-width: 1000px;
   overflow-y: auto;
   overflow-x: hidden !important;
 }
-/* line 37, scss/base/_html-body.scss */
+/* line 42, scss/base/_html-body.scss */
 .admin .page-wrapper {
   width: 960px;
   margin: 0 auto;
@@ -3936,39 +3940,44 @@ site-social + site-search .search-block {
   font-weight: 300;
   float: right;
   outline: 0;
+  text-decoration: none;
   transition-duration: 0.25s;
   transition-property: background;
   transition-timing-function: ease-in-out;
 }
-/* line 162, scss/blocks/_b-adminPhotos.scss */
+/* line 163, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn:hover {
   background: #ff5e00;
 }
-/* line 165, scss/blocks/_b-adminPhotos.scss */
+/* line 167, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .btn.btn-removeAll:hover {
+  background: #f00;
+}
+/* line 171, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn.disabled {
   cursor: default;
   background: #cacaca;
 }
-/* line 171, scss/blocks/_b-adminPhotos.scss */
+/* line 177, scss/blocks/_b-adminPhotos.scss */
 .admin-form .new-tags {
   text-align: left;
   text-transform: none;
   padding-top: 20px;
   overflow: hidden;
 }
-/* line 176, scss/blocks/_b-adminPhotos.scss */
+/* line 182, scss/blocks/_b-adminPhotos.scss */
 .admin-form .new-tags .new-tag {
   cursor: pointer;
   float: left;
   clear: left;
 }
-/* line 180, scss/blocks/_b-adminPhotos.scss */
+/* line 186, scss/blocks/_b-adminPhotos.scss */
 .admin-form .new-tags .new-tag span {
   color: #ff0000;
   font-weight: 700;
 }
 
-/* line 188, scss/blocks/_b-adminPhotos.scss */
+/* line 194, scss/blocks/_b-adminPhotos.scss */
 .admin-photos,
 .admin-album-list {
   display: -webkit-box;
@@ -3983,7 +3992,7 @@ site-social + site-search .search-block {
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
 }
-/* line 201, scss/blocks/_b-adminPhotos.scss */
+/* line 207, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li,
 .admin-album-list li {
   width: 25%;
@@ -3994,19 +4003,19 @@ site-social + site-search .search-block {
   text-align: center;
   position: relative;
 }
-/* line 209, scss/blocks/_b-adminPhotos.scss */
+/* line 215, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li a,
 .admin-album-list li a {
   text-decoration: none;
   display: block;
 }
-/* line 213, scss/blocks/_b-adminPhotos.scss */
+/* line 219, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li a:hover .image-holder,
 .admin-album-list li a:hover .image-holder {
   -webkit-transform: scale(1) translateZ(0);
   transform: scale(1) translateZ(0);
 }
-/* line 219, scss/blocks/_b-adminPhotos.scss */
+/* line 225, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .image-holder,
 .admin-album-list li .image-holder {
   margin-bottom: 10px;
@@ -4022,13 +4031,18 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 233, scss/blocks/_b-adminPhotos.scss */
+/* line 238, scss/blocks/_b-adminPhotos.scss */
+.admin-photos li.new-album + .new-album,
+.admin-album-list li.new-album + .new-album {
+  display: none;
+}
+/* line 242, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album .image-holder .image-placeholder,
 .admin-album-list li.new-album .image-holder .image-placeholder {
   padding-top: 100%;
   position: relative;
 }
-/* line 236, scss/blocks/_b-adminPhotos.scss */
+/* line 245, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album .image-holder .image-placeholder svg,
 .admin-album-list li.new-album .image-holder .image-placeholder svg {
   position: absolute;
@@ -4045,34 +4059,59 @@ site-social + site-search .search-block {
   transition-property: transform, fill;
   transition-timing-function: ease-in-out;
 }
-/* line 254, scss/blocks/_b-adminPhotos.scss */
+/* line 263, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album:hover .image-holder .image-placeholder svg,
 .admin-album-list li.new-album:hover .image-holder .image-placeholder svg {
   fill: #ff5e00;
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 262, scss/blocks/_b-adminPhotos.scss */
+/* line 271, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album input[type="file"],
 .admin-album-list li.new-album input[type="file"] {
   position: absolute;
   z-index: -9999;
   opacity: 0;
 }
+/* line 277, scss/blocks/_b-adminPhotos.scss */
+.admin-photos li .btn-remove,
+.admin-album-list li .btn-remove {
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+/* line 281, scss/blocks/_b-adminPhotos.scss */
+.admin-photos li .btn-remove svg,
+.admin-album-list li .btn-remove svg {
+  width: 20px;
+  height: 20px;
+  fill: #f00;
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+  transition-duration: 0.25s;
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
+}
+/* line 290, scss/blocks/_b-adminPhotos.scss */
+.admin-photos li .btn-remove:hover svg,
+.admin-album-list li .btn-remove:hover svg {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
 
-/* line 270, scss/blocks/_b-adminPhotos.scss */
+/* line 298, scss/blocks/_b-adminPhotos.scss */
 .admin-form {
   position: relative;
 }
 
-/* line 275, scss/blocks/_b-adminPhotos.scss */
+/* line 303, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove,
 .album-info .btn-remove {
   position: absolute;
   right: 20px;
   top: 0;
 }
-/* line 279, scss/blocks/_b-adminPhotos.scss */
+/* line 307, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove svg,
 .album-info .btn-remove svg {
   width: 20px;
@@ -4084,51 +4123,14 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 288, scss/blocks/_b-adminPhotos.scss */
+/* line 316, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove:hover svg,
 .album-info .btn-remove:hover svg {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-/* line 295, scss/blocks/_b-adminPhotos.scss */
+/* line 323, scss/blocks/_b-adminPhotos.scss */
 .admin-album-list {
-  /*display: block;
-  li {
-  	width: 100%;
-  	text-align: left;
-  	@include clearfix;
-  	> * {
-  		overflow: hidden;
-  	}
-  	.image-holder {
-  		float: left;
-  		width: 300px;
-  		padding-right: 40px;
-  		box-sizing: border-box;
-  		.image-placeholder {
-  			padding: 0;
-  			svg {
-  				position: static !important;
-  				margin: 0 !important;
-  			}
-  		}
-  	}
-  	&.new-album {
-  		a {
-  			display: inline-block;
-  			vertical-align: top;
-  			.image-holder {
-  				width: auto;
-  				padding-right: 20px;
-  				padding-bottom: 0;
-  			}
-  			span {
-  				display: block;
-  				line-height: 30px;
-  				overflow: hidden;
-  			}
-  		}
-  	}
-  }*/
+  position: relative;
 }

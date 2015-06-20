@@ -100,6 +100,7 @@
 				if ( !scope.canSave || !scope.hasImage ) {
 					return false;
 				}
+				scope.canSave = false;
 
 				socket.emit('add album', title.val(), desc.val(), scope.newImage, scope.tags);
 				socket.off('album exists').on('album exists', function() {
@@ -115,7 +116,7 @@
 			scope.removeAlbum = function(e, url, title) {
 				e.preventDefault();
 				if ( confirm('Вы уверены, что хотите удалить альбом "' + title + '"') ) {
-					socket.emit('remove album', url);
+					socket.emit('remove album', url, title);
 					$(e.currentTarget).closest('li').remove();
 				}
 			};
@@ -130,12 +131,41 @@
 			};
 
 			element.find('input[type="file"]').on('change', function(e) {
-				var reader = new FileReader();
+				var reader = new FileReader(),
+					image = document.createElement('img'),
+					k = 2560,
+					width = 0,
+					height = 0;
 
 				reader.onload = function (e) {
-					scope.newImage = e.target.result;
-					scope.hasImage = true;
-					scope.$apply();
+					image.src = e.target.result;
+
+					$(image).on('load', function() {
+						if ( image.width > image.height ) {
+							width = k;
+							height = k * image.height / image.width;
+						}
+						else if ( image.width < image.height ) {
+							height = k
+							width = k * image.width / image.height;
+						}
+						else {
+							width = height = k;
+						}
+
+						var canvas = document.createElement('canvas');
+
+						canvas.width = width;
+						canvas.height = height;
+
+						var ctx = canvas.getContext('2d');
+						ctx.drawImage(image, 0, 0, width, height);
+						var shrinked = canvas.toDataURL('image/jpeg');
+
+						scope.newImage = shrinked;
+						scope.hasImage = true;
+						scope.$apply();
+					});
 				}
 
 				reader.readAsDataURL($(e.currentTarget)[0].files[0]);

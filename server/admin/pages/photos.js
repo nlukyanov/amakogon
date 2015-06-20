@@ -133,11 +133,13 @@ Photos.updateAlbum = function(album, callback) {
 			mm = '0' + mm;
 		}
 
+		var time = dd + '.' + mm + '.' + yyyy + '_' + h + '.' + m + '.' + s + '_';
+
 		PhotosModel.findOne({'_id': album._id}, function(error, data) {
 			fs.unlinkSync(data.image);
 		});
-		fs.writeFile('./uploads/photos/' + dd + '.' + mm + '.' + yyyy + '_' + h + '.' + m + '.' + s + '_' + album.url + '.jpg', image, 'base64', function(error) {
-			image = './uploads/photos/' + dd + '.' + mm + '.' + yyyy + '_' + h + '.' + m + '.' + s + '_' + album.url + '.jpg';
+		fs.writeFile('./uploads/photos/' + time + album.url + '.jpg', image, 'base64', function(error) {
+			image = './uploads/photos/' + time + album.url + '.jpg';
 			if ( error ) {
 				return console.log(error);
 			}
