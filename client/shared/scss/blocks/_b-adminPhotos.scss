@@ -234,13 +234,21 @@
 			transform: scale(.9) translateZ(0);
 			@include transition($property: transform, $duration: .25s);
 		}
+		&:nth-child(4n + 1) {
+			&:not(:first-child) {
+				&.new-album {
+					width: 100%;
+				}
+			}
+		}
 		&.new-album {
+			margin-bottom: 0;
 			+ .new-album {
 				display: none;
 			}
 			.image-holder {
 				.image-placeholder {
-					padding-top: 100%;
+					height: 100%;
 					position: relative;
 					svg {
 						position: absolute;

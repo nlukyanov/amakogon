@@ -4031,18 +4031,28 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 238, scss/blocks/_b-adminPhotos.scss */
+/* line 239, scss/blocks/_b-adminPhotos.scss */
+.admin-photos li:nth-child(4n + 1):not(:first-child).new-album,
+.admin-album-list li:nth-child(4n + 1):not(:first-child).new-album {
+  width: 100%;
+}
+/* line 244, scss/blocks/_b-adminPhotos.scss */
+.admin-photos li.new-album,
+.admin-album-list li.new-album {
+  margin-bottom: 0;
+}
+/* line 246, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album + .new-album,
 .admin-album-list li.new-album + .new-album {
   display: none;
 }
-/* line 242, scss/blocks/_b-adminPhotos.scss */
+/* line 250, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album .image-holder .image-placeholder,
 .admin-album-list li.new-album .image-holder .image-placeholder {
-  padding-top: 100%;
+  height: 100%;
   position: relative;
 }
-/* line 245, scss/blocks/_b-adminPhotos.scss */
+/* line 253, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album .image-holder .image-placeholder svg,
 .admin-album-list li.new-album .image-holder .image-placeholder svg {
   position: absolute;
@@ -4059,28 +4069,28 @@ site-social + site-search .search-block {
   transition-property: transform, fill;
   transition-timing-function: ease-in-out;
 }
-/* line 263, scss/blocks/_b-adminPhotos.scss */
+/* line 271, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album:hover .image-holder .image-placeholder svg,
 .admin-album-list li.new-album:hover .image-holder .image-placeholder svg {
   fill: #ff5e00;
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 271, scss/blocks/_b-adminPhotos.scss */
+/* line 279, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album input[type="file"],
 .admin-album-list li.new-album input[type="file"] {
   position: absolute;
   z-index: -9999;
   opacity: 0;
 }
-/* line 277, scss/blocks/_b-adminPhotos.scss */
+/* line 285, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .btn-remove,
 .admin-album-list li .btn-remove {
   position: absolute;
   right: 20px;
   top: 0;
 }
-/* line 281, scss/blocks/_b-adminPhotos.scss */
+/* line 289, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .btn-remove svg,
 .admin-album-list li .btn-remove svg {
   width: 20px;
@@ -4092,26 +4102,26 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 290, scss/blocks/_b-adminPhotos.scss */
+/* line 298, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .btn-remove:hover svg,
 .admin-album-list li .btn-remove:hover svg {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-/* line 298, scss/blocks/_b-adminPhotos.scss */
+/* line 306, scss/blocks/_b-adminPhotos.scss */
 .admin-form {
   position: relative;
 }
 
-/* line 303, scss/blocks/_b-adminPhotos.scss */
+/* line 311, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove,
 .album-info .btn-remove {
   position: absolute;
   right: 20px;
   top: 0;
 }
-/* line 307, scss/blocks/_b-adminPhotos.scss */
+/* line 315, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove svg,
 .album-info .btn-remove svg {
   width: 20px;
@@ -4123,14 +4133,14 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 316, scss/blocks/_b-adminPhotos.scss */
+/* line 324, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove:hover svg,
 .album-info .btn-remove:hover svg {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-/* line 323, scss/blocks/_b-adminPhotos.scss */
+/* line 331, scss/blocks/_b-adminPhotos.scss */
 .admin-album-list {
   position: relative;
 }

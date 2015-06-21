@@ -182,20 +182,15 @@ Photos.updateAlbum = function(album, callback) {
 Photos.removeAlbum = function(url, callback) {
 	PhotosModel.findOne({'url': url}, function(error, data) {
 		fs.unlinkSync(data.image);
-		
-		var folder = data.image;
-
-		folder = folder.split('').reverse().join('');
-		folder = folder.substr(0, folder.indexOf('/'));
-		folder = folder.substr(folder.indexOf('.') + 1, folder.length);
-		folder = folder.split('').reverse().join('');
-		folder = './uploads/albums/' + folder;
-
-		var files = fs.readdirSync(folder);
-		for ( file in files ) {
-			fs.unlinkSync(folder + '/' + files[file]);
-		}
-		fs.rmdir(folder);
+		setTimeout(function() {
+			folder = data.image;
+			folder = folder.split('').reverse().join('');
+			folder = folder.substr(0, folder.indexOf('/'));
+			folder = folder.substr(folder.indexOf('.') + 1, folder.length);
+			folder = folder.split('').reverse().join('');
+			folder = './uploads/albums/' + folder;
+			fs.rmdir(folder);
+		}, 1000);
 	});
 	setTimeout(function() {
 		PhotosModel.findOne({'url': url}).remove().exec();

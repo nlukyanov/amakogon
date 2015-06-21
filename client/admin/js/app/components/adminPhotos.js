@@ -113,16 +113,16 @@
 				});
 			};
 
-			scope.removeAlbum = function(e, url, title) {
+			scope.removeAlbum = function(e, url, title, image) {
 				e.preventDefault();
 				if ( confirm('Вы уверены, что хотите удалить альбом "' + title + '"') ) {
-					socket.emit('remove album', url, title);
+					socket.emit('remove album', url, title, image);
 					$(e.currentTarget).closest('li').remove();
 				}
 			};
 
 			scope.triggerUpload = function(e) {
-				var item = $(e.target).closest('li'),
+				var item = $(e.target).closest('.admin-form'),
 					input = item.find('input[type="file"]');
 
 				$timeout(function() {

@@ -166,10 +166,10 @@
 				reader.readAsDataURL($(e.currentTarget)[0].files[0]);
 			});
 
-			scope.removeAlbum = function(e, url, title) {
+			scope.removeAlbum = function(e, url, title, image) {
 				e.preventDefault();
 				if ( confirm('Вы уверены, что хотите удалить альбом "' + title + '"') ) {
-					socket.emit('remove album', url, title);
+					socket.emit('remove album', url, title, image);
 					$location.path('/admin/photos');
 					$timeout(function() {
 						scope.$apply();

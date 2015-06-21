@@ -80,9 +80,9 @@ var Socket = function(server) {
 				}
 			});
 		});
-		socket.on('remove album', function(url, title) {
+		socket.on('remove album', function(url, title, folder) {
 			photosModel.removeAlbum(url);
-			albumModel.removePhotos(title);
+			albumModel.removePhotos(title, folder);
 		});
 		socket.on('load album', function(url) {
 			photosModel.getAlbum(url, function(error, data) {
