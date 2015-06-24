@@ -9,13 +9,15 @@
 		};
 		function link(scope, element, attrs) {
 			socket.emit('load tags');
-			socket.on('tags loaded', function(data) {
+			socket.off('tags loaded').on('tags loaded', function(data) {
 				scope.tags = data;
 				scope.types = [];
 
 				var index = 0;
 
-				createTags(scope.tags.length);
+				if ( scope.tags.length ) {
+					createTags(scope.tags.length);
+				}
 
 				function createTags(length) {
 					if ( index < length ) {
@@ -39,9 +41,11 @@
 
 						socket.emit('check tags', scope.tags[index].tag);
 						socket.off('tags checked').on('tags checked', function(albumDisabled, photoDisabled) {
-							scope.tags[index].disabled = albumDisabled && photoDisabled;
-							index ++;
-							createTags(length);
+							if ( scope.tags[index] ) {
+								scope.tags[index].disabled = albumDisabled && photoDisabled;
+								index ++;
+								createTags(length);
+							}
 						});
 					}
 					if ( index == length ) {
