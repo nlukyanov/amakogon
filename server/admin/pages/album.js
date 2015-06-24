@@ -131,4 +131,25 @@ Album.updateParent = function(origParent, parent) {
 		}
 	});
 }
+Album.removeTag = function(tag, callback) {
+	AlbumModel.find({'tags': tag}, function(error, data) {
+		for ( var i = 0; i < data.length; i++ ) {
+			var index = data[i].tags.indexOf(tag);
+
+			data[i].tags.splice(index, 1);
+			data[i].save();
+		}
+		callback();
+	});
+};
+Album.checkPhotosByTag = function(tag, callback) {
+	AlbumModel.findOne({'tags': tag}, function(error, data) {
+		if ( data !== null ) {
+			callback(false);
+		}
+		else {
+			callback(true);
+		}
+	});
+};
 module.exports = Album;

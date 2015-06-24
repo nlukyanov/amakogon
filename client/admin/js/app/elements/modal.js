@@ -2,7 +2,7 @@
 
 	var modal = angular.module('modal', []);
 
-	modal.directive('modal', function($http, $location, $timeout) {
+	modal.directive('modal', function($http, $location, $timeout, $rootScope) {
 		return {
 			restrict: 'A',
 			link: link
@@ -16,6 +16,7 @@
 				scope.popup.addClass('isAnimated').addClass('visible');
 				$('body').addClass('isModal');
 				scope.popup.find('input[type="text"]').first().trigger('focus');
+				$rootScope.$broadcast('modal open', attrs.target);
 			};
 
 			scope.closeModal = function(e) {
@@ -23,6 +24,7 @@
 
 				$('.modal').removeClass('isAnimated').removeClass('visible');
 				$('body').removeClass('isModal');
+				$rootScope.$broadcast('modal closed');
 			};
 
 			scope.prevModal = function(e, target, popup) {
@@ -40,6 +42,7 @@
 
 				$timeout(function() {
 					currentPopup.removeClass('moveRight').removeClass('visible').removeClass('isAnimated');
+					$rootScope.$broadcast('modal prev', target);
 				}, 500);
 			}
 			scope.nextModal = function(e, target, popup) {
@@ -56,9 +59,10 @@
 
 				$timeout(function() {
 					currentPopup.removeClass('moveLeft').removeClass('visible').removeClass('isAnimated');
+					$rootScope.$broadcast('modal next', target);
 				}, 500);
 			}
-		};
+		}
 	});
 
 })();

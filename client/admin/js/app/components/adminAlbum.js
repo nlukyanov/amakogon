@@ -19,7 +19,6 @@
 			scope.albumTagsChanged = false;
 			scope.photoTagsChanged = false;
 
-			scope.album = '';
 			socket.emit('load album', url);
 			socket.off('album loaded').on('album loaded', function(data) {
 				if ( data ) {
@@ -38,11 +37,31 @@
 					if ( scope.photos.length ) {
 						scope.hasPhotos = true;
 					}
-					element.find('.admin-album-list .item-overlay').removeClass('saving');
+					$('.item-overlay').removeClass('saving');
 					$('.changed').removeClass('changed');
 					$('body').removeClass('isModal');
 					scope.$apply();
+
+					var hash = $location.hash();
+
+					$timeout(function() {
+						if ( hash ) {
+							$('.' + hash).trigger('click');
+						}
+					}, 0);
 				});
+			});
+			scope.$on('modal open', function(e, newHash) {
+				$location.hash(newHash);
+			});
+			scope.$on('modal closed', function() {
+				$location.hash('');
+			});
+			scope.$on('modal prev', function(e, newHash) {
+				$location.hash(newHash);
+			});
+			scope.$on('modal next', function(e, newHash) {
+				$location.hash(newHash);
 			});
 
 			scope.isUpdated = false;
@@ -93,7 +112,7 @@
 				reader.onload = function (e) {
 					scope.album.image = e.target.result;
 					scope.$apply();
-				}
+				};
 
 				reader.readAsDataURL($(e.currentTarget)[0].files[0]);
 			});
@@ -115,14 +134,15 @@
 				var photosInput = element.find('#newPhotos');
 
 				photosInput.trigger('click');
-			}
+			};
+
 			element.find('#newPhotos').on('change', function(e) {
 				var files = $(e.currentTarget)[0].files;
 
 				scope.loadingFile = 0;
 
 				scope.$watch('loadingFile', function() {
-					if ( scope.loadingFile == 0 ) {
+					if ( scope.loadingFile === 0 ) {
 						$('body').addClass('no-events');
 					}
 					if ( scope.loadingFile == files.length - 1 ) {
@@ -151,7 +171,7 @@
 								height = k * image.height / image.width;
 							}
 							else if ( image.width < image.height ) {
-								height = k
+								height = k;
 								width = k * image.width / image.height;
 							}
 							else {
@@ -175,7 +195,7 @@
 							scope.addImage(el, length);
 							$(window).scrollTop(9999);
 						});
-					}
+					};
 					if ( el[scope.loadingFile] ) {
 						reader.readAsDataURL(el[scope.loadingFile]);
 					}
@@ -221,17 +241,21 @@
 				if ( scope.photos.length == originalPhotos.length ) {
 					var changed = false;
 
-					for ( x in scope.photos ) {
-						for ( y in originalPhotos ) {
-							if ( scope.photos[x].title == undefined ) {
-								scope.photos[x].title = '';
-							}
-							if ( scope.photos[x].desc == undefined ) {
-								scope.photos[x].desc = '';
-							}
-							if ( x == y ) {
-								if ( scope.photos[x].title !== originalPhotos[y].title || scope.photos[x].desc !== originalPhotos[y].desc ) {
-									changed = true;
+					for ( var x in scope.photos ) {
+						if ( scope.photos[x] ) {
+							for ( var y in originalPhotos ) {
+								if ( originalPhotos[y] ) {
+									if ( scope.photos[x].title === undefined ) {
+										scope.photos[x].title = '';
+									}
+									if ( scope.photos[x].desc === undefined ) {
+										scope.photos[x].desc = '';
+									}
+									if ( x == y ) {
+										if ( scope.photos[x].title !== originalPhotos[y].title || scope.photos[x].desc !== originalPhotos[y].desc ) {
+											changed = true;
+										}
+									}
 								}
 							}
 						}
@@ -252,7 +276,8 @@
 			});
 
 			scope.album_publishAlbum = function(e, album) {
-				if ( album.published == false ) {
+				e.preventDefault();
+				if ( album.published === false ) {
 					if ( confirm('Вы уверены, что хотите опубликовать этот альбом?') ) {
 						socket.emit('publish album', album.url);
 					}
@@ -264,7 +289,7 @@
 				}
 				album.published = !album.published;
 			};
-		};
+		}
 	});
 
 })();

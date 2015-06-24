@@ -11,7 +11,11 @@
 					templateUrl: config.prefix + 'html/templates/photos.html'
 				})
 				.when('/admin/photos/:id', {
-					templateUrl: config.prefix + 'html/templates/album.html'
+					templateUrl: config.prefix + 'html/templates/album.html',
+					reloadOnSearch: false
+				})
+				.when('/admin/tags', {
+					templateUrl: config.prefix + 'html/templates/tags.html'
 				})
 				.otherwise({redirectTo: '/404'});
 

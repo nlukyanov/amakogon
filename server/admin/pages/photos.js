@@ -214,4 +214,26 @@ Photos.removeAlbum = function(url, callback) {
 		PhotosModel.findOne({'url': url}).remove().exec();
 	}, 0);
 }
+
+Photos.removeTag = function(tag, callback) {
+	PhotosModel.find({'tags': tag}, function(error, data) {
+		for ( var i = 0; i < data.length; i++ ) {
+			var index = data[i].tags.indexOf(tag);
+
+			data[i].tags.splice(index, 1);
+			data[i].save();
+		}
+		callback();
+	});
+};
+Photos.checkPhotosByTag = function(tag, callback) {
+	PhotosModel.findOne({'tags': tag}, function(error, data) {
+		if ( data !== null ) {
+			callback(false);
+		}
+		else {
+			callback(true);
+		}
+	});
+};
 module.exports = Photos;

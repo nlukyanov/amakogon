@@ -16,8 +16,6 @@
 				originalDesc = '',
 				originalImg = '';
 
-			var socket = io.connect();
-
 			socket.emit('load dashboard', scope.item);
 			socket.on('dashboard loaded', function(data) {
 				if ( data.name === scope.item ) {

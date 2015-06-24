@@ -50,7 +50,7 @@ var Socket = function(server) {
 						if ( tags.length ) {
 							tagsModel.addTag(tags, function() {
 								tagsModel.getTags(function(error, data) {
-									//console.log(data);
+									// callback
 								});
 							});
 						}
@@ -73,7 +73,7 @@ var Socket = function(server) {
 						if ( album.tags.length ) {
 							tagsModel.addTag(album.tags, function() {
 								tagsModel.getTags(function(error, data) {
-									//console.log(data);
+									socket.emit('tags loaded', data);
 								});
 							});
 						}
@@ -118,11 +118,41 @@ var Socket = function(server) {
 				}
 				else {
 					albumModel.getPhotos(parent, function(error, data) {
+						var photos = data;
 						if ( error != null ) {
 							// === Error Handling
 						}
 						else {
-							socket.emit('album photos loaded', data);
+							var index = 0;
+
+							addTags(data.length);
+
+							function addTags(length) {
+								if ( index < length ) {
+									if ( data[index].tags.length ) {
+										tagsModel.addTag(data[index].tags, function() {
+											index ++;
+											addTags(length);
+										});
+									}
+									else {
+										index ++;
+										addTags(length);
+									}
+									if ( index == length - 1 ) {
+										tagsModel.getTags(function(error, data) {
+											socket.emit('tags loaded', data);
+											socket.emit('album photos loaded', photos);
+										});
+									}
+								}
+								else {
+									tagsModel.getTags(function(error, data) {
+										socket.emit('tags loaded', data);
+										socket.emit('album photos loaded', photos);
+									});
+								}
+							}
 						}
 					});
 				}
@@ -170,8 +200,41 @@ var Socket = function(server) {
 			});
 		});
 
+		socket.on('check tags', function(tag) {
+			photosModel.checkPhotosByTag(tag, function(album) {
+				albumModel.checkPhotosByTag(tag, function(photos) {
+					socket.emit('tags checked', album, photos);
+				});
+			});
+		});
+
 		socket.on('publish album', function(url) {
 			photosModel.publishAlbum(url);
+		});
+
+		socket.on('remove tag', function(tag) {
+			tagsModel.removeTag(tag, function() {
+				photosModel.removeTag(tag, function() {
+					albumModel.removeTag(tag, function() {
+						tagsModel.getTags(function(error, data) {
+							if ( error != null ) {
+								// === Error Handling
+							}
+							else {
+								socket.emit('tags loaded', data);
+							}
+						});
+					});
+				});
+			});
+		});
+
+		socket.on('add tag', function(tag) {
+			tagsModel.addTag(tag, function() {
+				tagsModel.getTags(function(error, data) {
+					// callback
+				});
+			});
 		});
 	});
 };

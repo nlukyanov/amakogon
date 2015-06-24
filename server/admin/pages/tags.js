@@ -16,17 +16,45 @@ Tags.getTags = function(callback) {
 		}
 	});
 }
+Tags.validateTag = function(tag, callback) {
+	TagsModel.findOne({'tag': tag}, function(error, data) {
+		if ( data == null ) {
+			callback(true);
+		}
+		else {
+			callback(false);
+		}
+	});
+}
 Tags.addTag = function(tagItem, callback) {
-	for ( i in tagItem ) {
-		var tag = new TagsModel({tag: tagItem[i]});
+	var self = this,
+		index = 0;
 
-		TagsModel.findOne({'tag': tagItem[i]}, function(error, data) {
-			if ( data == null ) {
-				tag.save(function() {
-					callback();
-				});
-			}
-		});
+	validateAndAdd(tagItem.length);
+	function validateAndAdd(length) {
+		if ( index < length ) {
+			self.validateTag(tagItem[index], function(resp) {
+				if ( resp ) {
+					var tag = new TagsModel({tag: tagItem[index]});
+
+					tag.save(function() {
+						index ++;
+						validateAndAdd(length);
+					});
+					if ( index == tagItem.length - 1 ) {
+						callback();
+					}
+				}
+				else {
+					index ++;
+					validateAndAdd(length);
+				}
+			});
+		}
 	}
+}
+Tags.removeTag = function(tag, callback) {
+	TagsModel.findOne({'tag': tag}).remove().exec();
+	callback();
 }
 module.exports = Tags;

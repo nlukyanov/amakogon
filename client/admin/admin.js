@@ -10,7 +10,7 @@
 
 	adminItems.elements = angular.module('adminItems.elements', ['adminLogo', 'adminNav', 'maxlength', 'modal', 'tagsList']);
 
-	adminItems.components = angular.module('adminItems.components', ['dashboardListItem', 'adminPhotos', 'adminAlbum']);
+	adminItems.components = angular.module('adminItems.components', ['dashboardListItem', 'adminPhotos', 'adminAlbum', 'tagsListPage']);
 
 	var admin = angular.module('admin', ['adminItems.main', 'adminItems.components', 'adminItems.elements'/*, 'admin.factories', 'admin.widgets'*/]);
 

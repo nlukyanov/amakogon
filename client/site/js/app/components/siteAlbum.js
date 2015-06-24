@@ -24,6 +24,7 @@
 					var slider = element.find('.album-slider');
 
 					$timeout(function() {
+						console.log(hash);
 						slider.find('.album-slider-item').addClass('visible');
 						slider.flexslider({
 							animation: 'slide',

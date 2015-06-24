@@ -47,6 +47,10 @@
 				font-size: 24px;
 				line-height: 30px;
 				margin-bottom: 10px;
+				span {
+					color: #ff5e00;
+					font-weight: 700;
+				}
 			}
 			.date {
 				text-align: center;
@@ -191,6 +195,38 @@
 			border-color: #ff5e00;
 			svg {
 				fill: #ff5e00;
+			}
+		}
+	}
+	hr {
+		margin: 40px 0;
+		border: none;
+		border-top: 1px solid #202020;
+	}
+	.btn {
+		color: #fff;
+		background: #202020;
+		border: none;
+		cursor: pointer;
+		padding: 7px 15px;
+		font-family: 'Roboto Condensed', sans-serif;
+		font-size: 18px;
+		line-height: 24px;
+		text-transform: uppercase;
+		font-weight: 300;
+		outline: 0;
+		text-decoration: none;
+		@include transition($property: background, $duration: .25s);
+		&:hover {
+			background: #ff5e00;
+		}
+		&.disabled {
+			cursor: default;
+			background: #cacaca;
+		}
+		&.btn-remove {
+			&:hover {
+				background: #f00;
 			}
 		}
 	}

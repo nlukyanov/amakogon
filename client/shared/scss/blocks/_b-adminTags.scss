@@ -1,0 +1,188 @@
+.tags-list-page {
+	position: relative;
+	.item-overlay {
+		margin: -9999px;
+	}
+}
+.tags-message {
+	display: none;
+}
+.tags-cols {
+	margin: 0 -20px;
+	min-height: 100px;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAzOCAzOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHJva2U9IiNmZjVlMDAiPiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSAxKSIgc3Ryb2tlLXdpZHRoPSIyIj4gICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuNSIgY3g9IjE4IiBjeT0iMTgiIHI9IjE4Ii8+ICAgICAgICAgICAgPHBhdGggZD0iTTM2IDE4YzAtOS45NC04LjA2LTE4LTE4LTE4Ij4gICAgICAgICAgICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0gICAgICAgICAgICAgICAgICAgIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgICAgICAgICAgICAgICAgICAgIHR5cGU9InJvdGF0ZSIgICAgICAgICAgICAgICAgICAgIGZyb209IjAgMTggMTgiICAgICAgICAgICAgICAgICAgICB0bz0iMzYwIDE4IDE4IiAgICAgICAgICAgICAgICAgICAgZHVyPSIxcyIgICAgICAgICAgICAgICAgICAgIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+ICAgICAgICAgICAgPC9wYXRoPiAgICAgICAgPC9nPiAgICA8L2c+PC9zdmc+);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	&.loaded {
+		background-image: none;
+	}
+	.tags-col {
+		display: inline-block;
+		vertical-align: top;
+		width: 20%;
+		box-sizing: border-box;
+		padding: 0 20px;
+		margin-bottom: 80px;
+		background: #fff;
+		h2 {
+			margin-bottom: 10px;
+			font-size: 24px;
+			line-height: 30px;
+			margin-left: -15px;
+			border-bottom: 1px solid #cacaca;
+			padding-bottom: 10px;
+			span {
+				color: #ff5e00;
+				font-weight: 700;
+			}
+		}
+		.tags-list {
+			.tags-list-item {
+				.tag-link {
+					font {
+						background: #c6ddff;
+					}
+				}
+				&.disabled {
+					.tag-link {
+						color: #cacaca;
+						&:hover {
+							color: #ff5e00;
+						}
+					}
+				}
+				margin-bottom: 5px;
+				a {
+					text-decoration: none;
+				}
+				.tag-buttons {
+					display: none;
+					a {
+						left: 0;
+						top: 0;
+						bottom: 0;
+						margin: 0;
+						height: 100%;
+						width: 35px;
+						text-align: center;
+						position: absolute;
+						&.remove-tag {
+							right: 0;
+							left: auto;
+						}
+						svg {
+							width: 15px;
+							height: 100%;
+							fill: #202020;
+							@include transition($property: fill, $duration: .25s);
+						}
+						&:hover {
+							svg {
+								fill: #ff5e00;
+							}
+						}
+						&.remove-tag {
+							svg {
+								fill: #f00;
+								transform: rotate(0);
+								@include transition($property: transform, $duration: .25s);
+							}
+							&:hover {
+								svg {
+									transform: rotate(180deg);
+								}
+							}
+						}
+					}
+				}
+				.closeTag {
+					opacity: 0;
+					width: 0;
+					height: 0;
+					position: fixed;
+					left: 0;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					background: rgba(32,32,32,.75);
+					@include hide-text;
+					@include transition($property: opacity, $duration: .25s);
+				}
+				&.tagVisible {
+					.tag-buttons {
+						display: block;
+					}
+					.closeTag {
+						opacity: 1;
+						width: auto;
+						height: auto;
+					}
+					.tag-inner {
+						background: #fff;
+						position: relative;
+						display: inline-block;
+						vertical-align: top;
+						z-index: 1;
+						padding: 10px 55px;
+						margin: -10px -55px;
+						border-radius: 5px;
+					}
+					.tag-link {
+						color: #ff5e00;
+						margin: -10px -20px;
+						padding: 10px 20px;
+						display: inline-block;
+						vertical-align: top;
+						box-shadow: 0 0 5px 0 rgba(32, 32, 32, 0.25);
+					}
+					&.disabled {
+						.tag-inner {
+							padding-left: 20px;
+							margin-left: -20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.modal {
+	.tags-search-list {
+		margin: 0 -20px;
+		margin-bottom: -80px;
+		text-align: left;
+		.tags-search-list-item {
+			display: inline-block;
+			vertical-align: top;
+			box-sizing: border-box;
+			padding: 0 20px;
+			width: 25%;
+			margin-bottom: 80px;
+			a {
+				text-decoration: none;
+				.image-holder {
+					width: 100%;
+					padding-top: 100%;
+					border-radius: 100%;
+					background-position: 50% 50%;
+					background-repeat: no-repeat;
+					background-size: cover;
+					-webkit-transform: scale(.9) translateZ(0);
+					transform: scale(.9) translateZ(0);
+					@include transition($property: transform, $duration: .25s);
+				}
+				h3 {
+					margin-top: 20px;
+					text-transform: uppercase;
+					text-align: center;
+				}
+				&:hover {
+					.image-holder {
+						-webkit-transform: scale(1) translateZ(0);
+						transform: scale(1) translateZ(0);
+					}
+				}
+			}
+		}
+	}
+}
