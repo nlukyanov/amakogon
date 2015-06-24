@@ -50,9 +50,12 @@
 				}
 			};
 
+			var originalPhotos;
+
 			socket.emit('load photos');
 			socket.on('photos loaded', function(data) {
 				scope.photos = data;
+				originalPhotos = angular.copy(scope.photos);
 				scope.$apply();
 			});
 			socket.emit('load tags');
@@ -115,7 +118,7 @@
 
 			scope.removeAlbum = function(e, url, title, image) {
 				e.preventDefault();
-				if ( confirm('Вы уверены, что хотите удалить альбом "' + title + '"') ) {
+				if ( confirm('Вы уверены, что хотите безвозвратно удалить альбом "' + title + '"') ) {
 					socket.emit('remove album', url, title, image);
 					$(e.currentTarget).closest('li').remove();
 				}
@@ -170,6 +173,92 @@
 
 				reader.readAsDataURL($(e.currentTarget)[0].files[0]);
 			});
+
+			scope.album_triggerUpload = function(e, target, album) {
+				e.preventDefault();
+					
+				var input = element.find('#' + target);
+
+				$timeout(function() {
+					input.trigger('click');
+				}, 100);
+				input.on('change', function(e) {
+					var reader = new FileReader();
+
+					reader.onload = function (e) {
+						album.image = e.target.result;
+						scope.imgUpdated = true;
+						scope.$apply();
+					}
+
+					reader.readAsDataURL($(e.currentTarget)[0].files[0]);
+				});
+			};
+
+			scope.album_checkIfUpdated = function(album) {
+				for ( var i in originalPhotos ) {
+					if ( originalPhotos[i]._id == album._id ) {
+						scope.albumUpdated = originalPhotos[i].title != album.title || originalPhotos[i].desc != album.desc;
+					}
+				}
+			};
+
+			scope.album_updateAlbum = function(e, album) {
+				e.preventDefault();
+				var originalTitle = '';
+
+				for ( var i in originalPhotos ) {
+					if ( originalPhotos[i]._id == album._id ) {
+						originalTitle = originalPhotos[i].title;
+					}
+				}
+				if ( scope.albumUpdated || $('.changed', element).length || scope.imgUpdated ) {
+					scope.albumUpdated = false;
+					scope.imgUpdated = false;
+					$('.changed').removeClass('.changed');
+					socket.emit('update album', album, originalTitle);
+					socket.on('album updated', function(data) {
+						$(e.target).closest('.admin-form').find('.item-overlay').addClass('saving');
+						album.url = data.url;
+					});
+				}
+			};
+
+			socket.off('album exists').on('album exists', function() {
+				alert('Альбом с похожим названием уже существует!');
+				element.find('.item-overlay').removeClass('saving');
+			});
+
+			socket.off('album updated').on('album updated', function(data) {
+				$timeout(function() {
+					element.find('.item-overlay').removeClass('saving');
+					for ( var i in originalPhotos ) {
+						if ( originalPhotos[i]._id == data._id ) {
+							originalPhotos[i].title = data.title;
+							originalPhotos[i].desc = data.desc;
+						}
+					}
+					scope.$apply();
+				}, 500);
+			});
+
+			scope.album_publishAlbum = function(e, album) {
+				if ( album.published == false ) {
+					if ( confirm('Вы уверены, что хотите опубликовать этот альбом?') ) {
+						socket.emit('publish album', album.url);
+					}
+				}
+				else {
+					if ( confirm('Вы уверены, что хотите отправить этот альбом в черновики?') ) {
+						socket.emit('publish album', album.url);
+					}
+				}
+				album.published = !album.published;
+				element.find('.item-overlay').addClass('saving');
+				$timeout(function() {
+					element.find('.item-overlay').removeClass('saving');
+				}, 500);
+			};
 		};
 	});
 

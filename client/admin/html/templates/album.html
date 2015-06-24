@@ -23,25 +23,16 @@
 						<textarea placeholder="Введите описание альбома" id="newAlbumDesc" ng-model="album.desc"></textarea>
 					</div>
 					<div class="form-row">
-						<div class="form-row-item">
-							<input type="text" placeholder="Введите Тег" id="newAlbumTags" ng-keyup="enterTag($event)" style="text-transform: none;" ng-model="newTag" ng-focus="changeShowTags(true)" ng-blur="changeShowTags(false)">
-							<div class="ex-tags" ng-if="newTag && showTags">
-								<div class="ex-tag" ng-repeat="tag in exTags | filter: newTag" ng-click="chooseTag(tag.tag)">{{ tag.tag }}</div>
-							</div>
-						</div>
-						<div class="form-row-item">
-							<input type="submit" value="Добавить" class="btn" id="addTag" ng-class="{disabled: !canAddTag}" ng-click="addTag($event)">
-						</div>
-						<div class="new-tags" ng-if="album.tags">
-							<div ng-repeat="tag in album.tags" class="new-tag" ng-click="removeTag($event, tag)"><span>#</span>{{ tag }}</div>
-						</div>
+						<div tags-list="album.tags" tags-list-changed="albumTagsChanged"></div>
 					</div>
 				</fieldset>
 				<div class="form-row" style="overflow: hidden; width: 100%; text-align: center;">
 					<hr>
-					<input type="submit" value="Обновить" class="btn" ng-class="{disabled: !isUpdated}" ng-click="updateAlbum($event, title)" style="float: none;">
-					<hr>
+					<input type="submit" value="Опубликовать" class="btn btn-publish" ng-if="!album.published" ng-click="album_publishAlbum($event, album)" style="float: left;">
+					<input type="submit" value="В черновики" class="btn btn-unpublish" ng-if="album.published" ng-click="album_publishAlbum($event, album)" style="float: left;">
+					<input type="submit" value="Обновить" class="btn" ng-class="{disabled: !isUpdated && !albumTagsChanged}" ng-click="updateAlbum($event, album.title)">
 				</div>
+				<hr>
 				<div class="item-overlay">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38"><g fill="none" fill-rule="evenodd"><g transform="translate(1 1)" stroke-width="2"><circle stroke-opacity=".5" cx="18" cy="18" r="18"/><path d="M36 18c0-9.94-8.06-18-18-18" transform="rotate(273.929 18 18)"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></g></svg>
 				</div>
@@ -62,14 +53,63 @@
 				</a>
 				<input type="file" id="newPhotos" multiple accept="image/jpeg">
 			</li>
-			<li ng-repeat="image in photos">
-				<a ng-href="#">
+			<li ng-repeat="image in photos | orderBy: 'id'" ng-class="{changed: photoTagsChanged}">
+				<a ng-href="#" modal data-target="photo-{{ $index }}" ng-click="openModal($event)">
 					<div class="image-holder" ng-style="{'background-image': 'url({{ image.image }})'}"></div>
-					<h3>{{ image.title }}</h3>
+					<h3 ng-if="image.title">{{ image.title }}</h3>
+					<p class="photo-desc" ng-if="image.desc">{{ image.desc }}</p>
+					<div class="photo-tags" ng-if="image.tags.length">
+						<div class="photo-tag" ng-repeat="tag in image.tags"><span>#</span>{{ tag }}</div>
+					</div>
 				</a>
 				<a ng-href="#" ng-click="removePhoto($event, image.image, image)" class="btn-remove">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 815" version="1.1"><g id="#ffffffff"></g><g id="#000000ff"><path opacity="1.00" d=" M 192.55 106.64 C 208.76 90.58 235.60 87.68 255.37 98.64 C 261.44 101.97 266.50 106.79 271.32 111.69 C 324.67 165.05 378.03 218.40 431.38 271.76 C 485.61 217.51 539.86 163.29 594.09 109.04 C 598.63 104.43 603.75 100.32 609.58 97.46 C 628.89 88.03 654.10 91.07 669.69 106.22 C 684.72 120.89 699.42 135.90 714.32 150.70 C 725.87 162.37 737.66 173.79 749.04 185.62 C 765.93 203.34 767.40 233.18 752.94 252.78 C 750.30 256.48 747.01 259.63 743.81 262.82 C 690.25 316.38 636.69 369.93 583.13 423.50 C 636.33 476.73 689.57 529.93 742.78 583.16 C 746.97 587.28 751.14 591.51 754.38 596.45 C 767.37 616.10 765.29 644.60 748.89 661.70 C 724.74 685.95 700.49 710.11 676.30 734.33 C 672.79 737.75 669.51 741.45 665.57 744.40 C 645.89 759.77 615.06 758.41 597.08 740.93 C 541.84 685.72 486.61 630.48 431.39 575.25 C 376.31 630.30 321.27 685.38 266.19 740.43 C 247.15 759.51 213.11 759.96 193.57 741.41 C 181.24 729.75 169.51 717.47 157.42 705.56 C 143.01 690.99 128.28 676.72 114.06 661.96 C 97.23 644.69 95.25 615.54 108.78 595.76 C 111.94 591.02 116.06 587.04 120.09 583.05 C 173.26 529.85 226.47 476.70 279.62 423.49 C 224.44 368.31 169.26 313.14 114.09 257.96 C 104.66 248.20 99.53 234.54 99.98 221.00 C 99.73 207.30 105.41 193.76 115.06 184.09 C 140.88 158.26 166.67 132.40 192.55 106.64 Z"/></g></svg>
 				</a>
+				<div class="modal" id="photo-{{ $index }}">
+					<div class="modal-inner">
+						<a ng-href="#" class="modal-close-overlay" ng-click="closeModal($event)">Отмена</a>
+						<div class="modal-box-align">Alignment</div>
+						<div class="modal-box">
+							<a ng-href="#" class="modal-close" ng-click="closeModal($event)">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 815" version="1.1"><g id="#ffffffff"></g><g id="#000000ff"><path opacity="1.00" d=" M 192.55 106.64 C 208.76 90.58 235.60 87.68 255.37 98.64 C 261.44 101.97 266.50 106.79 271.32 111.69 C 324.67 165.05 378.03 218.40 431.38 271.76 C 485.61 217.51 539.86 163.29 594.09 109.04 C 598.63 104.43 603.75 100.32 609.58 97.46 C 628.89 88.03 654.10 91.07 669.69 106.22 C 684.72 120.89 699.42 135.90 714.32 150.70 C 725.87 162.37 737.66 173.79 749.04 185.62 C 765.93 203.34 767.40 233.18 752.94 252.78 C 750.30 256.48 747.01 259.63 743.81 262.82 C 690.25 316.38 636.69 369.93 583.13 423.50 C 636.33 476.73 689.57 529.93 742.78 583.16 C 746.97 587.28 751.14 591.51 754.38 596.45 C 767.37 616.10 765.29 644.60 748.89 661.70 C 724.74 685.95 700.49 710.11 676.30 734.33 C 672.79 737.75 669.51 741.45 665.57 744.40 C 645.89 759.77 615.06 758.41 597.08 740.93 C 541.84 685.72 486.61 630.48 431.39 575.25 C 376.31 630.30 321.27 685.38 266.19 740.43 C 247.15 759.51 213.11 759.96 193.57 741.41 C 181.24 729.75 169.51 717.47 157.42 705.56 C 143.01 690.99 128.28 676.72 114.06 661.96 C 97.23 644.69 95.25 615.54 108.78 595.76 C 111.94 591.02 116.06 587.04 120.09 583.05 C 173.26 529.85 226.47 476.70 279.62 423.49 C 224.44 368.31 169.26 313.14 114.09 257.96 C 104.66 248.20 99.53 234.54 99.98 221.00 C 99.73 207.30 105.41 193.76 115.06 184.09 C 140.88 158.26 166.67 132.40 192.55 106.64 Z"/></g></svg>
+							</a>
+							<div class="modal-text">
+								<h2>Редактировать изображение</h2>
+								<form class="admin-form">
+									<fieldset>
+										<div class="form-row">
+											<img ng-src="{{ image.image }}">
+										</div>
+									</fieldset>
+									<fieldset>
+										<div class="form-row">
+											<input type="text" placeholder="Введите название фотографии" required ng-model="image.title" ng-keyup="checkIfUpdated()">
+										</div>
+										<div class="form-row">
+											<textarea placeholder="Введите описание фотографии" id="newAlbumDesc" ng-model="image.desc" ng-keyup="checkIfUpdated()"></textarea>
+										</div>
+										<div class="form-row">
+											<div tags-list="image.tags" tags-list-changed="photoTagsChanged"></div>
+										</div>
+									</fieldset>
+									<div class="form-row" style="overflow: hidden; width: 100%; text-align: center;">
+										<hr>
+										<input type="submit" value="Сохранить" class="btn" ng-class="{disabled: !photosUpdated && !photoTagsChanged}" ng-click="updatePhotos($event, album.title, album.image)" style="float: none;">
+									</div>
+									<div class="item-overlay">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38"><g fill="none" fill-rule="evenodd"><g transform="translate(1 1)" stroke-width="2"><circle stroke-opacity=".5" cx="18" cy="18" r="18"/><path d="M36 18c0-9.94-8.06-18-18-18" transform="rotate(273.929 18 18)"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></g></svg>
+									</div>
+								</form>
+							</div>
+							<a ng-href="#" class="modal-prev" ng-click="prevModal($event, 'photo-' + ($index - 1), 'photo-' + $index)" ng-if="$index > 0">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 561" version="1.1"><g id="#ffffffff"></g><g id="#242424ff"><path opacity="1.00" d=" M 448.22 0.00 L 454.55 0.00 C 465.99 0.65 477.25 5.45 485.12 13.87 C 494.97 24.14 499.38 38.49 500.00 52.46 L 500.00 508.65 C 499.43 522.55 494.65 536.67 484.75 546.72 C 476.60 555.30 465.07 560.19 453.33 561.00 L 447.54 561.00 C 437.77 560.21 428.27 557.08 419.82 552.13 C 295.19 480.11 170.58 408.06 45.95 336.03 C 35.06 329.46 23.11 324.08 14.32 314.59 C 6.28 306.31 0.95 295.37 0.00 283.82 L 0.00 278.37 C 0.75 266.20 6.50 254.72 15.04 246.15 C 20.88 240.03 28.10 235.50 35.44 231.42 C 163.65 157.34 291.85 83.25 420.06 9.18 C 428.64 4.11 438.28 0.89 448.22 0.00 M 440.65 50.64 C 311.40 125.39 182.14 200.11 52.88 274.85 C 50.20 276.38 47.69 278.33 46.02 280.97 C 47.94 283.07 50.08 284.98 52.59 286.37 C 181.20 360.73 309.79 435.11 438.39 509.49 C 442.68 511.94 446.97 514.86 452.05 515.32 C 453.46 512.44 453.93 509.24 453.88 506.07 C 453.89 356.06 453.87 206.04 453.89 56.03 C 453.95 52.60 453.57 49.12 452.14 45.96 C 447.95 46.50 444.20 48.49 440.65 50.64 Z"/></g></svg>
+							</a>
+							<a ng-href="#" class="modal-next" ng-click="nextModal($event, 'photo-' + ($index + 1), 'photo-' + $index)" ng-if="$index < photos.length - 1">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 561" version="1.1"><g id="#ffffffff"></g><g id="#242424ff"><path opacity="1.00" d=" M 45.54 0.00 L 53.46 0.00 C 63.21 0.81 72.60 4.21 80.99 9.17 C 205.79 81.31 330.61 153.43 455.42 225.56 C 463.12 230.20 471.27 234.17 478.45 239.65 C 490.05 248.47 498.89 261.72 500.00 276.52 L 500.00 283.63 C 498.55 303.05 484.21 318.89 467.65 327.73 C 343.65 399.35 219.67 470.99 95.68 542.61 C 84.42 548.81 73.69 556.65 60.90 559.39 C 46.41 562.89 29.97 560.27 18.52 550.32 C 6.13 540.05 0.60 523.67 0.00 507.99 L 0.00 51.77 C 0.75 39.26 4.57 26.57 12.82 16.92 C 20.81 7.09 32.96 1.00 45.54 0.00 M 47.97 45.59 C 46.37 48.81 46.09 52.44 46.12 55.97 C 46.11 205.30 46.12 354.63 46.12 503.96 C 46.14 507.67 46.21 511.58 48.05 514.92 C 51.33 514.29 54.50 513.13 57.35 511.37 C 186.01 437.01 314.67 362.63 443.34 288.26 C 447.26 286.00 451.55 283.88 454.11 279.97 C 450.73 275.77 445.73 273.55 441.22 270.85 C 313.22 196.84 185.21 122.83 57.21 48.82 C 54.36 47.20 51.27 45.88 47.97 45.59 Z"/></g></svg>
+							</a>
+						</div>
+					</div>
+				</div>
 			</li>
 			<li class="new-album">
 				<a ng-href="#" ng-click="triggerPhotosUpload($event)">
@@ -89,7 +129,7 @@
 			<div class="form-row" style="overflow: hidden; width: 100%; text-align: center;">
 				<hr>
 				<a ng-href="#" class="btn btn-removeAll" ng-click="removeAllPhotos($event, album.title, album.image)" style="float: left;">Удалить все</a>
-				<input type="submit" value="Сохранить" class="btn" ng-class="{disabled: !photosUpdated}" ng-click="updatePhotos($event, album.title, album.image)">
+				<input type="submit" value="Сохранить" class="btn save-all-btn" ng-class="{disabled: !photosUpdated && !photoTagsChanged}" ng-click="updatePhotos($event, album.title, album.image)">
 			</div>
 		</div>
 	</div>

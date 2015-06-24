@@ -2,37 +2,62 @@
 
 	var modal = angular.module('modal', []);
 
-	modal.directive('modal', function($http, $location) {
+	modal.directive('modal', function($http, $location, $timeout) {
 		return {
 			restrict: 'A',
 			link: link
 		};
 		function link(scope, element, attrs) {
-			var popup = $('#' + element.data('target')),
-				closeBtn = popup.find('.modal-close');
-
-			popup.on('click', function(e) {
-				if ( !$(e.target).hasClass('modal-box') && !$(e.target).closest('.modal-box').length ) {
-					scope.closeModal(e);
-				}
-			});
-			$('.modal-close').on('click', function(e) {
-				e.preventDefault();
-				scope.closeModal(e);
-			});
-
 			scope.openModal = function(e) {
 				e.preventDefault();
+				scope.popup = $('#' + attrs.target);
+				scope.closeBtn = scope.popup.find('.modal-close');
 
-				popup.addClass('visible');
-				$('html, body').css({overflow: 'hidden'});
+				scope.popup.addClass('isAnimated').addClass('visible');
+				$('body').addClass('isModal');
+				scope.popup.find('input[type="text"]').first().trigger('focus');
 			};
+
 			scope.closeModal = function(e) {
 				e.preventDefault();
 
-				popup.removeClass('visible');
-				$('html, body').css({overflow: 'visible'});
+				$('.modal').removeClass('isAnimated').removeClass('visible');
+				$('body').removeClass('isModal');
 			};
+
+			scope.prevModal = function(e, target, popup) {
+				e.preventDefault();
+
+				var currentPopup = $('#' + popup),
+					prevPopup = $('#' + target);
+
+				prevPopup.addClass('moveLeft').addClass('visible');
+
+				$timeout(function() {
+					prevPopup.addClass('isAnimated').removeClass('moveLeft');
+					currentPopup.addClass('moveRight');
+				}, 10);
+
+				$timeout(function() {
+					currentPopup.removeClass('moveRight').removeClass('visible').removeClass('isAnimated');
+				}, 500);
+			}
+			scope.nextModal = function(e, target, popup) {
+				e.preventDefault();
+				var currentPopup = $('#' + popup),
+					nextPopup = $('#' + target);
+
+				nextPopup.addClass('moveRight').addClass('visible');
+
+				$timeout(function() {
+					nextPopup.addClass('isAnimated').removeClass('moveRight');
+					currentPopup.addClass('moveLeft');
+				}, 10);
+
+				$timeout(function() {
+					currentPopup.removeClass('moveLeft').removeClass('visible').removeClass('isAnimated');
+				}, 500);
+			}
 		};
 	});
 

@@ -24,13 +24,13 @@
 			scope.openModal = function(e) {
 				e.preventDefault();
 
-				popup.addClass('visible');
+				popup.addClass('isAnimated').addClass('visible');
 				$('html, body').css({overflow: 'hidden'});
 			};
 			scope.closeModal = function(e) {
 				e.preventDefault();
 
-				popup.removeClass('visible');
+				popup.removeClass('isAnimated').removeClass('visible');
 				$('html, body').css({overflow: 'visible'});
 			};
 		};

@@ -183,6 +183,14 @@ a:hover {
   color: #ff5e00;
 }
 
+/* line 3, scss/base/_form.scss */
+input[type="text"],
+input[type="password"],
+input[type="textarea"] {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 /* Patterns */
 /* Patterns */
 /* line 1, scss/patterns/_p-social-media.scss */
@@ -251,45 +259,47 @@ site-social + site-search .search-block {
 /* line 1, scss/patterns/_p-modal.scss */
 .modal {
   position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  left: -9999px;
+  top: -9999px;
   background: rgba(32, 32, 32, 0.9);
   opacity: 0;
-  z-index: -1;
+  z-index: -9999;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  margin-left: 0;
+}
+/* line 11, scss/patterns/_p-modal.scss */
+.modal.isAnimated {
   transition-duration: 0.25s;
-  transition-property: opacity;
+  transition-property: opacity, left, right;
   transition-timing-function: ease-in-out;
 }
 /* line 13, scss/patterns/_p-modal.scss */
-.modal .modal-inner {
-  margin-top: -100%;
-  height: 100%;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  box-orient: horizontal;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  box-align: center;
-  align-items: center;
+.modal.isAnimated .modal-inner {
   transition-duration: 0.5s;
   transition-property: margin-top;
   transition-timing-function: ease-in-out;
 }
-/* line 36, scss/patterns/_p-modal.scss */
+/* line 17, scss/patterns/_p-modal.scss */
+.modal .modal-inner {
+  margin-top: -100%;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  text-align: center;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+/* line 25, scss/patterns/_p-modal.scss */
+.modal .modal-inner .modal-box-align {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  height: 100%;
+}
+/* line 33, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box {
   background: #fff;
   padding: 40px 20px;
@@ -299,8 +309,10 @@ site-social + site-search .search-block {
   box-sizing: border-box;
   margin: 20px;
   position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
-/* line 45, scss/patterns/_p-modal.scss */
+/* line 44, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box h2 {
   text-align: center;
   text-transform: uppercase;
@@ -308,7 +320,7 @@ site-social + site-search .search-block {
   line-height: 30px;
   margin-bottom: 10px;
 }
-/* line 52, scss/patterns/_p-modal.scss */
+/* line 51, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box .date {
   text-align: center;
   color: #cacaca;
@@ -317,35 +329,35 @@ site-social + site-search .search-block {
   padding-bottom: 20px;
   border-bottom: 1px solid #cacaca;
 }
-/* line 60, scss/patterns/_p-modal.scss */
+/* line 59, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box p {
   margin-bottom: 20px;
   text-align: justify;
   padding: 0 20px;
 }
-/* line 65, scss/patterns/_p-modal.scss */
+/* line 64, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box .site-tags {
   text-align: center;
   margin-bottom: 20px;
   padding-top: 20px;
   border-top: 1px solid #cacaca;
 }
-/* line 71, scss/patterns/_p-modal.scss */
+/* line 70, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box .social-media {
   text-align: center;
 }
-/* line 74, scss/patterns/_p-modal.scss */
+/* line 73, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box .social-media a svg {
   fill: #202020;
   transition-duration: 0.25s;
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 79, scss/patterns/_p-modal.scss */
+/* line 78, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box .social-media a:hover svg {
   fill: #ff5e00;
 }
-/* line 85, scss/patterns/_p-modal.scss */
+/* line 84, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box .modal-close {
   position: absolute;
   right: 10px;
@@ -362,7 +374,7 @@ site-social + site-search .search-block {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 100, scss/patterns/_p-modal.scss */
+/* line 99, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box .modal-close svg {
   width: 15px;
   height: 100%;
@@ -371,18 +383,121 @@ site-social + site-search .search-block {
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 107, scss/patterns/_p-modal.scss */
+/* line 106, scss/patterns/_p-modal.scss */
 .modal .modal-inner .modal-box .modal-close:hover svg {
   fill: #ff5e00;
 }
-/* line 114, scss/patterns/_p-modal.scss */
+/* line 113, scss/patterns/_p-modal.scss */
 .modal.visible {
   z-index: 999999;
   opacity: 1;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
-/* line 117, scss/patterns/_p-modal.scss */
+/* line 120, scss/patterns/_p-modal.scss */
 .modal.visible .modal-inner {
   margin-top: 0;
+}
+/* line 124, scss/patterns/_p-modal.scss */
+.modal.moveLeft {
+  left: -100%;
+  right: 100%;
+}
+/* line 128, scss/patterns/_p-modal.scss */
+.modal.moveRight {
+  right: -100%;
+  left: 100%;
+}
+/* line 132, scss/patterns/_p-modal.scss */
+.modal .modal-close-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  text-indent: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* line 140, scss/patterns/_p-modal.scss */
+.modal .modal-prev {
+  border: 1px solid #fff;
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: -77px;
+  top: 50%;
+  margin-top: -17.5px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition-duration: 0.25s;
+  transition-property: border-color;
+  transition-timing-function: ease-in-out;
+}
+/* line 152, scss/patterns/_p-modal.scss */
+.modal .modal-prev svg {
+  fill: #fff;
+  width: 15px;
+  height: 100%;
+  margin-left: -2px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition-duration: 0.25s;
+  transition-property: fill;
+  transition-timing-function: ease-in-out;
+}
+/* line 161, scss/patterns/_p-modal.scss */
+.modal .modal-prev:hover {
+  border-color: #ff5e00;
+}
+/* line 163, scss/patterns/_p-modal.scss */
+.modal .modal-prev:hover svg {
+  fill: #ff5e00;
+}
+/* line 168, scss/patterns/_p-modal.scss */
+.modal .modal-next {
+  border: 1px solid #fff;
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: -77px;
+  top: 50%;
+  margin-top: -17.5px;
+  text-align: center;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition-duration: 0.25s;
+  transition-property: border-color;
+  transition-timing-function: ease-in-out;
+}
+/* line 181, scss/patterns/_p-modal.scss */
+.modal .modal-next svg {
+  fill: #fff;
+  width: 15px;
+  height: 100%;
+  margin-right: -2px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition-duration: 0.25s;
+  transition-property: fill;
+  transition-timing-function: ease-in-out;
+}
+/* line 190, scss/patterns/_p-modal.scss */
+.modal .modal-next:hover {
+  border-color: #ff5e00;
+}
+/* line 192, scss/patterns/_p-modal.scss */
+.modal .modal-next:hover svg {
+  fill: #ff5e00;
+}
+
+/* line 198, scss/patterns/_p-modal.scss */
+.isModal {
+  overflow: hidden;
 }
 
 /* line 1, scss/patterns/_p-percentage.scss */
@@ -3529,16 +3644,26 @@ site-social + site-search .search-block {
   background: rgba(32, 32, 32, 0.9);
   text-align: center;
   display: none;
+  z-index: 1;
 }
-/* line 27, scss/blocks/_b-admin.scss */
+/* line 28, scss/blocks/_b-admin.scss */
 .admin-page .item-overlay svg {
   width: 50px;
   height: 100%;
   stroke: #fff;
 }
-/* line 32, scss/blocks/_b-admin.scss */
+/* line 33, scss/blocks/_b-admin.scss */
 .admin-page .item-overlay.saving {
   display: block;
+}
+
+/* line 38, scss/blocks/_b-admin.scss */
+.isModal {
+  height: auto;
+}
+/* line 40, scss/blocks/_b-admin.scss */
+.isModal .admin-album-list > .item-overlay {
+  display: none !important;
 }
 
 /* line 1, scss/blocks/_b-adminNav.scss */
@@ -3737,33 +3862,39 @@ site-social + site-search .search-block {
 /* line 1, scss/blocks/_b-adminPhotos.scss */
 .admin-form {
   padding-top: 20px;
+  position: relative;
+  overflow: hidden;
 }
-/* line 52, scss/utilities/_mixins.scss */
-.admin-form:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-/* line 4, scss/blocks/_b-adminPhotos.scss */
+/* line 5, scss/blocks/_b-adminPhotos.scss */
 .admin-form fieldset {
   float: left;
   width: 50%;
   padding: 0 10px;
   box-sizing: border-box;
 }
-/* line 9, scss/blocks/_b-adminPhotos.scss */
+/* line 10, scss/blocks/_b-adminPhotos.scss */
 .admin-form fieldset:first-child {
   padding-left: 0;
 }
-/* line 12, scss/blocks/_b-adminPhotos.scss */
+/* line 13, scss/blocks/_b-adminPhotos.scss */
 .admin-form fieldset:last-child {
   padding-right: 0;
 }
-/* line 16, scss/blocks/_b-adminPhotos.scss */
+/* line 17, scss/blocks/_b-adminPhotos.scss */
+.admin-form hr {
+  border: none;
+  border-top: 1px solid #202020;
+  margin: 40px 0;
+}
+/* line 21, scss/blocks/_b-adminPhotos.scss */
+.admin-form hr:last-child {
+  margin-bottom: 0;
+}
+/* line 25, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row {
   margin-top: 20px;
 }
-/* line 18, scss/blocks/_b-adminPhotos.scss */
+/* line 27, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row:first-child {
   margin-top: 0;
 }
@@ -3773,17 +3904,7 @@ site-social + site-search .search-block {
   display: block;
   clear: both;
 }
-/* line 22, scss/blocks/_b-adminPhotos.scss */
-.admin-form .form-row hr {
-  border: none;
-  border-top: 1px solid #202020;
-  margin: 40px 0;
-}
-/* line 26, scss/blocks/_b-adminPhotos.scss */
-.admin-form .form-row hr:last-child {
-  margin-bottom: 0;
-}
-/* line 30, scss/blocks/_b-adminPhotos.scss */
+/* line 31, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .form-row-item {
   display: inline-block;
   vertical-align: middle;
@@ -3791,7 +3912,7 @@ site-social + site-search .search-block {
   width: 50%;
   position: relative;
 }
-/* line 37, scss/blocks/_b-adminPhotos.scss */
+/* line 38, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .ex-tags {
   position: absolute;
   z-index: 1;
@@ -3806,18 +3927,18 @@ site-social + site-search .search-block {
   overflow: auto;
   max-height: 150px;
 }
-/* line 50, scss/blocks/_b-adminPhotos.scss */
+/* line 51, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .ex-tags .ex-tag {
   cursor: pointer;
   padding: 5px 10px;
   text-transform: none;
 }
-/* line 54, scss/blocks/_b-adminPhotos.scss */
-.admin-form .form-row .ex-tags .ex-tag:hover {
+/* line 56, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .ex-tags .ex-tag:hover, .admin-form .form-row .ex-tags .ex-tag.active {
   color: #fff;
   background: #ff5e00;
 }
-/* line 60, scss/blocks/_b-adminPhotos.scss */
+/* line 62, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row input[type="text"] {
   border: none;
   border-bottom: 1px solid #cacaca;
@@ -3835,11 +3956,11 @@ site-social + site-search .search-block {
   transition-property: border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 74, scss/blocks/_b-adminPhotos.scss */
+/* line 76, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row input[type="text"]:focus {
   border-color: #202020;
 }
-/* line 78, scss/blocks/_b-adminPhotos.scss */
+/* line 80, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row textarea {
   border: 1px solid #cacaca;
   padding: 10px;
@@ -3857,11 +3978,11 @@ site-social + site-search .search-block {
   transition-property: border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 92, scss/blocks/_b-adminPhotos.scss */
+/* line 94, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row textarea:focus {
   border-color: #202020;
 }
-/* line 96, scss/blocks/_b-adminPhotos.scss */
+/* line 98, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image {
   position: relative;
   padding-top: 52.65%;
@@ -3871,11 +3992,11 @@ site-social + site-search .search-block {
   transition-property: background;
   transition-timing-function: ease-in-out;
 }
-/* line 102, scss/blocks/_b-adminPhotos.scss */
+/* line 104, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image:hover {
   background: #ff5e00;
 }
-/* line 105, scss/blocks/_b-adminPhotos.scss */
+/* line 107, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image svg {
   position: absolute;
   left: 50%;
@@ -3886,12 +4007,12 @@ site-social + site-search .search-block {
   margin-left: -50px;
   fill: #fff;
 }
-/* line 115, scss/blocks/_b-adminPhotos.scss */
+/* line 117, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage {
   padding: 0;
   background: none;
 }
-/* line 118, scss/blocks/_b-adminPhotos.scss */
+/* line 120, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage:before {
   content: '';
   position: absolute;
@@ -3905,28 +4026,29 @@ site-social + site-search .search-block {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 129, scss/blocks/_b-adminPhotos.scss */
+/* line 131, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage svg {
   opacity: 0;
   transition-duration: 0.25s;
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 134, scss/blocks/_b-adminPhotos.scss */
+/* line 136, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage:hover:before {
   opacity: 1;
 }
-/* line 137, scss/blocks/_b-adminPhotos.scss */
+/* line 139, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage:hover svg {
   opacity: 1;
 }
-/* line 142, scss/blocks/_b-adminPhotos.scss */
-.admin-form .form-row .newAlbum-image input[type="file"] {
+/* line 145, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .newAlbum-image input[type="file"],
+.admin-form .form-row .newAlbum-image + input[type="file"] {
   position: absolute;
   z-index: -9999;
   opacity: 0;
 }
-/* line 148, scss/blocks/_b-adminPhotos.scss */
+/* line 151, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn {
   color: #fff;
   background: #202020;
@@ -3945,39 +4067,48 @@ site-social + site-search .search-block {
   transition-property: background;
   transition-timing-function: ease-in-out;
 }
-/* line 163, scss/blocks/_b-adminPhotos.scss */
+/* line 166, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn:hover {
   background: #ff5e00;
 }
-/* line 167, scss/blocks/_b-adminPhotos.scss */
+/* line 170, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn.btn-removeAll:hover {
   background: #f00;
 }
-/* line 171, scss/blocks/_b-adminPhotos.scss */
+/* line 174, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn.disabled {
   cursor: default;
   background: #cacaca;
 }
-/* line 177, scss/blocks/_b-adminPhotos.scss */
+/* line 179, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .btn.btn-publish:hover {
+  background: #067c00;
+}
+/* line 184, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .btn.btn-unpublish:hover {
+  background: #f00;
+}
+/* line 190, scss/blocks/_b-adminPhotos.scss */
 .admin-form .new-tags {
   text-align: left;
   text-transform: none;
   padding-top: 20px;
   overflow: hidden;
 }
-/* line 182, scss/blocks/_b-adminPhotos.scss */
+/* line 195, scss/blocks/_b-adminPhotos.scss */
 .admin-form .new-tags .new-tag {
   cursor: pointer;
   float: left;
   clear: left;
+  color: #202020;
 }
-/* line 186, scss/blocks/_b-adminPhotos.scss */
+/* line 200, scss/blocks/_b-adminPhotos.scss */
 .admin-form .new-tags .new-tag span {
   color: #ff0000;
   font-weight: 700;
 }
 
-/* line 194, scss/blocks/_b-adminPhotos.scss */
+/* line 208, scss/blocks/_b-adminPhotos.scss */
 .admin-photos,
 .admin-album-list {
   display: -webkit-box;
@@ -3992,30 +4123,30 @@ site-social + site-search .search-block {
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
 }
-/* line 207, scss/blocks/_b-adminPhotos.scss */
+/* line 221, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li,
 .admin-album-list li {
   width: 25%;
   padding: 0 20px;
-  margin-bottom: 40px;
   box-sizing: border-box;
   text-transform: uppercase;
   text-align: center;
   position: relative;
+  margin-bottom: 40px;
 }
-/* line 215, scss/blocks/_b-adminPhotos.scss */
+/* line 229, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li a,
 .admin-album-list li a {
   text-decoration: none;
   display: block;
 }
-/* line 219, scss/blocks/_b-adminPhotos.scss */
+/* line 233, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li a:hover .image-holder,
 .admin-album-list li a:hover .image-holder {
   -webkit-transform: scale(1) translateZ(0);
   transform: scale(1) translateZ(0);
 }
-/* line 225, scss/blocks/_b-adminPhotos.scss */
+/* line 239, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .image-holder,
 .admin-album-list li .image-holder {
   margin-bottom: 10px;
@@ -4031,28 +4162,33 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 239, scss/blocks/_b-adminPhotos.scss */
+/* line 252, scss/blocks/_b-adminPhotos.scss */
+.admin-photos li.draft > a,
+.admin-album-list li.draft > a {
+  opacity: .5;
+}
+/* line 258, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li:nth-child(4n + 1):not(:first-child).new-album,
 .admin-album-list li:nth-child(4n + 1):not(:first-child).new-album {
   width: 100%;
 }
-/* line 244, scss/blocks/_b-adminPhotos.scss */
+/* line 263, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album,
 .admin-album-list li.new-album {
   margin-bottom: 0;
 }
-/* line 246, scss/blocks/_b-adminPhotos.scss */
+/* line 265, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album + .new-album,
 .admin-album-list li.new-album + .new-album {
   display: none;
 }
-/* line 250, scss/blocks/_b-adminPhotos.scss */
+/* line 269, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album .image-holder .image-placeholder,
 .admin-album-list li.new-album .image-holder .image-placeholder {
   height: 100%;
   position: relative;
 }
-/* line 253, scss/blocks/_b-adminPhotos.scss */
+/* line 272, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album .image-holder .image-placeholder svg,
 .admin-album-list li.new-album .image-holder .image-placeholder svg {
   position: absolute;
@@ -4069,28 +4205,28 @@ site-social + site-search .search-block {
   transition-property: transform, fill;
   transition-timing-function: ease-in-out;
 }
-/* line 271, scss/blocks/_b-adminPhotos.scss */
+/* line 290, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album:hover .image-holder .image-placeholder svg,
 .admin-album-list li.new-album:hover .image-holder .image-placeholder svg {
   fill: #ff5e00;
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 279, scss/blocks/_b-adminPhotos.scss */
+/* line 298, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album input[type="file"],
 .admin-album-list li.new-album input[type="file"] {
   position: absolute;
   z-index: -9999;
   opacity: 0;
 }
-/* line 285, scss/blocks/_b-adminPhotos.scss */
+/* line 304, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .btn-remove,
 .admin-album-list li .btn-remove {
   position: absolute;
   right: 20px;
   top: 0;
 }
-/* line 289, scss/blocks/_b-adminPhotos.scss */
+/* line 308, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .btn-remove svg,
 .admin-album-list li .btn-remove svg {
   width: 20px;
@@ -4102,26 +4238,26 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 298, scss/blocks/_b-adminPhotos.scss */
+/* line 317, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .btn-remove:hover svg,
 .admin-album-list li .btn-remove:hover svg {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-
-/* line 306, scss/blocks/_b-adminPhotos.scss */
-.admin-form {
-  position: relative;
+/* line 324, scss/blocks/_b-adminPhotos.scss */
+.admin-photos .modal,
+.admin-album-list .modal {
+  color: #202020;
 }
 
-/* line 311, scss/blocks/_b-adminPhotos.scss */
+/* line 330, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove,
 .album-info .btn-remove {
   position: absolute;
   right: 20px;
   top: 0;
 }
-/* line 315, scss/blocks/_b-adminPhotos.scss */
+/* line 334, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove svg,
 .album-info .btn-remove svg {
   width: 20px;
@@ -4133,14 +4269,64 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 324, scss/blocks/_b-adminPhotos.scss */
+/* line 343, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove:hover svg,
 .album-info .btn-remove:hover svg {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-/* line 331, scss/blocks/_b-adminPhotos.scss */
+/* line 350, scss/blocks/_b-adminPhotos.scss */
 .admin-album-list {
   position: relative;
+}
+
+/* line 353, scss/blocks/_b-adminPhotos.scss */
+.photo-desc {
+  text-transform: none;
+  color: #888;
+  margin-top: 10px;
+}
+
+/* line 359, scss/blocks/_b-adminPhotos.scss */
+.modal .item-overlay {
+  left: -20px;
+  top: -80px;
+  right: -20px;
+  bottom: -40px;
+  border-radius: 0 0 4px 4px;
+  background: rgba(255, 255, 255, 0.9);
+}
+/* line 366, scss/blocks/_b-adminPhotos.scss */
+.modal .item-overlay svg {
+  stroke: #ff5e00;
+}
+
+/* line 371, scss/blocks/_b-adminPhotos.scss */
+.tags-input {
+  text-transform: none !important;
+}
+
+/* line 374, scss/blocks/_b-adminPhotos.scss */
+.photo-tags {
+  text-transform: none;
+  color: #202020;
+  margin-top: 10px;
+}
+/* line 378, scss/blocks/_b-adminPhotos.scss */
+.photo-tags .photo-tag {
+  display: inline;
+}
+/* line 380, scss/blocks/_b-adminPhotos.scss */
+.photo-tags .photo-tag:before {
+  content: ', ';
+}
+/* line 384, scss/blocks/_b-adminPhotos.scss */
+.photo-tags .photo-tag:first-child:before {
+  display: none;
+}
+/* line 388, scss/blocks/_b-adminPhotos.scss */
+.photo-tags .photo-tag span {
+  color: #ff5e00;
+  font-weight: 700;
 }

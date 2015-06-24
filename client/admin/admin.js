@@ -8,7 +8,7 @@
 
 	//admin.widgets = angular.module('admin.widgets', ['widgetItem', 'widgetBtnAlign', 'widgetBtnFontWeight', 'widgetBtnFontSize', 'widgetBtnColor', 'widgetBtnViewHeading', 'widgetBtnWidth', 'widgetBtnHeight', 'widgetBtnViewImage', 'widgetBtnVisibility', 'widgetBtnUpload', 'widgetBtnListSettings', 'widgetBtnAddListItem', 'widgetBtnOverflow', 'widgetBtnBannerSettings', 'widgetBtnPosition', 'widgetBtnBannerHeading', 'widgetBtnBannerText', 'widgetBtnBannerLink', 'widgetBtnLinkType', 'widgetBtnUrl', 'widgetBtnPositionVertical', 'widgetBtnPositionHorisontal', 'widgetBtnFeatureSettings', 'addGridItem']);
 
-	adminItems.elements = angular.module('adminItems.elements', ['adminLogo', 'adminNav', 'maxlength', 'modal']);
+	adminItems.elements = angular.module('adminItems.elements', ['adminLogo', 'adminNav', 'maxlength', 'modal', 'tagsList']);
 
 	adminItems.components = angular.module('adminItems.components', ['dashboardListItem', 'adminPhotos', 'adminAlbum']);
 

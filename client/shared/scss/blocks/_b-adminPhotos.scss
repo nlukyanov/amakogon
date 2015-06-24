@@ -1,6 +1,7 @@
 .admin-form {
 	padding-top: 20px;
-	@include clearfix;
+	position: relative;
+	overflow: hidden;
 	fieldset {
 		float: left;
 		width: 50%;
@@ -13,20 +14,20 @@
 			padding-right: 0;
 		}
 	}
+	hr {
+		border: none;
+		border-top: 1px solid #202020;
+		margin: 40px 0;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 	.form-row {
 		margin-top: 20px;
 		&:first-child {
 			margin-top: 0;
 		}
 		@include clearfix;
-		hr {
-			border: none;
-			border-top: 1px solid #202020;
-			margin: 40px 0;
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
 		.form-row-item {
 			display: inline-block;
 			vertical-align: middle;
@@ -51,7 +52,8 @@
 				cursor: pointer;
 				padding: 5px 10px;
 				text-transform: none;
-				&:hover {
+				&:hover,
+				&.active {
 					color: #fff;
 					background: #ff5e00;
 				}
@@ -139,7 +141,8 @@
 					}
 				}
 			}
-			input[type="file"] {
+			input[type="file"],
+			+ input[type="file"] {
 				position: absolute;
 				z-index: -9999;
 				opacity: 0;
@@ -172,6 +175,16 @@
 				cursor: default;
 				background: #cacaca;
 			}
+			&.btn-publish {
+				&:hover {
+					background: #067c00;
+				}
+			}
+			&.btn-unpublish {
+				&:hover {
+					background: #f00;
+				}
+			}
 		}
 	}
 	.new-tags {
@@ -183,6 +196,7 @@
 			cursor: pointer;
 			float: left;
 			clear: left;
+			color: #202020;
 			span {
 				color: #ff0000;
 				font-weight: 700;
@@ -207,11 +221,11 @@
 	li {
 		width: 25%;
 		padding: 0 20px;
-		margin-bottom: 40px;
 		box-sizing: border-box;
 		text-transform: uppercase;
 		text-align: center;
 		position: relative;
+		margin-bottom: 40px;
 		a {
 			text-decoration: none;
 			display: block;
@@ -233,6 +247,11 @@
 			-webkit-transform: scale(.9) translateZ(0);
 			transform: scale(.9) translateZ(0);
 			@include transition($property: transform, $duration: .25s);
+		}
+		&.draft {
+			> a {
+				opacity: .5;
+			}
 		}
 		&:nth-child(4n + 1) {
 			&:not(:first-child) {
@@ -302,9 +321,9 @@
 			}
 		}
 	}
-}
-.admin-form {
-	position: relative;
+	.modal {
+		color: #202020;
+	}
 }
 .admin-photos,
 .album-info {
@@ -330,4 +349,45 @@
 }
 .admin-album-list {
 	position: relative;
+}
+.photo-desc {
+	text-transform: none;
+	color: #888;
+	margin-top: 10px;
+}
+.modal {
+	.item-overlay {
+		left: -20px;
+		top: -80px;
+		right: -20px;
+		bottom: -40px;
+		border-radius: 0 0 4px 4px;
+		background: rgba(255,255,255,.9);
+		svg {
+			stroke: #ff5e00;
+		}
+	}
+}
+.tags-input {
+	text-transform: none !important;
+}
+.photo-tags {
+	text-transform: none;
+	color: #202020;
+	margin-top: 10px;
+	.photo-tag {
+		display: inline;
+		&:before {
+			content: ', ';
+		}
+		&:first-child {
+			&:before {
+				display: none;
+			}
+		}
+		span {
+			color: #ff5e00;
+			font-weight: 700;
+		}
+	}
 }

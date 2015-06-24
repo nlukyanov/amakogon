@@ -1,0 +1,12 @@
+<div class="form-row-item">
+	<input type="text" placeholder="Введите Тег" ng-model="newTag" class="tags-input" ng-keydown="moveToExTags($event)">
+	<div class="ex-tags" ng-if="newTag">
+		<div class="ex-tag" ng-repeat="tag in exTags | filter: newTag" ng-class="{active: exTagIndex == $index}" ng-click="addTag(tag.tag)">{{ tag.tag }}</div>
+	</div>
+</div>
+<div class="form-row-item">
+	<span class="btn" ng-click="addTag(newTag)" ng-class="{disabled: !newTag}">Добавить</span>
+</div>
+<div class="new-tags" ng-if="tags">
+	<div ng-repeat="tag in tags" class="new-tag" ng-click="removeTag(tag)"><span>#</span>{{ tag }}</div>
+</div>

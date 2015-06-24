@@ -12,8 +12,6 @@
 			templateUrl: '../client/site/html/components/home-item.html'
 		};
 		function link(scope, element, attrs) {
-			var socket = io.connect();
-
 			socket.emit('load dashboard', scope.item);
 			socket.on('dashboard loaded', function(data) {
 				if ( data.name === scope.item ) {

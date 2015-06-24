@@ -27,7 +27,6 @@
 	<script type="text/javascript" src="../client/site/js/app/elements/siteSearch.js"></script>
 	<script type="text/javascript" src="../client/site/js/app/elements/siteBreadcrumbs.js"></script>
 	<script type="text/javascript" src="../client/site/js/app/elements/backToTop.js"></script>
-	<script type="text/javascript" src="../client/site/js/app/elements/siteTags.js"></script>
 	<script type="text/javascript" src="../client/site/js/app/elements/modal.js"></script>
 	<script type="text/javascript" src="../client/site/js/app/elements/cropSlider.js"></script>
 	<script type="text/javascript" src="../client/site/js/app/elements/percentage.js"></script>
@@ -46,12 +45,14 @@
 	<script type="text/javascript" src="../client/site/js/app/components/siteAbout.js"></script>
 	<script type="text/javascript" src="../client/site/js/app/components/siteContact.js"></script>
 	<script type="text/javascript" src="../client/site/js/app/components/homeItem.js"></script>
+	<script type="text/javascript" src="../client/site/js/app/components/tagsSearch.js"></script>
 	<!-- COMPONENTS end -->
 
 	<script>
 		var config = {
 			prefix: '/client/site/'
 		}
+		var socket = io.connect();
 	</script>
 </head>
 <body>

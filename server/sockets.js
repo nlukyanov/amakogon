@@ -19,6 +19,7 @@ var Socket = function(server) {
 				}
 			});
 		});
+
 		socket.on('update dashboard', function(item, img, title, desc) {
 			dashboardModel.updateHome(item, img, title, desc, function(error, data) {
 				socket.emit('dashboard updated', data);
@@ -35,6 +36,7 @@ var Socket = function(server) {
 				}
 			});
 		});
+
 		socket.on('add album', function(title, desc, img, tags) {
 			photosModel.validateAlbum(title, '', function(error, resp) {
 				if ( error != null ) {
@@ -57,6 +59,7 @@ var Socket = function(server) {
 				}
 			});
 		});
+
 		socket.on('update album', function(album, originalTitle) {
 			photosModel.validateAlbum(album.title, originalTitle, function(error, resp) {
 				if ( error != null ) {
@@ -80,10 +83,12 @@ var Socket = function(server) {
 				}
 			});
 		});
+
 		socket.on('remove album', function(url, title, folder) {
 			photosModel.removeAlbum(url);
 			albumModel.removePhotos(title, folder);
 		});
+
 		socket.on('load album', function(url) {
 			photosModel.getAlbum(url, function(error, data) {
 				if ( error != null ) {
@@ -94,6 +99,7 @@ var Socket = function(server) {
 				}
 			});
 		});
+
 		socket.on('load album photos', function(parent) {
 			albumModel.getPhotos(parent, function(error, data) {
 				if ( error != null ) {
@@ -104,16 +110,25 @@ var Socket = function(server) {
 				}
 			});
 		});
+
 		socket.on('update album photos', function(parent, folder, photos) {
 			albumModel.updatePhotos(parent, folder, photos, function(error, data) {
 				if ( error != null ) {
 					// === Error Handling
 				}
 				else {
-					socket.emit('album photos updated');
+					albumModel.getPhotos(parent, function(error, data) {
+						if ( error != null ) {
+							// === Error Handling
+						}
+						else {
+							socket.emit('album photos loaded', data);
+						}
+					});
 				}
 			});
 		});
+
 		socket.on('load tags', function() {
 			tagsModel.getTags(function(error, data) {
 				if ( error != null ) {
@@ -124,11 +139,39 @@ var Socket = function(server) {
 				}
 			});
 		});
+
 		socket.on('remove album photo', function(photo) {
 			albumModel.removePhoto(photo);
 		});
+
 		socket.on('remove album photos', function(parent, folder) {
 			albumModel.removePhotos(parent, folder);
+		});
+
+		socket.on('load albums by tag', function(tag) {
+			photosModel.getPhotosByTag(tag, function(error, data) {
+				if ( error != null ) {
+					// === Error Handling
+				}
+				else {
+					socket.emit('albums by tag loaded', data);
+				}
+			});
+		});
+
+		socket.on('load photos by tag', function(tag) {
+			albumModel.getPhotosByTag(tag, function(error, data) {
+				if ( error != null ) {
+					// === Error Handling
+				}
+				else {
+					socket.emit('photos by tag loaded', data);
+				}
+			});
+		});
+
+		socket.on('publish album', function(url) {
+			photosModel.publishAlbum(url);
 		});
 	});
 };

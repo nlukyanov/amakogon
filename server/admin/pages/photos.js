@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 		'image': String,
 		'url': String,
 		'date': String,
-		'tags': []
+		'tags': [],
+		'published': Boolean
 	},
 	PhotosModel = mongoose.model('photos', schema);
 
@@ -24,6 +25,22 @@ Photos.getPhotos = function(callback) {
 }
 Photos.getAlbum = function(url, callback) {
 	PhotosModel.findOne({'url': url}, function(error, data) {
+		if ( error ) {
+			callback(error);
+		}
+		else {
+			callback(null, data);
+		}
+	});
+}
+Photos.publishAlbum = function(url, callback) {
+	PhotosModel.findOne({'url': url}, function(error, data) {
+		data.published = !data.published;
+		data.save();
+	});
+}
+Photos.getPhotosByTag = function(tag, callback) {
+	PhotosModel.find({'tags': tag}, function(error, data) {
 		if ( error ) {
 			callback(error);
 		}
@@ -78,17 +95,18 @@ Photos.addAlbum = function(title, desc, img, tags, callback) {
 		mm = '0' + mm;
 	}
 	if ( img ) {
-		var image = img.replace(/^data:image\/(jpg|jpeg);base64,/,'');
+		var image = img.replace(/^data:image\/(jpg|jpeg);base64,/,''),
+			time = dd + '.' + mm + '.' + yyyy + '_' + h + '.' + m + '.' + s;
 
-		fs.mkdirSync('./uploads/albums/' + dd + '.' + mm + '.' + yyyy + '_' + h + '.' + m + '.' + s + '_' + url);
-		fs.writeFile('./uploads/photos/' + dd + '.' + mm + '.' + yyyy + '_' + h + '.' + m + '.' + s + '_' + url + '.jpg', image, 'base64', function(error) {
+		fs.mkdirSync('./uploads/albums/' + time + '_' + url);
+		fs.writeFile('./uploads/photos/' + time + '_' + url + '.jpg', image, 'base64', function(error) {
 			if ( error ) {
 				return console.log(error);
 			}
 			else {
-				image = './uploads/photos/' + dd + '.' + mm + '.' + yyyy + '_' + h + '.' + m + '.' + s + '_' + url + '.jpg';
+				image = './uploads/photos/' + time + '_' + url + '.jpg';
 
-				var album = new PhotosModel({title: title, desc: desc, image: image, url: url, date: dd + '.' + mm + '.' + yyyy, tags: tags});
+				var album = new PhotosModel({title: title, desc: desc, image: image, url: url, date: dd + '.' + mm + '.' + yyyy, tags: tags, published: false});
 
 				album.save(function(error) {
 					if ( error ) {
@@ -102,7 +120,7 @@ Photos.addAlbum = function(title, desc, img, tags, callback) {
 		});
 	}
 	else {
-		var album = new PhotosModel({title: title, desc: desc, image: image, url: url, date: dd + '.' + mm + '.' + yyyy, tags: tags});
+		var album = new PhotosModel({title: title, desc: desc, image: image, url: url, date: dd + '.' + mm + '.' + yyyy, tags: tags, published: false});
 
 		album.save(function(error) {
 			if ( error ) {
