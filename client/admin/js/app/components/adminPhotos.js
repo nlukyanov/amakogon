@@ -14,6 +14,7 @@
 			scope.tags = [];
 			scope.newTag = '';
 			scope.showTags = false;
+			scope.showSpinner = false;
 
 			scope.changeShowTags = function(val) {
 				$timeout(function() {
@@ -125,8 +126,7 @@
 			};
 
 			scope.triggerUpload = function(e) {
-				var item = $(e.target).closest('.admin-form'),
-					input = item.find('input[type="file"]');
+				var input = $(e.currentTarget).next('input[type="file"]');
 
 				$timeout(function() {
 					input.trigger('click');
@@ -134,44 +134,48 @@
 			};
 
 			element.find('input[type="file"]').on('change', function(e) {
-				var reader = new FileReader(),
-					image = document.createElement('img'),
-					k = 2560,
-					width = 0,
-					height = 0;
+				scope.showSpinner = true;
+				$timeout(function() {
+					var reader = new FileReader(),
+						image = document.createElement('img'),
+						k = 2560,
+						width = 0,
+						height = 0;
 
-				reader.onload = function (e) {
-					image.src = e.target.result;
+					reader.onload = function (e) {
+						image.src = e.target.result;
 
-					$(image).on('load', function() {
-						if ( image.width > image.height ) {
-							width = k;
-							height = k * image.height / image.width;
-						}
-						else if ( image.width < image.height ) {
-							height = k
-							width = k * image.width / image.height;
-						}
-						else {
-							width = height = k;
-						}
+						$(image).on('load', function() {
+							if ( image.width > image.height ) {
+								width = k;
+								height = k * image.height / image.width;
+							}
+							else if ( image.width < image.height ) {
+								height = k
+								width = k * image.width / image.height;
+							}
+							else {
+								width = height = k;
+							}
 
-						var canvas = document.createElement('canvas');
+							var canvas = document.createElement('canvas');
 
-						canvas.width = width;
-						canvas.height = height;
+							canvas.width = width;
+							canvas.height = height;
 
-						var ctx = canvas.getContext('2d');
-						ctx.drawImage(image, 0, 0, width, height);
-						var shrinked = canvas.toDataURL('image/jpeg');
+							var ctx = canvas.getContext('2d');
+							ctx.drawImage(image, 0, 0, width, height);
+							var shrinked = canvas.toDataURL('image/jpeg');
 
-						scope.newImage = shrinked;
-						scope.hasImage = true;
-						scope.$apply();
-					});
-				}
+							scope.newImage = shrinked;
+							scope.hasImage = true;
+							scope.showSpinner = false;
+							scope.$apply();
+						});
+					}
 
-				reader.readAsDataURL($(e.currentTarget)[0].files[0]);
+					reader.readAsDataURL($(e.currentTarget)[0].files[0]);
+				}, 0);
 			});
 
 			scope.album_triggerUpload = function(e, target, album) {
@@ -183,15 +187,19 @@
 					input.trigger('click');
 				}, 100);
 				input.on('change', function(e) {
-					var reader = new FileReader();
+					scope.showSpinner = true;
+					$timeout(function() {
+						var reader = new FileReader();
 
-					reader.onload = function (e) {
-						album.image = e.target.result;
-						scope.imgUpdated = true;
-						scope.$apply();
-					}
+						reader.onload = function (e) {
+							album.image = e.target.result;
+							scope.imgUpdated = true;
+							scope.showSpinner = false;
+							scope.$apply();
+						}
 
-					reader.readAsDataURL($(e.currentTarget)[0].files[0]);
+						reader.readAsDataURL($(e.currentTarget)[0].files[0]);
+					}, 0);
 				});
 			};
 
@@ -259,6 +267,19 @@
 					element.find('.item-overlay').removeClass('saving');
 				}, 500);
 			};
+
+			scope.$on('$locationChangeStart', function(e) {
+				if ( scope.albumUpdated || $('.changed', element).length || scope.imgUpdated ) {
+					if ( !confirm('Некоторые изменения не были сохранены. Действительно обновить эту страницу?') ) {
+						e.preventDefault();
+					}
+				}
+			});
+			window.onbeforeunload = function (e) {
+				if ( scope.albumUpdated || $('.changed', element).length || scope.imgUpdated ) {
+					return 'Некоторые изменения не были сохранены';
+				}
+			}
 		};
 	});
 

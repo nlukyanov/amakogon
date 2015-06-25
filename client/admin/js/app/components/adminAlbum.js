@@ -18,6 +18,8 @@
 			scope.photosUpdated = false;
 			scope.albumTagsChanged = false;
 			scope.photoTagsChanged = false;
+			scope.showSpinner = false;
+			scope.showAlbumSpinner = false;
 
 			socket.emit('load album', url);
 			socket.off('album loaded').on('album loaded', function(data) {
@@ -38,7 +40,6 @@
 						scope.hasPhotos = true;
 					}
 					$('.item-overlay').removeClass('saving');
-					$('.changed').removeClass('changed');
 					$('body').removeClass('isModal');
 					scope.$apply();
 
@@ -98,8 +99,7 @@
 			});
 
 			scope.triggerUpload = function(e) {
-				var item = $(e.target).closest('.album-info'),
-					input = item.find('input[type="file"]');
+				var input = $(e.currentTarget).next('input[type="file"]');
 
 				$timeout(function() {
 					input.trigger('click');
@@ -107,14 +107,18 @@
 			};
 
 			element.find('#newAlbumPhoto').on('change', function(e) {
-				var reader = new FileReader();
+				scope.showAlbumSpinner = true;
+				$timeout(function() {
+					var reader = new FileReader();
 
-				reader.onload = function (e) {
-					scope.album.image = e.target.result;
-					scope.$apply();
-				};
+					reader.onload = function (e) {
+						scope.album.image = e.target.result;
+						scope.showAlbumSpinner = false;
+						scope.$apply();
+					};
 
-				reader.readAsDataURL($(e.currentTarget)[0].files[0]);
+					reader.readAsDataURL($(e.currentTarget)[0].files[0]);
+				}, 100);
 			});
 
 			scope.removeAlbum = function(e, url, title, image) {
@@ -150,55 +154,68 @@
 					}
 				});
 
-				scope.addImage(files, files.length);
-				scope.photosUpdated = true;
+				scope.showSpinner = true;
+				$timeout(function() {
+					scope.newLength = files.length;
+					scope.currentLength = 1;
+					scope.addImage(files, files.length);
+					scope.photosUpdated = true;
+				}, 0);
 			});
 			scope.addImage = function(el, length) {
 				if ( scope.loadingFile <= length ) {
-					var reader = new FileReader(),
-						image = document.createElement('img'),
-						k = 2560,
-						width = 0,
-						height = 0;
+					scope.currentLength = scope.loadingFile + 1;
+					$timeout(function() {
+						var reader = new FileReader(),
+							image = document.createElement('img'),
+							k = 2560,
+							width = 0,
+							height = 0;
 
-					reader.onload = function (e) {
+						reader.onload = function (e) {
 
-						image.src = e.target.result;
+							image.src = e.target.result;
 
-						$(image).on('load', function() {
-							if ( image.width > image.height ) {
-								width = k;
-								height = k * image.height / image.width;
-							}
-							else if ( image.width < image.height ) {
-								height = k;
-								width = k * image.width / image.height;
-							}
-							else {
-								width = height = k;
-							}
+							$(image).on('load', function() {
+								if ( image.width > image.height ) {
+									width = k;
+									height = k * image.height / image.width;
+								}
+								else if ( image.width < image.height ) {
+									height = k;
+									width = k * image.width / image.height;
+								}
+								else {
+									width = height = k;
+								}
 
-							var canvas = document.createElement('canvas');
+								var canvas = document.createElement('canvas');
 
-							canvas.width = width;
-							canvas.height = height;
+								canvas.width = width;
+								canvas.height = height;
 
-							var ctx = canvas.getContext('2d');
-							ctx.drawImage(image, 0, 0, width, height);
-							var shrinked = canvas.toDataURL('image/jpeg');
+								var ctx = canvas.getContext('2d');
+								ctx.drawImage(image, 0, 0, width, height);
+								var shrinked = canvas.toDataURL('image/jpeg');
 
-							scope.photos.push({'image': shrinked, 'title': '', 'desc': '', 'parent': scope.album.title, 'id': scope.photos.length, 'parentUrl': scope.album.url});
-							scope.hasPhotos = true;
-							scope.$apply();
+								scope.photos.push({'image': shrinked, 'title': '', 'desc': '', 'parent': scope.album.title, 'id': scope.photos.length, 'parentUrl': scope.album.url});
+								scope.hasPhotos = true;
+								scope.$apply();
 
-							scope.loadingFile ++;
-							scope.addImage(el, length);
-							$(window).scrollTop(9999);
-						});
-					};
-					if ( el[scope.loadingFile] ) {
-						reader.readAsDataURL(el[scope.loadingFile]);
-					}
+								$(window).scrollTop(9999);
+								$timeout(function() {
+									scope.loadingFile ++;
+									scope.addImage(el, length);
+								}, 0);
+							});
+						};
+						if ( el[scope.loadingFile] ) {
+							reader.readAsDataURL(el[scope.loadingFile]);
+						}
+						if ( scope.loadingFile == length - 1 ) {
+							scope.showSpinner = false;
+						}
+					}, 100);
 				}
 			};
 
@@ -209,6 +226,10 @@
 					socket.emit('update album photos', parent, folder, scope.photos);
 					originalPhotos = angular.copy(scope.photos);
 					element.find('.admin-album-list .item-overlay').addClass('saving');
+					$timeout(function() {
+						$('.changed').removeClass('changed');
+						$location.hash('');
+					}, 0);
 				}
 			};
 
@@ -280,15 +301,28 @@
 				if ( album.published === false ) {
 					if ( confirm('Вы уверены, что хотите опубликовать этот альбом?') ) {
 						socket.emit('publish album', album.url);
+						album.published = !album.published;
 					}
 				}
 				else {
 					if ( confirm('Вы уверены, что хотите отправить этот альбом в черновики?') ) {
 						socket.emit('publish album', album.url);
+						album.published = !album.published;
 					}
 				}
-				album.published = !album.published;
 			};
+			scope.$on('$locationChangeStart', function(e) {
+				if ( scope.isUpdated || scope.albumTagsChanged || scope.photosUpdated || $('.changed', element).length ) {
+					if ( !confirm('Некоторые изменения не были сохранены. Действительно обновить эту страницу?') ) {
+						e.preventDefault();
+					}
+				}
+			});
+			window.onbeforeunload = function (e) {
+				if ( scope.isUpdated || scope.albumTagsChanged || scope.photosUpdated || $('.changed', element).length ) {
+					return 'Некоторые изменения не были сохранены.';
+				}
+			}
 		}
 	});
 

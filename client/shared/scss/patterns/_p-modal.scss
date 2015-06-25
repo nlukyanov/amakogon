@@ -142,8 +142,6 @@
 		@include hide-text;
 	}
 	.modal-prev {
-		border: 1px solid #fff;
-		border-radius: 100%;
 		width: 35px;
 		height: 35px;
 		position: absolute;
@@ -152,12 +150,10 @@
 		margin-top: -17.5px;
 		-webkit-transform: translateZ(0);
 		transform: translateZ(0);
-		@include transition($property: border-color, $duration: .25s);
 		svg {
 			fill: #fff;
-			width: 15px;
+			width: 100%;
 			height: 100%;
-			margin-left: -2px;
 			-webkit-transform: translateZ(0);
 			transform: translateZ(0);
 			@include transition($property: fill, $duration: .25s);
@@ -170,8 +166,6 @@
 		}
 	}
 	.modal-next {
-		border: 1px solid #fff;
-		border-radius: 100%;
 		width: 35px;
 		height: 35px;
 		position: absolute;
@@ -181,12 +175,10 @@
 		text-align: center;
 		-webkit-transform: translateZ(0);
 		transform: translateZ(0);
-		@include transition($property: border-color, $duration: .25s);
 		svg {
 			fill: #fff;
-			width: 15px;
+			width: 100%;
 			height: 100%;
-			margin-right: -2px;
 			-webkit-transform: translateZ(0);
 			transform: translateZ(0);
 			@include transition($property: fill, $duration: .25s);
@@ -227,6 +219,39 @@
 		&.btn-remove {
 			&:hover {
 				background: #f00;
+			}
+		}
+		&.btn-image {
+			width: 35px;
+			height: 35px;
+			background: none !important;
+			padding: 0 !important;
+			&.btn-link {
+				svg {
+					fill: #337ab7;
+				}
+			}
+			&.btn-save {
+				svg {
+					fill: #067c00;
+				}
+			}
+			svg {
+				width: 30px;
+				height: 30px;
+				opacity: .5;
+				@include transition($property: opacity, $duration: .25s);
+			}
+			&:hover {
+				svg {
+					opacity: 1;
+				}
+			}
+			&.disabled {
+				svg {
+					fill: #cacaca;
+					opacity: 1;
+				}
 			}
 		}
 	}

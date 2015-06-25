@@ -22,6 +22,34 @@
 			margin-bottom: 0;
 		}
 	}
+	.status {
+		font-size: 14px;
+		line-height: 18px;
+		padding: 0 !important;
+		margin-bottom: 20px;
+		text-align: left;
+		text-transform: uppercase;
+		&.draft {
+			span {
+				color: #f00;
+				font-weight: 400;
+			}
+		}
+		&.published {
+			span {
+				color: #067c00;
+				font-weight: 400;
+			}
+		}
+		.date {
+			margin-bottom: 0 !important;
+			padding-bottom: 0 !important;
+			display: inline !important;
+			border-bottom: none !important;
+			color: #202020 !important;
+			font-weight: 400;
+		}
+	}
 	.form-row {
 		margin-top: 20px;
 		&:first-child {
@@ -117,6 +145,9 @@
 			&.hasImage {
 				padding: 0;
 				background: none;
+				&:hover {
+					background: #cacaca !important;
+				}
 				&:before {
 					content: '';
 					position: absolute;
@@ -139,6 +170,18 @@
 					svg {
 						opacity: 1;
 					}
+				}
+			}
+			&.isLoading {
+				padding: 0;
+				background: none;
+				min-height: 250px;
+				@include transition($property: none, $duration: 0);
+				&:hover {
+					background: #fff !important;
+				}
+				svg {
+					display: none;
 				}
 			}
 			input[type="file"],
@@ -185,6 +228,39 @@
 					background: #f00;
 				}
 			}
+			&.btn-image {
+				width: 35px;
+				height: 35px;
+				background: none !important;
+				padding: 0 !important;
+				&.btn-link {
+					svg {
+						fill: #337ab7;
+					}
+				}
+				&.btn-save {
+					svg {
+						fill: #067c00;
+					}
+				}
+				svg {
+					width: 30px;
+					height: 30px;
+					opacity: .5;
+					@include transition($property: opacity, $duration: .25s);
+				}
+				&:hover {
+					svg {
+						opacity: 1;
+					}
+				}
+				&.disabled {
+					svg {
+						fill: #cacaca;
+						opacity: 1;
+					}
+				}
+			}
 		}
 	}
 	.new-tags {
@@ -197,8 +273,11 @@
 			float: left;
 			clear: left;
 			color: #202020;
+			&:hover {
+				color: #ff5e00;
+			}
 			span {
-				color: #ff0000;
+				color: #ff5e00;
 				font-weight: 700;
 			}
 		}
@@ -244,6 +323,8 @@
 			background-position: 50% 50%;
 			background-repeat: no-repeat;
 			border-radius: 100%;
+			position: relative;
+			z-index: 1;
 			-webkit-transform: scale(.9) translateZ(0);
 			transform: scale(.9) translateZ(0);
 			@include transition($property: transform, $duration: .25s);
@@ -389,5 +470,74 @@
 			color: #ff5e00;
 			font-weight: 700;
 		}
+	}
+}
+.spinner {
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAzOCAzOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHJva2U9IiNmZjVlMDAiPiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSAxKSIgc3Ryb2tlLXdpZHRoPSIyIj4gICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuNSIgY3g9IjE4IiBjeT0iMTgiIHI9IjE4Ii8+ICAgICAgICAgICAgPHBhdGggZD0iTTM2IDE4YzAtOS45NC04LjA2LTE4LTE4LTE4Ij48L3BhdGg+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=);
+	background-position: 50% 50%;
+	background-size: 50px 50px;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: 120px;
+	top: 120px;
+	margin: -45px 0 0 -25px;
+	background-repeat: no-repeat;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation: rotating 1s linear infinite;
+	-moz-animation: rotating 1s linear infinite;
+	-ms-animation: rotating 1s linear infinite;
+	-o-animation: rotating 1s linear infinite;
+	animation: rotating 1s linear infinite;
+}
+.spinner-label {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 40px;
+	color: #ff5e00;
+	text-transform: none;
+}
+.newAlbum-image .spinner {
+	top: 50%;
+	left: 50%;
+	margin: -25px 0 0 -25px;
+}
+.spinner-item .spinner {
+	top: 50%;
+	left: 50%;
+	margin: -25px 0 0 -25px;
+}
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+	from {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes rotating {
+	from {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
 	}
 }

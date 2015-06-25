@@ -8,7 +8,8 @@
 					templateUrl: config.prefix + 'html/templates/dashboard.html'
 				})
 				.when('/admin/photos', {
-					templateUrl: config.prefix + 'html/templates/photos.html'
+					templateUrl: config.prefix + 'html/templates/photos.html',
+					reloadOnSearch: false
 				})
 				.when('/admin/photos/:id', {
 					templateUrl: config.prefix + 'html/templates/album.html',

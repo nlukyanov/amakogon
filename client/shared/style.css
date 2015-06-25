@@ -428,8 +428,6 @@ site-social + site-search .search-block {
 }
 /* line 144, scss/patterns/_p-modal.scss */
 .modal .modal-prev {
-  border: 1px solid #fff;
-  border-radius: 100%;
   width: 35px;
   height: 35px;
   position: absolute;
@@ -438,34 +436,28 @@ site-social + site-search .search-block {
   margin-top: -17.5px;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  transition-duration: 0.25s;
-  transition-property: border-color;
-  transition-timing-function: ease-in-out;
 }
-/* line 156, scss/patterns/_p-modal.scss */
+/* line 153, scss/patterns/_p-modal.scss */
 .modal .modal-prev svg {
   fill: #fff;
-  width: 15px;
+  width: 100%;
   height: 100%;
-  margin-left: -2px;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   transition-duration: 0.25s;
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 165, scss/patterns/_p-modal.scss */
+/* line 161, scss/patterns/_p-modal.scss */
 .modal .modal-prev:hover {
   border-color: #ff5e00;
 }
-/* line 167, scss/patterns/_p-modal.scss */
+/* line 163, scss/patterns/_p-modal.scss */
 .modal .modal-prev:hover svg {
   fill: #ff5e00;
 }
-/* line 172, scss/patterns/_p-modal.scss */
+/* line 168, scss/patterns/_p-modal.scss */
 .modal .modal-next {
-  border: 1px solid #fff;
-  border-radius: 100%;
   width: 35px;
   height: 35px;
   position: absolute;
@@ -475,37 +467,33 @@ site-social + site-search .search-block {
   text-align: center;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  transition-duration: 0.25s;
-  transition-property: border-color;
-  transition-timing-function: ease-in-out;
 }
-/* line 185, scss/patterns/_p-modal.scss */
+/* line 178, scss/patterns/_p-modal.scss */
 .modal .modal-next svg {
   fill: #fff;
-  width: 15px;
+  width: 100%;
   height: 100%;
-  margin-right: -2px;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   transition-duration: 0.25s;
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 194, scss/patterns/_p-modal.scss */
+/* line 186, scss/patterns/_p-modal.scss */
 .modal .modal-next:hover {
   border-color: #ff5e00;
 }
-/* line 196, scss/patterns/_p-modal.scss */
+/* line 188, scss/patterns/_p-modal.scss */
 .modal .modal-next:hover svg {
   fill: #ff5e00;
 }
-/* line 201, scss/patterns/_p-modal.scss */
+/* line 193, scss/patterns/_p-modal.scss */
 .modal hr {
   margin: 40px 0;
   border: none;
   border-top: 1px solid #202020;
 }
-/* line 206, scss/patterns/_p-modal.scss */
+/* line 198, scss/patterns/_p-modal.scss */
 .modal .btn {
   color: #fff;
   background: #202020;
@@ -523,21 +511,54 @@ site-social + site-search .search-block {
   transition-property: background;
   transition-timing-function: ease-in-out;
 }
-/* line 220, scss/patterns/_p-modal.scss */
+/* line 212, scss/patterns/_p-modal.scss */
 .modal .btn:hover {
   background: #ff5e00;
 }
-/* line 223, scss/patterns/_p-modal.scss */
+/* line 215, scss/patterns/_p-modal.scss */
 .modal .btn.disabled {
   cursor: default;
   background: #cacaca;
 }
-/* line 228, scss/patterns/_p-modal.scss */
+/* line 220, scss/patterns/_p-modal.scss */
 .modal .btn.btn-remove:hover {
   background: #f00;
 }
+/* line 224, scss/patterns/_p-modal.scss */
+.modal .btn.btn-image {
+  width: 35px;
+  height: 35px;
+  background: none !important;
+  padding: 0 !important;
+}
+/* line 230, scss/patterns/_p-modal.scss */
+.modal .btn.btn-image.btn-link svg {
+  fill: #337ab7;
+}
+/* line 235, scss/patterns/_p-modal.scss */
+.modal .btn.btn-image.btn-save svg {
+  fill: #067c00;
+}
+/* line 239, scss/patterns/_p-modal.scss */
+.modal .btn.btn-image svg {
+  width: 30px;
+  height: 30px;
+  opacity: .5;
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+/* line 246, scss/patterns/_p-modal.scss */
+.modal .btn.btn-image:hover svg {
+  opacity: 1;
+}
+/* line 251, scss/patterns/_p-modal.scss */
+.modal .btn.btn-image.disabled svg {
+  fill: #cacaca;
+  opacity: 1;
+}
 
-/* line 234, scss/patterns/_p-modal.scss */
+/* line 259, scss/patterns/_p-modal.scss */
 .isModal {
   overflow: hidden;
 }
@@ -3659,8 +3680,12 @@ site-social + site-search .search-block {
 /* line 1, scss/blocks/_b-admin.scss */
 .admin-page {
   padding: 40px 0;
+  opacity: 0;
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
 }
-/* line 3, scss/blocks/_b-admin.scss */
+/* line 6, scss/blocks/_b-admin.scss */
 .admin-page .page-title {
   text-transform: uppercase;
   text-align: center;
@@ -3668,15 +3693,15 @@ site-social + site-search .search-block {
   font-weight: 700;
   letter-spacing: 0;
 }
-/* line 11, scss/blocks/_b-admin.scss */
+/* line 14, scss/blocks/_b-admin.scss */
 .admin-page .modal .modal-box {
   max-width: 960px;
 }
-/* line 13, scss/blocks/_b-admin.scss */
+/* line 16, scss/blocks/_b-admin.scss */
 .admin-page .modal .modal-box .modal-text {
   width: 920px;
 }
-/* line 18, scss/blocks/_b-admin.scss */
+/* line 21, scss/blocks/_b-admin.scss */
 .admin-page .item-overlay {
   position: absolute;
   left: 0;
@@ -3688,24 +3713,29 @@ site-social + site-search .search-block {
   display: none;
   z-index: 1;
 }
-/* line 28, scss/blocks/_b-admin.scss */
+/* line 31, scss/blocks/_b-admin.scss */
 .admin-page .item-overlay svg {
   width: 50px;
   height: 100%;
   stroke: #fff;
 }
-/* line 33, scss/blocks/_b-admin.scss */
+/* line 36, scss/blocks/_b-admin.scss */
 .admin-page .item-overlay.saving {
   display: block;
 }
 
-/* line 38, scss/blocks/_b-admin.scss */
+/* line 41, scss/blocks/_b-admin.scss */
 .isModal {
   height: auto;
 }
-/* line 40, scss/blocks/_b-admin.scss */
+/* line 43, scss/blocks/_b-admin.scss */
 .isModal .admin-album-list > .item-overlay {
   display: none !important;
+}
+
+/* line 50, scss/blocks/_b-admin.scss */
+.admin .admin-page {
+  opacity: 1;
 }
 
 /* line 1, scss/blocks/_b-adminNav.scss */
@@ -3933,10 +3963,38 @@ site-social + site-search .search-block {
   margin-bottom: 0;
 }
 /* line 25, scss/blocks/_b-adminPhotos.scss */
+.admin-form .status {
+  font-size: 14px;
+  line-height: 18px;
+  padding: 0 !important;
+  margin-bottom: 20px;
+  text-align: left;
+  text-transform: uppercase;
+}
+/* line 33, scss/blocks/_b-adminPhotos.scss */
+.admin-form .status.draft span {
+  color: #f00;
+  font-weight: 400;
+}
+/* line 39, scss/blocks/_b-adminPhotos.scss */
+.admin-form .status.published span {
+  color: #067c00;
+  font-weight: 400;
+}
+/* line 44, scss/blocks/_b-adminPhotos.scss */
+.admin-form .status .date {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  display: inline !important;
+  border-bottom: none !important;
+  color: #202020 !important;
+  font-weight: 400;
+}
+/* line 53, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row {
   margin-top: 20px;
 }
-/* line 27, scss/blocks/_b-adminPhotos.scss */
+/* line 55, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row:first-child {
   margin-top: 0;
 }
@@ -3946,7 +4004,7 @@ site-social + site-search .search-block {
   display: block;
   clear: both;
 }
-/* line 31, scss/blocks/_b-adminPhotos.scss */
+/* line 59, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .form-row-item {
   display: inline-block;
   vertical-align: middle;
@@ -3954,7 +4012,7 @@ site-social + site-search .search-block {
   width: 50%;
   position: relative;
 }
-/* line 38, scss/blocks/_b-adminPhotos.scss */
+/* line 66, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .ex-tags {
   position: absolute;
   z-index: 1;
@@ -3969,18 +4027,18 @@ site-social + site-search .search-block {
   overflow: auto;
   max-height: 150px;
 }
-/* line 51, scss/blocks/_b-adminPhotos.scss */
+/* line 79, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .ex-tags .ex-tag {
   cursor: pointer;
   padding: 5px 10px;
   text-transform: none;
 }
-/* line 56, scss/blocks/_b-adminPhotos.scss */
+/* line 84, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .ex-tags .ex-tag:hover, .admin-form .form-row .ex-tags .ex-tag.active {
   color: #fff;
   background: #ff5e00;
 }
-/* line 62, scss/blocks/_b-adminPhotos.scss */
+/* line 90, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row input[type="text"] {
   border: none;
   border-bottom: 1px solid #cacaca;
@@ -3998,11 +4056,11 @@ site-social + site-search .search-block {
   transition-property: border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 76, scss/blocks/_b-adminPhotos.scss */
+/* line 104, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row input[type="text"]:focus {
   border-color: #202020;
 }
-/* line 80, scss/blocks/_b-adminPhotos.scss */
+/* line 108, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row textarea {
   border: 1px solid #cacaca;
   padding: 10px;
@@ -4020,11 +4078,11 @@ site-social + site-search .search-block {
   transition-property: border-color;
   transition-timing-function: ease-in-out;
 }
-/* line 94, scss/blocks/_b-adminPhotos.scss */
+/* line 122, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row textarea:focus {
   border-color: #202020;
 }
-/* line 98, scss/blocks/_b-adminPhotos.scss */
+/* line 126, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image {
   position: relative;
   padding-top: 52.65%;
@@ -4034,11 +4092,11 @@ site-social + site-search .search-block {
   transition-property: background;
   transition-timing-function: ease-in-out;
 }
-/* line 104, scss/blocks/_b-adminPhotos.scss */
+/* line 132, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image:hover {
   background: #ff5e00;
 }
-/* line 107, scss/blocks/_b-adminPhotos.scss */
+/* line 135, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image svg {
   position: absolute;
   left: 50%;
@@ -4049,12 +4107,16 @@ site-social + site-search .search-block {
   margin-left: -50px;
   fill: #fff;
 }
-/* line 117, scss/blocks/_b-adminPhotos.scss */
+/* line 145, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage {
   padding: 0;
   background: none;
 }
-/* line 120, scss/blocks/_b-adminPhotos.scss */
+/* line 148, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .newAlbum-image.hasImage:hover {
+  background: #cacaca !important;
+}
+/* line 151, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage:before {
   content: '';
   position: absolute;
@@ -4068,29 +4130,46 @@ site-social + site-search .search-block {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 131, scss/blocks/_b-adminPhotos.scss */
+/* line 162, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage svg {
   opacity: 0;
   transition-duration: 0.25s;
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 }
-/* line 136, scss/blocks/_b-adminPhotos.scss */
+/* line 167, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage:hover:before {
   opacity: 1;
 }
-/* line 139, scss/blocks/_b-adminPhotos.scss */
+/* line 170, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image.hasImage:hover svg {
   opacity: 1;
 }
-/* line 145, scss/blocks/_b-adminPhotos.scss */
+/* line 175, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .newAlbum-image.isLoading {
+  padding: 0;
+  background: none;
+  min-height: 250px;
+  transition-duration: 0;
+  transition-property: none;
+  transition-timing-function: ease-in-out;
+}
+/* line 180, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .newAlbum-image.isLoading:hover {
+  background: #fff !important;
+}
+/* line 183, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .newAlbum-image.isLoading svg {
+  display: none;
+}
+/* line 188, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .newAlbum-image input[type="file"],
 .admin-form .form-row .newAlbum-image + input[type="file"] {
   position: absolute;
   z-index: -9999;
   opacity: 0;
 }
-/* line 151, scss/blocks/_b-adminPhotos.scss */
+/* line 194, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn {
   color: #fff;
   background: #202020;
@@ -4109,48 +4188,85 @@ site-social + site-search .search-block {
   transition-property: background;
   transition-timing-function: ease-in-out;
 }
-/* line 166, scss/blocks/_b-adminPhotos.scss */
+/* line 209, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn:hover {
   background: #ff5e00;
 }
-/* line 170, scss/blocks/_b-adminPhotos.scss */
+/* line 213, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn.btn-removeAll:hover {
   background: #f00;
 }
-/* line 174, scss/blocks/_b-adminPhotos.scss */
+/* line 217, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn.disabled {
   cursor: default;
   background: #cacaca;
 }
-/* line 179, scss/blocks/_b-adminPhotos.scss */
+/* line 222, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn.btn-publish:hover {
   background: #067c00;
 }
-/* line 184, scss/blocks/_b-adminPhotos.scss */
+/* line 227, scss/blocks/_b-adminPhotos.scss */
 .admin-form .form-row .btn.btn-unpublish:hover {
   background: #f00;
 }
-/* line 190, scss/blocks/_b-adminPhotos.scss */
+/* line 231, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .btn.btn-image {
+  width: 35px;
+  height: 35px;
+  background: none !important;
+  padding: 0 !important;
+}
+/* line 237, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .btn.btn-image.btn-link svg {
+  fill: #337ab7;
+}
+/* line 242, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .btn.btn-image.btn-save svg {
+  fill: #067c00;
+}
+/* line 246, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .btn.btn-image svg {
+  width: 30px;
+  height: 30px;
+  opacity: .5;
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+/* line 253, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .btn.btn-image:hover svg {
+  opacity: 1;
+}
+/* line 258, scss/blocks/_b-adminPhotos.scss */
+.admin-form .form-row .btn.btn-image.disabled svg {
+  fill: #cacaca;
+  opacity: 1;
+}
+/* line 266, scss/blocks/_b-adminPhotos.scss */
 .admin-form .new-tags {
   text-align: left;
   text-transform: none;
   padding-top: 20px;
   overflow: hidden;
 }
-/* line 195, scss/blocks/_b-adminPhotos.scss */
+/* line 271, scss/blocks/_b-adminPhotos.scss */
 .admin-form .new-tags .new-tag {
   cursor: pointer;
   float: left;
   clear: left;
   color: #202020;
 }
-/* line 200, scss/blocks/_b-adminPhotos.scss */
+/* line 276, scss/blocks/_b-adminPhotos.scss */
+.admin-form .new-tags .new-tag:hover {
+  color: #ff5e00;
+}
+/* line 279, scss/blocks/_b-adminPhotos.scss */
 .admin-form .new-tags .new-tag span {
-  color: #ff0000;
+  color: #ff5e00;
   font-weight: 700;
 }
 
-/* line 208, scss/blocks/_b-adminPhotos.scss */
+/* line 287, scss/blocks/_b-adminPhotos.scss */
 .admin-photos,
 .admin-album-list {
   display: -webkit-box;
@@ -4165,7 +4281,7 @@ site-social + site-search .search-block {
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
 }
-/* line 221, scss/blocks/_b-adminPhotos.scss */
+/* line 300, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li,
 .admin-album-list li {
   width: 25%;
@@ -4176,19 +4292,19 @@ site-social + site-search .search-block {
   position: relative;
   margin-bottom: 40px;
 }
-/* line 229, scss/blocks/_b-adminPhotos.scss */
+/* line 308, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li a,
 .admin-album-list li a {
   text-decoration: none;
   display: block;
 }
-/* line 233, scss/blocks/_b-adminPhotos.scss */
+/* line 312, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li a:hover .image-holder,
 .admin-album-list li a:hover .image-holder {
   -webkit-transform: scale(1) translateZ(0);
   transform: scale(1) translateZ(0);
 }
-/* line 239, scss/blocks/_b-adminPhotos.scss */
+/* line 318, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .image-holder,
 .admin-album-list li .image-holder {
   margin-bottom: 10px;
@@ -4198,39 +4314,41 @@ site-social + site-search .search-block {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   border-radius: 100%;
+  position: relative;
+  z-index: 1;
   -webkit-transform: scale(0.9) translateZ(0);
   transform: scale(0.9) translateZ(0);
   transition-duration: 0.25s;
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 252, scss/blocks/_b-adminPhotos.scss */
+/* line 333, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.draft > a,
 .admin-album-list li.draft > a {
   opacity: .5;
 }
-/* line 258, scss/blocks/_b-adminPhotos.scss */
+/* line 339, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li:nth-child(4n + 1):not(:first-child).new-album,
 .admin-album-list li:nth-child(4n + 1):not(:first-child).new-album {
   width: 100%;
 }
-/* line 263, scss/blocks/_b-adminPhotos.scss */
+/* line 344, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album,
 .admin-album-list li.new-album {
   margin-bottom: 0;
 }
-/* line 265, scss/blocks/_b-adminPhotos.scss */
+/* line 346, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album + .new-album,
 .admin-album-list li.new-album + .new-album {
   display: none;
 }
-/* line 269, scss/blocks/_b-adminPhotos.scss */
+/* line 350, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album .image-holder .image-placeholder,
 .admin-album-list li.new-album .image-holder .image-placeholder {
   height: 100%;
   position: relative;
 }
-/* line 272, scss/blocks/_b-adminPhotos.scss */
+/* line 353, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album .image-holder .image-placeholder svg,
 .admin-album-list li.new-album .image-holder .image-placeholder svg {
   position: absolute;
@@ -4247,28 +4365,28 @@ site-social + site-search .search-block {
   transition-property: transform, fill;
   transition-timing-function: ease-in-out;
 }
-/* line 290, scss/blocks/_b-adminPhotos.scss */
+/* line 371, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album:hover .image-holder .image-placeholder svg,
 .admin-album-list li.new-album:hover .image-holder .image-placeholder svg {
   fill: #ff5e00;
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 298, scss/blocks/_b-adminPhotos.scss */
+/* line 379, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li.new-album input[type="file"],
 .admin-album-list li.new-album input[type="file"] {
   position: absolute;
   z-index: -9999;
   opacity: 0;
 }
-/* line 304, scss/blocks/_b-adminPhotos.scss */
+/* line 385, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .btn-remove,
 .admin-album-list li .btn-remove {
   position: absolute;
   right: 20px;
   top: 0;
 }
-/* line 308, scss/blocks/_b-adminPhotos.scss */
+/* line 389, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .btn-remove svg,
 .admin-album-list li .btn-remove svg {
   width: 20px;
@@ -4280,26 +4398,26 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 317, scss/blocks/_b-adminPhotos.scss */
+/* line 398, scss/blocks/_b-adminPhotos.scss */
 .admin-photos li .btn-remove:hover svg,
 .admin-album-list li .btn-remove:hover svg {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 324, scss/blocks/_b-adminPhotos.scss */
+/* line 405, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .modal,
 .admin-album-list .modal {
   color: #202020;
 }
 
-/* line 330, scss/blocks/_b-adminPhotos.scss */
+/* line 411, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove,
 .album-info .btn-remove {
   position: absolute;
   right: 20px;
   top: 0;
 }
-/* line 334, scss/blocks/_b-adminPhotos.scss */
+/* line 415, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove svg,
 .album-info .btn-remove svg {
   width: 20px;
@@ -4311,26 +4429,26 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 343, scss/blocks/_b-adminPhotos.scss */
+/* line 424, scss/blocks/_b-adminPhotos.scss */
 .admin-photos .btn-remove:hover svg,
 .album-info .btn-remove:hover svg {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-/* line 350, scss/blocks/_b-adminPhotos.scss */
+/* line 431, scss/blocks/_b-adminPhotos.scss */
 .admin-album-list {
   position: relative;
 }
 
-/* line 353, scss/blocks/_b-adminPhotos.scss */
+/* line 434, scss/blocks/_b-adminPhotos.scss */
 .photo-desc {
   text-transform: none;
   color: #888;
   margin-top: 10px;
 }
 
-/* line 359, scss/blocks/_b-adminPhotos.scss */
+/* line 440, scss/blocks/_b-adminPhotos.scss */
 .modal .item-overlay {
   left: -20px;
   top: -80px;
@@ -4339,38 +4457,123 @@ site-social + site-search .search-block {
   border-radius: 0 0 4px 4px;
   background: rgba(255, 255, 255, 0.9);
 }
-/* line 366, scss/blocks/_b-adminPhotos.scss */
+/* line 447, scss/blocks/_b-adminPhotos.scss */
 .modal .item-overlay svg {
   stroke: #ff5e00;
 }
 
-/* line 371, scss/blocks/_b-adminPhotos.scss */
+/* line 452, scss/blocks/_b-adminPhotos.scss */
 .tags-input {
   text-transform: none !important;
 }
 
-/* line 374, scss/blocks/_b-adminPhotos.scss */
+/* line 455, scss/blocks/_b-adminPhotos.scss */
 .photo-tags {
   text-transform: none;
   color: #202020;
   margin-top: 10px;
 }
-/* line 378, scss/blocks/_b-adminPhotos.scss */
+/* line 459, scss/blocks/_b-adminPhotos.scss */
 .photo-tags .photo-tag {
   display: inline;
 }
-/* line 380, scss/blocks/_b-adminPhotos.scss */
+/* line 461, scss/blocks/_b-adminPhotos.scss */
 .photo-tags .photo-tag:before {
   content: ', ';
 }
-/* line 384, scss/blocks/_b-adminPhotos.scss */
+/* line 465, scss/blocks/_b-adminPhotos.scss */
 .photo-tags .photo-tag:first-child:before {
   display: none;
 }
-/* line 388, scss/blocks/_b-adminPhotos.scss */
+/* line 469, scss/blocks/_b-adminPhotos.scss */
 .photo-tags .photo-tag span {
   color: #ff5e00;
   font-weight: 700;
+}
+
+/* line 475, scss/blocks/_b-adminPhotos.scss */
+.spinner {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAzOCAzOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHJva2U9IiNmZjVlMDAiPiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSAxKSIgc3Ryb2tlLXdpZHRoPSIyIj4gICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuNSIgY3g9IjE4IiBjeT0iMTgiIHI9IjE4Ii8+ICAgICAgICAgICAgPHBhdGggZD0iTTM2IDE4YzAtOS45NC04LjA2LTE4LTE4LTE4Ij48L3BhdGg+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=);
+  background-position: 50% 50%;
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 120px;
+  top: 120px;
+  margin: -45px 0 0 -25px;
+  background-repeat: no-repeat;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: rotating 1s linear infinite;
+  -moz-animation: rotating 1s linear infinite;
+  -ms-animation: rotating 1s linear infinite;
+  -o-animation: rotating 1s linear infinite;
+  animation: rotating 1s linear infinite;
+}
+
+/* line 494, scss/blocks/_b-adminPhotos.scss */
+.spinner-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  color: #ff5e00;
+  text-transform: none;
+}
+
+/* line 502, scss/blocks/_b-adminPhotos.scss */
+.newAlbum-image .spinner {
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+}
+
+/* line 507, scss/blocks/_b-adminPhotos.scss */
+.spinner-item .spinner {
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+}
+
+@-webkit-keyframes rotating {
+  /* line 513, scss/blocks/_b-adminPhotos.scss */
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 520, scss/blocks/_b-adminPhotos.scss */
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  /* line 529, scss/blocks/_b-adminPhotos.scss */
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 536, scss/blocks/_b-adminPhotos.scss */
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 /* line 1, scss/blocks/_b-adminTags.scss */
