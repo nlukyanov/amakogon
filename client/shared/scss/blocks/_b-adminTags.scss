@@ -158,6 +158,10 @@
 			padding: 0 20px;
 			width: 25%;
 			margin-bottom: 80px;
+			text-align: center;
+			&.photo-draft {
+				opacity: .5;
+			}
 			a {
 				text-decoration: none;
 				.image-holder {

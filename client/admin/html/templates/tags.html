@@ -57,20 +57,28 @@
 					<hr>
 					<h2 ng-if="albums.length">Альбомы</h2>
 					<ul class="tags-search-list" ng-if="albums.length">
-						<li class="tags-search-list-item" ng-repeat="album in albums">
+						<li class="tags-search-list-item" ng-repeat="album in albums" ng-class="{'photo-draft': !album.published}">
 							<a ng-href="/admin/photos/{{ album.url }}">
 								<div class="image-holder" ng-style="{'background-image': 'url(' + album.image + ')'}"></div>
 								<h3 ng-if="album.title">{{ album.title }}</h3>
+								<div class="photo-tags" ng-if="album.tags.length">
+									<div class="photo-tag" ng-repeat="tag in album.tags" ng-if="tag == currentTag"><span>#</span><font>{{ tag }}</font></div>
+									<div class="photo-tag" ng-repeat="tag in album.tags" ng-if="tag != currentTag"><span>#</span>{{ tag }}</div>
+								</div>
 							</a>
 						</li>
 					</ul>
 					<hr ng-if="photos.length">
 					<h2 ng-if="photos.length">Фотографии</h2>
 					<ul class="tags-search-list" ng-if="photos.length">
-						<li class="tags-search-list-item" ng-repeat="photo in photos">
+						<li class="tags-search-list-item" ng-repeat="photo in photos" ng-class="{'photo-draft': !photo.published}">
 							<a ng-href="/admin/photos/{{ photo.parentUrl }}#photo{{ photo.id }}">
 								<div class="image-holder" ng-style="{'background-image': 'url(' + photo.image + ')'}"></div>
 								<h3 ng-if="photo.title">{{ photo.title }}</h3>
+								<div class="photo-tags" ng-if="photo.tags.length">
+									<div class="photo-tag" ng-repeat="tag in photo.tags" ng-if="tag == currentTag"><span>#</span><font>{{ tag }}</font></div>
+									<div class="photo-tag" ng-repeat="tag in photo.tags" ng-if="tag != currentTag"><span>#</span>{{ tag }}</div>
+								</div>
 							</a>
 						</li>
 					</ul>

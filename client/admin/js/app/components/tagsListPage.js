@@ -64,18 +64,19 @@
 
 				scope.searchTag = function(e, tag) {
 					e.preventDefault();
-					socket.emit('load albums by tag', tag.tag);
+					scope.currentTag = tag.tag;
+					socket.emit('load albums by tag', scope.currentTag);
 					socket.off('albums by tag loaded').on('albums by tag loaded', function(data) {
 						scope.albums = data;
-						socket.emit('load photos by tag', tag.tag);
+						socket.emit('load photos by tag', scope.currentTag);
 						socket.off('photos by tag loaded').on('photos by tag loaded', function(data) {
 							scope.photos = data;
 							$(e.currentTarget).closest('.tags-list-item').toggleClass('tagVisible');
 							$('.modal').attr('id', tag._id);
-							$('.tag-modal-heading').html(tag.tag);
+							$('.tag-modal-heading').html(scope.currentTag);
 							$(e.currentTarget).closest('.tags-list-item').find('.tag-modal-link').trigger('click');
 							scope.triggerRemove = function(e) {
-								scope.removeTag(e, tag.tag);
+								scope.removeTag(e, scope.currentTag);
 							}
 							scope.$apply();
 						});

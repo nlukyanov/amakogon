@@ -2,7 +2,7 @@
 
 	var adminPhotos = angular.module('adminPhotos', []);
 
-	adminPhotos.directive('adminPhotos', function($http, $location, $timeout) {
+	adminPhotos.directive('adminPhotos', function($http, $location, $timeout, $rootScope) {
 		return {
 			restrict: 'C',
 			link: link
@@ -40,14 +40,56 @@
 				}, 100);
 			};
 
-			scope.enterTag = function(e) {
-				var tagInput = $(e.target);
+			scope.exTagIndex = -1;
 
-				if ( tagInput.val() ) {
-					scope.canAddTag = true;
+			scope.enterTag = function(e) {
+				if ( e.keyCode == 38) {
+					e.preventDefault();
+					if ( scope.exTagIndex > 0 ) {
+						scope.exTagIndex --;
+					}
+					$timeout(function() {
+						if ( $('.ex-tags .active', element).length ) {
+							$('.ex-tags', element).scrollTop($('.ex-tags .active', element).position().top + $('.ex-tags', element).scrollTop());
+						}
+					}, 0);
+				}
+				else if ( e.keyCode == 40) {
+					e.preventDefault();
+
+					if ( scope.exTagIndex < $('.ex-tags', element).children().length - 1 ) {
+						scope.exTagIndex ++;
+					}
+					$timeout(function() {
+						if ( $('.ex-tags .active', element).length ) {
+							$('.ex-tags', element).scrollTop($('.ex-tags .active', element).position().top + $('.ex-tags', element).scrollTop());
+						}
+					}, 0);
+				}
+				else if ( e.keyCode == 13 ) {
+					e.preventDefault();
+					if ( $('.ex-tags .active', element).length ) {
+						scope.addTag($('.ex-tags .active', element).text());
+					}
+					else {
+						if ( scope.newTag ) {
+							scope.addTag(scope.newTag);
+						}
+					}
 				}
 				else {
-					scope.canAddTag = false;
+					scope.exTagIndex = -1;
+					if ( $('.ex-tags .active', element).length ) {
+						$('.ex-tags', element).scrollTop(0);
+					}
+					var tagInput = $(e.target);
+
+					if ( tagInput.val() ) {
+						scope.canAddTag = true;
+					}
+					else {
+						scope.canAddTag = false;
+					}
 				}
 			};
 
@@ -66,7 +108,7 @@
 
 			scope.addTag = function(e) {
 				e.preventDefault();
-				var tag = element.find('#newAlbumTags').val();
+				var tag = $('.ex-tags .active').text() || element.find('#newAlbumTags').val();
 
 				if ( !scope.canAddTag ) {
 					return false;

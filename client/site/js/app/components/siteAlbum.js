@@ -14,6 +14,9 @@
 			socket.emit('load album', url);
 
 			socket.on('album loaded', function(data) {
+				if ( !data.published ) {
+					$location.path('/404');
+				}
 				scope.album = data;
 
 				socket.emit('load album photos', scope.album.title);

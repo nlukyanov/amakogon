@@ -16,7 +16,7 @@
 	</div>
 	<div class="album-slider">
 		<ul class="slides">
-			<li class="album-slider-item" ng-repeat="photo in photos" id="photo{{ photo.id }}">
+			<li class="album-slider-item" ng-repeat="photo in photos | orderBy: 'id'" id="photo{{ photo.id }}">
 				<div class="album-slider-item-inner">
 					<img ng-src="{{ photo.image }}" ng-click="imgFullsize(photo.id)">
 				</div>

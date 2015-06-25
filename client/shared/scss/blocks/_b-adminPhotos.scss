@@ -458,6 +458,9 @@
 	margin-top: 10px;
 	.photo-tag {
 		display: inline;
+		font {
+			background: #c6ddff;
+		}
 		&:before {
 			content: ', ';
 		}

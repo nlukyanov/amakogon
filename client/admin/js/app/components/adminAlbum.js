@@ -198,7 +198,7 @@
 								ctx.drawImage(image, 0, 0, width, height);
 								var shrinked = canvas.toDataURL('image/jpeg');
 
-								scope.photos.push({'image': shrinked, 'title': '', 'desc': '', 'parent': scope.album.title, 'id': scope.photos.length, 'parentUrl': scope.album.url});
+								scope.photos.push({'image': shrinked, 'title': '', 'desc': '', 'parent': scope.album.title, 'id': scope.photos.length, 'parentUrl': scope.album.url, 'published': scope.album.published});
 								scope.hasPhotos = true;
 								scope.$apply();
 

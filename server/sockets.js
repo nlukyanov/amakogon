@@ -152,6 +152,12 @@ var Socket = function(server) {
 										socket.emit('album photos loaded', photos);
 									});
 								}
+								if ( length == 0 ) {
+									tagsModel.getTags(function(error, data) {
+										socket.emit('tags loaded', data);
+										socket.emit('album photos loaded', photos);
+									});
+								}
 							}
 						}
 					});
@@ -210,6 +216,7 @@ var Socket = function(server) {
 
 		socket.on('publish album', function(url) {
 			photosModel.publishAlbum(url);
+			albumModel.publishAlbum(url);
 		});
 
 		socket.on('remove tag', function(tag) {

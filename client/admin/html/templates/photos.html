@@ -137,7 +137,7 @@
 									<div class="form-row-item">
 										<input type="text" placeholder="Введите Тег" id="newAlbumTags" ng-keyup="enterTag($event)" style="text-transform: none;" ng-model="newTag" ng-focus="changeShowTags(true)" ng-blur="changeShowTags(false)">
 										<div class="ex-tags" ng-if="newTag && showTags">
-											<div class="ex-tag" ng-repeat="tag in exTags | filter: newTag" ng-click="chooseTag(tag.tag)">{{ tag.tag }}</div>
+											<div class="ex-tag" ng-repeat="tag in exTags | filter: newTag" ng-click="chooseTag(tag.tag)" ng-class="{'active': $index == exTagIndex}">{{ tag.tag }}</div>
 										</div>
 									</div>
 									<div class="form-row-item">

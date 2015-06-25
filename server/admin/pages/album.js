@@ -7,7 +7,8 @@ var mongoose = require('mongoose'),
 		'parent': String,
 		'tags': [],
 		'id': Number,
-		'parentUrl': String
+		'parentUrl': String,
+		'published': Boolean
 	},
 	AlbumModel = mongoose.model('albums', schema);
 
@@ -71,7 +72,7 @@ Album.updatePhotos = function(parent, folder, photos, callback) {
 					else {
 						image = folder + time + index + '.jpg';
 
-						var album = new AlbumModel({title: photos[index].title, desc: photos[index].desc, image: image, parent: photos[index].parent, tags: photos[index].tags, id: photos[index].id, parentUrl: photos[index].parentUrl});
+						var album = new AlbumModel({title: photos[index].title, desc: photos[index].desc, image: image, parent: photos[index].parent, tags: photos[index].tags, id: photos[index].id, parentUrl: photos[index].parentUrl, published: photos[index].published});
 
 						album.save(function() {
 							index ++;
@@ -87,6 +88,7 @@ Album.updatePhotos = function(parent, folder, photos, callback) {
 					data.tags = photos[index].tags;
 					data.id = photos[index].id;
 					data.parentUrl = photos[index].parentUrl;
+					data.published = photos[index].published;
 					index ++;
 					data.save();
 					createImage(length);
@@ -149,6 +151,14 @@ Album.checkPhotosByTag = function(tag, callback) {
 		}
 		else {
 			callback(true);
+		}
+	});
+};
+Album.publishAlbum = function(url, callback) {
+	AlbumModel.find({'parentUrl': url}, function(error, data) {
+		for ( var i = 0; i < data.length; i ++ ) {
+			data[i].published = !data[i].published;
+			data[i].save();
 		}
 	});
 };
