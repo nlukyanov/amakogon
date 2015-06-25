@@ -36,7 +36,9 @@ Photos.getAlbum = function(url, callback) {
 Photos.publishAlbum = function(url, callback) {
 	PhotosModel.findOne({'url': url}, function(error, data) {
 		data.published = !data.published;
-		data.save();
+		data.save(function(error, data) {
+			callback(data);
+		});
 	});
 }
 Photos.getPhotosByTag = function(tag, callback) {

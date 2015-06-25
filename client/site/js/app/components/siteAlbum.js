@@ -2,7 +2,7 @@
 
 	var siteAlbum = angular.module('siteAlbum', []);
 
-	siteAlbum.directive('siteAlbum', function($http, $location, $rootScope, $timeout) {
+	siteAlbum.directive('siteAlbum', function($http, $location, $rootScope, $timeout, pageTitle) {
 		return {
 			restrict: 'C',
 			link: link
@@ -14,10 +14,11 @@
 			socket.emit('load album', url);
 
 			socket.on('album loaded', function(data) {
-				if ( !data.published ) {
+				if ( !data && !data.published ) {
 					$location.path('/404');
 				}
 				scope.album = data;
+				pageTitle.setTitle('Фотографии > ' + scope.album.title);
 
 				socket.emit('load album photos', scope.album.title);
 				socket.on('album photos loaded', function(data) {

@@ -131,6 +131,7 @@ var Socket = function(server) {
 								if ( index < length ) {
 									if ( data[index].tags.length ) {
 										tagsModel.addTag(data[index].tags, function() {
+											console.log('true');
 											index ++;
 											addTags(length);
 										});
@@ -147,12 +148,6 @@ var Socket = function(server) {
 									}
 								}
 								else {
-									tagsModel.getTags(function(error, data) {
-										socket.emit('tags loaded', data);
-										socket.emit('album photos loaded', photos);
-									});
-								}
-								if ( length == 0 ) {
 									tagsModel.getTags(function(error, data) {
 										socket.emit('tags loaded', data);
 										socket.emit('album photos loaded', photos);
@@ -215,7 +210,9 @@ var Socket = function(server) {
 		});
 
 		socket.on('publish album', function(url) {
-			photosModel.publishAlbum(url);
+			photosModel.publishAlbum(url, function(data) {
+				connection.sockets.emit('album published', data);
+			});
 			albumModel.publishAlbum(url);
 		});
 

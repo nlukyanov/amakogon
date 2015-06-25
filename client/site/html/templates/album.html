@@ -23,14 +23,14 @@
 				<div class="album-slider-item-text">
 					<h3 ng-if="photo.title">{{ photo.title }}</h3>
 					<p ng-if="photo.desc">{{ photo.desc }}</p>
-					<div ng-if="photo.tags" class="site-tags">
+					<div ng-if="photo.tags.length" class="site-tags">
 						<div class="tags-list">
 							<div class="tags-list-item" ng-repeat="tag in photo.tags">
 								<a ng-href="/tags#{{ tag }}" class="tags-list-link">{{ tag }}</a>
 							</div>
 						</div>
 					</div>
-					<site-social></site-social>
+					<site-social social-url="'/' + photo.parentUrl" social-img="photo.image" social-title="photo.title" social-desc="photo.desc"></site-social>
 				</div>
 			</li>
 		</ul>
@@ -54,7 +54,7 @@
 						</div>
 					</div>
 				</div>
-				<site-social></site-social>
+				<site-social social-url="'/' + album.url" social-img="album.image" social-title="album.title" social-desc="album.desc"></site-social>
 			</div>
 		</div>
 	</div>

@@ -924,6 +924,59 @@ site-social + site-search .search-block {
   background: #ffe0ce;
 }
 
+/* line 1, scss/patterns/_p-messages.scss */
+.message {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  padding: 15px 40px;
+  background: rgba(255, 94, 0, 0.9);
+  color: #fff;
+  text-align: center;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition-duration: 0.5s;
+  transition-property: bottom;
+  transition-timing-function: ease-in-out;
+}
+/* line 14, scss/patterns/_p-messages.scss */
+.message.visible {
+  bottom: 0;
+}
+/* line 17, scss/patterns/_p-messages.scss */
+.message a {
+  color: #fff;
+}
+/* line 19, scss/patterns/_p-messages.scss */
+.message a:hover {
+  text-decoration: none;
+}
+/* line 23, scss/patterns/_p-messages.scss */
+.message .message-close {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  margin-top: -10px;
+  right: 15px;
+}
+/* line 30, scss/patterns/_p-messages.scss */
+.message .message-close svg {
+  fill: #fff;
+  -webkit-transform: rotate(0) translateZ(0);
+  transform: rotate(0) translateZ(0);
+  transition-duration: 0.25s;
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
+}
+/* line 37, scss/patterns/_p-messages.scss */
+.message .message-close:hover svg {
+  -webkit-transform: rotate(180deg) translateZ(0);
+  transform: rotate(180deg) translateZ(0);
+}
+
 /* Blocks */
 /* Blocks */
 /* line 1, scss/blocks/_b-logo.scss */

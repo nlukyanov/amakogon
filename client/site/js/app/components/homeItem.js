@@ -2,7 +2,7 @@
 
 	var homeItem = angular.module('homeItem', []);
 
-	homeItem.directive('homeItem', function($http, $location, $rootScope) {
+	homeItem.directive('homeItem', function($http, $location, $rootScope, pageTitle) {
 		return {
 			restrict: 'A',
 			link: link,
@@ -12,6 +12,7 @@
 			templateUrl: '../client/site/html/components/home-item.html'
 		};
 		function link(scope, element, attrs) {
+			pageTitle.setTitle('Главная');
 			socket.emit('load dashboard', scope.item);
 			socket.on('dashboard loaded', function(data) {
 				if ( data.name === scope.item ) {

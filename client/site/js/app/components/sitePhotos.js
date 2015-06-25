@@ -2,14 +2,24 @@
 
 	var sitePhotos = angular.module('sitePhotos', []);
 
-	sitePhotos.directive('sitePhotos', function($http, $location, $rootScope, $timeout) {
+	sitePhotos.directive('sitePhotos', function($http, $location, $rootScope, $timeout, pageTitle) {
 		return {
 			restrict: 'C',
 			link: link
 		};
 		function link(scope, element, attrs) {
+			pageTitle.setTitle('Фотографии');
 			socket.emit('load photos');
 			socket.off('photos loaded').on('photos loaded', function(data) {
+				var published = false;
+				for ( var i in data ) {
+					if ( data[i].published ) {
+						published = true;
+					}
+				}
+				if ( !published ) {
+					$location.path('/404');
+				}
 				scope.photos = data;
 
 				scope.$apply();
@@ -60,6 +70,22 @@
 				});
 				$(window).on('scroll', function() {
 					if ( $(window).width() > 1024 ) {
+						showPhoto();
+					}
+				});
+				socket.on('album published', function(data) {
+					if ( !data.published ) {
+						for ( var i in scope.photos ) {
+							if ( scope.photos[i].title == data.title ) {
+								scope.photos.splice(scope.photos.indexOf(scope.photos[i]), 1);
+								scope.$apply();
+							}
+						}
+					}
+					else {
+						scope.photos.push(data);
+						scope.$apply();
+						textHeight();
 						showPhoto();
 					}
 				});

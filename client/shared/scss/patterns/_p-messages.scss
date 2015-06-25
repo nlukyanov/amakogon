@@ -1,0 +1,43 @@
+.message {
+	position: fixed;
+	bottom: -100%;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+	padding: 15px 40px;
+	background: rgba(255,94,0,.9);
+	color: #fff;
+	text-align: center;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	@include transition($property: bottom, $duration: .5s);
+	&.visible {
+		bottom: 0;
+	}
+	a {
+		color: #fff;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	.message-close {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		top: 50%;
+		margin-top: -10px;
+		right: 15px;
+		svg {
+			fill: #fff;
+			-webkit-transform: rotate(0) translateZ(0);
+			transform: rotate(0) translateZ(0);
+			@include transition($property: transform, $duration: .25s);
+		}
+		&:hover {
+			svg {
+				-webkit-transform: rotate(180deg) translateZ(0);
+				transform: rotate(180deg) translateZ(0);
+			}
+		}
+	}
+}

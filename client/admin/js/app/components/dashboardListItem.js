@@ -2,7 +2,7 @@
 
 	var dashboardListItem = angular.module('dashboardListItem', []);
 
-	dashboardListItem.directive('dashboardListItem', function($http, $location, $timeout, $rootScope) {
+	dashboardListItem.directive('dashboardListItem', function($http, $location, $timeout, $rootScope, pageTitle) {
 		return {
 			restrict: 'A',
 			link: link,
@@ -12,6 +12,8 @@
 			templateUrl: '../client/admin/html/components/dashboard-item.html'
 		};
 		function link(scope, element, attrs) {
+			pageTitle.setTitle('Главная');
+
 			var originalTitle = '',
 				originalDesc = '',
 				originalImg = '';

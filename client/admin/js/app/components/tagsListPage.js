@@ -2,12 +2,13 @@
 
 	var tagsListPage = angular.module('tagsListPage', []);
 
-	tagsListPage.directive('tagsListPage', function($http, $location, $timeout, $rootScope) {
+	tagsListPage.directive('tagsListPage', function($http, $location, $timeout, $rootScope, pageTitle) {
 		return {
 			restrict: 'C',
 			link: link
 		};
 		function link(scope, element, attrs) {
+			pageTitle.setTitle('Теги');
 			socket.emit('load tags');
 			socket.off('tags loaded').on('tags loaded', function(data) {
 				scope.tags = data;

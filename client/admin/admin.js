@@ -4,7 +4,7 @@
 
 	adminItems.main = angular.module('adminItems.main', ['ngRoute', 'router']);
 
-	//admin.factories = angular.module('admin.factories', ['stSettingsFactory', 'stIconsFactory', 'stAdminNavFactory', 'stPagesListFactory', 'stContentTypeFactory']);
+	adminItems.factories = angular.module('adminItems.factories', ['pageTitle']);
 
 	//admin.widgets = angular.module('admin.widgets', ['widgetItem', 'widgetBtnAlign', 'widgetBtnFontWeight', 'widgetBtnFontSize', 'widgetBtnColor', 'widgetBtnViewHeading', 'widgetBtnWidth', 'widgetBtnHeight', 'widgetBtnViewImage', 'widgetBtnVisibility', 'widgetBtnUpload', 'widgetBtnListSettings', 'widgetBtnAddListItem', 'widgetBtnOverflow', 'widgetBtnBannerSettings', 'widgetBtnPosition', 'widgetBtnBannerHeading', 'widgetBtnBannerText', 'widgetBtnBannerLink', 'widgetBtnLinkType', 'widgetBtnUrl', 'widgetBtnPositionVertical', 'widgetBtnPositionHorisontal', 'widgetBtnFeatureSettings', 'addGridItem']);
 
@@ -12,7 +12,7 @@
 
 	adminItems.components = angular.module('adminItems.components', ['dashboardListItem', 'adminPhotos', 'adminAlbum', 'tagsListPage']);
 
-	var admin = angular.module('admin', ['adminItems.main', 'adminItems.components', 'adminItems.elements'/*, 'admin.factories', 'admin.widgets'*/]);
+	var admin = angular.module('admin', ['adminItems.main', 'adminItems.components', 'adminItems.elements', 'adminItems.factories'/*, 'admin.widgets'*/]);
 
 	$(window).on('load', function() {
 		$('body').addClass('admin');

@@ -4,7 +4,7 @@
 
 	siteItems.main = angular.module('siteItems.main', ['ngRoute', 'router']);
 
-	//site.factories = angular.module('site.factories', ['stSettingsFactory', 'stIconsFactory', 'stAdminNavFactory', 'stPagesListFactory', 'stContentTypeFactory']);
+	siteItems.factories = angular.module('siteItems.factories', ['pageTitle']);
 
 	//site.widgets = angular.module('site.widgets', ['widgetItem', 'widgetBtnAlign', 'widgetBtnFontWeight', 'widgetBtnFontSize', 'widgetBtnColor', 'widgetBtnViewHeading', 'widgetBtnWidth', 'widgetBtnHeight', 'widgetBtnViewImage', 'widgetBtnVisibility', 'widgetBtnUpload', 'widgetBtnListSettings', 'widgetBtnAddListItem', 'widgetBtnOverflow', 'widgetBtnBannerSettings', 'widgetBtnPosition', 'widgetBtnBannerHeading', 'widgetBtnBannerText', 'widgetBtnBannerLink', 'widgetBtnLinkType', 'widgetBtnUrl', 'widgetBtnPositionVertical', 'widgetBtnPositionHorisontal', 'widgetBtnFeatureSettings', 'addGridItem']);
 
@@ -12,7 +12,7 @@
 
 	siteItems.components = angular.module('siteItems.components', ['parallax', 'contactMap', 'sitePhotos', 'errorPage', 'siteAlbum', 'siteBlog', 'sitePost', 'siteAbout', 'siteContact', 'homeItem', 'tagsSearch']);
 
-	var site = angular.module('site', ['siteItems.main', 'siteItems.components', 'siteItems.elements'/*, 'site.factories', 'site.widgets'*/]);
+	var site = angular.module('site', ['siteItems.main', 'siteItems.components', 'siteItems.elements', 'siteItems.factories'/*, 'site.widgets'*/]);
 	
 	$(window).on('load', function() {
 		$('body').addClass('pageLoaded');

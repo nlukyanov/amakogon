@@ -2,12 +2,13 @@
 
 	var adminPhotos = angular.module('adminPhotos', []);
 
-	adminPhotos.directive('adminPhotos', function($http, $location, $timeout, $rootScope) {
+	adminPhotos.directive('adminPhotos', function($http, $location, $timeout, $rootScope, pageTitle) {
 		return {
 			restrict: 'C',
 			link: link
 		};
 		function link(scope, element, attrs) {
+			pageTitle.setTitle('Фотографии');
 			scope.canSave = false;
 			scope.hasImage = false;
 			scope.canAddTag = false;
@@ -296,18 +297,23 @@
 				if ( album.published == false ) {
 					if ( confirm('Вы уверены, что хотите опубликовать этот альбом?') ) {
 						socket.emit('publish album', album.url);
+						album.published = !album.published;
+						element.find('.item-overlay').addClass('saving');
+						$timeout(function() {
+							element.find('.item-overlay').removeClass('saving');
+						}, 500);
 					}
 				}
 				else {
 					if ( confirm('Вы уверены, что хотите отправить этот альбом в черновики?') ) {
 						socket.emit('publish album', album.url);
+						album.published = !album.published;
+						element.find('.item-overlay').addClass('saving');
+						$timeout(function() {
+							element.find('.item-overlay').removeClass('saving');
+						}, 500);
 					}
 				}
-				album.published = !album.published;
-				element.find('.item-overlay').addClass('saving');
-				$timeout(function() {
-					element.find('.item-overlay').removeClass('saving');
-				}, 500);
 			};
 
 			scope.$on('$locationChangeStart', function(e) {

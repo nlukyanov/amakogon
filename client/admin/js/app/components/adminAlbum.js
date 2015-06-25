@@ -2,7 +2,7 @@
 
 	var adminAlbum = angular.module('adminAlbum', []);
 
-	adminAlbum.directive('adminAlbum', function($http, $location, $timeout) {
+	adminAlbum.directive('adminAlbum', function($http, $location, $timeout, pageTitle) {
 		return {
 			restrict: 'C',
 			link: link
@@ -24,6 +24,7 @@
 			socket.emit('load album', url);
 			socket.off('album loaded').on('album loaded', function(data) {
 				if ( data ) {
+					pageTitle.setTitle('Фотографии > ' + data.title);
 					originalTitle = data.title;
 					originalDesc = data.desc;
 					originalImg = data.image;
@@ -177,6 +178,9 @@
 							image.src = e.target.result;
 
 							$(image).on('load', function() {
+								if ( scope.loadingFile == length - 1 ) {
+									scope.showSpinner = false;
+								}
 								if ( image.width > image.height ) {
 									width = k;
 									height = k * image.height / image.width;
@@ -211,9 +215,6 @@
 						};
 						if ( el[scope.loadingFile] ) {
 							reader.readAsDataURL(el[scope.loadingFile]);
-						}
-						if ( scope.loadingFile == length - 1 ) {
-							scope.showSpinner = false;
 						}
 					}, 100);
 				}

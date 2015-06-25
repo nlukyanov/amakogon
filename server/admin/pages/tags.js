@@ -41,15 +41,15 @@ Tags.addTag = function(tagItem, callback) {
 						index ++;
 						validateAndAdd(length);
 					});
-					if ( index == tagItem.length - 1 ) {
-						callback();
-					}
 				}
 				else {
 					index ++;
 					validateAndAdd(length);
 				}
 			});
+		}
+		if ( index == tagItem.length - 1 ) {
+			callback();
 		}
 	}
 }
