@@ -73,6 +73,19 @@
 
 				reader.readAsDataURL($(e.currentTarget)[0].files[0]);
 			});
+
+			scope.$on('$locationChangeStart', function(e) {
+				if ( $('.changed').length ) {
+					if ( !confirm('Некоторые изменения не были сохранены. Действительно обновить эту страницу?') ) {
+						e.preventDefault();
+					}
+				}
+			});
+			window.onbeforeunload = function (e) {
+				if ( $('.changed').length ) {
+					return 'Некоторые изменения не были сохранены';
+				}
+			}
 		};
 	});
 

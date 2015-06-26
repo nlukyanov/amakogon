@@ -150,7 +150,10 @@
 
 				for ( var i in scope.tags ) {
 					if ( scope.tags[i].tag == $('#tagInput').val() ) {
-						alert('Такой тег уже существует!');
+						$rootScope.$broadcast('alert', 'Такой тег уже существует!');
+						scope.$on('message end', function() {
+							$('#tagInput').trigger('focus');
+						});
 						return false;
 					}
 				}

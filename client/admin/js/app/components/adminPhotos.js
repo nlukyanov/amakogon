@@ -116,8 +116,11 @@
 				}
 
 				if ( scope.tags.indexOf(tag) > -1 ) {
-					alert('У этого альбома уже есть такой тег');
-					element.find('#newAlbumTags').val('').focus();
+					$rootScope.$broadcast('alert', 'У этого альбома уже есть такой тег!');
+
+					scope.$on('message end', function() {
+						element.find('#newAlbumTags').val('').focus();
+					});
 				}
 				else {
 					scope.tags.push(tag);
@@ -151,7 +154,12 @@
 
 				socket.emit('add album', title.val(), desc.val(), scope.newImage, scope.tags);
 				socket.off('album exists').on('album exists', function() {
-					alert('Альбом с похожим названием уже существует!');
+					$rootScope.$broadcast('alert', 'Альбом с похожим название уже существует!');
+
+					scope.$on('message end', function() {
+						$('#newAlbumTitle').val('');
+						scope.canSave = true;
+					});
 				});
 				socket.off('album added').on('album added', function(url) {
 					$location.path($location.path() +  '/' + url);
@@ -276,8 +284,11 @@
 			};
 
 			socket.off('album exists').on('album exists', function() {
-				alert('Альбом с похожим названием уже существует!');
-				element.find('.item-overlay').removeClass('saving');
+				$rootScope.$broadcast('alert', 'Альбом с похожим название уже существует!');
+
+				scope.$on('message end', function() {
+					element.find('.item-overlay').removeClass('saving');
+				});
 			});
 
 			socket.off('album updated').on('album updated', function(data) {

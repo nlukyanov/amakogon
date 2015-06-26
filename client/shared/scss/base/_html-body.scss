@@ -20,9 +20,7 @@ body {
 		overflow: auto;
 	}
 	&.no-events {
-		* {
-			pointer-events: none;
-		}
+		pointer-events: none;
 	}
 }
 .page-wrapper {
@@ -43,5 +41,15 @@ body {
 		width: 960px;
 		margin: 0 auto;
 		overflow: visible;
+	}
+}
+.isMessage {
+	pointer-events: none;
+	.admin-page {
+		-webkit-filter: grayscale(100%) blur(5px);
+		filter: grayscale(100%) blur(5px);
+	}
+	.message-close {
+		pointer-events: all;
 	}
 }

@@ -2,111 +2,27 @@
 
 	var siteBreadcrumbs = angular.module('siteBreadcrumbs', []);
 
-	siteBreadcrumbs.directive('siteBreadcrumbs', function($http, $location) {
+	siteBreadcrumbs.directive('siteBreadcrumbs', function($http, $location, $timeout) {
 		return {
 			restrict: 'E',
 			link: link,
 			templateUrl: '../client/site/html/elements/site-breadcrumbs.html'
 		};
 		function link(scope, element, attrs) {
-			if ( $location.$$path.match(/\//ig).length == 1 ) {
-				if ( $location.$$path == '/photos' ) {
-					scope.breadcrumbs = [
-						{
-							title: 'Главная',
-							url: '/'
-						},
-						{
-							title: 'Фотографии',
-							url: '/photos'
-						}
-					];
-				}
-				else if ( $location.$$path == '/tags' ) {
-					scope.breadcrumbs = [
-						{
-							title: 'Главная',
-							url: '/'
-						},
-						{
-							title: '#Тег',
-							url: '/tags/#tag'
-						}
-					];
-				}
-				else if ( $location.$$path == '/blog' ) {
-					scope.breadcrumbs = [
-						{
-							title: 'Главная',
-							url: '/'
-						},
-						{
-							title: 'Блог',
-							url: '/blog'
-						}
-					];
-				}
-				else if ( $location.$$path == '/about' ) {
-					scope.breadcrumbs = [
-						{
-							title: 'Главная',
-							url: '/'
-						},
-						{
-							title: 'Обо мне',
-							url: '/cv'
-						}
-					];
-				}
-				else if ( $location.$$path == '/contacts' ) {
-					scope.breadcrumbs = [
-						{
-							title: 'Главная',
-							url: '/'
-						},
-						{
-							title: 'Контакты',
-							url: '/contacts'
-						}
-					];
-				}
-			}
-			else if ( $location.$$path.match(/\//ig).length == 2 ) {
+			scope.$on('create breadcrumbs', function(e, data) {
 				scope.breadcrumbs = [
 					{
 						title: 'Главная',
 						url: '/'
-					},
-					{
-						title: 'Фотографии',
-						url: '/photos'
-					},
-					{
-						title: 'Название альбома',
-						url: '/photos/22'
 					}
 				];
-			}
-			else if ( $location.$$path.match(/\//ig).length == 3 ) {
-				scope.breadcrumbs = [
-					{
-						title: 'Главная',
-						url: '/'
-					},
-					{
-						title: 'Фотографии',
-						url: '/photos'
-					},
-					{
-						title: 'Название альбома',
-						url: '/photos/22'
-					},
-					{
-						title: 'Название фотографии',
-						url: '/photos/22'
-					}
-				];
-			}
+				for ( var i in data ) {
+					scope.breadcrumbs.push(data[i]);
+					$timeout(function() {
+						scope.$apply();
+					}, 0);
+				}
+			});
 		};
 	});
 

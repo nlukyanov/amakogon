@@ -132,39 +132,53 @@ body {
 body.pageLoaded {
   overflow: auto;
 }
-/* line 23, scss/base/_html-body.scss */
-body.no-events * {
+/* line 22, scss/base/_html-body.scss */
+body.no-events {
   pointer-events: none;
 }
 
-/* line 28, scss/base/_html-body.scss */
+/* line 26, scss/base/_html-body.scss */
 .page-wrapper {
   overflow: hidden;
   background: #fff;
 }
 
-/* line 32, scss/base/_html-body.scss */
+/* line 30, scss/base/_html-body.scss */
 .desktop-hidden {
   display: none;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 32, scss/base/_html-body.scss */
+  /* line 30, scss/base/_html-body.scss */
   .desktop-hidden {
     display: block;
   }
 }
 
-/* line 38, scss/base/_html-body.scss */
+/* line 36, scss/base/_html-body.scss */
 .admin {
   min-width: 1000px;
   overflow-y: auto;
   overflow-x: hidden !important;
 }
-/* line 42, scss/base/_html-body.scss */
+/* line 40, scss/base/_html-body.scss */
 .admin .page-wrapper {
   width: 960px;
   margin: 0 auto;
   overflow: visible;
+}
+
+/* line 46, scss/base/_html-body.scss */
+.isMessage {
+  pointer-events: none;
+}
+/* line 48, scss/base/_html-body.scss */
+.isMessage .admin-page {
+  -webkit-filter: grayscale(100%) blur(5px);
+  filter: grayscale(100%) blur(5px);
+}
+/* line 52, scss/base/_html-body.scss */
+.isMessage .message-close {
+  pointer-events: all;
 }
 
 /* line 1, scss/base/_a.scss */
@@ -930,30 +944,34 @@ site-social + site-search .search-block {
   bottom: -100%;
   left: 0;
   right: 0;
-  z-index: 99999;
+  z-index: 9999999;
   padding: 15px 40px;
   background: rgba(255, 94, 0, 0.9);
   color: #fff;
   text-align: center;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  transition-duration: 0.5s;
+  transition-duration: 0.25s;
   transition-property: bottom;
   transition-timing-function: ease-in-out;
 }
 /* line 14, scss/patterns/_p-messages.scss */
+.message.alert {
+  background: rgba(255, 0, 0, 0.9);
+}
+/* line 17, scss/patterns/_p-messages.scss */
 .message.visible {
   bottom: 0;
 }
-/* line 17, scss/patterns/_p-messages.scss */
+/* line 20, scss/patterns/_p-messages.scss */
 .message a {
   color: #fff;
 }
-/* line 19, scss/patterns/_p-messages.scss */
+/* line 22, scss/patterns/_p-messages.scss */
 .message a:hover {
   text-decoration: none;
 }
-/* line 23, scss/patterns/_p-messages.scss */
+/* line 26, scss/patterns/_p-messages.scss */
 .message .message-close {
   position: absolute;
   width: 20px;
@@ -962,7 +980,7 @@ site-social + site-search .search-block {
   margin-top: -10px;
   right: 15px;
 }
-/* line 30, scss/patterns/_p-messages.scss */
+/* line 33, scss/patterns/_p-messages.scss */
 .message .message-close svg {
   fill: #fff;
   -webkit-transform: rotate(0) translateZ(0);
@@ -971,7 +989,7 @@ site-social + site-search .search-block {
   transition-property: transform;
   transition-timing-function: ease-in-out;
 }
-/* line 37, scss/patterns/_p-messages.scss */
+/* line 40, scss/patterns/_p-messages.scss */
 .message .message-close:hover svg {
   -webkit-transform: rotate(180deg) translateZ(0);
   transform: rotate(180deg) translateZ(0);

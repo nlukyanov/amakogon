@@ -97,7 +97,7 @@
 			if ( data.published ) {
 				var alert = 'Появился новый альбом "' + data.title + '"! Нажмите <a href="/photos/' + data.url + '" target="_blank">сюда</a>, чтобы посмотреть фотографии!';
 
-				$messageText.html(alert)
+				$messageText.html(alert);
 				$message.addClass('visible');
 
 				setTimeout(function() {
@@ -110,7 +110,7 @@
 		});
 
 		function hideMessage() {
-			$messageText.html('')
+			$messageText.html('');
 			$message.removeClass('visible');
 			return false;
 		};

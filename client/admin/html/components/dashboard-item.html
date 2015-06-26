@@ -1,4 +1,4 @@
-<div class="dashboard-img">
+<div class="dashboard-img" ng-class="{'changed': isUpdated}">
 	<img ng-src="{{slide.image}}">
 	<input type="file" accept="image/jpeg">
 	<div class="overlay" ng-click="triggerUpload($event)">

@@ -2,7 +2,7 @@
 
 	var adminAlbum = angular.module('adminAlbum', []);
 
-	adminAlbum.directive('adminAlbum', function($http, $location, $timeout, pageTitle) {
+	adminAlbum.directive('adminAlbum', function($http, $location, $timeout, pageTitle, $rootScope) {
 		return {
 			restrict: 'C',
 			link: link
@@ -84,8 +84,15 @@
 			};
 
 			socket.off('album exists').on('album exists', function() {
-				alert('Альбом с похожим названием уже существует!');
-				element.find('.item-overlay').removeClass('saving');
+				$rootScope.$broadcast('alert', 'Альбом с похожим названием уже существует!');
+
+				scope.$on('message end', function() {
+					element.find('.item-overlay').removeClass('saving');
+					scope.album.title = originalTitle;
+					$timeout(function() {
+						scope.$apply();
+					});
+				});
 			});
 			socket.off('album updated').on('album updated', function(data) {
 				$timeout(function() {
@@ -124,7 +131,7 @@
 
 			scope.removeAlbum = function(e, url, title, image) {
 				e.preventDefault();
-				if ( confirm('Вы уверены, что хотите удалить альбом "' + title + '"') ) {
+				if ( confirm('Вы уверены, что хотите безвозвратно удалить альбом "' + title + '"') ) {
 					socket.emit('remove album', url, title, image);
 					$location.path('/admin/photos');
 					$timeout(function() {
@@ -202,7 +209,7 @@
 								ctx.drawImage(image, 0, 0, width, height);
 								var shrinked = canvas.toDataURL('image/jpeg');
 
-								scope.photos.push({'image': shrinked, 'title': '', 'desc': '', 'parent': scope.album.title, 'id': scope.photos.length, 'parentUrl': scope.album.url, 'published': scope.album.published});
+								scope.photos.push({'image': shrinked, 'title': '', 'desc': '', 'parent': scope.album.title, 'id': scope.photos.length, 'parentUrl': scope.album.url, 'published': scope.album.published, tags: []});
 								scope.hasPhotos = true;
 								scope.$apply();
 
@@ -303,19 +310,31 @@
 					if ( confirm('Вы уверены, что хотите опубликовать этот альбом?') ) {
 						socket.emit('publish album', album.url);
 						album.published = !album.published;
+						element.find('.album-info .item-overlay').addClass('saving');
+						$timeout(function() {
+							element.find('.album-info .item-overlay').removeClass('saving');
+							scope.$apply();
+						}, 500);
 					}
 				}
 				else {
 					if ( confirm('Вы уверены, что хотите отправить этот альбом в черновики?') ) {
 						socket.emit('publish album', album.url);
 						album.published = !album.published;
+						element.find('.album-info .item-overlay').addClass('saving');
+						$timeout(function() {
+							element.find('.album-info .item-overlay').removeClass('saving');
+							scope.$apply();
+						}, 500);
 					}
 				}
 			};
 			scope.$on('$locationChangeStart', function(e) {
 				if ( scope.isUpdated || scope.albumTagsChanged || scope.photosUpdated || $('.changed', element).length ) {
-					if ( !confirm('Некоторые изменения не были сохранены. Действительно обновить эту страницу?') ) {
-						e.preventDefault();
+					if ( !$('.modal').hasClass('visible') ) {
+						if ( !confirm('Некоторые изменения не были сохранены. Действительно обновить эту страницу?') ) {
+							e.preventDefault();
+						}
 					}
 				}
 			});

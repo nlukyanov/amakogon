@@ -2,7 +2,7 @@
 
 	var tagsList = angular.module('tagsList', []);
 
-	tagsList.directive('tagsList', function($http, $location, $timeout) {
+	tagsList.directive('tagsList', function($http, $location, $timeout, $rootScope) {
 		return {
 			restrict: 'A',
 			link: link,
@@ -80,7 +80,7 @@
 				}
 				if ( scope.tagExists ) {
 					$timeout(function() {
-						alert('Такой тег уже есть!');
+						$rootScope.$broadcast('alert', 'Такой тег уже есть!');
 						return false;
 					}, 0);
 				}

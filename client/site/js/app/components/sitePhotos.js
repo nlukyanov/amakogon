@@ -11,6 +11,12 @@
 			pageTitle.setTitle('Фотографии');
 			socket.emit('load photos');
 			socket.off('photos loaded').on('photos loaded', function(data) {
+				var breadcrumbs = [{
+					title: 'Фотографии',
+					url: '/photos'
+				}];
+				$rootScope.$broadcast('create breadcrumbs', breadcrumbs);
+
 				var published = false;
 				for ( var i in data ) {
 					if ( data[i].published ) {
@@ -74,15 +80,7 @@
 					}
 				});
 				socket.on('album published', function(data) {
-					if ( !data.published ) {
-						for ( var i in scope.photos ) {
-							if ( scope.photos[i].title == data.title ) {
-								scope.photos.splice(scope.photos.indexOf(scope.photos[i]), 1);
-								scope.$apply();
-							}
-						}
-					}
-					else {
+					if ( data.published ) {
 						scope.photos.push(data);
 						scope.$apply();
 						textHeight();

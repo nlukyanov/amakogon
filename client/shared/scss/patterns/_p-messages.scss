@@ -3,14 +3,17 @@
 	bottom: -100%;
 	left: 0;
 	right: 0;
-	z-index: 99999;
+	z-index: 9999999;
 	padding: 15px 40px;
 	background: rgba(255,94,0,.9);
 	color: #fff;
 	text-align: center;
 	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
-	@include transition($property: bottom, $duration: .5s);
+	@include transition($property: bottom, $duration: .25s);
+	&.alert {
+		background: rgba(255,0,0,.9);
+	}
 	&.visible {
 		bottom: 0;
 	}

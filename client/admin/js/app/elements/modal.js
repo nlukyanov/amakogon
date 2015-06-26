@@ -22,9 +22,11 @@
 			scope.closeModal = function(e) {
 				e.preventDefault();
 
-				$('.modal').removeClass('isAnimated').removeClass('visible');
-				$('body').removeClass('isModal');
 				$rootScope.$broadcast('modal closed');
+				$timeout(function() {
+					$('.modal').removeClass('isAnimated').removeClass('visible');
+					$('body').removeClass('isModal');
+				}, 0);
 			};
 
 			scope.prevModal = function(e, target, popup) {
