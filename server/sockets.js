@@ -2,7 +2,9 @@ var io = require('socket.io'),
 	dashboardModel = require('./admin/pages/dashboard'),
 	photosModel = require('./admin/pages/photos'),
 	albumModel = require('./admin/pages/album'),
-	tagsModel = require('./admin/pages/tags');
+	tagsModel = require('./admin/pages/tags'),
+	mapModel = require('./admin/pages/map'),
+	contactModel = require('./admin/pages/contact');
 
 var Socket = function(server) {
 	var connection = io.listen(server),
@@ -131,7 +133,6 @@ var Socket = function(server) {
 								if ( index < length ) {
 									if ( data[index].tags.length ) {
 										tagsModel.addTag(data[index].tags, function() {
-											console.log('true');
 											index ++;
 											addTags(length);
 										});
@@ -237,6 +238,60 @@ var Socket = function(server) {
 			tagsModel.addTag(tag, function() {
 				tagsModel.getTags(function(error, data) {
 					// callback
+				});
+			});
+		});
+
+		socket.on('load map', function() {
+			mapModel.getMap(function(error, data) {
+				if ( error != null ) {
+					// === Error
+				}
+				else {
+					socket.emit('map loaded', data);
+				}
+			});
+		});
+
+		socket.on('update map', function(data) {
+			mapModel.updateMap(data, function(error, data) {
+				socket.emit('map updated');
+			});
+		});
+
+		socket.on('load contact', function() {
+			contactModel.getContact(function(error, data) {
+				if ( error != null ) {
+					// === Error
+				}
+				else {
+					socket.emit('contact loaded', data);
+				}
+			});
+		});
+
+		socket.on('update partially contact', function(data) {
+			contactModel.updatePartContact(data, function(error, data) {
+				contactModel.getContact(function(error, data) {
+					if ( error != null ) {
+						// === Error
+					}
+					else {
+						socket.emit('contact loaded', data);
+					}
+				});
+			});
+		});
+
+		socket.on('update contact', function(data) {
+			contactModel.updateContact(data, function(error, data) {
+				contactModel.getContact(function(error, data) {
+					if ( error != null ) {
+						// === Error
+					}
+					else {
+						socket.emit('contact loaded', data);
+					}
 				});
 			});
 		});

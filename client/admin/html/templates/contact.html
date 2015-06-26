@@ -1,0 +1,30 @@
+<header>
+	<admin-logo></admin-logo>
+</header>
+<admin-nav></admin-nav>
+<div class="admin-page">
+	<h2 class="page-title">Текущее местоположение</h2>
+	<div class="admin-contact">
+		<div class="map-holder">
+			<div class="map"></div>
+			<input type="text" id="mapInput">
+			<div class="item-overlay">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38"><g fill="none" fill-rule="evenodd"><g transform="translate(1 1)" stroke-width="2"><circle stroke-opacity=".5" cx="18" cy="18" r="18"/><path d="M36 18c0-9.94-8.06-18-18-18" transform="rotate(273.929 18 18)"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></g></svg>
+			</div>
+			<a ng-href="#" class="btn" ng-click="saveMap($event)" ng-class="{'disabled': !mapUpdated}" tabindex="-1">Обновить карту</a>
+		</div>
+		<h2 class="page-title">Контактная информация</h2>
+		<form class="contact-form">
+			<div class="form-row">
+
+			</div>
+		</form>
+		<div class="add-btn-holder">
+			<a ng-href="#" class="add-btn" ng-class="{'active': canAdd}" ng-click="canAdd = !canAdd">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 873 865" version="1.1"><g id="#ffffffff"></g><g id="#000000ff"><path opacity="1.00" d=" M 367.17 45.17 C 375.55 40.22 385.36 38.22 395.03 38.25 C 430.75 38.30 466.48 38.15 502.20 38.32 C 515.70 38.40 528.97 43.97 538.45 53.57 C 548.61 63.17 554.44 76.97 554.47 90.93 C 554.54 168.62 554.48 246.31 554.50 324.00 C 632.02 324.01 709.53 323.99 787.05 324.01 C 801.18 323.95 815.21 329.75 824.93 340.04 C 834.73 349.70 840.23 363.30 840.21 377.03 C 840.31 412.70 840.24 448.37 840.24 484.04 C 840.25 494.24 837.80 504.59 832.17 513.19 C 822.94 527.85 806.48 537.93 789.00 538.21 C 710.83 538.31 632.66 538.21 554.50 538.26 C 554.51 614.50 554.49 690.73 554.51 766.97 C 554.63 774.29 553.98 781.74 551.47 788.67 C 544.36 808.69 524.47 823.70 503.05 823.93 C 466.33 824.07 429.61 823.99 392.89 823.97 C 379.06 823.94 365.40 818.26 355.81 808.29 C 346.10 798.88 340.43 785.57 340.26 772.07 C 340.23 694.13 340.26 616.19 340.24 538.25 C 262.18 538.23 184.12 538.29 106.05 538.22 C 82.84 538.05 61.41 520.43 56.05 497.99 C 53.99 489.80 54.58 481.31 54.50 472.96 C 54.52 440.68 54.45 408.40 54.53 376.13 C 54.68 362.88 60.03 349.82 69.40 340.43 C 78.99 330.09 92.88 324.10 106.96 324.03 C 184.72 323.96 262.48 324.02 340.25 324.00 C 340.25 247.65 340.25 171.31 340.24 94.97 C 340.12 88.77 340.55 82.50 342.31 76.53 C 346.04 63.33 355.46 52.12 367.17 45.17 Z"/></g></svg>
+			</a>
+		</div>
+		<a ng-href="#" class="btn" ng-click="updateContact($event)" ng-class="{'disabled': !contactUpdated}">Обновить контакты</a>
+	</div>
+</div>
+<div class="message"></div>
