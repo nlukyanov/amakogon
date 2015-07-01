@@ -15,7 +15,7 @@ function router(app) {
 		admin.renderAdmin();
 	});
 	// === Code for autodeploy START
-	app.get('/push', function(req, resp) {
+	app.post('/push', function(req, resp) {
 		var child = exec('git pull', function(err, stdout, stderr) {
 			resp.end();
 		});
