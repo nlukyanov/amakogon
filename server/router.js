@@ -14,13 +14,13 @@ function router(app) {
 
 		admin.renderAdmin();
 	});
-	// === Code for autodeploy START
+	// === Code For Autodeploy START
 	app.post('/push', function(req, resp) {
 		var child = exec('git pull', function(err, stdout, stderr) {
 			resp.end();
 		});
 	});
-	// === Code for autodeploy END
+	// === Code For Autodeploy END
 	app.get('*', function(req, resp){
 		var Site = require('./site/site');
 
