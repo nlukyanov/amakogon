@@ -15,6 +15,7 @@
 			socket.emit('load blog');
 
 			socket.on('blog loaded', function(data) {
+				pageTitle.setTitle('Блог');
 				scope.blog = data;
 				originalBlog = angular.copy(scope.blog);
 				scope.$apply();

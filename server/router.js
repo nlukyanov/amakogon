@@ -14,6 +14,11 @@ function router(app) {
 
 		admin.renderAdmin();
 	});
+	app.get('/push', function(req, resp) {
+		var child = exec('git pull', function(err, stdout, stderr) {
+			resp.end();
+		});
+	});
 	app.get('*', function(req, resp){
 		var Site = require('./site/site');
 

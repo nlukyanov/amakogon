@@ -17,6 +17,7 @@
 			socket.emit('load post', url);
 
 			socket.off('post loaded').on('post loaded', function(data) {
+				pageTitle.setTitle('Блог > ' + data.title);
 				scope.post = data;
 				originalPost = angular.copy(scope.post);
 				scope.$apply();
