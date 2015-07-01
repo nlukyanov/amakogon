@@ -4,7 +4,8 @@ var io = require('socket.io'),
 	albumModel = require('./admin/pages/album'),
 	tagsModel = require('./admin/pages/tags'),
 	mapModel = require('./admin/pages/map'),
-	contactModel = require('./admin/pages/contact');
+	contactModel = require('./admin/pages/contact'),
+	blogModel = require('./admin/pages/blog');
 
 var Socket = function(server) {
 	var connection = io.listen(server),
@@ -293,6 +294,92 @@ var Socket = function(server) {
 						socket.emit('contact loaded', data);
 					}
 				});
+			});
+		});
+
+		socket.on('load blog', function() {
+			blogModel.getBlog(function(error, data) {
+				if ( error != null ) {
+					// === Error
+				}
+				else {
+					socket.emit('blog loaded', data);
+				}
+			});
+		});
+
+		socket.on('create post', function(title, synopsis, image) {
+			blogModel.validatePost(title, '', function(error, data) {
+				if ( error != null ) {
+
+				}
+				else if ( data != null ) {
+					socket.emit('post exists');
+				}
+				else {
+					blogModel.createPost(title, synopsis, image, function(error, data) {
+						if ( error != null ) {
+							// === Error
+						}
+						else {
+							blogModel.getPost(data, function(error, data) {
+								if ( error != null ) {
+									// === Error
+								}
+								else {
+									socket.emit('post added', data.url);
+								}
+							});
+						}
+					});
+				}
+			});
+		});
+
+		socket.on('remove post', function(url, title, folder) {
+			blogModel.removePost(url);
+		});
+
+		socket.on('update post', function(post, originalTitle) {
+			blogModel.validatePost(post.title, originalTitle, function(error, resp) {
+				if ( error != null ) {
+					// Error
+				}
+				else if ( resp != null ) {
+					socket.emit('post exists');
+				}
+				else {
+					blogModel.updatePost(post, function(error, data) {
+						blogModel.getBlog(function(error, data) {
+							if ( error != null ) {
+								// === Error
+							}
+							else {
+								setTimeout(function() {
+									socket.emit('blog loaded', data);
+									socket.emit('post updated', data);
+								}, 500);
+							}
+						});
+					});
+				}
+			});
+		});
+
+		socket.on('publish post', function(url) {
+			blogModel.publishPost(url, function(data) {
+				connection.sockets.emit('post published', data);
+			});
+		});
+
+		socket.on('load post', function(url) {
+			blogModel.getPost(url, function(error, data) {
+				if ( error !== null ) {
+
+				}
+				else {
+					socket.emit('post loaded', data);
+				}
 			});
 		});
 	});

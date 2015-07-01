@@ -2,21 +2,21 @@
 
 	var parallax = angular.module('parallax', []);
 
-	parallax.directive('parallax', function($http, $location) {
+	parallax.directive('parallax', function($http, $location, $timeout) {
 		return {
 			restrict: 'C',
 			link: link
 		};
 		function link(scope, element, attrs) {
-			setTimeout(function() {
+			$timeout(function() {
 				element.addClass('visible');
 			}, 0);
-			scope.nextSlide = function(e) {
+
+			element.on('click', '.icon-down', function(e) {
 				e.preventDefault();
 
 				scope.$emit('nextSlide');
-
-			}
+			});
 
 			scope.resetSlide = function (item) {
 				item.find('.visible').removeClass('visible');
@@ -38,22 +38,22 @@
 				var lv1Height = textBox.position().top - (icon1.position().top + icon1.height()) + parseInt(lv1.css('margin-top'));
 
 				lv1.addClass('visible').css({top: -lv1Height});
-				setTimeout(function() {
+				$timeout(function() {
 					lv1.height(lv1Height);
 				}, 250);
 
 				// === Line Horisontal 1
-				setTimeout(function() {
+				$timeout(function() {
 					lh1.addClass('visible');
 				}, 500);
 
 				// === Text
-				setTimeout(function() {
+				$timeout(function() {
 					textBox.find('p, a').addClass('visible');
 				}, 750);
 
 				// === Line Horisontal 2
-				setTimeout(function() {
+				$timeout(function() {
 					lh2.addClass('visible');
 				}, 1000);
 
@@ -62,12 +62,12 @@
 
 				lv2.addClass('visible');
 
-				setTimeout(function() {
+				$timeout(function() {
 					lv2.height(lv2Height);
 				}, 1250);
 
 				// === Icon 2
-				setTimeout(function() {
+				$timeout(function() {
 					icon2.addClass('visible');
 				}, 1500);
 			}

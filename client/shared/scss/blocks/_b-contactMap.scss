@@ -92,6 +92,14 @@
 	}
 	dd {
 		overflow: hidden;
+		max-width: 150px;
+		word-break: break-all;
+	}
+	a {
+		color: #fff;
+		&:hover {
+			color: #ff5e00;
+		}
 	}
 }
 .contact-slide {

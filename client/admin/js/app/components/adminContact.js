@@ -9,10 +9,14 @@
 		};
 		function link(scope, element, attrs) {
 			pageTitle.setTitle('Контакты');
+			var originalContact;
 
 			socket.emit('load contact');
 			socket.on('contact loaded', function(data) {
-				scope.contact = data;
+				scope.contact = data[0];
+
+				originalContact = angular.copy(scope.contact);
+
 				$timeout(function() {
 					scope.contactUpdated = false;
 					$('.contact-form').find('.item-overlay').removeClass('saving');
@@ -218,8 +222,128 @@
 
 			scope.canAdd = false;
 
-			scope.addContact = function(e) {
+			scope.addContact = function(e, type) {
 				e.preventDefault();
+				scope.canAdd = false;
+
+				var contactFields = $('.contact-form input[type="text"]');
+
+				for ( var i = 0; i < contactFields.length; i ++ ) {
+					if ( !$(contactFields[i]).val() ) {
+						$rootScope.$broadcast('alert', 'В контактах есть незаполненные поля!');
+						scope.$on('message end', function() {
+							$(contactFields[i]).focus();
+						});
+						return false;
+					}
+				}
+				if ( type == 'phone' ) {
+					scope.contact.phones.push({'id': scope.contact.phones.length, 'value': ''});
+				}
+				if ( type == 'email' ) {
+					scope.contact.emails.push({'id': scope.contact.emails.length, 'value': ''});
+				}
+				if ( type == 'skype' ) {
+					scope.contact.skype.push({'id': scope.contact.skype.length, 'value': ''});
+				}
+				if ( type == 'vk' ) {
+					scope.contact.vk.push({'id': scope.contact.vk.length, 'value': ''});
+				}
+				if ( type == 'facebook' ) {
+					scope.contact.facebook.push({'id': scope.contact.facebook.length, 'value': ''});
+				}
+				if ( type == 'twitter' ) {
+					scope.contact.twitter.push({'id': scope.contact.twitter.length, 'value': ''});
+				}
+				if ( type == 'pinterest' ) {
+					scope.contact.pinterest.push({'id': scope.contact.pinterest.length, 'value': ''});
+				}
+				if ( type == 'linkedin' ) {
+					scope.contact.linkedin.push({'id': scope.contact.linkedin.length, 'value': ''});
+				}
+
+				$timeout(function() {
+					contactFields = $('.contact-form input[type="text"]');
+					for ( var i = 0; i < contactFields.length; i ++ ) {
+						if ( !$(contactFields[i]).val() ) {
+							$(contactFields[i]).trigger('focus');
+						}
+					}
+					scope.checkForUpdated();
+				}, 0);
+			};
+
+			scope.removeContact = function(e, type, item) {
+				e.preventDefault();
+				if ( type == 'phones' ) {
+					scope.contact.phones.splice(scope.contact.phones.indexOf(item), 1);
+				}
+				if ( type == 'emails' ) {
+					scope.contact.emails.splice(scope.contact.phones.indexOf(item), 1);
+				}
+				if ( type == 'skype' ) {
+					scope.contact.skype.splice(scope.contact.phones.indexOf(item), 1);
+				}
+				if ( type == 'vk' ) {
+					scope.contact.vk.splice(scope.contact.phones.indexOf(item), 1);
+				}
+				if ( type == 'facebook' ) {
+					scope.contact.facebook.splice(scope.contact.phones.indexOf(item), 1);
+				}
+				if ( type == 'twitter' ) {
+					scope.contact.twitter.splice(scope.contact.phones.indexOf(item), 1);
+				}
+				if ( type == 'pinterest' ) {
+					scope.contact.pinterest.splice(scope.contact.phones.indexOf(item), 1);
+				}
+				if ( type == 'linkedin' ) {
+					scope.contact.linkedin.splice(scope.contact.phones.indexOf(item), 1);
+				}
+				scope.checkForUpdated();
+			};
+
+			scope.checkForUpdated = function() {
+				var isUpdated = false;
+
+				for ( var i in scope.contact ) {
+					if ( scope.contact[i] && originalContact[i] ) {
+						if ( scope.contact[i].length != originalContact[i].length ) {
+							isUpdated = true;
+							break;
+						}
+						else {
+							if ( scope.contact[i].length && typeof(scope.contact[i]) === 'object' ) {
+								for ( var x = 0; x < scope.contact[i].length; x ++ ) {
+									if ( scope.contact[i][x].value != originalContact[i][x].value ) {
+										isUpdated = true;
+										break;
+									}
+								}
+							}
+						}
+					}
+					else if ( scope.contact[i] && !originalContact[i] || !scope.contact[i] && originalContact[i] ) {
+						isUpdated = true;
+						break;
+					}
+				}
+
+				var contactFields = $('.contact-form input[type="text"]'),
+					fieldsEmpty = false;
+
+				for ( var i = 0; i < contactFields.length; i ++ ) {
+					if ( !$(contactFields[i]).val() ) {
+						fieldsEmpty = true;
+						break;
+					}
+				}
+
+				if ( isUpdated && !fieldsEmpty ) {
+					scope.contactUpdated = true;
+				}
+				else {
+					scope.contactUpdated = false;
+				}
 			};
 
 			scope.$on('$locationChangeStart', function(e) {

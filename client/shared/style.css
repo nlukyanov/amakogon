@@ -1773,9 +1773,19 @@ site-social + site-search .search-block {
 /* line 93, scss/blocks/_b-contactMap.scss */
 .contact-info dd {
   overflow: hidden;
+  max-width: 150px;
+  word-break: break-all;
+}
+/* line 98, scss/blocks/_b-contactMap.scss */
+.contact-info a {
+  color: #fff;
+}
+/* line 100, scss/blocks/_b-contactMap.scss */
+.contact-info a:hover {
+  color: #ff5e00;
 }
 
-/* line 98, scss/blocks/_b-contactMap.scss */
+/* line 106, scss/blocks/_b-contactMap.scss */
 .contact-slide .back-to-top {
   opacity: 0;
   -webkit-filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75));
@@ -1788,28 +1798,28 @@ site-social + site-search .search-block {
   transition-timing-function: ease-in-out;
 }
 @media only screen and (max-width: 1024px) {
-  /* line 98, scss/blocks/_b-contactMap.scss */
+  /* line 106, scss/blocks/_b-contactMap.scss */
   .contact-slide .back-to-top {
     bottom: 40px;
     margin-bottom: 0;
   }
 }
-/* line 110, scss/blocks/_b-contactMap.scss */
+/* line 118, scss/blocks/_b-contactMap.scss */
 .contact-slide .back-to-top svg {
   fill: #fff;
   transition-duration: 0.25s;
   transition-property: fill;
   transition-timing-function: ease-in-out;
 }
-/* line 114, scss/blocks/_b-contactMap.scss */
+/* line 122, scss/blocks/_b-contactMap.scss */
 .contact-slide .back-to-top:hover {
   border-color: #ff5e00;
 }
-/* line 116, scss/blocks/_b-contactMap.scss */
+/* line 124, scss/blocks/_b-contactMap.scss */
 .contact-slide .back-to-top:hover svg {
   fill: #ff5e00;
 }
-/* line 121, scss/blocks/_b-contactMap.scss */
+/* line 129, scss/blocks/_b-contactMap.scss */
 .contact-slide .back-to-top-line {
   position: fixed;
   right: 58px;
@@ -1824,11 +1834,11 @@ site-social + site-search .search-block {
   transition-property: height;
   transition-timing-function: ease-in-out;
 }
-/* line 134, scss/blocks/_b-contactMap.scss */
+/* line 142, scss/blocks/_b-contactMap.scss */
 .contact-slide.active .back-to-top {
   opacity: 1;
 }
-/* line 137, scss/blocks/_b-contactMap.scss */
+/* line 145, scss/blocks/_b-contactMap.scss */
 .contact-slide.active .back-to-top-line {
   height: 50%;
 }
@@ -4958,15 +4968,56 @@ site-social + site-search .search-block {
 }
 /* line 53, scss/blocks/_b-adminContact.scss */
 .admin-contact .contact-form {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  position: relative;
+  margin-left: -40px;
+  text-align: left;
+  margin-top: -40px;
 }
-/* line 55, scss/blocks/_b-adminContact.scss */
+/* line 52, scss/utilities/_mixins.scss */
+.admin-contact .contact-form:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/* line 60, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form .item-overlay {
+  margin-left: 40px;
+}
+/* line 63, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form fieldset {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  padding-left: 40px;
+  padding-right: 30px;
+  box-sizing: border-box;
+  margin-right: -3px;
+  margin-top: 40px;
+}
+/* line 73, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form h3 {
+  text-transform: uppercase;
+  margin-top: 20px;
+  text-align: center;
+  padding-left: 50px;
+}
+/* line 78, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form h3 svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  margin-left: -25px;
+}
+/* line 85, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form h3 span {
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 90, scss/blocks/_b-adminContact.scss */
 .admin-contact .contact-form .form-row {
   margin-top: 20px;
-}
-/* line 57, scss/blocks/_b-adminContact.scss */
-.admin-contact .contact-form .form-row:first-child {
-  margin-top: 0;
 }
 /* line 52, scss/utilities/_mixins.scss */
 .admin-contact .contact-form .form-row:after {
@@ -4974,15 +5025,29 @@ site-social + site-search .search-block {
   display: block;
   clear: both;
 }
-/* line 61, scss/blocks/_b-adminContact.scss */
-.admin-contact .contact-form .form-row input[type="text"] {
+/* line 93, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form .form-row:first-child {
+  margin-top: 0;
+}
+/* line 96, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form .form-row label {
+  float: left;
+  line-height: 46px;
+  width: 50px;
+  text-align: center;
+}
+/* line 102, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form .form-row .input-holder {
+  overflow: hidden;
+}
+/* line 104, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form .form-row .input-holder input[type="text"] {
   -webkit-box-shadow: inset 0 0 5px 0 rgba(32, 32, 32, 0.25);
   box-shadow: inset 0 0 5px 0 rgba(32, 32, 32, 0.25);
   border: 1px solid #cacaca;
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
-  text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
   color: #202020;
   font-size: 18px;
@@ -4990,18 +5055,44 @@ site-social + site-search .search-block {
   font-weight: 300;
   vertical-align: top;
 }
-/* line 78, scss/blocks/_b-adminContact.scss */
+/* line 119, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form .form-row .btn-remove {
+  float: right;
+  width: 20px;
+  height: 46px;
+  margin-left: 10px;
+}
+/* line 124, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form .form-row .btn-remove svg {
+  width: 100%;
+  height: 100%;
+  fill: #f00;
+  -webkit-transform: rotate(0) translateZ(0);
+  transform: rotate(0) translateZ(0);
+  transition-duration: 0.25s;
+  transition-property: -webkit-transform, transform;
+  transition-timing-function: ease-in-out;
+}
+/* line 133, scss/blocks/_b-adminContact.scss */
+.admin-contact .contact-form .form-row .btn-remove:hover svg {
+  -webkit-transform: rotate(180deg) translateZ(0);
+  transform: rotate(180deg) translateZ(0);
+}
+/* line 141, scss/blocks/_b-adminContact.scss */
 .admin-contact .add-btn-holder {
   margin-bottom: 40px;
+  position: relative;
 }
-/* line 80, scss/blocks/_b-adminContact.scss */
+/* line 144, scss/blocks/_b-adminContact.scss */
 .admin-contact .add-btn-holder .add-btn {
   display: inline-block;
   vertical-align: top;
   width: 30px;
   height: 30px;
+  position: relative;
+  z-index: 1;
 }
-/* line 85, scss/blocks/_b-adminContact.scss */
+/* line 151, scss/blocks/_b-adminContact.scss */
 .admin-contact .add-btn-holder .add-btn svg {
   fill: #202020;
   width: 100%;
@@ -5009,27 +5100,424 @@ site-social + site-search .search-block {
   -webkit-transform: rotate(0) translateZ(0);
   transform: rotate(0) translateZ(0);
   transition-duration: 0.25s;
-  transition-property: -webkit-transform, transform, fil;
+  transition-property: -webkit-transform, transform, fill;
   transition-timing-function: ease-in-out;
 }
-/* line 94, scss/blocks/_b-adminContact.scss */
+/* line 160, scss/blocks/_b-adminContact.scss */
 .admin-contact .add-btn-holder .add-btn:hover svg {
   fill: #ff5e00;
   -webkit-transform: rotate(180deg) translateZ(0);
   transform: rotate(180deg) translateZ(0);
 }
-/* line 101, scss/blocks/_b-adminContact.scss */
+/* line 167, scss/blocks/_b-adminContact.scss */
 .admin-contact .add-btn-holder .add-btn.active svg {
   -webkit-transform: rotate(135deg) translateZ(0);
   transform: rotate(135deg) translateZ(0);
   fill: #f00;
 }
-/* line 108, scss/blocks/_b-adminContact.scss */
+/* line 174, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types {
+  position: absolute;
+  left: 50%;
+  width: 428px;
+  margin-left: -224px;
+  top: -10px;
+  padding: 10px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(32, 32, 32, 0.55);
+  border-radius: 5px;
+}
+/* line 183, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-contact-types-col {
+  float: right;
+}
+/* line 185, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-contact-types-col:first-child {
+  float: left;
+}
+/* line 189, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+/* line 195, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type:first-child {
+  margin-left: 0;
+}
+/* line 198, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type svg {
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition-duration: 0.25s;
+  transition-property: -webkit-transform, transform;
+  transition-timing-function: ease-in-out;
+}
+/* line 206, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type:hover svg {
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+}
+/* line 212, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type.type-phone svg {
+  fill: #202020;
+}
+/* line 217, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type.type-email svg {
+  fill: #202020;
+}
+/* line 222, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type.type-skype svg {
+  fill: #00ADEF;
+}
+/* line 227, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type.type-vk svg {
+  fill: #4C75A3;
+}
+/* line 232, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type.type-facebook svg {
+  fill: #4A6EA9;
+}
+/* line 237, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type.type-twitter svg {
+  fill: #20B8FF;
+}
+/* line 242, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type.type-pinterest svg {
+  fill: #CB2027;
+}
+/* line 247, scss/blocks/_b-adminContact.scss */
+.admin-contact .add-btn-holder .add-contact-types .add-type.type-linkedin svg {
+  fill: #017BB7;
+}
+/* line 253, scss/blocks/_b-adminContact.scss */
 .admin-contact .add-btn-holder + .btn {
   margin-top: 0;
 }
 
-/* line 113, scss/blocks/_b-adminContact.scss */
+/* line 258, scss/blocks/_b-adminContact.scss */
 .pac-container {
   letter-spacing: 0;
+}
+
+/* line 2, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list {
+  overflow: hidden;
+}
+/* line 4, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  width: 25%;
+  padding: 0 20px;
+  margin-bottom: 80px;
+  margin-right: -3px;
+  position: relative;
+}
+/* line 13, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item > a {
+  display: block;
+  text-decoration: none;
+}
+/* line 16, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item > a .image-holder {
+  padding-top: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  -webkit-transform: scale(0.9) translateZ(0);
+  transform: scale(0.9) translateZ(0);
+  position: relative;
+  z-index: 1;
+  transition-duration: 0.25s;
+  transition-property: -webkit-transform, transform;
+  transition-timing-function: ease-in-out;
+}
+/* line 29, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item > a:hover .image-holder {
+  -webkit-transform: scale(1) translateZ(0);
+  transform: scale(1) translateZ(0);
+}
+/* line 34, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item > a h3 {
+  text-transform: uppercase;
+  margin-top: 20px;
+  text-align: center;
+}
+/* line 41, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item.draft > a {
+  opacity: .5;
+}
+/* line 46, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item.new-post ~ p {
+  display: none;
+}
+/* line 49, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item.new-post + .new-post {
+  display: none;
+}
+/* line 51, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item.new-post + .new-post + p {
+  display: block;
+}
+/* line 55, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item.new-post a {
+  display: block;
+  position: relative;
+  padding-top: 100%;
+}
+/* line 59, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item.new-post a svg {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -15px 0 0 -15px;
+  fill: #202020;
+  -webkit-transform: rotate(0) translateZ(0);
+  transform: rotate(0) translateZ(0);
+  transition-duration: 0.25s;
+  transition-property: -webkit-transform, transform, fill;
+  transition-timing-function: ease-in-out;
+}
+/* line 72, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item.new-post a:hover svg {
+  fill: #ff5e00;
+  -webkit-transform: rotate(180deg) translateZ(0);
+  transform: rotate(180deg) translateZ(0);
+}
+/* line 82, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item:nth-child(4n + 1):not(:first-child).new-post {
+  width: 100%;
+}
+/* line 84, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item:nth-child(4n + 1):not(:first-child).new-post a {
+  padding-top: 0;
+  height: 100px;
+}
+/* line 91, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item .btn-remove {
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+/* line 95, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item .btn-remove svg {
+  width: 20px;
+  height: 20px;
+  fill: #f00;
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+  transition-duration: 0.25s;
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
+}
+/* line 104, scss/blocks/_b-adminBlog.scss */
+.admin-blog .admin-blog-list .admin-blog-list-item .btn-remove:hover svg {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/* line 112, scss/blocks/_b-adminBlog.scss */
+.admin-blog textarea {
+  height: 196px !important;
+}
+
+/* line 117, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image {
+  position: relative;
+  padding-top: 52.65%;
+  background: #e4e4e4;
+  cursor: pointer;
+  transition-duration: 0.25s;
+  transition-property: background;
+  transition-timing-function: ease-in-out;
+}
+/* line 123, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image:hover {
+  background: #ff5e00;
+}
+/* line 126, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image svg {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100px;
+  margin-left: -50px;
+  fill: #fff;
+}
+/* line 136, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image.hasImage {
+  padding: 0;
+  background: none;
+}
+/* line 139, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image.hasImage:hover {
+  background: #cacaca !important;
+}
+/* line 142, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image.hasImage:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(32, 32, 32, 0.9);
+  opacity: 0;
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+/* line 153, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image.hasImage svg {
+  opacity: 0;
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+/* line 158, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image.hasImage:hover:before {
+  opacity: 1;
+}
+/* line 161, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image.hasImage:hover svg {
+  opacity: 1;
+}
+/* line 166, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image.isLoading {
+  padding: 0;
+  background: none;
+  min-height: 250px;
+  transition-duration: 0;
+  transition-property: none;
+  transition-timing-function: ease-in-out;
+}
+/* line 171, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image.isLoading:hover {
+  background: #fff !important;
+}
+/* line 174, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image.isLoading svg {
+  display: none;
+}
+/* line 179, scss/blocks/_b-adminBlog.scss */
+.post-info .newPost-image input[type="file"],
+.post-info .newPost-image + input[type="file"] {
+  position: absolute;
+  z-index: -9999;
+  opacity: 0;
+}
+/* line 185, scss/blocks/_b-adminBlog.scss */
+.post-info textarea {
+  height: 196px !important;
+}
+/* line 188, scss/blocks/_b-adminBlog.scss */
+.post-info .btn-remove {
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+/* line 192, scss/blocks/_b-adminBlog.scss */
+.post-info .btn-remove svg {
+  width: 20px;
+  height: 20px;
+  fill: #f00;
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+  transition-duration: 0.25s;
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
+}
+/* line 201, scss/blocks/_b-adminBlog.scss */
+.post-info .btn-remove:hover svg {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* line 209, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder {
+  position: relative;
+}
+/* line 211, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder + .new-content-holder {
+  display: none;
+}
+/* line 214, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder .new-content {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 40px;
+  position: relative;
+  z-index: 1;
+}
+/* line 222, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder .new-content svg {
+  position: absolute;
+  fill: #202020;
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -15px;
+  -webkit-transform: rotate(0) translateZ(0);
+  transform: rotate(0) translateZ(0);
+  transition-duration: 0.25s;
+  transition-property: transform, fill;
+  transition-timing-function: ease-in-out;
+}
+/* line 236, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder .new-content:hover svg {
+  fill: #ff5e00;
+  -webkit-transform: rotate(180deg) translateZ(0);
+  transform: rotate(180deg) translateZ(0);
+}
+/* line 243, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder .new-content-buttons {
+  position: absolute;
+  left: 50%;
+  top: -5px;
+  width: 420px;
+  margin-left: -215px;
+  padding: 10px 5px;
+  box-shadow: 0 0 5px 0 rgba(32, 32, 32, 0.5);
+  border-radius: 5px;
+}
+/* line 252, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder .new-content-buttons .new-content-buttons-col {
+  float: right;
+}
+/* line 254, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder .new-content-buttons .new-content-buttons-col a {
+  float: left;
+  width: 35px;
+  height: 35px;
+  margin: 0 10px;
+}
+/* line 259, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder .new-content-buttons .new-content-buttons-col a svg {
+  width: 100%;
+  height: 100%;
+  fill: #202020;
+  transition-duration: 0.25s;
+  transition-property: fill;
+  transition-timing-function: ease-in-out;
+}
+/* line 266, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder .new-content-buttons .new-content-buttons-col a:hover svg {
+  fill: #ff5e00;
+}
+/* line 271, scss/blocks/_b-adminBlog.scss */
+.post-content .new-content-holder .new-content-buttons .new-content-buttons-col:first-child {
+  float: left;
 }

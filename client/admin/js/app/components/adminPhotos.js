@@ -151,6 +151,7 @@
 					return false;
 				}
 				scope.canSave = false;
+				$('#album_info .item-overlay').addClass('saving');
 
 				socket.emit('add album', title.val(), desc.val(), scope.newImage, scope.tags);
 				socket.off('album exists').on('album exists', function() {
