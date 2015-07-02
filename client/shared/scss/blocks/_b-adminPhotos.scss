@@ -285,6 +285,7 @@
 }
 .admin-photos,
 .admin-album-list {
+	position: relative;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -297,6 +298,17 @@
 
 	-webkit-flex-flow: row wrap;
 	flex-flow: row wrap;
+
+	> p {
+		color: #ff5e00;
+		text-align: center;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		margin-top: -17px;
+		display: none;
+	}
 	li {
 		width: 25%;
 		padding: 0 20px;
@@ -345,6 +357,9 @@
 			margin-bottom: 0;
 			+ .new-album {
 				display: none;
+				+ p {
+					display: block;
+				}
 			}
 			.image-holder {
 				.image-placeholder {

@@ -23,6 +23,90 @@
 				scope.$apply();
 			});
 
+			scope.addContent = function(e, type) {
+				e.preventDefault();
+				for ( var i in scope.post.content ) {
+					scope.post.content[i].id = parseInt(i);
+				}
+
+				var newBlock = {
+					'type': type,
+					'id': scope.post.content.length
+				};
+
+				if ( type == 'paragraph' ) {
+					newBlock.paragraph = '';
+					newBlock.styles = {
+						'align': 'left',
+						'fontSize': 'medium',
+						'color': 'default'
+					};
+				}
+				else if ( type == 'heading' ) {
+					newBlock.heading = '';
+					newBlock.styles = {
+						'align': 'left',
+						'fontSize': 'medium',
+						'color': 'default',
+						'weight': 'bold'
+					};
+				}
+				else if ( type == 'list' ) {
+					newBlock.list = [''];
+					newBlock.styles = {
+						'align': 'left',
+						'fontSize': 'medium',
+						'color': 'default'
+					};
+				}
+				else if ( type == 'table' ) {
+					newBlock.table = {
+						'cols': 1,
+						'head': [''],
+						'foot': [''],
+						'body': ['']
+					};
+					newBlock.styles = {
+						'align': 'left',
+						'valign': 'top',
+						'fontSize': 'medium',
+						'color': 'default',
+						'border': {
+							'enabled': true,
+							'color': 'default'
+						}
+					};
+				}
+				else if ( type == 'link' ) {
+					newBlock.link = '';
+					newBlock.styles = {
+						'align': 'left',
+						'color': 'default',
+						'button': false
+					};
+				}
+				else if ( type == 'image' ) {
+					newBlock.image = '';
+					newBlock.caption = '';
+					newBlock.styles = {
+						'image': {
+							'x': 'center',
+							'y': 'top',
+							'width': 'medium',
+							'type': 'square'
+						},
+						'text': {
+							'align': 'left',
+							'fontSize': 'medium',
+							'color': 'subtle'
+						}
+					};
+				}
+
+				scope.post.content.push(newBlock);
+				console.log(scope.post.content);
+			};
+
 			scope.triggerUpload = function(e) {
 				var input = $(e.currentTarget).next('input[type="file"]');
 

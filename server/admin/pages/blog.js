@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 		'synopsis': String,
 		'post': String,
 		'published': Boolean,
-		'url': String
+		'url': String,
+		'content': Array
 	},
 	BlogModel = mongoose.model('blog', schema);
 
@@ -93,7 +94,7 @@ Blog.createPost = function(title, synopsis, image, callback) {
 			else {
 				image = './uploads/blog/' + time + '_' + url + '.jpg';
 
-				var blog = new BlogModel({'title': title, 'synopsis': synopsis, 'thumb': image, 'url': url, 'published': false});
+				var blog = new BlogModel({'title': title, 'synopsis': synopsis, 'thumb': image, 'url': url, 'published': false, 'content': []});
 
 				blog.save(function(error, data) {
 					if ( error ) {
@@ -107,7 +108,7 @@ Blog.createPost = function(title, synopsis, image, callback) {
 		});
 	}
 	else {
-		var blog = new BlogModel({'title': title, 'synopsis': synopsis, 'thumb': image, 'url': url, 'published': false});
+		var blog = new BlogModel({'title': title, 'synopsis': synopsis, 'thumb': image, 'url': url, 'published': false, 'content': []});
 
 		blog.save(function(error) {
 			if ( error ) {

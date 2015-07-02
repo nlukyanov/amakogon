@@ -1,6 +1,14 @@
 .admin-blog {
 	.admin-blog-list {
 		overflow: hidden;
+		position: relative;
+		> p {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 50%;
+			margin-top: -52px;
+		}
 		.admin-blog-list-item {
 			display: inline-block;
 			vertical-align: top;
@@ -43,6 +51,8 @@
 				}
 			}
 			&.new-post {
+				position: relative;
+				z-index: 1;
 				~ p {
 					display: none;
 				}
@@ -206,6 +216,21 @@
 	}
 }
 .post-content {
+	section {
+		margin-bottom: 40px;
+		input[type="text"],
+		textarea {
+			border-color: transparent !important;
+			&:focus {
+				border-color: #202020 !important;
+			}
+		}
+		.btn-removeAll {
+			&:hover {
+				background: #f00;
+			}
+		}
+	}
 	.new-content-holder {
 		position: relative;
 		+ .new-content-holder {
@@ -237,6 +262,13 @@
 					fill: #ff5e00;
 					-webkit-transform: rotate(180deg) translateZ(0);
 					transform: rotate(180deg) translateZ(0);
+				}
+			}
+			&.active {
+				svg {
+					fill: #f00;
+					-webkit-transform: rotate(135deg) translateZ(0);
+					transform: rotate(135deg) translateZ(0);
 				}
 			}
 		}
